@@ -5,7 +5,7 @@
 /*     */ 
 /*     */ public class fl
 /*     */ {
-/*     */   public db a;
+/*     */   public Entity a;
 /*     */   public int b;
 /*     */   public int c;
 /*     */   public int d;
@@ -22,7 +22,7 @@
 /*     */   public boolean j = false;
 /*  23 */   public Set k = new HashSet();
 /*     */   
-/*     */   public fl(db paramdb, int paramInt1, int paramInt2) {
+/*     */   public fl(Entity paramdb, int paramInt1, int paramInt2) {
 /*  26 */     this.a = paramdb;
 /*  27 */     this.b = paramInt1;
 /*  28 */     this.c = paramInt2;
@@ -58,7 +58,7 @@
 /*     */     } 
 /*     */     
 /*  60 */     if (this.i++ % this.c == 0) {
-/*  61 */       el el; int i = fw.b(this.a.k * 32.0D);
+/*  61 */       Packet30Entity el = null; int i = fw.b(this.a.k * 32.0D);
 /*  62 */       int j = fw.b(this.a.l * 32.0D);
 /*  63 */       int k = fw.b(this.a.m * 32.0D);
 /*  64 */       int m = fw.d(this.a.q * 256.0F / 360.0F);
@@ -70,19 +70,19 @@
 /*  70 */       int i1 = i - this.d;
 /*  71 */       int i2 = j - this.e;
 /*  72 */       int i3 = k - this.f;
-/*  73 */       by by = null;
+/*  73 */       Packet34EntityTeleport by = null;
 /*     */       
 /*  75 */       if (i1 < -128 || i1 >= 128 || i2 < -128 || i2 >= 128 || i3 < -128 || i3 >= 128) {
-/*  76 */         by = new by(this.a.c, i, j, k, (byte)m, (byte)n);
+/*  76 */         by = new Packet34EntityTeleport(this.a.c, i, j, k, (byte)m, (byte)n);
 /*     */       }
 /*  78 */       else if (bool1 && bool2) {
-/*  79 */         el = new bc(this.a.c, (byte)i1, (byte)i2, (byte)i3, (byte)m, (byte)n);
+/*  79 */         el = new Packet33RelEntityMoveLook(this.a.c, (byte)i1, (byte)i2, (byte)i3, (byte)m, (byte)n);
 /*  80 */       } else if (bool1) {
-/*  81 */         el = new di(this.a.c, (byte)i1, (byte)i2, (byte)i3);
+/*  81 */         el = new Packet31RelEntityMove(this.a.c, (byte)i1, (byte)i2, (byte)i3);
 /*  82 */       } else if (bool2) {
-/*  83 */         el = new cq(this.a.c, (byte)m, (byte)n);
+/*  83 */         el = new Packet32EntityLook(this.a.c, (byte)m, (byte)n);
 /*     */       } else {
-/*  85 */         el = new el(this.a.c);
+/*  85 */         el = new Packet30Entity(this.a.c);
 /*     */       } 
 /*     */ 
 /*     */       
@@ -98,18 +98,18 @@
 /*     */     } 
 /*     */   }
 /*     */   
-/*     */   public void a(ha paramha) {
-/* 102 */     for (dq dq : this.k) {
-/* 103 */       dq.a.b(paramha);
+/*     */   public void a(Packet paramha) {
+/* 102 */     for (Object dq : this.k) {
+/* 103 */       ((EntityPlayerMP)dq).playerNetServerHandler.sendPacket(paramha);
 /*     */     }
 /*     */   }
 /*     */   
 /*     */   public void a() {
-/* 108 */     a(new cm(this.a.c));
+/* 108 */     a(new Packet29DestroyEntity(this.a.c));
 /*     */   }
 /*     */ 
 /*     */   
-/*     */   public void a(dq paramdq) {
+/*     */   public void a(EntityPlayerMP paramdq) {
 /* 113 */     if (paramdq == this.a)
 /*     */       return; 
 /* 115 */     double d1 = paramdq.k - (this.d / 32);
@@ -117,26 +117,26 @@
 /* 117 */     if (d1 >= -this.b && d1 <= this.b && d2 >= -this.b && d2 <= this.b) {
 /* 118 */       if (!this.k.contains(paramdq)) {
 /* 119 */         this.k.add(paramdq);
-/* 120 */         paramdq.a.b(b());
+/* 120 */         paramdq.playerNetServerHandler.sendPacket(b());
 /*     */       }
 /*     */     
 /* 123 */     } else if (this.k.contains(paramdq)) {
 /* 124 */       this.k.remove(paramdq);
-/* 125 */       paramdq.a.b(new cm(this.a.c));
+/* 125 */       paramdq.playerNetServerHandler.sendPacket(new Packet29DestroyEntity(this.a.c));
 /*     */     } 
 /*     */   }
 /*     */ 
 /*     */   
-/*     */   public void b(List<dq> paramList) {
-/* 131 */     for (byte b = 0; b < paramList.size(); b++) {
+/*     */   public void b(List<EntityPlayerMP> paramList) {
+/* 131 */     for (int b = 0; b < paramList.size(); b++) {
 /* 132 */       a(paramList.get(b));
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   private ha b() {
-/* 137 */     if (this.a instanceof fa) {
-/* 138 */       fa fa = (fa)this.a;
-/* 139 */       j j = new j(fa);
+/*     */   private Packet b() {
+/* 137 */     if (this.a instanceof EntityItem) {
+/* 138 */       EntityItem fa = (EntityItem)this.a;
+/* 139 */       Packet21PickupSpawn j = new Packet21PickupSpawn(fa);
 /* 140 */       fa.k = j.b / 32.0D;
 /* 141 */       fa.l = j.c / 32.0D;
 /* 142 */       fa.m = j.d / 32.0D;
@@ -145,17 +145,17 @@
 /* 145 */       fa.p = j.g / 128.0D;
 /* 146 */       return j;
 /*     */     } 
-/* 148 */     if (this.a instanceof dq) {
-/* 149 */       return new c((eq)this.a);
+/* 148 */     if (this.a instanceof EntityPlayerMP) {
+/* 149 */       return new Packet20NamedEntitySpawn((EntityPlayer)this.a);
 /*     */     }
 /* 151 */     if (this.a instanceof hs) {
 /* 152 */       hs hs = (hs)this.a;
-/* 153 */       if (hs.ad == 0) return new dd(this.a, 10); 
-/* 154 */       if (hs.ad == 1) return new dd(this.a, 11); 
-/* 155 */       if (hs.ad == 2) return new dd(this.a, 12); 
+/* 153 */       if (hs.ad == 0) return new Packet23VehicleSpawn(this.a, 10);
+/* 154 */       if (hs.ad == 1) return new Packet23VehicleSpawn(this.a, 11);
+/* 155 */       if (hs.ad == 2) return new Packet23VehicleSpawn(this.a, 12);
 /*     */     } 
 /* 157 */     if (this.a instanceof eg) {
-/* 158 */       return new dd(this.a, 1);
+/* 158 */       return new Packet23VehicleSpawn(this.a, 1);
 /*     */     }
 /* 160 */     throw new IllegalArgumentException("Don't know how to add " + this.a.getClass() + "!");
 /*     */   }

@@ -11,7 +11,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class av
-/*     */   extends db
+/*     */   extends Entity
 /*     */ {
 /*  16 */   private int b = -1;
 /*  17 */   private int ac = -1;
@@ -19,11 +19,11 @@
 /*  19 */   private int ae = 0;
 /*     */   private boolean af = false;
 /*  21 */   public int a = 0;
-/*     */   private ic ag;
+/*     */   private EntityLiving ag;
 /*     */   private int ah;
 /*  24 */   private int ai = 0;
 /*     */   
-/*     */   public av(dp paramdp) {
+/*     */   public av(World paramdp) {
 /*  27 */     super(paramdp);
 /*  28 */     a(0.25F, 0.25F);
 /*     */   }
@@ -94,7 +94,7 @@
 /*     */ 
 /*     */ 
 /*     */       
-/*  97 */       int i = this.g.a(this.b, this.ac, this.ad);
+/*  97 */       int i = this.g.getBlockId(this.b, this.ac, this.ad);
 /*  98 */       if (i != this.ae) {
 /*  99 */         this.af = false;
 /*     */         
@@ -112,24 +112,24 @@
 /* 112 */       this.ai++;
 /*     */     } 
 /*     */     
-/* 115 */     as as1 = as.b(this.k, this.l, this.m);
-/* 116 */     as as2 = as.b(this.k + this.n, this.l + this.o, this.m + this.p);
+/* 115 */     Vec3D as1 = Vec3D.b(this.k, this.l, this.m);
+/* 116 */     Vec3D as2 = Vec3D.b(this.k + this.n, this.l + this.o, this.m + this.p);
 /* 117 */     fe fe = this.g.a(as1, as2);
 /*     */     
-/* 119 */     as1 = as.b(this.k, this.l, this.m);
-/* 120 */     as2 = as.b(this.k + this.n, this.l + this.o, this.m + this.p);
+/* 119 */     as1 = Vec3D.b(this.k, this.l, this.m);
+/* 120 */     as2 = Vec3D.b(this.k + this.n, this.l + this.o, this.m + this.p);
 /* 121 */     if (fe != null) {
-/* 122 */       as2 = as.b(fe.f.a, fe.f.b, fe.f.c);
+/* 122 */       as2 = Vec3D.b(fe.f.a, fe.f.b, fe.f.c);
 /*     */     }
-/* 124 */     db db1 = null;
-/* 125 */     List<db> list = this.g.b(this, this.u.a(this.n, this.o, this.p).b(1.0D, 1.0D, 1.0D));
+/* 124 */     Entity db1 = null;
+/* 125 */     List<Entity> list = this.g.b(this, this.u.a(this.n, this.o, this.p).b(1.0D, 1.0D, 1.0D));
 /* 126 */     double d = 0.0D; byte b;
 /* 127 */     for (b = 0; b < list.size(); b++) {
-/* 128 */       db db2 = list.get(b);
+/* 128 */       Entity db2 = list.get(b);
 /* 129 */       if (db2.c_() && (db2 != this.ag || this.ai >= 5)) {
 /*     */         
 /* 131 */         float f = 0.3F;
-/* 132 */         cy cy = db2.u.b(f, f, f);
+/* 132 */         AxisAlignedBB cy = db2.u.b(f, f, f);
 /* 133 */         fe fe1 = cy.a(as1, as2);
 /* 134 */         if (fe1 != null) {
 /* 135 */           double d1 = as1.a(fe1.f);
@@ -196,7 +196,7 @@
 /* 196 */     float f3 = 0.03F;
 /*     */     
 /* 198 */     if (m()) {
-/* 199 */       for (byte b1 = 0; b1 < 4; b1++) {
+/* 199 */       for (int b1 = 0; b1 < 4; b1++) {
 /* 200 */         float f = 0.25F;
 /* 201 */         this.g.a("bubble", this.k - this.n * f, this.l - this.o * f, this.m - this.p * f, this.n, this.o, this.p);
 /*     */       } 
@@ -211,7 +211,7 @@
 /* 211 */     a(this.k, this.l, this.m);
 /*     */   }
 /*     */   
-/*     */   public void a(r paramr) {
+/*     */   public void a(NBTTagCompound paramr) {
 /* 215 */     paramr.a("xTile", (short)this.b);
 /* 216 */     paramr.a("yTile", (short)this.ac);
 /* 217 */     paramr.a("zTile", (short)this.ad);
@@ -220,7 +220,7 @@
 /* 220 */     paramr.a("inGround", (byte)(this.af ? 1 : 0));
 /*     */   }
 /*     */   
-/*     */   public void b(r paramr) {
+/*     */   public void b(NBTTagCompound paramr) {
 /* 224 */     this.b = paramr.c("xTile");
 /* 225 */     this.ac = paramr.c("yTile");
 /* 226 */     this.ad = paramr.c("zTile");
@@ -229,9 +229,9 @@
 /* 229 */     this.af = (paramr.b("inGround") == 1);
 /*     */   }
 /*     */   
-/*     */   public void a(eq parameq) {
+/*     */   public void a(EntityPlayer parameq) {
 /* 233 */     if (this.af && this.ag == parameq && this.a <= 0 && 
-/* 234 */       parameq.ai.a(new gc(en.j.aQ, 1))) {
+/* 234 */       parameq.ai.a(new ItemStack(Item.j.aQ, 1))) {
 /* 235 */       this.g.a(this, "random.pop", 0.2F, ((this.Q.nextFloat() - this.Q.nextFloat()) * 0.7F + 1.0F) * 2.0F);
 /* 236 */       parameq.c(this, 1);
 /* 237 */       i();

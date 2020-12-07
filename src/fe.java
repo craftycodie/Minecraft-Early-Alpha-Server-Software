@@ -4,22 +4,22 @@
 /*    */   public int c;
 /*    */   public int d;
 /*    */   public int e;
-/*    */   public as f;
-/*    */   public db g;
+/*    */   public Vec3D f;
+/*    */   public Entity g;
 /*    */   
-/*    */   public fe(int paramInt1, int paramInt2, int paramInt3, int paramInt4, as paramas) {
+/*    */   public fe(int paramInt1, int paramInt2, int paramInt3, int paramInt4, Vec3D paramas) {
 /* 11 */     this.a = 0;
 /* 12 */     this.b = paramInt1;
 /* 13 */     this.c = paramInt2;
 /* 14 */     this.d = paramInt3;
 /* 15 */     this.e = paramInt4;
-/* 16 */     this.f = as.b(paramas.a, paramas.b, paramas.c);
+/* 16 */     this.f = Vec3D.b(paramas.a, paramas.b, paramas.c);
 /*    */   }
 /*    */   
-/*    */   public fe(db paramdb) {
+/*    */   public fe(Entity paramdb) {
 /* 20 */     this.a = 1;
 /* 21 */     this.g = paramdb;
-/* 22 */     this.f = as.b(paramdb.k, paramdb.l, paramdb.m);
+/* 22 */     this.f = Vec3D.b(paramdb.k, paramdb.l, paramdb.m);
 /*    */   }
 /*    */ }
 

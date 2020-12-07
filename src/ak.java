@@ -5,7 +5,7 @@
 /*    */ 
 /*    */ 
 /*    */ public class ak
-/*    */   extends en
+/*    */   extends Item
 /*    */ {
 /*    */   private int a;
 /*    */   

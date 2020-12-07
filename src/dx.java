@@ -1,7 +1,7 @@
 /*    */ 
 /*    */ 
 /*    */ public class dx
-/*    */   extends gb
+/*    */   extends BlockFlower
 /*    */ {
 /*    */   protected dx(int paramInt1, int paramInt2) {
 /*  7 */     super(paramInt1, paramInt2);
@@ -10,11 +10,11 @@
 /*    */   }
 /*    */   
 /*    */   protected boolean b(int paramInt) {
-/* 13 */     return et.p[paramInt];
+/* 13 */     return Block.opaqueCubeLookup[paramInt];
 /*    */   }
 /*    */   
-/*    */   public boolean f(dp paramdp, int paramInt1, int paramInt2, int paramInt3) {
-/* 17 */     return (paramdp.h(paramInt1, paramInt2, paramInt3) <= 13 && b(paramdp.a(paramInt1, paramInt2 - 1, paramInt3)));
+/*    */   public boolean f(World paramdp, int paramInt1, int paramInt2, int paramInt3) {
+/* 17 */     return (paramdp.h(paramInt1, paramInt2, paramInt3) <= 13 && b(paramdp.getBlockId(paramInt1, paramInt2 - 1, paramInt3)));
 /*    */   }
 /*    */ }
 

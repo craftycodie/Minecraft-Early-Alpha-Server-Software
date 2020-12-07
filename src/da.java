@@ -11,7 +11,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class da
-/*     */   extends db
+/*     */   extends Entity
 /*     */ {
 /*  16 */   private int b = -1;
 /*  17 */   private int ac = -1;
@@ -19,16 +19,16 @@
 /*  19 */   private int ae = 0;
 /*     */   private boolean af = false;
 /*  21 */   public int a = 0;
-/*     */   private ic ag;
+/*     */   private EntityLiving ag;
 /*     */   private int ah;
 /*  24 */   private int ai = 0;
 /*     */   
-/*     */   public da(dp paramdp) {
+/*     */   public da(World paramdp) {
 /*  27 */     super(paramdp);
 /*  28 */     a(0.5F, 0.5F);
 /*     */   }
 /*     */   
-/*     */   public da(dp paramdp, ic paramic) {
+/*     */   public da(World paramdp, EntityLiving paramic) {
 /*  32 */     super(paramdp);
 /*  33 */     this.ag = paramic;
 /*     */     
@@ -86,7 +86,7 @@
 /*     */ 
 /*     */ 
 /*     */       
-/*  89 */       int i = this.g.a(this.b, this.ac, this.ad);
+/*  89 */       int i = this.g.getBlockId(this.b, this.ac, this.ad);
 /*  90 */       if (i != this.ae) {
 /*  91 */         this.af = false;
 /*     */         
@@ -104,24 +104,24 @@
 /* 104 */       this.ai++;
 /*     */     } 
 /*     */     
-/* 107 */     as as1 = as.b(this.k, this.l, this.m);
-/* 108 */     as as2 = as.b(this.k + this.n, this.l + this.o, this.m + this.p);
+/* 107 */     Vec3D as1 = Vec3D.b(this.k, this.l, this.m);
+/* 108 */     Vec3D as2 = Vec3D.b(this.k + this.n, this.l + this.o, this.m + this.p);
 /* 109 */     fe fe = this.g.a(as1, as2);
 /*     */     
-/* 111 */     as1 = as.b(this.k, this.l, this.m);
-/* 112 */     as2 = as.b(this.k + this.n, this.l + this.o, this.m + this.p);
+/* 111 */     as1 = Vec3D.b(this.k, this.l, this.m);
+/* 112 */     as2 = Vec3D.b(this.k + this.n, this.l + this.o, this.m + this.p);
 /* 113 */     if (fe != null) {
-/* 114 */       as2 = as.b(fe.f.a, fe.f.b, fe.f.c);
+/* 114 */       as2 = Vec3D.b(fe.f.a, fe.f.b, fe.f.c);
 /*     */     }
-/* 116 */     db db1 = null;
-/* 117 */     List<db> list = this.g.b(this, this.u.a(this.n, this.o, this.p).b(1.0D, 1.0D, 1.0D));
+/* 116 */     Entity db1 = null;
+/* 117 */     List<Entity> list = this.g.b(this, this.u.a(this.n, this.o, this.p).b(1.0D, 1.0D, 1.0D));
 /* 118 */     double d = 0.0D;
-/* 119 */     for (byte b = 0; b < list.size(); b++) {
-/* 120 */       db db2 = list.get(b);
+/* 119 */     for (int b = 0; b < list.size(); b++) {
+/* 120 */       Entity db2 = list.get(b);
 /* 121 */       if (db2.c_() && (db2 != this.ag || this.ai >= 5)) {
 /*     */         
 /* 123 */         float f = 0.3F;
-/* 124 */         cy cy = db2.u.b(f, f, f);
+/* 124 */         AxisAlignedBB cy = db2.u.b(f, f, f);
 /* 125 */         fe fe1 = cy.a(as1, as2);
 /* 126 */         if (fe1 != null) {
 /* 127 */           double d1 = as1.a(fe1.f);
@@ -170,7 +170,7 @@
 /* 170 */         this.b = fe.b;
 /* 171 */         this.ac = fe.c;
 /* 172 */         this.ad = fe.d;
-/* 173 */         this.ae = this.g.a(this.b, this.ac, this.ad);
+/* 173 */         this.ae = this.g.getBlockId(this.b, this.ac, this.ad);
 /* 174 */         this.n = (float)(fe.f.a - this.k);
 /* 175 */         this.o = (float)(fe.f.b - this.l);
 /* 176 */         this.p = (float)(fe.f.c - this.m);
@@ -210,7 +210,7 @@
 /* 210 */     float f3 = 0.03F;
 /*     */     
 /* 212 */     if (m()) {
-/* 213 */       for (byte b1 = 0; b1 < 4; b1++) {
+/* 213 */       for (int b1 = 0; b1 < 4; b1++) {
 /* 214 */         float f = 0.25F;
 /* 215 */         this.g.a("bubble", this.k - this.n * f, this.l - this.o * f, this.m - this.p * f, this.n, this.o, this.p);
 /*     */       } 
@@ -225,7 +225,7 @@
 /* 225 */     a(this.k, this.l, this.m);
 /*     */   }
 /*     */   
-/*     */   public void a(r paramr) {
+/*     */   public void a(NBTTagCompound paramr) {
 /* 229 */     paramr.a("xTile", (short)this.b);
 /* 230 */     paramr.a("yTile", (short)this.ac);
 /* 231 */     paramr.a("zTile", (short)this.ad);
@@ -234,7 +234,7 @@
 /* 234 */     paramr.a("inGround", (byte)(this.af ? 1 : 0));
 /*     */   }
 /*     */   
-/*     */   public void b(r paramr) {
+/*     */   public void b(NBTTagCompound paramr) {
 /* 238 */     this.b = paramr.c("xTile");
 /* 239 */     this.ac = paramr.c("yTile");
 /* 240 */     this.ad = paramr.c("zTile");
@@ -243,9 +243,9 @@
 /* 243 */     this.af = (paramr.b("inGround") == 1);
 /*     */   }
 /*     */   
-/*     */   public void a(eq parameq) {
+/*     */   public void a(EntityPlayer parameq) {
 /* 247 */     if (this.af && this.ag == parameq && this.a <= 0 && 
-/* 248 */       parameq.ai.a(new gc(en.j.aQ, 1))) {
+/* 248 */       parameq.ai.a(new ItemStack(Item.j.aQ, 1))) {
 /* 249 */       this.g.a(this, "random.pop", 0.2F, ((this.Q.nextFloat() - this.Q.nextFloat()) * 0.7F + 1.0F) * 2.0F);
 /* 250 */       parameq.c(this, 1);
 /* 251 */       i();

@@ -1,44 +1,12 @@
-/*    */ import net.minecraft.server.MinecraftServer;
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */ 
+
 /*    */ public class bk
 /*    */   extends Thread
 /*    */ {
-/*    */   public bk(MinecraftServer paramMinecraftServer) {}
+    final MinecraftServer a; /* synthetic field */
+
+    /*    */   public bk(MinecraftServer paramMinecraftServer) {
+        a = paramMinecraftServer;
+    }
 /*    */   
 /*    */   public void run() {
 /* 44 */     if (MinecraftServer.a(this.a)) {

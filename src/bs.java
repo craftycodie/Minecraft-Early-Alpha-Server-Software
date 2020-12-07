@@ -6,18 +6,18 @@
 /*    */ 
 /*    */ 
 /*    */ public class bs
-/*    */   extends db
+/*    */   extends Entity
 /*    */ {
 /* 11 */   public int a = 0;
 /*    */   
-/*    */   public bs(dp paramdp) {
+/*    */   public bs(World paramdp) {
 /* 14 */     super(paramdp);
 /* 15 */     this.d = true;
 /* 16 */     a(0.98F, 0.98F);
 /* 17 */     this.B = this.D / 2.0F;
 /*    */   }
 /*    */   
-/*    */   public bs(dp paramdp, float paramFloat1, float paramFloat2, float paramFloat3) {
+/*    */   public bs(World paramdp, float paramFloat1, float paramFloat2, float paramFloat3) {
 /* 21 */     this(paramdp);
 /*    */     
 /* 23 */     a(paramFloat1, paramFloat2, paramFloat3);
@@ -67,7 +67,7 @@
 /*    */   
 /*    */   private void b() {
 /* 69 */     float f = 4.0F;
-/* 70 */     this.g.a((db)null, this.k, this.l, this.m, f);
+/* 70 */     this.g.a((Entity)null, this.k, this.l, this.m, f);
 /*    */   }
 /*    */ 
 /*    */ 
@@ -81,11 +81,11 @@
 /*    */ 
 /*    */ 
 /*    */   
-/*    */   protected void a(r paramr) {
+/*    */   protected void a(NBTTagCompound paramr) {
 /* 85 */     paramr.a("Fuse", (byte)this.a);
 /*    */   }
 /*    */   
-/*    */   protected void b(r paramr) {
+/*    */   protected void b(NBTTagCompound paramr) {
 /* 89 */     this.a = paramr.b("Fuse");
 /*    */   }
 /*    */ }

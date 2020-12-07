@@ -3,7 +3,7 @@
 /*    */ 
 /*    */ 
 /*    */ public class cb
-/*    */   extends en
+/*    */   extends Item
 /*    */ {
 /*    */   public cb(int paramInt) {
 /*  9 */     super(paramInt);

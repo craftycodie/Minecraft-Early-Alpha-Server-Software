@@ -4,7 +4,7 @@
 /*    */ 
 /*    */ 
 /*    */ public class ff
-/*    */   extends en
+/*    */   extends Item
 /*    */ {
 /*    */   public ff(int paramInt) {
 /* 10 */     super(paramInt);

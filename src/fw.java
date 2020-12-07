@@ -14,7 +14,7 @@
 /*    */ public class fw
 /*    */ {
 /* 16 */   private static float[] a = new float[65536]; static {
-/* 17 */     for (byte b = 0; b < 65536; b++) {
+/* 17 */     for (int b = 0; b < 65536; b++) {
 /* 18 */       a[b] = (float)Math.sin(b * Math.PI * 2.0D / 65536.0D);
 /*    */     }
 /*    */   }

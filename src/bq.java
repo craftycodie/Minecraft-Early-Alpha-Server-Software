@@ -29,13 +29,20 @@
 /* 29 */     this.e = paramLong;
 /* 30 */     return this;
 /*    */   }
-/*    */   
+/*    */
 /*    */   public int a(bq parambq) {
 /* 34 */     if (this.e < parambq.e) return -1; 
 /* 35 */     if (this.e > parambq.e) return 1; 
 /* 36 */     if (this.g < parambq.g) return -1; 
 /* 37 */     if (this.g > parambq.g) return 1; 
 /* 38 */     return 0;
+/*    */   }
+
+/*    */   public int compareTo(Object parambq) {
+/* 34 */     if (parambq instanceof bq)
+                return a((bq)parambq);
+
+            return 0;
 /*    */   }
 /*    */ }
 

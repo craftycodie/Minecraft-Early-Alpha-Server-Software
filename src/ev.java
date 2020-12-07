@@ -9,14 +9,14 @@
 /*     */ 
 /*     */ 
 /*     */ public class ev
-/*     */   extends ic
+/*     */   extends EntityLiving
 /*     */ {
 /*     */   public float a;
 /*     */   public float b;
 /*  16 */   private int ad = 0;
 /*  17 */   public int ac = 1;
 /*     */   
-/*     */   public ev(dp paramdp) {
+/*     */   public ev(World paramdp) {
 /*  20 */     super(paramdp);
 /*  21 */     this.aB = "/mob/slime.png";
 /*  22 */     this.ac = 1 << this.Q.nextInt(3);
@@ -32,12 +32,12 @@
 /*  32 */     a(this.k, this.l, this.m);
 /*     */   }
 /*     */   
-/*     */   public void a(r paramr) {
+/*     */   public void a(NBTTagCompound paramr) {
 /*  36 */     super.a(paramr);
 /*  37 */     paramr.a("Size", this.ac - 1);
 /*     */   }
 /*     */   
-/*     */   public void b(r paramr) {
+/*     */   public void b(NBTTagCompound paramr) {
 /*  41 */     super.b(paramr);
 /*  42 */     this.ac = paramr.d("Size") + 1;
 /*     */   }
@@ -47,7 +47,7 @@
 /*  47 */     boolean bool = this.v;
 /*  48 */     super.b_();
 /*  49 */     if (this.v && !bool) {
-/*  50 */       for (byte b = 0; b < this.ac * 8; b++) {
+/*  50 */       for (int b = 0; b < this.ac * 8; b++) {
 /*  51 */         float f1 = this.Q.nextFloat() * 3.1415927F * 2.0F;
 /*  52 */         float f2 = this.Q.nextFloat() * 0.5F + 0.5F;
 /*  53 */         float f3 = fw.a(f1) * this.ac * 0.5F * f2;
@@ -64,7 +64,7 @@
 /*     */   }
 /*     */   
 /*     */   protected void d_() {
-/*  67 */     eq eq = this.g.a(this, 16.0D);
+/*  67 */     EntityPlayer eq = this.g.a(this, 16.0D);
 /*  68 */     if (eq != null) {
 /*  69 */       b(eq, 10.0F);
 /*     */     }
@@ -91,7 +91,7 @@
 /*     */   
 /*     */   public void i() {
 /*  93 */     if (this.ac > 1 && this.aK == 0) {
-/*  94 */       for (byte b = 0; b < 4; b++) {
+/*  94 */       for (int b = 0; b < 4; b++) {
 /*  95 */         float f1 = ((b % 2) - 0.5F) * this.ac / 4.0F;
 /*  96 */         float f2 = ((b / 2) - 0.5F) * this.ac / 4.0F;
 /*  97 */         ev ev1 = new ev(this.g);
@@ -103,9 +103,9 @@
 /* 103 */     super.i();
 /*     */   }
 /*     */   
-/*     */   public void a(eq parameq) {
+/*     */   public void a(EntityPlayer parameq) {
 /* 107 */     if (this.ac > 1 && 
-/* 108 */       g(parameq) && a(parameq) < 0.6D * this.ac && 
+/* 108 */       g(parameq) && a((Entity)parameq) < 0.6D * this.ac &&
 /* 109 */       parameq.a(this, this.ac)) {
 /* 110 */       this.g.a(this, "mob.slimeattack", 1.0F, (this.Q.nextFloat() - this.Q.nextFloat()) * 0.2F + 1.0F);
 /*     */     }
@@ -114,21 +114,21 @@
 /*     */ 
 /*     */ 
 /*     */   
-/*     */   protected String d() {
+/*     */   protected String getHurtSound() {
 /* 118 */     return "mob.slime";
 /*     */   }
 /*     */   
-/*     */   protected String e() {
+/*     */   protected String getDeathSound() {
 /* 122 */     return "mob.slime";
 /*     */   }
 /*     */   
 /*     */   protected int g() {
-/* 126 */     if (this.ac == 1) return en.aK.aQ; 
+/* 126 */     if (this.ac == 1) return Item.aK.aQ;
 /* 127 */     return 0;
 /*     */   }
 /*     */   
 /*     */   public boolean a() {
-/* 131 */     hv hv = this.g.a(fw.b(this.k), fw.b(this.l));
+/* 131 */     Chunk hv = this.g.a(fw.b(this.k), fw.b(this.l));
 /* 132 */     return ((this.ac == 1 || this.g.j > 0) && this.Q.nextInt(10) == 0 && hv.a(987234911L).nextInt(100) == 0 && this.l < 16.0D);
 /*     */   }
 /*     */   

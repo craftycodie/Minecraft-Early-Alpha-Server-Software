@@ -2,7 +2,7 @@
 /*    */ 
 /*    */ 
 /*    */ public class cp
-/*    */   extends en
+/*    */   extends Item
 /*    */ {
 /*    */   public cp(int paramInt) {
 /*  8 */     super(paramInt);

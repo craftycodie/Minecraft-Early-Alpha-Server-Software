@@ -9,14 +9,14 @@
 /*    */ public class bg
 /*    */   extends eu
 /*    */ {
-/*    */   public bg(dp paramdp) {
+/*    */   public bg(World paramdp) {
 /* 13 */     super(paramdp);
 /* 14 */     this.aB = "/mob/spider.png";
 /* 15 */     a(1.4F, 0.9F);
 /* 16 */     this.bf = 0.8F;
 /*    */   }
 /*    */   
-/*    */   protected db h() {
+/*    */   protected Entity h() {
 /* 20 */     float f = b(1.0F);
 /* 21 */     if (f < 0.5F) {
 /* 22 */       double d = 16.0D;
@@ -29,15 +29,15 @@
 /* 29 */     return "mob.spider";
 /*    */   }
 /*    */   
-/*    */   protected String d() {
+/*    */   protected String getHurtSound() {
 /* 33 */     return "mob.spider";
 /*    */   }
 /*    */   
-/*    */   protected String e() {
+/*    */   protected String getDeathSound() {
 /* 37 */     return "mob.spiderdeath";
 /*    */   }
 /*    */   
-/*    */   protected void a(db paramdb, float paramFloat) {
+/*    */   protected void a(Entity paramdb, float paramFloat) {
 /* 41 */     float f = b(1.0F);
 /* 42 */     if (f > 0.5F && this.Q.nextInt(100) == 0) {
 /* 43 */       this.af = null;
@@ -58,16 +58,16 @@
 /*    */     } 
 /*    */   }
 /*    */   
-/*    */   public void a(r paramr) {
+/*    */   public void a(NBTTagCompound paramr) {
 /* 62 */     super.a(paramr);
 /*    */   }
 /*    */   
-/*    */   public void b(r paramr) {
+/*    */   public void b(NBTTagCompound paramr) {
 /* 66 */     super.b(paramr);
 /*    */   }
 /*    */   
 /*    */   protected int g() {
-/* 70 */     return en.I.aQ;
+/* 70 */     return Item.I.aQ;
 /*    */   }
 /*    */ }
 

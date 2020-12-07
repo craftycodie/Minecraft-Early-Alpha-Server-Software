@@ -1,5 +1,6 @@
 /*    */ import java.io.File;
-/*    */ import java.io.FileOutputStream;
+/*    */ import java.io.FileInputStream;
+import java.io.FileOutputStream;
 /*    */ import java.util.Properties;
 /*    */ import java.util.logging.Level;
 /*    */ import java.util.logging.Logger;
@@ -14,7 +15,7 @@
 /* 14 */     if (paramFile.exists()) {
 /*    */       try {
 /* 16 */         this.b.load(new FileInputStream(paramFile));
-/* 17 */         for (String str : this.b.keySet()) {
+/* 17 */         for (Object str : this.b.keySet()) {
 /* 18 */           System.out.println(str + ":" + this.b.get(str));
 /*    */         }
 /* 20 */       } catch (Exception exception) {

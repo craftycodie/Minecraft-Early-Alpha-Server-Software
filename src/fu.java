@@ -2,13 +2,13 @@
 /*     */ 
 /*     */ 
 /*     */ public class fu
-/*     */   extends ic
+/*     */   extends EntityLiving
 /*     */ {
 /*     */   private bx a;
-/*     */   protected db af;
+/*     */   protected Entity af;
 /*     */   protected boolean ag;
 /*     */   
-/*     */   public fu(dp paramdp) {
+/*     */   public fu(World paramdp) {
 /*  12 */     super(paramdp);
 /*     */ 
 /*     */ 
@@ -52,7 +52,7 @@
 /*  52 */       int k = -1;
 /*  53 */       int m = -1;
 /*  54 */       float f1 = -99999.0F;
-/*  55 */       for (byte b = 0; b < 10; b++) {
+/*  55 */       for (int b = 0; b < 10; b++) {
 /*  56 */         int n = fw.b(this.k + this.Q.nextInt(13) - 6.0D);
 /*  57 */         int i1 = fw.b(this.l + this.Q.nextInt(7) - 3.0D);
 /*  58 */         int i2 = fw.b(this.m + this.Q.nextInt(13) - 6.0D);
@@ -82,7 +82,7 @@
 /*     */       
 /*     */       return;
 /*     */     } 
-/*  85 */     as as = this.a.a(this);
+/*  85 */     Vec3D as = this.a.a(this);
 /*  86 */     double d = (this.C * 2.0F);
 /*  87 */     while (as != null && as.d(this.k, as.b, this.m) < d * d) {
 /*  88 */       this.a.a();
@@ -142,13 +142,13 @@
 /*     */   
 /*     */   }
 /*     */   
-/*     */   protected void a(db paramdb, float paramFloat) {}
+/*     */   protected void a(Entity paramdb, float paramFloat) {}
 /*     */   
 /*     */   protected float a(int paramInt1, int paramInt2, int paramInt3) {
 /* 148 */     return 0.0F;
 /*     */   }
 /*     */   
-/*     */   protected db h() {
+/*     */   protected Entity h() {
 /* 152 */     return null;
 /*     */   }
 /*     */   

@@ -7,16 +7,16 @@
 /*    */ 
 /*    */ 
 /*    */ public class go
-/*    */   extends db
+/*    */   extends Entity
 /*    */ {
 /*    */   public int a;
 /* 13 */   public int b = 0;
 /*    */   
-/*    */   public go(dp paramdp) {
+/*    */   public go(World paramdp) {
 /* 16 */     super(paramdp);
 /*    */   }
 /*    */   
-/*    */   public go(dp paramdp, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt) {
+/*    */   public go(World paramdp, float paramFloat1, float paramFloat2, float paramFloat3, int paramInt) {
 /* 20 */     super(paramdp);
 /* 21 */     this.a = paramInt;
 /* 22 */     this.d = true;
@@ -59,8 +59,8 @@
 /* 59 */     int i = fw.b(this.k);
 /* 60 */     int j = fw.b(this.l);
 /* 61 */     int k = fw.b(this.m);
-/* 62 */     if (this.g.a(i, j, k) == this.a) {
-/* 63 */       this.g.d(i, j, k, 0);
+/* 62 */     if (this.g.getBlockId(i, j, k) == this.a) {
+/* 63 */       this.g.setBlockWithNotify(i, j, k, 0);
 /*    */     }
 /*    */     
 /* 66 */     if (this.v) {
@@ -70,7 +70,7 @@
 /*    */       
 /* 71 */       i();
 /*    */       
-/* 73 */       if (!this.g.a(this.a, i, j, k, true) || !this.g.d(i, j, k, this.a))
+/* 73 */       if (!this.g.a(this.a, i, j, k, true) || !this.g.setBlockWithNotify(i, j, k, this.a))
 /*    */       {
 /* 75 */         a(this.a, 1);
 /*    */       }
@@ -81,11 +81,11 @@
 /*    */   }
 /*    */ 
 /*    */   
-/*    */   protected void a(r paramr) {
+/*    */   protected void a(NBTTagCompound paramr) {
 /* 85 */     paramr.a("Tile", (byte)this.a);
 /*    */   }
 /*    */   
-/*    */   protected void b(r paramr) {
+/*    */   protected void b(NBTTagCompound paramr) {
 /* 89 */     this.a = paramr.b("Tile") & 0xFF;
 /*    */   }
 /*    */ }

@@ -9,17 +9,17 @@
 /*     */ 
 /*     */ public class br
 /*     */ {
-/*     */   public void a(dp paramdp, db paramdb, double paramDouble1, double paramDouble2, double paramDouble3, float paramFloat) {
+/*     */   public void a(World paramdp, Entity paramdb, double paramDouble1, double paramDouble2, double paramDouble3, float paramFloat) {
 /*  13 */     paramdp.a(paramDouble1, paramDouble2, paramDouble3, "random.explode", 4.0F, (1.0F + (paramdp.k.nextFloat() - paramdp.k.nextFloat()) * 0.2F) * 0.7F);
 /*     */     
-/*  15 */     HashSet<gf> hashSet = new HashSet();
+/*  15 */     HashSet<ChunkPosition> hashSet = new HashSet();
 /*     */     
 /*  17 */     float f = paramFloat;
 /*     */     
-/*  19 */     byte b1 = 16; int i;
+/*  19 */     int b1 = 16; int i;
 /*  20 */     for (i = 0; i < b1; i++) {
-/*  21 */       for (byte b = 0; b < b1; b++) {
-/*  22 */         for (byte b3 = 0; b3 < b1; b3++) {
+/*  21 */       for (int b = 0; b < b1; b++) {
+/*  22 */         for (int b3 = 0; b3 < b1; b3++) {
 /*  23 */           if (i == 0 || i == b1 - 1 || b == 0 || b == b1 - 1 || b3 == 0 || b3 == b1 - 1) {
 /*     */             
 /*  25 */             double d1 = (i / (b1 - 1.0F) * 2.0F - 1.0F);
@@ -41,12 +41,12 @@
 /*  41 */               int i3 = fw.b(d5);
 /*  42 */               int i4 = fw.b(d6);
 /*  43 */               int i5 = fw.b(d7);
-/*  44 */               int i6 = paramdp.a(i3, i4, i5);
+/*  44 */               int i6 = paramdp.getBlockId(i3, i4, i5);
 /*  45 */               if (i6 > 0) {
-/*  46 */                 f1 -= (et.n[i6].a(paramdb) + 0.3F) * f2;
+/*  46 */                 f1 -= (Block.blocksList[i6].a(paramdb) + 0.3F) * f2;
 /*     */               }
 /*  48 */               if (f1 > 0.0F) {
-/*  49 */                 hashSet.add(new gf(i3, i4, i5));
+/*  49 */                 hashSet.add(new ChunkPosition(i3, i4, i5));
 /*     */               }
 /*     */               
 /*  52 */               d5 += d1 * f2;
@@ -66,10 +66,10 @@
 /*  66 */     int m = fw.b(paramDouble2 + paramFloat + 1.0D);
 /*  67 */     int n = fw.b(paramDouble3 - paramFloat - 1.0D);
 /*  68 */     int i1 = fw.b(paramDouble3 + paramFloat + 1.0D);
-/*  69 */     List<db> list = paramdp.b(paramdb, cy.b(i, k, n, j, m, i1));
-/*  70 */     as as = as.b(paramDouble1, paramDouble2, paramDouble3);
-/*  71 */     for (byte b2 = 0; b2 < list.size(); b2++) {
-/*  72 */       db db1 = list.get(b2);
+/*  69 */     List<Entity> list = paramdp.b(paramdb, AxisAlignedBB.b(i, k, n, j, m, i1));
+/*  70 */     Vec3D as = Vec3D.b(paramDouble1, paramDouble2, paramDouble3);
+/*  71 */     for (int b2 = 0; b2 < list.size(); b2++) {
+/*  72 */       Entity db1 = list.get(b2);
 /*  73 */       double d = db1.e(paramDouble1, paramDouble2, paramDouble3) / paramFloat;
 /*  74 */       if (d <= 1.0D) {
 /*  75 */         double d1 = db1.k - paramDouble1;
@@ -94,17 +94,17 @@
 /*     */     } 
 /*  95 */     paramFloat = f;
 /*     */     
-/*  97 */     ArrayList<gf> arrayList = new ArrayList();
+/*  97 */     ArrayList<ChunkPosition> arrayList = new ArrayList();
 /*  98 */     arrayList.addAll(hashSet);
 /*  99 */     for (int i2 = arrayList.size() - 1; i2 >= 0; i2--) {
-/* 100 */       gf gf = arrayList.get(i2);
+/* 100 */       ChunkPosition gf = arrayList.get(i2);
 /* 101 */       int i3 = gf.a;
 /* 102 */       int i4 = gf.b;
 /* 103 */       int i5 = gf.c;
 /*     */       
-/* 105 */       int i6 = paramdp.a(i3, i4, i5);
+/* 105 */       int i6 = paramdp.getBlockId(i3, i4, i5);
 /*     */       
-/* 107 */       for (byte b = 0; b < 1; b++) {
+/* 107 */       for (int b = 0; b < 1; b++) {
 /* 108 */         double d1 = (i3 + paramdp.k.nextFloat());
 /* 109 */         double d2 = (i4 + paramdp.k.nextFloat());
 /* 110 */         double d3 = (i5 + paramdp.k.nextFloat());
@@ -130,9 +130,9 @@
 /*     */       } 
 /*     */       
 /* 132 */       if (i6 > 0) {
-/* 133 */         et.n[i6].a(paramdp, i3, i4, i5, paramdp.b(i3, i4, i5), 0.3F);
-/* 134 */         paramdp.d(i3, i4, i5, 0);
-/* 135 */         et.n[i6].c(paramdp, i3, i4, i5);
+/* 133 */         Block.blocksList[i6].a(paramdp, i3, i4, i5, paramdp.getBlockMetadata(i3, i4, i5), 0.3F);
+/* 134 */         paramdp.setBlockWithNotify(i3, i4, i5, 0);
+/* 135 */         Block.blocksList[i6].c(paramdp, i3, i4, i5);
 /*     */       } 
 /*     */     } 
 /*     */   }

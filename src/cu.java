@@ -1,6 +1,6 @@
 /*    */ 
 /*    */ public class cu
-/*    */   extends hz
+/*    */   extends Material
 /*    */ {
 /*    */   public boolean d() {
 /*  6 */     return true;

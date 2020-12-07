@@ -16,10 +16,10 @@
 /*     */ 
 /*     */ 
 /*     */ public class hs
-/*     */   extends db
-/*     */   implements if
+/*     */   extends Entity
+/*     */   implements IInventory
 /*     */ {
-/*  22 */   private gc[] ah = new gc[36];
+/*  22 */   private ItemStack[] ah = new ItemStack[36];
 /*     */ 
 /*     */ 
 /*     */   
@@ -30,7 +30,7 @@
 /*     */   private boolean ai = false;
 /*     */   public int ad;
 /*     */   
-/*     */   public hs(dp paramdp) {
+/*     */   public hs(World paramdp) {
 /*  34 */     super(paramdp);
 /*  35 */     this.d = true;
 /*  36 */     a(0.98F, 0.7F);
@@ -38,11 +38,11 @@
 /*  38 */     this.G = false;
 /*     */   }
 /*     */   public int ae; public double af; public double ag;
-/*     */   public cy d(db paramdb) {
+/*     */   public AxisAlignedBB d(Entity paramdb) {
 /*  42 */     return paramdb.u;
 /*     */   }
 /*     */   
-/*     */   public cy l() {
+/*     */   public AxisAlignedBB l() {
 /*  46 */     return this.u;
 /*     */   }
 /*     */   
@@ -50,7 +50,7 @@
 /*  50 */     return true;
 /*     */   }
 /*     */   
-/*     */   public hs(dp paramdp, double paramDouble1, double paramDouble2, double paramDouble3, int paramInt) {
+/*     */   public hs(World paramdp, double paramDouble1, double paramDouble2, double paramDouble3, int paramInt) {
 /*  54 */     this(paramdp);
 /*  55 */     a(paramDouble1, paramDouble2 + this.B, paramDouble3);
 /*     */     
@@ -68,16 +68,16 @@
 /*  68 */     return this.D * 0.0D - 0.30000001192092896D;
 /*     */   }
 /*     */   
-/*     */   public boolean a(db paramdb, int paramInt) {
+/*     */   public boolean a(Entity paramdb, int paramInt) {
 /*  72 */     this.ac = -this.ac;
 /*  73 */     this.b = 10;
 /*  74 */     this.a += paramInt * 10;
 /*  75 */     if (this.a > 40) {
-/*  76 */       a(en.ax.aQ, 1, 0.0F);
+/*  76 */       a(Item.ax.aQ, 1, 0.0F);
 /*  77 */       if (this.ad == 1) {
-/*  78 */         a(et.au.ba, 1, 0.0F);
+/*  78 */         a(Block.au.blockId, 1, 0.0F);
 /*  79 */       } else if (this.ad == 2) {
-/*  80 */         a(et.aB.ba, 1, 0.0F);
+/*  80 */         a(Block.aB.blockId, 1, 0.0F);
 /*     */       } 
 /*  82 */       i();
 /*     */     } 
@@ -89,8 +89,8 @@
 /*     */   }
 /*     */   
 /*     */   public void i() {
-/*  92 */     for (byte b = 0; b < a(); b++) {
-/*  93 */       gc gc1 = a(b);
+/*  92 */     for (int b = 0; b < a(); b++) {
+/*  93 */       ItemStack gc1 = a(b);
 /*  94 */       if (gc1 != null) {
 /*  95 */         float f1 = this.Q.nextFloat() * 0.8F + 0.1F;
 /*  96 */         float f2 = this.Q.nextFloat() * 0.8F + 0.1F;
@@ -101,7 +101,7 @@
 /* 101 */           if (i > gc1.a) i = gc1.a; 
 /* 102 */           gc1.a -= i;
 /*     */           
-/* 104 */           fa fa = new fa(this.g, this.k + f1, this.l + f2, this.m + f3, new gc(gc1.c, i, gc1.d));
+/* 104 */           EntityItem fa = new EntityItem(this.g, this.k + f1, this.l + f2, this.m + f3, new ItemStack(gc1.c, i, gc1.d));
 /* 105 */           float f = 0.05F;
 /* 106 */           fa.n = ((float)this.Q.nextGaussian() * f);
 /* 107 */           fa.o = ((float)this.Q.nextGaussian() * f + 0.2F);
@@ -166,7 +166,7 @@
 /* 166 */     int i = fw.b(this.k);
 /* 167 */     int j = fw.b(this.l);
 /* 168 */     int k = fw.b(this.m);
-/* 169 */     if (this.g.a(i, j - 1, k) == et.aG.ba) {
+/* 169 */     if (this.g.getBlockId(i, j - 1, k) == Block.aG.blockId) {
 /* 170 */       j--;
 /*     */     }
 /*     */     
@@ -174,9 +174,9 @@
 /* 174 */     boolean bool = false;
 /*     */     
 /* 176 */     double d2 = 0.0078125D;
-/* 177 */     if (this.g.a(i, j, k) == et.aG.ba) {
-/* 178 */       as as1 = g(this.k, this.l, this.m);
-/* 179 */       int m = this.g.b(i, j, k);
+/* 177 */     if (this.g.getBlockId(i, j, k) == Block.aG.blockId) {
+/* 178 */       Vec3D as1 = g(this.k, this.l, this.m);
+/* 179 */       int m = this.g.getBlockMetadata(i, j, k);
 /* 180 */       this.l = j;
 /* 181 */       if (m >= 2 && m <= 5) {
 /* 182 */         this.l = (j + 1);
@@ -282,7 +282,7 @@
 /*     */       } 
 /*     */ 
 /*     */       
-/* 285 */       as as2 = g(this.k, this.l, this.m);
+/* 285 */       Vec3D as2 = g(this.k, this.l, this.m);
 /* 286 */       if (as2 != null && as1 != null) {
 /* 287 */         double d = (as1.b - as2.b) * 0.05D;
 /*     */         
@@ -359,10 +359,10 @@
 /*     */     } 
 /* 360 */     b(this.q, this.r);
 /*     */     
-/* 362 */     List<db> list = this.g.b(this, this.u.b(0.20000000298023224D, 0.0D, 0.20000000298023224D));
+/* 362 */     List<Entity> list = this.g.b(this, this.u.b(0.20000000298023224D, 0.0D, 0.20000000298023224D));
 /* 363 */     if (list != null && list.size() > 0) {
-/* 364 */       for (byte b = 0; b < list.size(); b++) {
-/* 365 */         db db1 = list.get(b);
+/* 364 */       for (int b = 0; b < list.size(); b++) {
+/* 365 */         Entity db1 = list.get(b);
 /* 366 */         if (db1 != this.e && db1.p() && db1 instanceof hs) {
 /* 367 */           db1.c(this);
 /*     */         }
@@ -422,16 +422,16 @@
 /*     */ 
 /*     */ 
 /*     */   
-/*     */   public as g(double paramDouble1, double paramDouble2, double paramDouble3) {
+/*     */   public Vec3D g(double paramDouble1, double paramDouble2, double paramDouble3) {
 /* 426 */     int i = fw.b(paramDouble1);
 /* 427 */     int j = fw.b(paramDouble2);
 /* 428 */     int k = fw.b(paramDouble3);
-/* 429 */     if (this.g.a(i, j - 1, k) == et.aG.ba) {
+/* 429 */     if (this.g.getBlockId(i, j - 1, k) == Block.aG.blockId) {
 /* 430 */       j--;
 /*     */     }
 /*     */     
-/* 433 */     if (this.g.a(i, j, k) == et.aG.ba) {
-/* 434 */       int m = this.g.b(i, j, k);
+/* 433 */     if (this.g.getBlockId(i, j, k) == Block.aG.blockId) {
+/* 434 */       int m = this.g.getBlockMetadata(i, j, k);
 /* 435 */       paramDouble2 = j;
 /* 436 */       if (m >= 2 && m <= 5) {
 /* 437 */         paramDouble2 = (j + 1);
@@ -471,12 +471,12 @@
 /* 471 */       paramDouble3 = d4 + d10 * d1;
 /* 472 */       if (d9 < 0.0D) paramDouble2++; 
 /* 473 */       if (d9 > 0.0D) paramDouble2 += 0.5D; 
-/* 474 */       return as.b(paramDouble1, paramDouble2, paramDouble3);
+/* 474 */       return Vec3D.b(paramDouble1, paramDouble2, paramDouble3);
 /*     */     } 
 /* 476 */     return null;
 /*     */   }
 /*     */   
-/*     */   protected void a(r paramr) {
+/*     */   protected void a(NBTTagCompound paramr) {
 /* 480 */     paramr.a("Type", this.ad);
 /*     */     
 /* 482 */     if (this.ad == 2) {
@@ -484,11 +484,11 @@
 /* 484 */       paramr.a("PushZ", this.ag);
 /* 485 */       paramr.a("Fuel", (short)this.ae);
 /* 486 */     } else if (this.ad == 1) {
-/* 487 */       de de = new de();
+/* 487 */       NBTTagList de = new NBTTagList();
 /*     */       
-/* 489 */       for (byte b = 0; b < this.ah.length; b++) {
+/* 489 */       for (int b = 0; b < this.ah.length; b++) {
 /* 490 */         if (this.ah[b] != null) {
-/* 491 */           r r1 = new r();
+/* 491 */           NBTTagCompound r1 = new NBTTagCompound();
 /* 492 */           r1.a("Slot", (byte)b);
 /* 493 */           this.ah[b].a(r1);
 /* 494 */           de.a(r1);
@@ -499,19 +499,19 @@
 /*     */   }
 /*     */ 
 /*     */   
-/*     */   protected void b(r paramr) {
+/*     */   protected void b(NBTTagCompound paramr) {
 /* 503 */     this.ad = paramr.d("Type");
 /* 504 */     if (this.ad == 2) {
 /* 505 */       this.af = paramr.g("PushX");
 /* 506 */       this.ag = paramr.g("PushZ");
 /* 507 */       this.ae = paramr.c("Fuel");
 /* 508 */     } else if (this.ad == 1) {
-/* 509 */       de de = paramr.k("Items");
-/* 510 */       this.ah = new gc[a()];
-/* 511 */       for (byte b = 0; b < de.b(); b++) {
-/* 512 */         r r1 = (r)de.a(b);
+/* 509 */       NBTTagList de = paramr.k("Items");
+/* 510 */       this.ah = new ItemStack[a()];
+/* 511 */       for (int b = 0; b < de.b(); b++) {
+/* 512 */         NBTTagCompound r1 = (NBTTagCompound)de.a(b);
 /* 513 */         int i = r1.b("Slot") & 0xFF;
-/* 514 */         if (i >= 0 && i < this.ah.length) this.ah[i] = new gc(r1);
+/* 514 */         if (i >= 0 && i < this.ah.length) this.ah[i] = new ItemStack(r1);
 /*     */       
 /*     */       } 
 /*     */     } 
@@ -520,9 +520,9 @@
 /*     */ 
 /*     */ 
 /*     */   
-/*     */   public void c(db paramdb) {
+/*     */   public void c(Entity paramdb) {
 /* 524 */     if (paramdb == this.e)
-/* 525 */       return;  if (paramdb instanceof ic && !(paramdb instanceof eq) && this.ad == 0 && this.n * this.n + this.p * this.p > 0.01D && 
+/* 525 */       return;  if (paramdb instanceof EntityLiving && !(paramdb instanceof EntityPlayer) && this.ad == 0 && this.n * this.n + this.p * this.p > 0.01D &&
 /* 526 */       this.e == null && paramdb.f == null) {
 /* 527 */       paramdb.e(this);
 /*     */     }
@@ -587,7 +587,7 @@
 /* 587 */     return 27;
 /*     */   }
 /*     */   
-/*     */   public gc a(int paramInt) {
+/*     */   public ItemStack a(int paramInt) {
 /* 591 */     return this.ah[paramInt];
 /*     */   }
 /*     */ }

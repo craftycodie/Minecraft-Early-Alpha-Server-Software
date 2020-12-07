@@ -4,7 +4,7 @@
 /*    */ 
 /*    */ 
 /*    */ public class an
-/*    */   extends ay
+/*    */   extends WorldGenerator
 /*    */ {
 /*    */   private int a;
 /*    */   
@@ -12,14 +12,14 @@
 /* 12 */     this.a = paramInt;
 /*    */   }
 /*    */   
-/*    */   public boolean a(dp paramdp, Random paramRandom, int paramInt1, int paramInt2, int paramInt3) {
-/* 16 */     for (byte b = 0; b < 64; b++) {
+/*    */   public boolean a(World paramdp, Random paramRandom, int paramInt1, int paramInt2, int paramInt3) {
+/* 16 */     for (int b = 0; b < 64; b++) {
 /* 17 */       int i = paramInt1 + paramRandom.nextInt(8) - paramRandom.nextInt(8);
 /* 18 */       int j = paramInt2 + paramRandom.nextInt(4) - paramRandom.nextInt(4);
 /* 19 */       int k = paramInt3 + paramRandom.nextInt(8) - paramRandom.nextInt(8);
-/* 20 */       if (paramdp.a(i, j, k) == 0 && (
-/* 21 */         (gb)et.n[this.a]).f(paramdp, i, j, k)) {
-/* 22 */         paramdp.a(i, j, k, this.a);
+/* 20 */       if (paramdp.getBlockId(i, j, k) == 0 && (
+/* 21 */         (BlockFlower) Block.blocksList[this.a]).f(paramdp, i, j, k)) {
+/* 22 */         paramdp.setBlock(i, j, k, this.a);
 /*    */       }
 /*    */     } 
 /*    */ 

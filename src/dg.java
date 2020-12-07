@@ -18,7 +18,7 @@
 /*     */   }
 /*     */ 
 /*     */   
-/*     */   public void a(dp paramdp) {
+/*     */   public void a(World paramdp) {
 /*  22 */     int i = this.e - this.b;
 /*  23 */     int j = this.f - this.c;
 /*  24 */     int k = this.g - this.d;
@@ -28,20 +28,20 @@
 /*     */     }
 /*  29 */     for (int n = this.b; n <= this.e; n++) {
 /*  30 */       for (int i1 = this.d; i1 <= this.g; i1++) {
-/*  31 */         if (paramdp.e(n, 0, i1)) {
+/*  31 */         if (paramdp.blockExists(n, 0, i1)) {
 /*  32 */           for (int i2 = this.c; i2 <= this.f; i2++) {
 /*  33 */             if (i2 >= 0 && i2 < 128) {
 /*  34 */               int i3 = paramdp.a(this.a, n, i2, i1);
 /*     */               
 /*  36 */               int i4 = 0;
-/*  37 */               int i5 = paramdp.a(n, i2, i1);
-/*  38 */               int i6 = et.q[i5];
+/*  37 */               int i5 = paramdp.getBlockId(n, i2, i1);
+/*  38 */               int i6 = Block.lightOpacity[i5];
 /*  39 */               if (i6 == 0) i6 = 1; 
 /*  40 */               int i7 = 0;
 /*  41 */               if (this.a == cr.a) {
 /*  42 */                 if (paramdp.i(n, i2, i1)) i7 = 15; 
 /*  43 */               } else if (this.a == cr.b) {
-/*  44 */                 i7 = et.s[i5];
+/*  44 */                 i7 = Block.s[i5];
 /*     */               } 
 /*     */               
 /*  47 */               if (i6 >= 15 && i7 == 0) {
@@ -95,7 +95,7 @@
 /*     */   public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6) {
 /*  96 */     if (paramInt1 >= this.b && paramInt2 >= this.c && paramInt3 >= this.d && paramInt4 <= this.e && paramInt5 <= this.f && paramInt6 <= this.g) return true;
 /*     */     
-/*  98 */     byte b = 1;
+/*  98 */     int b = 1;
 /*  99 */     if (paramInt1 >= this.b - b && paramInt2 >= this.c - b && paramInt3 >= this.d - b && paramInt4 <= this.e + b && paramInt5 <= this.f + b && paramInt6 <= this.g + b) {
 /* 100 */       int i = this.e - this.b;
 /* 101 */       int j = this.f - this.c;

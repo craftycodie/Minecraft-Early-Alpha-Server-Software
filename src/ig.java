@@ -2,7 +2,7 @@
 /*    */ 
 /*    */ 
 /*    */ public class ig
-/*    */   extends en
+/*    */   extends Item
 /*    */ {
 /*    */   private int a;
 /*    */   

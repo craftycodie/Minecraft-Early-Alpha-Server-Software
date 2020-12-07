@@ -49,7 +49,7 @@
 /*    */ 
 /*    */ 
 /*    */ final class z
-/*    */   extends bl
+/*    */   extends StepSound
 /*    */ {
 /*    */   z(String paramString, float paramFloat1, float paramFloat2) {
 /* 55 */     super(paramString, paramFloat1, paramFloat2);

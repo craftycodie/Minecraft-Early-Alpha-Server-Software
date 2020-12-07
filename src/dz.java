@@ -10,7 +10,7 @@
 /*    */ public class dz
 /*    */   extends eu
 /*    */ {
-/*    */   public dz(dp paramdp) {
+/*    */   public dz(World paramdp) {
 /* 14 */     super(paramdp);
 /* 15 */     this.aB = "/mob/skeleton.png";
 /*    */   }
@@ -20,11 +20,11 @@
 /* 20 */     return "mob.skeleton";
 /*    */   }
 /*    */   
-/*    */   protected String d() {
+/*    */   protected String getHurtSound() {
 /* 24 */     return "mob.skeletonhurt";
 /*    */   }
 /*    */   
-/*    */   protected String e() {
+/*    */   protected String getDeathSound() {
 /* 28 */     return "mob.skeletonhurt";
 /*    */   }
 /*    */ 
@@ -42,7 +42,7 @@
 /* 42 */     super.x();
 /*    */   }
 /*    */   
-/*    */   protected void a(db paramdb, float paramFloat) {
+/*    */   protected void a(Entity paramdb, float paramFloat) {
 /* 46 */     if (paramFloat < 10.0F) {
 /* 47 */       double d1 = paramdb.k - this.k;
 /* 48 */       double d2 = paramdb.m - this.m;
@@ -66,16 +66,16 @@
 /*    */     } 
 /*    */   }
 /*    */   
-/*    */   public void a(r paramr) {
+/*    */   public void a(NBTTagCompound paramr) {
 /* 70 */     super.a(paramr);
 /*    */   }
 /*    */   
-/*    */   public void b(r paramr) {
+/*    */   public void b(NBTTagCompound paramr) {
 /* 74 */     super.b(paramr);
 /*    */   }
 /*    */   
 /*    */   protected int g() {
-/* 78 */     return en.j.aQ;
+/* 78 */     return Item.j.aQ;
 /*    */   }
 /*    */ }
 

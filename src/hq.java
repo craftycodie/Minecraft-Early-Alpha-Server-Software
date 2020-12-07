@@ -4,13 +4,13 @@
 /*    */ 
 /*    */ 
 /*    */ public class hq
-/*    */   extends ft
+/*    */   extends NBTBase
 /*    */ {
-/*    */   void a(DataInput paramDataInput) {}
+/*    */   void readTagContents(DataInput paramDataInput) {}
 /*    */   
-/*    */   void a(DataOutput paramDataOutput) {}
+/*    */   void writeTagContents(DataOutput paramDataOutput) {}
 /*    */   
-/*    */   public byte a() {
+/*    */   public byte getType() {
 /* 14 */     return 0;
 /*    */   }
 /*    */   

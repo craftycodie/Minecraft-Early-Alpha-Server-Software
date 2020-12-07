@@ -3,18 +3,18 @@
 /*    */ 
 /*    */ 
 /*    */ public class ht
-/*    */   extends en
+/*    */   extends Item
 /*    */ {
 /*    */   public ht(int paramInt) {
 /*  9 */     super(paramInt);
 /* 10 */     this.aS = 64;
 /*    */   }
 /*    */   
-/*    */   public boolean a(gc paramgc, eq parameq, dp paramdp, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
+/*    */   public boolean a(ItemStack paramgc, EntityPlayer parameq, World paramdp, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
 /* 14 */     if (paramInt4 == 0) return false; 
 /* 15 */     if (paramInt4 == 1) return false;
 /*    */     
-/* 17 */     byte b = 0;
+/* 17 */     int b = 0;
 /* 18 */     if (paramInt4 == 4) b = 1; 
 /* 19 */     if (paramInt4 == 3) b = 2; 
 /* 20 */     if (paramInt4 == 5) b = 3;

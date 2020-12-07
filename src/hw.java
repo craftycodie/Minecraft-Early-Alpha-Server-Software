@@ -6,22 +6,22 @@
 /*    */ 
 /*    */ public class hw
 /*    */ {
-/*    */   private dp b;
-/*    */   public eq a;
+/*    */   private World b;
+/*    */   public EntityPlayer a;
 /*    */   private float c;
 /* 12 */   private float d = 0.0F;
 /* 13 */   private int e = 0;
 /* 14 */   private float f = 0.0F;
 /*    */   private int g;
 /*    */   
-/*    */   public hw(dp paramdp) {
+/*    */   public hw(World paramdp) {
 /* 18 */     this.b = paramdp;
 /*    */   }
 /*    */   private int h; private int i;
 /*    */   public void a(int paramInt1, int paramInt2, int paramInt3) {
-/* 22 */     int i = this.b.a(paramInt1, paramInt2, paramInt3);
-/* 23 */     if (i > 0 && this.d == 0.0F) et.n[i].b(this.b, paramInt1, paramInt2, paramInt3, this.a); 
-/* 24 */     if (i > 0 && et.n[i].a(this.a) >= 1.0F) {
+/* 22 */     int i = this.b.getBlockId(paramInt1, paramInt2, paramInt3);
+/* 23 */     if (i > 0 && this.d == 0.0F) Block.blocksList[i].b(this.b, paramInt1, paramInt2, paramInt3, this.a);
+/* 24 */     if (i > 0 && Block.blocksList[i].a(this.a) >= 1.0F) {
 /* 25 */       c(paramInt1, paramInt2, paramInt3);
 /*    */     }
 /*    */   }
@@ -37,9 +37,9 @@
 /*    */       return;
 /*    */     } 
 /* 39 */     if (paramInt1 == this.g && paramInt2 == this.h && paramInt3 == this.i) {
-/* 40 */       int i = this.b.a(paramInt1, paramInt2, paramInt3);
+/* 40 */       int i = this.b.getBlockId(paramInt1, paramInt2, paramInt3);
 /* 41 */       if (i == 0)
-/* 42 */         return;  et et = et.n[i];
+/* 42 */         return;  Block et = Block.blocksList[i];
 /*    */       
 /* 44 */       this.d += et.a(this.a);
 /*    */       
@@ -63,9 +63,9 @@
 /*    */   }
 /*    */   
 /*    */   public boolean b(int paramInt1, int paramInt2, int paramInt3) {
-/* 66 */     et et = et.n[this.b.a(paramInt1, paramInt2, paramInt3)];
-/* 67 */     int i = this.b.b(paramInt1, paramInt2, paramInt3);
-/* 68 */     boolean bool = this.b.d(paramInt1, paramInt2, paramInt3, 0);
+/* 66 */     Block et = Block.blocksList[this.b.getBlockId(paramInt1, paramInt2, paramInt3)];
+/* 67 */     int i = this.b.getBlockMetadata(paramInt1, paramInt2, paramInt3);
+/* 68 */     boolean bool = this.b.setBlockWithNotify(paramInt1, paramInt2, paramInt3, 0);
 /* 69 */     if (et != null && bool) {
 /* 70 */       et.a(this.b, paramInt1, paramInt2, paramInt3, i);
 /*    */     }
@@ -73,11 +73,11 @@
 /*    */   }
 /*    */   
 /*    */   public boolean c(int paramInt1, int paramInt2, int paramInt3) {
-/* 76 */     int i = this.b.a(paramInt1, paramInt2, paramInt3);
-/* 77 */     int j = this.b.b(paramInt1, paramInt2, paramInt3);
+/* 76 */     int i = this.b.getBlockId(paramInt1, paramInt2, paramInt3);
+/* 77 */     int j = this.b.getBlockMetadata(paramInt1, paramInt2, paramInt3);
 /* 78 */     boolean bool = b(paramInt1, paramInt2, paramInt3);
 /*    */     
-/* 80 */     gc gc = this.a.A();
+/* 80 */     ItemStack gc = this.a.A();
 /* 81 */     if (gc != null) {
 /* 82 */       gc.a(i, paramInt1, paramInt2, paramInt3);
 /* 83 */       if (gc.a == 0) {
@@ -85,7 +85,7 @@
 /* 85 */         this.a.B();
 /*    */       } 
 /*    */     } 
-/* 88 */     if (bool && this.a.b(et.n[i])) et.n[i].a_(this.b, paramInt1, paramInt2, paramInt3, j); 
+/* 88 */     if (bool && this.a.b(Block.blocksList[i])) Block.blocksList[i].a_(this.b, paramInt1, paramInt2, paramInt3, j);
 /* 89 */     return bool;
 /*    */   }
 /*    */ 
@@ -93,7 +93,7 @@
 /*    */ 
 /*    */ 
 /*    */   
-/*    */   public boolean a(eq parameq, dp paramdp, gc paramgc, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
+/*    */   public boolean a(EntityPlayer parameq, World paramdp, ItemStack paramgc, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
 /* 97 */     return paramgc.a(parameq, paramdp, paramInt1, paramInt2, paramInt3, paramInt4);
 /*    */   }
 /*    */ }

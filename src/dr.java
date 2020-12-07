@@ -1,5 +1,6 @@
-/*    */ import net.minecraft.server.MinecraftServer;
-/*    */ 
+/*    */
+
+/*    */
 /*    */ 
 /*    */ public class dr
 /*    */   implements ba
@@ -16,11 +17,11 @@
 /*    */ 
 /*    */ 
 /*    */   
-/*    */   public void a(db paramdb) {
+/*    */   public void a(Entity paramdb) {
 /* 20 */     this.a.k.a(paramdb);
 /*    */   }
 /*    */   
-/*    */   public void b(db paramdb) {
+/*    */   public void b(Entity paramdb) {
 /* 24 */     this.a.k.b(paramdb);
 /*    */   }
 /*    */ 

@@ -5,7 +5,7 @@
 /*    */ public class ez
 /*    */   extends eu
 /*    */ {
-/*    */   public ez(dp paramdp) {
+/*    */   public ez(World paramdp) {
 /*  9 */     super(paramdp);
 /* 10 */     this.aB = "/mob/zombie.png";
 /* 11 */     this.bf = 0.5F;
@@ -28,16 +28,16 @@
 /* 28 */     return "mob.zombie";
 /*    */   }
 /*    */   
-/*    */   protected String d() {
+/*    */   protected String getHurtSound() {
 /* 32 */     return "mob.zombiehurt";
 /*    */   }
 /*    */   
-/*    */   protected String e() {
+/*    */   protected String getDeathSound() {
 /* 36 */     return "mob.zombiedeath";
 /*    */   }
 /*    */   
 /*    */   protected int g() {
-/* 40 */     return en.J.aQ;
+/* 40 */     return Item.J.aQ;
 /*    */   }
 /*    */ }
 

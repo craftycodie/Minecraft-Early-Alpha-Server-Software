@@ -3,7 +3,7 @@
 /*    */ 
 /*    */ 
 /*    */ public class cc
-/*    */   extends en
+/*    */   extends Item
 /*    */ {
 /*    */   private int a;
 /*    */   
@@ -12,13 +12,13 @@
 /* 12 */     this.a = paramInt2;
 /*    */   }
 /*    */   
-/*    */   public boolean a(gc paramgc, eq parameq, dp paramdp, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
+/*    */   public boolean a(ItemStack paramgc, EntityPlayer parameq, World paramdp, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
 /* 16 */     if (paramInt4 != 1) return false;
 /*    */     
-/* 18 */     int i = paramdp.a(paramInt1, paramInt2, paramInt3);
+/* 18 */     int i = paramdp.getBlockId(paramInt1, paramInt2, paramInt3);
 /*    */     
-/* 20 */     if (i == et.aA.ba) {
-/* 21 */       paramdp.d(paramInt1, paramInt2 + 1, paramInt3, this.a);
+/* 20 */     if (i == Block.aA.blockId) {
+/* 21 */       paramdp.setBlockWithNotify(paramInt1, paramInt2 + 1, paramInt3, this.a);
 /* 22 */       paramgc.a--;
 /* 23 */       return true;
 /*    */     } 

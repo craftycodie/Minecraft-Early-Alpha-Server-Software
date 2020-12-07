@@ -10,7 +10,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class bp
-/*     */   extends db
+/*     */   extends Entity
 /*     */ {
 /*  15 */   private int ac = 0;
 /*     */ 
@@ -54,13 +54,13 @@
 /*     */   private int af;
 /*     */   public fx b;
 /*     */   
-/*     */   public bp(dp paramdp) {
+/*     */   public bp(World paramdp) {
 /*  58 */     super(paramdp);
 /*  59 */     this.B = 0.0F;
 /*  60 */     a(0.5F, 0.5F);
 /*     */   }
 /*     */   
-/*     */   public bp(dp paramdp, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
+/*     */   public bp(World paramdp, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
 /*  64 */     this(paramdp);
 /*  65 */     this.ad = paramInt1;
 /*  66 */     this.ae = paramInt2;
@@ -135,7 +135,7 @@
 /* 135 */     if (this.ac++ == 100 && !b()) {
 /* 136 */       this.ac = 0;
 /* 137 */       i();
-/* 138 */       this.g.a(new fa(this.g, this.k, this.l, this.m, new gc(en.aq)));
+/* 138 */       this.g.a(new EntityItem(this.g, this.k, this.l, this.m, new ItemStack(Item.aq)));
 /*     */     } 
 /*     */   }
 /*     */   
@@ -156,18 +156,18 @@
 /* 156 */     m = fw.b(this.l - (this.b.v / 32.0F));
 /*     */ 
 /*     */     
-/* 159 */     for (byte b1 = 0; b1 < i; b1++) {
-/* 160 */       for (byte b = 0; b < j; b++) {
-/*     */         hz hz;
+/* 159 */     for (int b1 = 0; b1 < i; b1++) {
+/* 160 */       for (int b = 0; b < j; b++) {
+/*     */         Material hz;
 /* 162 */         if (this.a == 0 || this.a == 2) {
-/* 163 */           hz = this.g.c(k + b1, m + b, this.af);
+/* 163 */           hz = this.g.getBlockMaterial(k + b1, m + b, this.af);
 /*     */         } else {
-/* 165 */           hz = this.g.c(this.ad, m + b, n + b1);
+/* 165 */           hz = this.g.getBlockMaterial(this.ad, m + b, n + b1);
 /*     */         } 
 /* 167 */         if (!hz.a()) return false; 
 /*     */       } 
 /* 169 */     }  List list = this.g.b(this, this.u);
-/* 170 */     for (byte b2 = 0; b2 < list.size(); b2++) {
+/* 170 */     for (int b2 = 0; b2 < list.size(); b2++) {
 /* 171 */       if (list.get(b2) instanceof bp) return false;
 /*     */     
 /*     */     } 
@@ -178,13 +178,13 @@
 /* 178 */     return true;
 /*     */   }
 /*     */   
-/*     */   public boolean a(db paramdb, int paramInt) {
+/*     */   public boolean a(Entity paramdb, int paramInt) {
 /* 182 */     i();
-/* 183 */     this.g.a(new fa(this.g, this.k, this.l, this.m, new gc(en.aq)));
+/* 183 */     this.g.a(new EntityItem(this.g, this.k, this.l, this.m, new ItemStack(Item.aq)));
 /* 184 */     return true;
 /*     */   }
 /*     */   
-/*     */   public void a(r paramr) {
+/*     */   public void a(NBTTagCompound paramr) {
 /* 188 */     paramr.a("Dir", (byte)this.a);
 /* 189 */     paramr.a("Motive", this.b.t);
 /* 190 */     paramr.a("TileX", this.ad);
@@ -192,7 +192,7 @@
 /* 192 */     paramr.a("TileZ", this.af);
 /*     */   }
 /*     */   
-/*     */   public void b(r paramr) {
+/*     */   public void b(NBTTagCompound paramr) {
 /* 196 */     this.a = paramr.b("Dir");
 /* 197 */     this.ad = paramr.d("TileX");
 /* 198 */     this.ae = paramr.d("TileY");

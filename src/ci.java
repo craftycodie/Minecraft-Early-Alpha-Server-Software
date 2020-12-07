@@ -2,14 +2,14 @@
 /*    */ 
 /*    */ 
 /*    */ public class ci
-/*    */   extends en
+/*    */   extends Item
 /*    */ {
-/*    */   private et[] aV;
+/*    */   private Block[] aV;
 /*  8 */   private float aW = 4.0F;
 /*    */   private int aX;
 /*    */   protected int a;
 /*    */   
-/*    */   public ci(int paramInt1, int paramInt2, int paramInt3, et[] paramArrayOfet) {
+/*    */   public ci(int paramInt1, int paramInt2, int paramInt3, Block[] paramArrayOfet) {
 /* 13 */     super(paramInt1);
 /* 14 */     this.a = paramInt3;
 /* 15 */     this.aV = paramArrayOfet;
@@ -20,8 +20,8 @@
 /* 20 */     this.aX = paramInt2 + paramInt3;
 /*    */   }
 /*    */   
-/*    */   public float a(gc paramgc, et paramet) {
-/* 24 */     for (byte b = 0; b < this.aV.length; b++) {
+/*    */   public float a(ItemStack paramgc, Block paramet) {
+/* 24 */     for (int b = 0; b < this.aV.length; b++) {
 /* 25 */       if (this.aV[b] == paramet) return this.aW; 
 /* 26 */     }  return 1.0F;
 /*    */   }
@@ -30,7 +30,7 @@
 /*    */ 
 /*    */ 
 /*    */   
-/*    */   public void a(gc paramgc, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
+/*    */   public void a(ItemStack paramgc, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
 /* 34 */     paramgc.a(1);
 /*    */   }
 /*    */ }

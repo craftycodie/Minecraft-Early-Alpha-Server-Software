@@ -22,10 +22,10 @@
 /*    */   static {
 /* 23 */     a(da.class, "Arrow");
 /* 24 */     a(av.class, "Snowball");
-/* 25 */     a(fa.class, "Item");
+/* 25 */     a(EntityItem.class, "Item");
 /* 26 */     a(bp.class, "Painting");
 /*    */     
-/* 28 */     a(ic.class, "Mob");
+/* 28 */     a(EntityLiving.class, "Mob");
 /* 29 */     a(eu.class, "Monster");
 /*    */     
 /* 31 */     a(ei.class, "Creeper");
@@ -47,11 +47,11 @@
 /* 47 */     a(eg.class, "Boat");
 /*    */   }
 /*    */   
-/*    */   public static db a(String paramString, dp paramdp) {
-/* 51 */     db db = null;
+/*    */   public static Entity a(String paramString, World paramdp) {
+/* 51 */     Entity db = null;
 /*    */     try {
-/* 53 */       Class<db> clazz = (Class)a.get(paramString);
-/* 54 */       if (clazz != null) db = clazz.getConstructor(new Class[] { dp.class }).newInstance(new Object[] { paramdp });
+/* 53 */       Class<Entity> clazz = (Class)a.get(paramString);
+/* 54 */       if (clazz != null) db = clazz.getConstructor(new Class[] { World.class }).newInstance(new Object[] { paramdp });
 /*    */     
 /* 56 */     } catch (Exception exception) {
 /* 57 */       exception.printStackTrace();
@@ -59,11 +59,11 @@
 /* 59 */     return db;
 /*    */   }
 /*    */   
-/*    */   public static db a(r paramr, dp paramdp) {
-/* 63 */     db db = null;
+/*    */   public static Entity a(NBTTagCompound paramr, World paramdp) {
+/* 63 */     Entity db = null;
 /*    */     try {
-/* 65 */       Class<db> clazz = (Class)a.get(paramr.h("id"));
-/* 66 */       if (clazz != null) db = clazz.getConstructor(new Class[] { dp.class }).newInstance(new Object[] { paramdp });
+/* 65 */       Class<Entity> clazz = (Class)a.get(paramr.h("id"));
+/* 66 */       if (clazz != null) db = clazz.getConstructor(new Class[] { World.class }).newInstance(new Object[] { paramdp });
 /*    */     
 /* 68 */     } catch (Exception exception) {
 /* 69 */       exception.printStackTrace();
@@ -76,7 +76,7 @@
 /* 76 */     return db;
 /*    */   }
 /*    */   
-/*    */   public static String a(db paramdb) {
+/*    */   public static String a(Entity paramdb) {
 /* 80 */     return (String)b.get(paramdb.getClass());
 /*    */   }
 /*    */ }

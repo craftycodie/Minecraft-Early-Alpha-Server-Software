@@ -11,7 +11,7 @@
 /*    */ {
 /* 12 */   protected int ae = 2;
 /*    */   
-/*    */   public eu(dp paramdp) {
+/*    */   public eu(World paramdp) {
 /* 15 */     super(paramdp);
 /* 16 */     this.aK = 20;
 /*    */   }
@@ -29,13 +29,13 @@
 /* 29 */     if (this.g.j == 0) i(); 
 /*    */   }
 /*    */   
-/*    */   protected db h() {
-/* 33 */     eq eq = this.g.a(this, 16.0D);
+/*    */   protected Entity h() {
+/* 33 */     EntityPlayer eq = this.g.a(this, 16.0D);
 /* 34 */     if (eq != null && g(eq)) return eq; 
 /* 35 */     return null;
 /*    */   }
 /*    */   
-/*    */   public boolean a(db paramdb, int paramInt) {
+/*    */   public boolean a(Entity paramdb, int paramInt) {
 /* 39 */     if (super.a(paramdb, paramInt)) {
 /* 40 */       if (paramdb != this) {
 /* 41 */         this.af = paramdb;
@@ -45,7 +45,7 @@
 /* 45 */     return false;
 /*    */   }
 /*    */   
-/*    */   protected void a(db paramdb, float paramFloat) {
+/*    */   protected void a(Entity paramdb, float paramFloat) {
 /* 49 */     if (paramFloat < 2.5D && paramdb.u.e > this.u.b && paramdb.u.b < this.u.e) {
 /* 50 */       this.aQ = 20;
 /* 51 */       paramdb.a(this, this.ae);
@@ -56,11 +56,11 @@
 /* 56 */     return 0.5F - this.g.j(paramInt1, paramInt2, paramInt3);
 /*    */   }
 /*    */   
-/*    */   public void a(r paramr) {
+/*    */   public void a(NBTTagCompound paramr) {
 /* 60 */     super.a(paramr);
 /*    */   }
 /*    */   
-/*    */   public void b(r paramr) {
+/*    */   public void b(NBTTagCompound paramr) {
 /* 64 */     super.b(paramr);
 /*    */   }
 /*    */   

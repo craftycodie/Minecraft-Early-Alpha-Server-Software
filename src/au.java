@@ -9,17 +9,17 @@
 /*    */ {
 /*    */   public boolean a = false;
 /*    */   
-/*    */   public au(dp paramdp) {
+/*    */   public au(World paramdp) {
 /* 13 */     super(paramdp);
 /* 14 */     this.aB = "/mob/cow.png";
 /* 15 */     a(0.9F, 1.3F);
 /*    */   }
 /*    */   
-/*    */   public void a(r paramr) {
+/*    */   public void a(NBTTagCompound paramr) {
 /* 19 */     super.a(paramr);
 /*    */   }
 /*    */   
-/*    */   public void b(r paramr) {
+/*    */   public void b(NBTTagCompound paramr) {
 /* 23 */     super.b(paramr);
 /*    */   }
 /*    */   
@@ -27,11 +27,11 @@
 /* 27 */     return "mob.cow";
 /*    */   }
 /*    */   
-/*    */   protected String d() {
+/*    */   protected String getHurtSound() {
 /* 31 */     return "mob.cowhurt";
 /*    */   }
 /*    */   
-/*    */   protected String e() {
+/*    */   protected String getDeathSound() {
 /* 35 */     return "mob.cowhurt";
 /*    */   }
 /*    */   
@@ -40,7 +40,7 @@
 /*    */   }
 /*    */   
 /*    */   protected int g() {
-/* 43 */     return en.aD.aQ;
+/* 43 */     return Item.aD.aQ;
 /*    */   }
 /*    */ }
 

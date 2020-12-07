@@ -7,9 +7,9 @@ public interface ba {
   
   void a(String paramString, double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4, double paramDouble5, double paramDouble6);
   
-  void a(db paramdb);
+  void a(Entity paramdb);
   
-  void b(db paramdb);
+  void b(Entity paramdb);
   
   void a();
   
@@ -17,7 +17,7 @@ public interface ba {
 }
 
 
-/* Location:              D:\Projects\Local\MinecraftBetaOfflineLauncher\Binaries\Test Server\a0.0.1.jar!\ba.class
+/* Location:              D:\Projects\Local\MinecraftBetaOfflineLauncher\Binaries\Test Server\a0.0.1.jar!\blockId.class
  * Java compiler version: 5 (49.0)
  * JD-Core Version:       1.1.3
  */

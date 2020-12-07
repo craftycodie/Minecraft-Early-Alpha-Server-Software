@@ -43,7 +43,7 @@
 /*    */ 
 /*    */ 
 /*    */ final class aa
-/*    */   extends bl
+/*    */   extends StepSound
 /*    */ {
 /*    */   aa(String paramString, float paramFloat1, float paramFloat2) {
 /* 49 */     super(paramString, paramFloat1, paramFloat2);

@@ -13,13 +13,13 @@
 /*     */ 
 /*     */ 
 /*     */ public class eg
-/*     */   extends db
+/*     */   extends Entity
 /*     */ {
 /*  18 */   public int a = 0;
 /*  19 */   public int b = 0;
 /*  20 */   public int ac = 1;
 /*     */   
-/*     */   public eg(dp paramdp) {
+/*     */   public eg(World paramdp) {
 /*  23 */     super(paramdp);
 /*  24 */     this.d = true;
 /*  25 */     a(1.5F, 0.6F);
@@ -27,11 +27,11 @@
 /*  27 */     this.G = false;
 /*     */   }
 /*     */   
-/*     */   public cy d(db paramdb) {
+/*     */   public AxisAlignedBB d(Entity paramdb) {
 /*  31 */     return paramdb.u;
 /*     */   }
 /*     */   
-/*     */   public cy l() {
+/*     */   public AxisAlignedBB l() {
 /*  35 */     return this.u;
 /*     */   }
 /*     */   
@@ -56,16 +56,16 @@
 /*  56 */     return this.D * 0.0D - 0.30000001192092896D;
 /*     */   }
 /*     */   
-/*     */   public boolean a(db paramdb, int paramInt) {
+/*     */   public boolean a(Entity paramdb, int paramInt) {
 /*  60 */     this.ac = -this.ac;
 /*  61 */     this.b = 10;
 /*  62 */     this.a += paramInt * 10;
 /*  63 */     if (this.a > 40) {
 /*  64 */       byte b; for (b = 0; b < 3; b++) {
-/*  65 */         a(et.x.ba, 1, 0.0F);
+/*  65 */         a(Block.x.blockId, 1, 0.0F);
 /*     */       }
 /*  67 */       for (b = 0; b < 2; b++) {
-/*  68 */         a(en.B.aQ, 1, 0.0F);
+/*  68 */         a(Item.B.aQ, 1, 0.0F);
 /*     */       }
 /*  70 */       i();
 /*     */     } 
@@ -85,13 +85,13 @@
 /*  85 */     this.j = this.m;
 /*     */ 
 /*     */     
-/*  88 */     byte b1 = 5;
+/*  88 */     int b1 = 5;
 /*  89 */     double d1 = 0.0D;
-/*  90 */     for (byte b2 = 0; b2 < b1; b2++) {
+/*  90 */     for (int b2 = 0; b2 < b1; b2++) {
 /*  91 */       double d9 = this.u.b + (this.u.e - this.u.b) * (b2 + 0) / b1 - 0.125D;
 /*  92 */       double d10 = this.u.b + (this.u.e - this.u.b) * (b2 + 1) / b1 - 0.125D;
-/*  93 */       cy cy = cy.b(this.u.a, d9, this.u.c, this.u.d, d10, this.u.f);
-/*  94 */       if (this.g.b(cy, hz.f)) {
+/*  93 */       AxisAlignedBB cy = AxisAlignedBB.b(this.u.a, d9, this.u.c, this.u.d, d10, this.u.f);
+/*  94 */       if (this.g.b(cy, Material.f)) {
 /*  95 */         d1 += 1.0D / b1;
 /*     */       }
 /*     */     } 
@@ -121,7 +121,7 @@
 /* 121 */       double d9 = Math.cos(this.q * Math.PI / 180.0D);
 /* 122 */       double d10 = Math.sin(this.q * Math.PI / 180.0D);
 /*     */       
-/* 124 */       for (byte b = 0; b < 1.0D + d4 * 60.0D; b++) {
+/* 124 */       for (int b = 0; b < 1.0D + d4 * 60.0D; b++) {
 /*     */         
 /* 126 */         double d11 = (this.Q.nextFloat() * 2.0F - 1.0F);
 /*     */         
@@ -141,10 +141,10 @@
 /* 141 */     if (this.w && d4 > 0.15D) {
 /* 142 */       i(); byte b;
 /* 143 */       for (b = 0; b < 3; b++) {
-/* 144 */         a(et.x.ba, 1, 0.0F);
+/* 144 */         a(Block.x.blockId, 1, 0.0F);
 /*     */       }
 /* 146 */       for (b = 0; b < 2; b++) {
-/* 147 */         a(en.B.aQ, 1, 0.0F);
+/* 147 */         a(Item.B.aQ, 1, 0.0F);
 /*     */       }
 /*     */     } else {
 /* 150 */       this.n *= 0.9900000095367432D;
@@ -172,10 +172,10 @@
 /* 172 */     this.q = (float)(this.q + d8);
 /* 173 */     b(this.q, this.r);
 /*     */     
-/* 175 */     List<db> list = this.g.b(this, this.u.b(0.20000000298023224D, 0.0D, 0.20000000298023224D));
+/* 175 */     List<Entity> list = this.g.b(this, this.u.b(0.20000000298023224D, 0.0D, 0.20000000298023224D));
 /* 176 */     if (list != null && list.size() > 0) {
-/* 177 */       for (byte b = 0; b < list.size(); b++) {
-/* 178 */         db db1 = list.get(b);
+/* 177 */       for (int b = 0; b < list.size(); b++) {
+/* 178 */         Entity db1 = list.get(b);
 /* 179 */         if (db1 != this.e && db1.p() && db1 instanceof eg) {
 /* 180 */           db1.c(this);
 /*     */         }
@@ -193,9 +193,9 @@
 /* 193 */     this.e.a(this.k + d1, this.l + w() + this.e.v(), this.m + d2);
 /*     */   }
 /*     */   
-/*     */   protected void a(r paramr) {}
+/*     */   protected void a(NBTTagCompound paramr) {}
 /*     */   
-/*     */   protected void b(r paramr) {}
+/*     */   protected void b(NBTTagCompound paramr) {}
 /*     */ }
 
 

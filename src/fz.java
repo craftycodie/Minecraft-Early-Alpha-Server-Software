@@ -12,19 +12,19 @@
 /*     */ 
 /*     */ 
 /*     */ public class fz
-/*     */   implements if
+/*     */   implements IInventory
 /*     */ {
-/*  17 */   public gc[] a = new gc[36];
-/*  18 */   public gc[] b = new gc[4];
-/*  19 */   public gc[] c = new gc[4];
+/*  17 */   public ItemStack[] a = new ItemStack[36];
+/*  18 */   public ItemStack[] b = new ItemStack[4];
+/*  19 */   public ItemStack[] c = new ItemStack[4];
 /*  20 */   public int d = 0;
-/*     */   private eq e;
+/*     */   private EntityPlayer e;
 /*     */   
-/*     */   public fz(eq parameq) {
+/*     */   public fz(EntityPlayer parameq) {
 /*  24 */     this.e = parameq;
 /*     */   }
 /*     */   
-/*     */   public gc b() {
+/*     */   public ItemStack b() {
 /*  28 */     return this.a[this.d];
 /*     */   }
 /*     */ 
@@ -36,14 +36,14 @@
 /*     */ 
 /*     */   
 /*     */   private int c(int paramInt) {
-/*  39 */     for (byte b = 0; b < this.a.length; b++) {
+/*  39 */     for (int b = 0; b < this.a.length; b++) {
 /*  40 */       if (this.a[b] != null && (this.a[b]).c == paramInt && (this.a[b]).a < this.a[b].b() && (this.a[b]).a < d()) return b; 
 /*     */     } 
 /*  42 */     return -1;
 /*     */   }
 /*     */   
 /*     */   private int g() {
-/*  46 */     for (byte b = 0; b < this.a.length; b++) {
+/*  46 */     for (int b = 0; b < this.a.length; b++) {
 /*  47 */       if (this.a[b] == null) return b; 
 /*     */     } 
 /*  49 */     return -1;
@@ -96,7 +96,7 @@
 /*  96 */     if (i < 0) i = g(); 
 /*  97 */     if (i < 0) return paramInt2; 
 /*  98 */     if (this.a[i] == null) {
-/*  99 */       this.a[i] = new gc(paramInt1, 0);
+/*  99 */       this.a[i] = new ItemStack(paramInt1, 0);
 /*     */     }
 /*     */     
 /* 102 */     int j = paramInt2;
@@ -117,7 +117,7 @@
 /*     */   }
 /*     */   
 /*     */   public void c() {
-/* 120 */     for (byte b = 0; b < this.a.length; b++) {
+/* 120 */     for (int b = 0; b < this.a.length; b++) {
 /* 121 */       if (this.a[b] != null && (this.a[b]).b > 0) (this.a[b]).b--;
 /*     */     
 /*     */     } 
@@ -135,7 +135,7 @@
 /*     */ 
 /*     */ 
 /*     */   
-/*     */   public boolean a(gc paramgc) {
+/*     */   public boolean a(ItemStack paramgc) {
 /* 139 */     if (paramgc.d == 0) {
 /* 140 */       paramgc.a = a(paramgc.c, paramgc.a);
 /* 141 */       if (paramgc.a == 0) return true;
@@ -171,8 +171,8 @@
 /*     */ 
 /*     */ 
 /*     */   
-/*     */   public void a(int paramInt, gc paramgc) {
-/* 175 */     gc[] arrayOfGc = this.a;
+/*     */   public void a(int paramInt, ItemStack paramgc) {
+/* 175 */     ItemStack[] arrayOfGc = this.a;
 /* 176 */     if (paramInt >= arrayOfGc.length) {
 /* 177 */       paramInt -= arrayOfGc.length;
 /* 178 */       arrayOfGc = this.b;
@@ -185,7 +185,7 @@
 /* 185 */     arrayOfGc[paramInt] = paramgc;
 /*     */   }
 /*     */   
-/*     */   public float a(et paramet) {
+/*     */   public float a(Block paramet) {
 /* 189 */     float f = 1.0F;
 /* 190 */     if (this.a[this.d] != null) f *= this.a[this.d].a(paramet); 
 /* 191 */     return f;
@@ -236,8 +236,8 @@
 /* 236 */     return this.a.length + 4;
 /*     */   }
 /*     */   
-/*     */   public gc a(int paramInt) {
-/* 240 */     gc[] arrayOfGc = this.a;
+/*     */   public ItemStack a(int paramInt) {
+/* 240 */     ItemStack[] arrayOfGc = this.a;
 /* 241 */     if (paramInt >= arrayOfGc.length) {
 /* 242 */       paramInt -= arrayOfGc.length;
 /* 243 */       arrayOfGc = this.b;
@@ -264,10 +264,10 @@
 /*     */ 
 /*     */ 
 /*     */   
-/*     */   public boolean b(et paramet) {
-/* 268 */     if (paramet.bl != hz.d && paramet.bl != hz.e && paramet.bl != hz.t && paramet.bl != hz.s) return true;
+/*     */   public boolean b(Block paramet) {
+/* 268 */     if (paramet.blockMaterial != Material.d && paramet.blockMaterial != Material.e && paramet.blockMaterial != Material.t && paramet.blockMaterial != Material.s) return true;
 /*     */     
-/* 270 */     gc gc1 = a(this.d);
+/* 270 */     ItemStack gc1 = a(this.d);
 /* 271 */     if (gc1 != null) return gc1.b(paramet); 
 /* 272 */     return false;
 /*     */   }
@@ -280,8 +280,8 @@
 /* 280 */     int i = 0;
 /* 281 */     int j = 0;
 /* 282 */     int k = 0;
-/* 283 */     for (byte b = 0; b < this.b.length; b++) {
-/* 284 */       if (this.b[b] != null && this.b[b].a() instanceof ga) {
+/* 283 */     for (int b = 0; b < this.b.length; b++) {
+/* 284 */       if (this.b[b] != null && this.b[b].a() instanceof ItemArmour) {
 /* 285 */         int m = this.b[b].c();
 /* 286 */         int n = (this.b[b]).d;
 /*     */         
@@ -289,7 +289,7 @@
 /* 289 */         j += i1;
 /* 290 */         k += m;
 /*     */         
-/* 292 */         int i2 = ((ga)this.b[b].a()).aW;
+/* 292 */         int i2 = ((ItemArmour)this.b[b].a()).aW;
 /*     */         
 /* 294 */         i += i2;
 /*     */       } 
@@ -299,8 +299,8 @@
 /*     */   }
 /*     */   
 /*     */   public void b(int paramInt) {
-/* 302 */     for (byte b = 0; b < this.b.length; b++) {
-/* 303 */       if (this.b[b] != null && this.b[b].a() instanceof ga) {
+/* 302 */     for (int b = 0; b < this.b.length; b++) {
+/* 303 */       if (this.b[b] != null && this.b[b].a() instanceof ItemArmour) {
 /* 304 */         this.b[b].a(paramInt);
 /* 305 */         if ((this.b[b]).a == 0) {
 /* 306 */           this.b[b].a(this.e);

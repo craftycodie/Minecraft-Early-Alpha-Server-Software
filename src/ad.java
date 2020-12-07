@@ -1,5 +1,5 @@
 /*    */ public class ad
-/*    */   extends hz
+/*    */   extends Material
 /*    */ {
 /*    */   public boolean a() {
 /*  5 */     return false;

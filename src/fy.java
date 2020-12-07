@@ -5,23 +5,23 @@
 /*    */ 
 /*    */ 
 /*    */ public class fy
-/*    */   extends ay
+/*    */   extends WorldGenerator
 /*    */ {
-/*    */   public boolean a(dp paramdp, Random paramRandom, int paramInt1, int paramInt2, int paramInt3) {
-/* 11 */     for (byte b = 0; b < 20; b++) {
+/*    */   public boolean a(World paramdp, Random paramRandom, int paramInt1, int paramInt2, int paramInt3) {
+/* 11 */     for (int b = 0; b < 20; b++) {
 /* 12 */       int i = paramInt1 + paramRandom.nextInt(4) - paramRandom.nextInt(4);
 /* 13 */       int j = paramInt2;
 /* 14 */       int k = paramInt3 + paramRandom.nextInt(4) - paramRandom.nextInt(4);
-/* 15 */       if (paramdp.a(i, j, k) == 0 && (
-/* 16 */         paramdp.c(i - 1, j - 1, k) == hz.f || paramdp.c(i + 1, j - 1, k) == hz.f || paramdp.c(i, j - 1, k - 1) == hz.f || paramdp.c(i, j - 1, k + 1) == hz.f)) {
+/* 15 */       if (paramdp.getBlockId(i, j, k) == 0 && (
+/* 16 */         paramdp.getBlockMaterial(i - 1, j - 1, k) == Material.f || paramdp.getBlockMaterial(i + 1, j - 1, k) == Material.f || paramdp.getBlockMaterial(i, j - 1, k - 1) == Material.f || paramdp.getBlockMaterial(i, j - 1, k + 1) == Material.f)) {
 /*    */ 
 /*    */ 
 /*    */ 
 /*    */         
 /* 21 */         int m = 2 + paramRandom.nextInt(paramRandom.nextInt(3) + 1);
-/* 22 */         for (byte b1 = 0; b1 < m; b1++) {
-/* 23 */           if (et.aX.f(paramdp, i, j + b1, k)) {
-/* 24 */             paramdp.a(i, j + b1, k, et.aX.ba);
+/* 22 */         for (int b1 = 0; b1 < m; b1++) {
+/* 23 */           if (Block.aX.f(paramdp, i, j + b1, k)) {
+/* 24 */             paramdp.setBlock(i, j + b1, k, Block.aX.blockId);
 /*    */           }
 /*    */         } 
 /*    */       } 

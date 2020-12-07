@@ -5,7 +5,7 @@
 /*    */ 
 /*    */ 
 /*    */ public class hk
-/*    */   extends en
+/*    */   extends Item
 /*    */ {
 /*    */   public hk(int paramInt1, int paramInt2) {
 /* 11 */     super(paramInt1);
@@ -13,24 +13,24 @@
 /* 13 */     this.aS = 32 << paramInt2;
 /*    */   }
 /*    */   
-/*    */   public boolean a(gc paramgc, eq parameq, dp paramdp, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
-/* 17 */     int i = paramdp.a(paramInt1, paramInt2, paramInt3);
-/* 18 */     hz hz = paramdp.c(paramInt1, paramInt2 + 1, paramInt3);
+/*    */   public boolean a(ItemStack paramgc, EntityPlayer parameq, World paramdp, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
+/* 17 */     int i = paramdp.getBlockId(paramInt1, paramInt2, paramInt3);
+/* 18 */     Material hz = paramdp.getBlockMaterial(paramInt1, paramInt2 + 1, paramInt3);
 /*    */     
-/* 20 */     if ((!hz.a() && i == et.u.ba) || i == et.v.ba) {
-/* 21 */       et et = et.aA;
+/* 20 */     if ((!hz.a() && i == Block.u.blockId) || i == Block.v.blockId) {
+/* 21 */       Block et = Block.aA;
 /* 22 */       paramdp.a((paramInt1 + 0.5F), (paramInt2 + 0.5F), (paramInt3 + 0.5F), et.bj.c(), (et.bj.a() + 1.0F) / 2.0F, et.bj.b() * 0.8F);
-/* 23 */       paramdp.d(paramInt1, paramInt2, paramInt3, et.ba);
+/* 23 */       paramdp.setBlockWithNotify(paramInt1, paramInt2, paramInt3, et.blockId);
 /* 24 */       paramgc.a(1);
 /*    */       
-/* 26 */       if (paramdp.k.nextInt(8) == 0 && i == et.u.ba) {
-/* 27 */         byte b1 = 1;
-/* 28 */         for (byte b2 = 0; b2 < b1; b2++) {
+/* 26 */       if (paramdp.k.nextInt(8) == 0 && i == et.u.blockId) {
+/* 27 */         int b1 = 1;
+/* 28 */         for (int b2 = 0; b2 < b1; b2++) {
 /* 29 */           float f1 = 0.7F;
 /* 30 */           float f2 = paramdp.k.nextFloat() * f1 + (1.0F - f1) * 0.5F;
 /* 31 */           float f3 = 1.2F;
 /* 32 */           float f4 = paramdp.k.nextFloat() * f1 + (1.0F - f1) * 0.5F;
-/* 33 */           fa fa = new fa(paramdp, (paramInt1 + f2), (paramInt2 + f3), (paramInt3 + f4), new gc(en.Q));
+/* 33 */           EntityItem fa = new EntityItem(paramdp, (paramInt1 + f2), (paramInt2 + f3), (paramInt3 + f4), new ItemStack(Item.Q));
 /* 34 */           fa.ac = 10;
 /* 35 */           paramdp.a(fa);
 /*    */         } 

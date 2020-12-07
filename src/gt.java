@@ -13,7 +13,7 @@
 /* 13 */   public float ah = 1.0F; public float ae;
 /*    */   public int ai;
 /*    */   
-/*    */   public gt(dp paramdp) {
+/*    */   public gt(World paramdp) {
 /* 17 */     super(paramdp);
 /* 18 */     this.aB = "/mob/chicken.png";
 /* 19 */     a(0.3F, 0.4F);
@@ -41,17 +41,17 @@
 /* 41 */     this.b += this.ah * 2.0F;
 /*    */     
 /* 43 */     if (--this.ai <= 0) {
-/* 44 */       a(en.aN.aQ, 1);
+/* 44 */       a(Item.aN.aQ, 1);
 /* 45 */       this.ai = this.Q.nextInt(6000) + 6000;
 /*    */     } 
 /*    */   }
 /*    */ 
 /*    */   
-/*    */   public void a(r paramr) {
+/*    */   public void a(NBTTagCompound paramr) {
 /* 51 */     super.a(paramr);
 /*    */   }
 /*    */   
-/*    */   public void b(r paramr) {
+/*    */   public void b(NBTTagCompound paramr) {
 /* 55 */     super.b(paramr);
 /*    */   }
 /*    */   
@@ -59,16 +59,16 @@
 /* 59 */     return "mob.chicken";
 /*    */   }
 /*    */   
-/*    */   protected String d() {
+/*    */   protected String getHurtSound() {
 /* 63 */     return "mob.chickenhurt";
 /*    */   }
 /*    */   
-/*    */   protected String e() {
+/*    */   protected String getDeathSound() {
 /* 67 */     return "mob.chickenhurt";
 /*    */   }
 /*    */   
 /*    */   protected int g() {
-/* 71 */     return en.J.aQ;
+/* 71 */     return Item.J.aQ;
 /*    */   }
 /*    */ }
 
