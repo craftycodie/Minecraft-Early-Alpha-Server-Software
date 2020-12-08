@@ -5,14 +5,14 @@ import java.io.IOException;
 /*    */   extends Packet30Entity
 /*    */ {
 ///*    */   public Packet32EntityLook() {
-/////* 76 */     this.g = true;
+/////* 76 */     this.encodedRotationYaw = true;
 ///*    */   }
 /*    */   
 /*    */   public Packet32EntityLook(int paramInt, byte paramByte1, byte paramByte2) {
 /* 80 */     super(paramInt);
 /* 81 */     this.e = paramByte1;
 /* 82 */     this.f = paramByte2;
-///* 83 */     this.g = true;
+///* 83 */     this.encodedRotationYaw = true;
 /*    */   }
 /*    */
 public void a(DataInputStream dataInputStream) throws IOException {

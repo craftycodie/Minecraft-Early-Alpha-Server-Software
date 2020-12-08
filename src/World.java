@@ -637,13 +637,13 @@ public int getBlockMetadata(int i, int j, int k)
 /*  610 */     if (Double.isNaN(paramas1.a) || Double.isNaN(paramas1.b) || Double.isNaN(paramas1.c)) return null; 
 /*  611 */     if (Double.isNaN(paramas2.a) || Double.isNaN(paramas2.b) || Double.isNaN(paramas2.c)) return null;
 /*      */     
-/*  613 */     int i = fw.b(paramas2.a);
-/*  614 */     int j = fw.b(paramas2.b);
-/*  615 */     int k = fw.b(paramas2.c);
+/*  613 */     int i = MathHelper.floor_double(paramas2.a);
+/*  614 */     int j = MathHelper.floor_double(paramas2.b);
+/*  615 */     int k = MathHelper.floor_double(paramas2.c);
 /*      */     
-/*  617 */     int m = fw.b(paramas1.a);
-/*  618 */     int n = fw.b(paramas1.b);
-/*  619 */     int i1 = fw.b(paramas1.c);
+/*  617 */     int m = MathHelper.floor_double(paramas1.a);
+/*  618 */     int n = MathHelper.floor_double(paramas1.b);
+/*  619 */     int i1 = MathHelper.floor_double(paramas1.c);
 /*      */     
 /*  621 */     int b = 20;
 /*  622 */     while (b-- >= 0) {
@@ -700,17 +700,17 @@ public int getBlockMetadata(int i, int j, int k)
 /*      */       } 
 /*      */       
 /*  675 */       Vec3D as1 = Vec3D.b(paramas1.a, paramas1.b, paramas1.c);
-/*  676 */       m = (int)(as1.a = fw.b(paramas1.a));
+/*  676 */       m = (int)(as1.a = MathHelper.floor_double(paramas1.a));
 /*  677 */       if (b1 == 5) {
 /*  678 */         m--;
 /*  679 */         as1.a++;
 /*      */       } 
-/*  681 */       n = (int)(as1.b = fw.b(paramas1.b));
+/*  681 */       n = (int)(as1.b = MathHelper.floor_double(paramas1.b));
 /*  682 */       if (b1 == 1) {
 /*  683 */         n--;
 /*  684 */         as1.b++;
 /*      */       } 
-/*  686 */       i1 = (int)(as1.c = fw.b(paramas1.c));
+/*  686 */       i1 = (int)(as1.c = MathHelper.floor_double(paramas1.c));
 /*  687 */       if (b1 == 3) {
 /*  688 */         i1--;
 /*  689 */         as1.c++;
@@ -737,7 +737,7 @@ public int getBlockMetadata(int i, int j, int k)
 /*      */   
 /*      */   public void a(Entity paramdb, String paramString, float paramFloat1, float paramFloat2) {
 /*  712 */     for (int b = 0; b < this.D.size(); b++) {
-/*  713 */       ((ba)this.D.get(b)).a(paramString, paramdb.k, paramdb.l - paramdb.B, paramdb.m, paramFloat1, paramFloat2);
+/*  713 */       ((ba)this.D.get(b)).a(paramString, paramdb.posX, paramdb.posY - paramdb.B, paramdb.posZ, paramFloat1, paramFloat2);
 /*      */     }
 /*      */   }
 /*      */   
@@ -762,8 +762,8 @@ public int getBlockMetadata(int i, int j, int k)
 /*      */   }
 /*      */   
 /*      */   public boolean a(Entity paramdb) {
-/*  738 */     int i = fw.b(paramdb.k / 16.0D);
-/*  739 */     int j = fw.b(paramdb.m / 16.0D);
+/*  738 */     int i = MathHelper.floor_double(paramdb.posX / 16.0D);
+/*  739 */     int j = MathHelper.floor_double(paramdb.posZ / 16.0D);
 /*      */     
 /*  741 */     boolean bool = false;
 /*  742 */     if (paramdb instanceof EntityPlayer) {
@@ -820,8 +820,8 @@ public int getBlockMetadata(int i, int j, int k)
 
 /* 1450 */     this.K = new ArrayList();
 /* 1451 */     this.t = false; this.r = paramString; this.chunkProvider = a(this.F); d(); } public World(File paramFile, String paramString, long paramLong) { this.H = new ArrayList(); this.I = new HashSet(); this.J = this.k.nextInt(12000); this.K = new ArrayList(); this.t = false; this.r = paramString; paramFile.mkdirs(); this.F = new File(paramFile, paramString); this.F.mkdirs(); try { File file1 = new File(this.F, "session.lock"); DataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream(file1)); try { dataOutputStream.writeLong(this.C); } finally { dataOutputStream.close(); }  } catch (IOException iOException) { throw new RuntimeException("Failed to check session lock, aborting"); }  File file = new File(this.F, "level.dat"); this.o = !file.exists(); if (file.exists()) { try { NBTTagCompound r1 = CompressedStreamTools.a(new FileInputStream(file)); NBTTagCompound r2 = r1.j("Data"); this.p = r2.e("RandomSeed"); this.l = r2.d("SpawnX"); this.m = r2.d("SpawnY"); this.n = r2.d("SpawnZ"); this.b = r2.e("Time"); this.q = r2.e("SizeOnDisk"); this.c = r2.getBoolean("SnowCovered"); if (r2.a("Player")) this.G = r2.j("Player");  } catch (Exception exception) { exception.printStackTrace(); }  } else { this.c = (this.k.nextInt(4) == 0); }  boolean bool = false; if (this.p == 0L) { this.p = paramLong; bool = true; }  this.chunkProvider = a(this.F); if (bool) { this.s = true; this.l = 0; this.m = 64; this.n = 0; while (!e(this.l, this.n)) { this.l += this.k.nextInt(64) - this.k.nextInt(64); this.n += this.k.nextInt(64) - this.k.nextInt(64); }  this.s = false; }  d(); }
-/*      */   public List a(Entity paramdb, AxisAlignedBB paramcy) { this.H.clear(); int i = fw.b(paramcy.a); int j = fw.b(paramcy.d + 1.0D); int k = fw.b(paramcy.b); int m = fw.b(paramcy.e + 1.0D); int n = fw.b(paramcy.c); int i1 = fw.b(paramcy.f + 1.0D); for (int i2 = i; i2 < j; i2++) { for (int i3 = n; i3 < i1; i3++) { if (blockExists(i2, 64, i3)) for (int i4 = k - 1; i4 < m; i4++) { Block et = Block.blocksList[getBlockId(i2, i4, i3)]; if (et != null) et.a(this, i2, i4, i3, paramcy, this.H);  }   }  }  double d = 0.25D; List<Entity> list = b(paramdb, paramcy.b(d, d, d)); for (int b = 0; b < list.size(); b++) { AxisAlignedBB cy1 = ((Entity)list.get(b)).l(); if (cy1 != null && cy1.a(paramcy)) this.H.add(cy1);  cy1 = paramdb.d(list.get(b)); if (cy1 != null && cy1.a(paramcy)) this.H.add(cy1);  }  return this.H; }
-/*      */   public int a(float paramFloat) { float f1 = b(paramFloat); float f2 = 1.0F - fw.b(f1 * 3.1415927F * 2.0F) * 2.0F + 0.5F; if (f2 < 0.0F) f2 = 0.0F;  if (f2 > 1.0F) f2 = 1.0F;  return (int)(f2 * 11.0F); }
+/*      */   public List a(Entity paramdb, AxisAlignedBB paramcy) { this.H.clear(); int i = MathHelper.floor_double(paramcy.a); int j = MathHelper.floor_double(paramcy.d + 1.0D); int k = MathHelper.floor_double(paramcy.b); int m = MathHelper.floor_double(paramcy.e + 1.0D); int n = MathHelper.floor_double(paramcy.c); int i1 = MathHelper.floor_double(paramcy.f + 1.0D); for (int i2 = i; i2 < j; i2++) { for (int i3 = n; i3 < i1; i3++) { if (blockExists(i2, 64, i3)) for (int i4 = k - 1; i4 < m; i4++) { Block et = Block.blocksList[getBlockId(i2, i4, i3)]; if (et != null) et.a(this, i2, i4, i3, paramcy, this.H);  }   }  }  double d = 0.25D; List<Entity> list = b(paramdb, paramcy.b(d, d, d)); for (int b = 0; b < list.size(); b++) { AxisAlignedBB cy1 = ((Entity)list.get(b)).l(); if (cy1 != null && cy1.a(paramcy)) this.H.add(cy1);  cy1 = paramdb.d(list.get(b)); if (cy1 != null && cy1.a(paramcy)) this.H.add(cy1);  }  return this.H; }
+/*      */   public int a(float paramFloat) { float f1 = b(paramFloat); float f2 = 1.0F - MathHelper.b(f1 * 3.1415927F * 2.0F) * 2.0F + 0.5F; if (f2 < 0.0F) f2 = 0.0F;  if (f2 > 1.0F) f2 = 1.0F;  return (int)(f2 * 11.0F); }
 /* 1454 */   public float b(float paramFloat) { int i = (int)(this.b % 24000L); float f1 = (i + paramFloat) / 24000.0F - 0.25F; if (f1 < 0.0F) f1++;  if (f1 > 1.0F) f1--;  float f2 = f1; f1 = 1.0F - (float)((Math.cos(f1 * Math.PI) + 1.0D) / 2.0D); f1 = f2 + (f1 - f2) / 3.0F; return f1; } public int d(int paramInt1, int paramInt2) {
         Chunk hv = a(paramInt1, paramInt2);
         int b = 127;
@@ -882,23 +882,23 @@ public void b() {
         }
     }
 protected void e(Entity paramdb) {
-        int i = fw.b(paramdb.k);
-        int j = fw.b(paramdb.m);
+        int i = MathHelper.floor_double(paramdb.posX);
+        int j = MathHelper.floor_double(paramdb.posZ);
         int b = 16;
         if (!a(i - b, 0, j - b, i + b, 128, j + b)) return;
-        paramdb.I = paramdb.k;
-        paramdb.J = paramdb.l;
-        paramdb.K = paramdb.m;
-        paramdb.s = paramdb.q;
-        paramdb.t = paramdb.r;
+        paramdb.I = paramdb.posX;
+        paramdb.J = paramdb.posY;
+        paramdb.K = paramdb.posZ;
+        paramdb.s = paramdb.rotationYaw;
+        paramdb.t = paramdb.rotationPitch;
         if (paramdb.f != null) {
             paramdb.t();
         } else {
             paramdb.b_();
         }
-        int k = fw.b(paramdb.k / 16.0D);
-        int m = fw.b(paramdb.l / 16.0D);
-        int n = fw.b(paramdb.m / 16.0D);
+        int k = MathHelper.floor_double(paramdb.posX / 16.0D);
+        int m = MathHelper.floor_double(paramdb.posY / 16.0D);
+        int n = MathHelper.floor_double(paramdb.posZ / 16.0D);
         if (!paramdb.Y || paramdb.Z != k || paramdb.aa != m || paramdb.ab != n) {
             if (paramdb.Y && chunkExists(paramdb.Z, paramdb.ab))
                 getChunkFromChunkCoords(paramdb.Z, paramdb.ab).a(paramdb, paramdb.aa);
@@ -916,11 +916,11 @@ protected void e(Entity paramdb) {
         } else {
             e(paramdb.e);
         }
-        if (Double.isNaN(paramdb.k) || Double.isInfinite(paramdb.k)) paramdb.k = paramdb.I;
-        if (Double.isNaN(paramdb.l) || Double.isInfinite(paramdb.l)) paramdb.l = paramdb.J;
-        if (Double.isNaN(paramdb.m) || Double.isInfinite(paramdb.m)) paramdb.m = paramdb.K;
-        if (Double.isNaN(paramdb.r) || Double.isInfinite(paramdb.r)) paramdb.r = paramdb.t;
-        if (Double.isNaN(paramdb.q) || Double.isInfinite(paramdb.q)) paramdb.q = paramdb.s;
+        if (Double.isNaN(paramdb.posX) || Double.isInfinite(paramdb.posX)) paramdb.posX = paramdb.I;
+        if (Double.isNaN(paramdb.posY) || Double.isInfinite(paramdb.posY)) paramdb.posY = paramdb.J;
+        if (Double.isNaN(paramdb.posZ) || Double.isInfinite(paramdb.posZ)) paramdb.posZ = paramdb.K;
+        if (Double.isNaN(paramdb.rotationPitch) || Double.isInfinite(paramdb.rotationPitch)) paramdb.rotationPitch = paramdb.t;
+        if (Double.isNaN(paramdb.rotationYaw) || Double.isInfinite(paramdb.rotationYaw)) paramdb.rotationYaw = paramdb.s;
     }
 
 public boolean a(AxisAlignedBB paramcy) {
@@ -932,12 +932,12 @@ public boolean a(AxisAlignedBB paramcy) {
         return true;
     }
 public boolean b(AxisAlignedBB paramcy) {
-        int i = fw.b(paramcy.a);
-        int j = fw.b(paramcy.d + 1.0D);
-        int k = fw.b(paramcy.b);
-        int m = fw.b(paramcy.e + 1.0D);
-        int n = fw.b(paramcy.c);
-        int i1 = fw.b(paramcy.f + 1.0D);
+        int i = MathHelper.floor_double(paramcy.a);
+        int j = MathHelper.floor_double(paramcy.d + 1.0D);
+        int k = MathHelper.floor_double(paramcy.b);
+        int m = MathHelper.floor_double(paramcy.e + 1.0D);
+        int n = MathHelper.floor_double(paramcy.c);
+        int i1 = MathHelper.floor_double(paramcy.f + 1.0D);
         if (paramcy.a < 0.0D) i--;
         if (paramcy.b < 0.0D) k--;
         if (paramcy.c < 0.0D) n--;
@@ -952,12 +952,12 @@ public boolean b(AxisAlignedBB paramcy) {
         return false;
     }
 public boolean c(AxisAlignedBB paramcy) {
-        int i = fw.b(paramcy.a);
-        int j = fw.b(paramcy.d + 1.0D);
-        int k = fw.b(paramcy.b);
-        int m = fw.b(paramcy.e + 1.0D);
-        int n = fw.b(paramcy.c);
-        int i1 = fw.b(paramcy.f + 1.0D);
+        int i = MathHelper.floor_double(paramcy.a);
+        int j = MathHelper.floor_double(paramcy.d + 1.0D);
+        int k = MathHelper.floor_double(paramcy.b);
+        int m = MathHelper.floor_double(paramcy.e + 1.0D);
+        int n = MathHelper.floor_double(paramcy.c);
+        int i1 = MathHelper.floor_double(paramcy.f + 1.0D);
         for (int i2 = i; i2 < j; i2++) {
             for (int i3 = k; i3 < m; i3++) {
                 for (int i4 = n; i4 < i1; i4++) {
@@ -969,12 +969,12 @@ public boolean c(AxisAlignedBB paramcy) {
         return false;
     }
 public boolean a(AxisAlignedBB paramcy, Material paramhz, Entity paramdb) {
-        int i = fw.b(paramcy.a);
-        int j = fw.b(paramcy.d + 1.0D);
-        int k = fw.b(paramcy.b);
-        int m = fw.b(paramcy.e + 1.0D);
-        int n = fw.b(paramcy.c);
-        int i1 = fw.b(paramcy.f + 1.0D);
+        int i = MathHelper.floor_double(paramcy.a);
+        int j = MathHelper.floor_double(paramcy.d + 1.0D);
+        int k = MathHelper.floor_double(paramcy.b);
+        int m = MathHelper.floor_double(paramcy.e + 1.0D);
+        int n = MathHelper.floor_double(paramcy.c);
+        int i1 = MathHelper.floor_double(paramcy.f + 1.0D);
         boolean bool = false;
         Vec3D as = Vec3D.b(0.0D, 0.0D, 0.0D);
         for (int i2 = i; i2 < j; i2++) {
@@ -1001,12 +1001,12 @@ public boolean a(AxisAlignedBB paramcy, Material paramhz, Entity paramdb) {
         return bool;
     }
 public boolean a(AxisAlignedBB paramcy, Material paramhz) {
-        int i = fw.b(paramcy.a);
-        int j = fw.b(paramcy.d + 1.0D);
-        int k = fw.b(paramcy.b);
-        int m = fw.b(paramcy.e + 1.0D);
-        int n = fw.b(paramcy.c);
-        int i1 = fw.b(paramcy.f + 1.0D);
+        int i = MathHelper.floor_double(paramcy.a);
+        int j = MathHelper.floor_double(paramcy.d + 1.0D);
+        int k = MathHelper.floor_double(paramcy.b);
+        int m = MathHelper.floor_double(paramcy.e + 1.0D);
+        int n = MathHelper.floor_double(paramcy.c);
+        int i1 = MathHelper.floor_double(paramcy.f + 1.0D);
         for (int i2 = i; i2 < j; i2++) {
             for (int i3 = k; i3 < m; i3++) {
                 for (int i4 = n; i4 < i1; i4++) {
@@ -1018,12 +1018,12 @@ public boolean a(AxisAlignedBB paramcy, Material paramhz) {
         return false;
     }
 public boolean b(AxisAlignedBB paramcy, Material paramhz) {
-        int i = fw.b(paramcy.a);
-        int j = fw.b(paramcy.d + 1.0D);
-        int k = fw.b(paramcy.b);
-        int m = fw.b(paramcy.e + 1.0D);
-        int n = fw.b(paramcy.c);
-        int i1 = fw.b(paramcy.f + 1.0D);
+        int i = MathHelper.floor_double(paramcy.a);
+        int j = MathHelper.floor_double(paramcy.d + 1.0D);
+        int k = MathHelper.floor_double(paramcy.b);
+        int m = MathHelper.floor_double(paramcy.e + 1.0D);
+        int n = MathHelper.floor_double(paramcy.c);
+        int i1 = MathHelper.floor_double(paramcy.f + 1.0D);
         for (int i2 = i; i2 < j; i2++) {
             for (int i3 = k; i3 < m; i3++) {
                 for (int i4 = n; i4 < i1; i4++) {
@@ -1042,13 +1042,13 @@ public boolean b(AxisAlignedBB paramcy, Material paramhz) {
 public List b(Entity paramdb, AxisAlignedBB paramcy) {
         this.K.clear();
         /* 1455 */
-        int i = fw.b((paramcy.a - 2.0D) / 16.0D);
+        int i = MathHelper.floor_double((paramcy.a - 2.0D) / 16.0D);
         /* 1456 */
-        int j = fw.b((paramcy.d + 2.0D) / 16.0D);
+        int j = MathHelper.floor_double((paramcy.d + 2.0D) / 16.0D);
         /* 1457 */
-        int k = fw.b((paramcy.c - 2.0D) / 16.0D);
+        int k = MathHelper.floor_double((paramcy.c - 2.0D) / 16.0D);
         /* 1458 */
-        int m = fw.b((paramcy.f + 2.0D) / 16.0D);
+        int m = MathHelper.floor_double((paramcy.f + 2.0D) / 16.0D);
         /* 1459 */
         for (int n = i; n <= j; n++) {
             /* 1460 */
@@ -1070,10 +1070,10 @@ public List b(Entity paramdb, AxisAlignedBB paramcy) {
                 if (hv != null) return hv.getChunkBlockTileEntity(paramInt1 & 0xF, paramInt2, paramInt3 & 0xF);
                 return null;
             }
-/* 1469 */   public void a(int paramInt1, int paramInt2, int paramInt3, TileEntity paramap) { Chunk hv = getChunkFromChunkCoords(paramInt1 >> 4, paramInt3 >> 4); if (hv != null) hv.a(paramInt1 & 0xF, paramInt2, paramInt3 & 0xF, paramap);  } public void l(int paramInt1, int paramInt2, int paramInt3) { Chunk hv = getChunkFromChunkCoords(paramInt1 >> 4, paramInt3 >> 4); if (hv != null) hv.e(paramInt1 & 0xF, paramInt2, paramInt3 & 0xF);  } public boolean d(int paramInt1, int paramInt2, int paramInt3) { Block et = Block.blocksList[getBlockId(paramInt1, paramInt2, paramInt3)]; if (et == null) return false;  return et.b(); } public boolean c() { char c = 'Ϩ'; while (this.u.size() > 0) { if (--c <= '\000') return true;  ((dg)this.u.remove(this.u.size() - 1)).a(this); }  return false; } public void a(cr paramcr, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6) { a(paramcr, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, true); } public void a(cr paramcr, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean) { int i = (paramInt4 + paramInt1) / 2; int j = (paramInt6 + paramInt3) / 2; if (!blockExists(i, 64, j)) return;  int k = this.u.size(); if (paramBoolean) { int m = 4; if (m > k) m = k;  for (int b = 0; b < m; b++) { dg dg = (dg)this.u.get(this.u.size() - b - 1); if (dg.a == paramcr && dg.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6)) return;  }  }  this.u.add(new dg(paramcr, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6)); if (this.u.size() > 100000) while (this.u.size() > 50000) c();   } public void d() { int i = a(1.0F); if (i != this.d) this.d = i;  } public void e() { this.chunkProvider.a(); int i = a(1.0F); if (i != this.d) { this.d = i; for (int b = 0; b < this.D.size(); b++) ((ba)this.D.get(b)).a();  }  this.b++; if (this.b % 20L == 0L) a(false, (hg)null);  a(false); f(); } protected void f() { this.I.clear(); for (int b = 0; b < this.i.size(); b++) { EntityPlayer eq = (EntityPlayer)this.i.get(b); int i = fw.b(eq.k / 16.0D); int j = fw.b(eq.m / 16.0D); int b1 = 9; for (int b2 = -b1; b2 <= b1; b2++) { for (int b3 = -b1; b3 <= b1; b3++) this.I.add(new ChunkCoordIntPair(b2 + i, b3 + j));  }  }  if (this.J > 0) this.J--;  for (Object ih : this.I) { int i = ((ChunkCoordIntPair)ih).a * 16; int j = ((ChunkCoordIntPair)ih).b * 16; Chunk hv = getChunkFromChunkCoords(((ChunkCoordIntPair)ih).a, ((ChunkCoordIntPair)ih).b); if (this.J == 0) { this.e = this.e * 3 + this.f; int k = this.e >> 2; int m = k & 0xF; int n = k >> 8 & 0xF; int i1 = k >> 16 & 0x7F; int i2 = hv.getBlockID(m, i1, n); m += i; n += j; if (i2 == 0 && h(m, i1, n) <= this.k.nextInt(8) && a(cr.a, m, i1, n) <= 0) { EntityPlayer eq = a(m + 0.5D, i1 + 0.5D, n + 0.5D, 8.0D); if (eq != null && eq.d(m + 0.5D, i1 + 0.5D, n + 0.5D) > 4.0D) { a(m + 0.5D, i1 + 0.5D, n + 0.5D, "ambient.cave.cave", 0.7F, 0.8F + this.k.nextFloat() * 0.2F); this.J = this.k.nextInt(12000) + 6000; }  }  }  if (this.c && this.k.nextInt(4) == 0) { this.e = this.e * 3 + this.f; int k = this.e >> 2; int m = k & 0xF; int n = k >> 8 & 0xF; int i1 = d(m + i, n + j); if (i1 >= 0 && i1 < 128 && hv.a(cr.b, m, i1, n) < 10) { int i2 = hv.getBlockID(m, i1 - 1, n); if (hv.getBlockID(m, i1, n) == 0 && i2 != 0 && i2 != Block.aT.blockId && (Block.blocksList[i2]).blockMaterial.c()) setBlockWithNotify(m + i, i1, n + j, Block.aS.blockId);  if (i2 == Block.B.blockId && hv.getBlockMetadata(m, i1 - 1, n) == 0) setBlockWithNotify(m + i, i1 - 1, n + j, Block.aT.blockId);  }  }  for (int b1 = 0; b1 < 80; b1++) { this.e = this.e * 3 + this.f; int k = this.e >> 2; int m = k & 0xF; int n = k >> 8 & 0xF; int i1 = k >> 16 & 0x7F; int b2 = hv.b[m << 11 | n << 7 | i1]; if (Block.tickOnLoad[b2]) Block.blocksList[b2].a(this, m + i, i1, n + j, this.k);  }  }  } public boolean a(boolean paramBoolean) { int i = this.x.size(); if (i != this.y.size()) throw new IllegalStateException("TickNextTick list out of synch");  if (i > 1000) i = 1000;  for (int b = 0; b < i; b++) { bq bq = (bq)this.x.first(); if (!paramBoolean && bq.e > this.b) break;  this.x.remove(bq); this.y.remove(bq); int b1 = 8; if (a(bq.a - b1, bq.b - b1, bq.c - b1, bq.a + b1, bq.b + b1, bq.c + b1)) { int j = getBlockId(bq.a, bq.b, bq.c); if (j == bq.d && j > 0) Block.blocksList[j].a(this, bq.a, bq.b, bq.c, this.k);  }  }  return (this.x.size() != 0); } public List a(Class paramClass, AxisAlignedBB paramcy) { int i = fw.b((paramcy.a - 2.0D) / 16.0D);
-/* 1470 */     int j = fw.b((paramcy.d + 2.0D) / 16.0D);
-/* 1471 */     int k = fw.b((paramcy.c - 2.0D) / 16.0D);
-/* 1472 */     int m = fw.b((paramcy.f + 2.0D) / 16.0D);
+/* 1469 */   public void a(int paramInt1, int paramInt2, int paramInt3, TileEntity paramap) { Chunk hv = getChunkFromChunkCoords(paramInt1 >> 4, paramInt3 >> 4); if (hv != null) hv.a(paramInt1 & 0xF, paramInt2, paramInt3 & 0xF, paramap);  } public void l(int paramInt1, int paramInt2, int paramInt3) { Chunk hv = getChunkFromChunkCoords(paramInt1 >> 4, paramInt3 >> 4); if (hv != null) hv.e(paramInt1 & 0xF, paramInt2, paramInt3 & 0xF);  } public boolean d(int paramInt1, int paramInt2, int paramInt3) { Block et = Block.blocksList[getBlockId(paramInt1, paramInt2, paramInt3)]; if (et == null) return false;  return et.b(); } public boolean c() { char c = 'Ϩ'; while (this.u.size() > 0) { if (--c <= '\000') return true;  ((dg)this.u.remove(this.u.size() - 1)).a(this); }  return false; } public void a(cr paramcr, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6) { a(paramcr, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, true); } public void a(cr paramcr, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, boolean paramBoolean) { int i = (paramInt4 + paramInt1) / 2; int j = (paramInt6 + paramInt3) / 2; if (!blockExists(i, 64, j)) return;  int k = this.u.size(); if (paramBoolean) { int m = 4; if (m > k) m = k;  for (int b = 0; b < m; b++) { dg dg = (dg)this.u.get(this.u.size() - b - 1); if (dg.a == paramcr && dg.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6)) return;  }  }  this.u.add(new dg(paramcr, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6)); if (this.u.size() > 100000) while (this.u.size() > 50000) c();   } public void d() { int i = a(1.0F); if (i != this.d) this.d = i;  } public void e() { this.chunkProvider.a(); int i = a(1.0F); if (i != this.d) { this.d = i; for (int b = 0; b < this.D.size(); b++) ((ba)this.D.get(b)).a();  }  this.b++; if (this.b % 20L == 0L) a(false, (hg)null);  a(false); f(); } protected void f() { this.I.clear(); for (int b = 0; b < this.i.size(); b++) { EntityPlayer eq = (EntityPlayer)this.i.get(b); int i = MathHelper.floor_double(eq.posX / 16.0D); int j = MathHelper.floor_double(eq.posZ / 16.0D); int b1 = 9; for (int b2 = -b1; b2 <= b1; b2++) { for (int b3 = -b1; b3 <= b1; b3++) this.I.add(new ChunkCoordIntPair(b2 + i, b3 + j));  }  }  if (this.J > 0) this.J--;  for (Object ih : this.I) { int i = ((ChunkCoordIntPair)ih).a * 16; int j = ((ChunkCoordIntPair)ih).b * 16; Chunk hv = getChunkFromChunkCoords(((ChunkCoordIntPair)ih).a, ((ChunkCoordIntPair)ih).b); if (this.J == 0) { this.e = this.e * 3 + this.f; int k = this.e >> 2; int m = k & 0xF; int n = k >> 8 & 0xF; int i1 = k >> 16 & 0x7F; int i2 = hv.getBlockID(m, i1, n); m += i; n += j; if (i2 == 0 && h(m, i1, n) <= this.k.nextInt(8) && a(cr.a, m, i1, n) <= 0) { EntityPlayer eq = a(m + 0.5D, i1 + 0.5D, n + 0.5D, 8.0D); if (eq != null && eq.getDistanceSq(m + 0.5D, i1 + 0.5D, n + 0.5D) > 4.0D) { a(m + 0.5D, i1 + 0.5D, n + 0.5D, "ambient.cave.cave", 0.7F, 0.8F + this.k.nextFloat() * 0.2F); this.J = this.k.nextInt(12000) + 6000; }  }  }  if (this.c && this.k.nextInt(4) == 0) { this.e = this.e * 3 + this.f; int k = this.e >> 2; int m = k & 0xF; int n = k >> 8 & 0xF; int i1 = d(m + i, n + j); if (i1 >= 0 && i1 < 128 && hv.a(cr.b, m, i1, n) < 10) { int i2 = hv.getBlockID(m, i1 - 1, n); if (hv.getBlockID(m, i1, n) == 0 && i2 != 0 && i2 != Block.aT.blockId && (Block.blocksList[i2]).blockMaterial.c()) setBlockWithNotify(m + i, i1, n + j, Block.aS.blockId);  if (i2 == Block.B.blockId && hv.getBlockMetadata(m, i1 - 1, n) == 0) setBlockWithNotify(m + i, i1 - 1, n + j, Block.aT.blockId);  }  }  for (int b1 = 0; b1 < 80; b1++) { this.e = this.e * 3 + this.f; int k = this.e >> 2; int m = k & 0xF; int n = k >> 8 & 0xF; int i1 = k >> 16 & 0x7F; int b2 = hv.b[m << 11 | n << 7 | i1]; if (Block.tickOnLoad[b2]) Block.blocksList[b2].a(this, m + i, i1, n + j, this.k);  }  }  } public boolean a(boolean paramBoolean) { int i = this.x.size(); if (i != this.y.size()) throw new IllegalStateException("TickNextTick list out of synch");  if (i > 1000) i = 1000;  for (int b = 0; b < i; b++) { bq bq = (bq)this.x.first(); if (!paramBoolean && bq.e > this.b) break;  this.x.remove(bq); this.y.remove(bq); int b1 = 8; if (a(bq.a - b1, bq.b - b1, bq.c - b1, bq.a + b1, bq.b + b1, bq.c + b1)) { int j = getBlockId(bq.a, bq.b, bq.c); if (j == bq.d && j > 0) Block.blocksList[j].a(this, bq.a, bq.b, bq.c, this.k);  }  }  return (this.x.size() != 0); } public List a(Class paramClass, AxisAlignedBB paramcy) { int i = MathHelper.floor_double((paramcy.a - 2.0D) / 16.0D);
+/* 1470 */     int j = MathHelper.floor_double((paramcy.d + 2.0D) / 16.0D);
+/* 1471 */     int k = MathHelper.floor_double((paramcy.c - 2.0D) / 16.0D);
+/* 1472 */     int m = MathHelper.floor_double((paramcy.f + 2.0D) / 16.0D);
 /* 1473 */     ArrayList arrayList = new ArrayList();
 /* 1474 */     for (int n = i; n <= j; n++) {
 /* 1475 */       for (int i1 = k; i1 <= m; i1++) {
@@ -1143,9 +1143,9 @@ public List b(Entity paramdb, AxisAlignedBB paramcy) {
 /*      */ 
 /*      */   
 /*      */   public bx a(Entity paramdb1, Entity paramdb2, float paramFloat) {
-/* 1542 */     int i = fw.b(paramdb1.k);
-/* 1543 */     int j = fw.b(paramdb1.l);
-/* 1544 */     int k = fw.b(paramdb1.m);
+/* 1542 */     int i = MathHelper.floor_double(paramdb1.posX);
+/* 1543 */     int j = MathHelper.floor_double(paramdb1.posY);
+/* 1544 */     int k = MathHelper.floor_double(paramdb1.posZ);
 /*      */     
 /* 1546 */     int m = (int)(paramFloat + 16.0F);
 /* 1547 */     int n = i - m;
@@ -1159,9 +1159,9 @@ public List b(Entity paramdb, AxisAlignedBB paramcy) {
 /*      */   }
 /*      */   
 /*      */   public bx a(Entity paramdb, int paramInt1, int paramInt2, int paramInt3, float paramFloat) {
-/* 1558 */     int i = fw.b(paramdb.k);
-/* 1559 */     int j = fw.b(paramdb.l);
-/* 1560 */     int k = fw.b(paramdb.m);
+/* 1558 */     int i = MathHelper.floor_double(paramdb.posX);
+/* 1559 */     int j = MathHelper.floor_double(paramdb.posY);
+/* 1560 */     int k = MathHelper.floor_double(paramdb.posZ);
 /*      */     
 /* 1562 */     int m = (int)(paramFloat + 8.0F);
 /* 1563 */     int n = i - m;
@@ -1210,7 +1210,7 @@ public List b(Entity paramdb, AxisAlignedBB paramcy) {
 /*      */   }
 /*      */   
 /*      */   public EntityPlayer a(Entity paramdb, double paramDouble) {
-/* 1609 */     return a(paramdb.k, paramdb.l, paramdb.m, paramDouble);
+/* 1609 */     return a(paramdb.posX, paramdb.posY, paramdb.posZ, paramDouble);
 /*      */   }
 /*      */   
 /*      */   public EntityPlayer a(double paramDouble1, double paramDouble2, double paramDouble3, double paramDouble4) {
@@ -1218,7 +1218,7 @@ public List b(Entity paramdb, AxisAlignedBB paramcy) {
 /* 1614 */     EntityPlayer eq = null;
 /* 1615 */     for (int b = 0; b < this.i.size(); b++) {
 /* 1616 */       EntityPlayer eq1 = (EntityPlayer)this.i.get(b);
-/* 1617 */       double d1 = eq1.d(paramDouble1, paramDouble2, paramDouble3);
+/* 1617 */       double d1 = eq1.getDistanceSq(paramDouble1, paramDouble2, paramDouble3);
 /* 1618 */       if ((paramDouble4 < 0.0D || d1 < paramDouble4 * paramDouble4) && (d == -1.0D || d1 < d)) {
 /* 1619 */         d = d1;
 /* 1620 */         eq = eq1;

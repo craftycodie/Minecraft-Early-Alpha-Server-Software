@@ -29,7 +29,7 @@
 /*    */ 
 /*    */     
 /* 31 */     if (paramInt4 == 1) {
-/* 32 */       paramdp.b(paramInt1, paramInt2, paramInt3, Block.aD.blockId, fw.b(((parameq.q + 180.0F) * 16.0F / 360.0F) + 0.5D) & 0xF);
+/* 32 */       paramdp.b(paramInt1, paramInt2, paramInt3, Block.aD.blockId, MathHelper.floor_double(((parameq.rotationYaw + 180.0F) * 16.0F / 360.0F) + 0.5D) & 0xF);
 /*    */     } else {
 /* 34 */       paramdp.b(paramInt1, paramInt2, paramInt3, Block.aI.blockId, paramInt4);
 /*    */     } 

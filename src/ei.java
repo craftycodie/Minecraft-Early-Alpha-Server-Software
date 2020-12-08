@@ -58,7 +58,7 @@
 /* 58 */       this.a++;
 /*    */       
 /* 60 */       if (this.a == this.ac) {
-/* 61 */         this.g.a(this, this.k, this.l, this.m, 3.0F);
+/* 61 */         this.g.a(this, this.posX, this.posY, this.posZ, 3.0F);
 /* 62 */         i();
 /*    */       } 
 /* 64 */       this.ag = true;

@@ -85,7 +85,7 @@
 /*     */ 
 /*     */ 
 /*     */     
-/*  94 */     jTextArea.addFocusListener(new u(this));
+/*  94 */     jTextArea.addFocusListener(new ServerGuiFocusAdapter(this));
 /*     */ 
 /*     */ 
 /*     */ 

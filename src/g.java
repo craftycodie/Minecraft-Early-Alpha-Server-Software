@@ -19,8 +19,8 @@
 /*    */   public void a() {
 /* 19 */     if (this.b++ % 20 == 0) {
 /* 20 */       Vector<String> vector = new Vector();
-/* 21 */       for (int b = 0; b < this.a.f.b.size(); b++) {
-/* 22 */         vector.add(((EntityPlayerMP)this.a.f.b.get(b)).username);
+/* 21 */       for (int b = 0; b < this.a.configManager.b.size(); b++) {
+/* 22 */         vector.add(((EntityPlayerMP)this.a.configManager.b.get(b)).username);
 /*    */       }
 /* 24 */       setListData((Vector)vector);
 /*    */     } 

@@ -53,9 +53,9 @@
 /*  53 */       int m = -1;
 /*  54 */       float f1 = -99999.0F;
 /*  55 */       for (int b = 0; b < 10; b++) {
-/*  56 */         int n = fw.b(this.k + this.Q.nextInt(13) - 6.0D);
-/*  57 */         int i1 = fw.b(this.l + this.Q.nextInt(7) - 3.0D);
-/*  58 */         int i2 = fw.b(this.m + this.Q.nextInt(13) - 6.0D);
+/*  56 */         int n = MathHelper.floor_double(this.posX + this.Q.nextInt(13) - 6.0D);
+/*  57 */         int i1 = MathHelper.floor_double(this.posY + this.Q.nextInt(7) - 3.0D);
+/*  58 */         int i2 = MathHelper.floor_double(this.posZ + this.Q.nextInt(13) - 6.0D);
 /*  59 */         float f2 = a(n, i1, i2);
 /*  60 */         if (f2 > f1) {
 /*  61 */           f1 = f2;
@@ -71,11 +71,11 @@
 /*     */       }
 /*     */     } 
 /*     */     
-/*  74 */     int i = fw.b(this.u.b);
+/*  74 */     int i = MathHelper.floor_double(this.u.b);
 /*     */     
 /*  76 */     boolean bool1 = m();
 /*  77 */     boolean bool2 = o();
-/*  78 */     this.r = 0.0F;
+/*  78 */     this.rotationPitch = 0.0F;
 /*  79 */     if (this.a == null || this.Q.nextInt(100) == 0) {
 /*  80 */       super.d_();
 /*  81 */       this.a = null;
@@ -84,7 +84,7 @@
 /*     */     } 
 /*  85 */     Vec3D as = this.a.a(this);
 /*  86 */     double d = (this.C * 2.0F);
-/*  87 */     while (as != null && as.d(this.k, as.b, this.m) < d * d) {
+/*  87 */     while (as != null && as.d(this.posX, as.b, this.posZ) < d * d) {
 /*  88 */       this.a.a();
 /*  89 */       if (this.a.b()) {
 /*  90 */         as = null;
@@ -94,12 +94,12 @@
 /*     */     
 /*  95 */     this.bd = false;
 /*  96 */     if (as != null) {
-/*  97 */       double d1 = as.a - this.k;
-/*  98 */       double d2 = as.c - this.m;
+/*  97 */       double d1 = as.a - this.posX;
+/*  98 */       double d2 = as.c - this.posZ;
 /*  99 */       double d3 = as.b - i;
 /*     */       
 /* 101 */       float f1 = (float)(Math.atan2(d2, d1) * 180.0D / 3.1415927410125732D) - 90.0F;
-/* 102 */       float f2 = f1 - this.q;
+/* 102 */       float f2 = f1 - this.rotationYaw;
 /* 103 */       this.bb = this.bf;
 /* 104 */       while (f2 < -180.0F)
 /* 105 */         f2 += 360.0F; 
@@ -113,19 +113,19 @@
 /* 113 */         f2 = -30.0F;
 /*     */       }
 /*     */       
-/* 116 */       this.q += f2;
+/* 116 */       this.rotationYaw += f2;
 /*     */       
 /* 118 */       if (this.ag && 
 /* 119 */         this.af != null) {
-/* 120 */         double d4 = this.af.k - this.k;
-/* 121 */         double d5 = this.af.m - this.m;
+/* 120 */         double d4 = this.af.posX - this.posX;
+/* 121 */         double d5 = this.af.posZ - this.posZ;
 /*     */         
-/* 123 */         float f3 = this.q;
-/* 124 */         this.q = (float)(Math.atan2(d5, d4) * 180.0D / 3.1415927410125732D) - 90.0F;
+/* 123 */         float f3 = this.rotationYaw;
+/* 124 */         this.rotationYaw = (float)(Math.atan2(d5, d4) * 180.0D / 3.1415927410125732D) - 90.0F;
 /*     */         
-/* 126 */         f2 = (f3 - this.q + 90.0F) * 3.1415927F / 180.0F;
-/* 127 */         this.ba = -fw.a(f2) * this.bb * 1.0F;
-/* 128 */         this.bb = fw.b(f2) * this.bb * 1.0F;
+/* 126 */         f2 = (f3 - this.rotationYaw + 90.0F) * 3.1415927F / 180.0F;
+/* 127 */         this.ba = -MathHelper.a(f2) * this.bb * 1.0F;
+/* 128 */         this.bb = MathHelper.b(f2) * this.bb * 1.0F;
 /*     */       } 
 /*     */       
 /* 131 */       if (d3 > 0.0D) {
@@ -153,9 +153,9 @@
 /*     */   }
 /*     */   
 /*     */   public boolean a() {
-/* 156 */     int i = fw.b(this.k);
-/* 157 */     int j = fw.b(this.u.b);
-/* 158 */     int k = fw.b(this.m);
+/* 156 */     int i = MathHelper.floor_double(this.posX);
+/* 157 */     int j = MathHelper.floor_double(this.u.b);
+/* 158 */     int k = MathHelper.floor_double(this.posZ);
 /* 159 */     return (super.a() && a(i, j, k) >= 0.0F);
 /*     */   }
 /*     */ }

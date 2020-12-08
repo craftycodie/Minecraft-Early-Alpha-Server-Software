@@ -43,7 +43,7 @@
 /*     */   public void b(String paramString) {
 /*  43 */     this.b.a(new Packet255KickDisconnect(paramString));
 /*  44 */     this.b.c();
-/*  45 */     this.d.f.c(this.e);
+/*  45 */     this.d.configManager.c(this.e);
 /*  46 */     this.c = true;
 /*     */   }
 /*     */   
@@ -68,24 +68,24 @@ public void a(Packet10Flying paramfs) {
     /*  59 */
     if (this.j) {
         /*  60 */
-        this.g = this.e.k;
+        this.g = this.e.posX;
         /*  61 */
-        this.h = this.e.l;
+        this.h = this.e.posY;
         /*  62 */
-        this.i = this.e.m;
+        this.i = this.e.posZ;
         /*     */
         /*     */
         /*  65 */
-        double d1 = this.e.k;
+        double d1 = this.e.posX;
         /*  66 */
-        double d2 = this.e.l;
+        double d2 = this.e.posY;
         /*  67 */
-        double d3 = this.e.m;
+        double d3 = this.e.posZ;
         /*     */
         /*  69 */
-        float f1 = this.e.q;
+        float f1 = this.e.rotationYaw;
         /*  70 */
-        float f2 = this.e.r;
+        float f2 = this.e.rotationPitch;
         /*     */
         /*  72 */
         if (paramfs.h) {
@@ -124,11 +124,11 @@ public void a(Packet10Flying paramfs) {
         this.e.b(this.g, this.h, this.i, f1, f2);
         /*     */
         /*  92 */
-        double d4 = d1 - this.e.k;
+        double d4 = d1 - this.e.posX;
         /*  93 */
-        double d5 = d2 - this.e.l;
+        double d5 = d2 - this.e.posY;
         /*  94 */
-        double d6 = d3 - this.e.m;
+        double d6 = d3 - this.e.posZ;
         /*     */
         /*  96 */
         float f3 = 0.0625F;
@@ -138,9 +138,9 @@ public void a(Packet10Flying paramfs) {
         /*  99 */
         this.e.c(d4, d5, d6);
         /* 100 */
-        d4 = d1 - this.e.k;
+        d4 = d1 - this.e.posX;
         /* 101 */
-        d5 = d2 - this.e.l;
+        d5 = d2 - this.e.posY;
         /* 102 */
         if (d5 > -0.5D || d5 < 0.5D) {
             /* 103 */
@@ -148,7 +148,7 @@ public void a(Packet10Flying paramfs) {
             /*     */
         }
         /* 105 */
-        d6 = d3 - this.e.m;
+        d6 = d3 - this.e.posZ;
         /* 106 */
         double d7 = d4 * d4 + d5 * d5 + d6 * d6;
         /* 107 */
@@ -179,7 +179,7 @@ public void a(Packet10Flying paramfs) {
         /* 121 */
         this.e.v = paramfs.g;
         /* 122 */
-        this.d.f.b(this.e);
+        this.d.configManager.b(this.e);
         /*     */
     }
 }
@@ -201,25 +201,25 @@ public void a(Packet10Flying paramfs) {
 /* 138 */     if (paramgp.e == 1) bool = true;
 /*     */     
 /* 140 */     if (bool) {
-/* 141 */       double d = this.e.l;
-/* 142 */       this.e.l = this.e.ah;
+/* 141 */       double d = this.e.posY;
+/* 142 */       this.e.posY = this.e.ah;
 /* 143 */       fe fe = this.e.a(4.0D, 1.0F);
-/* 144 */       this.e.l = d;
+/* 144 */       this.e.posY = d;
 // TODO: Fix maybe.
-/* 145 */       if (fe == null) {
-/* 146 */         System.out.println("MISMATCH: Got " + paramgp.a + ", " + paramgp.b + ", " + paramgp.c + ", " + paramgp.d + ", but expected <NO HIT>"); return;
-/*     */       }
-/* 148 */       if (fe.b != paramgp.a || fe.c != paramgp.b || fe.d != paramgp.c || fe.e != paramgp.d) {
-/* 149 */         System.out.println("MISMATCH: Got " + paramgp.a + ", " + paramgp.b + ", " + paramgp.c + ", " + paramgp.d + ", but expected " + fe.b + ", " + fe.c + ", " + fe.d + ", " + fe.e);
-/*     */         return;
-/*     */       }
+///* 145 */       if (fe == null) {
+///* 146 */         System.out.println("MISMATCH: Got " + paramgp.a + ", " + paramgp.b + ", " + paramgp.c + ", " + paramgp.d + ", but expected <NO HIT>"); return;
+///*     */       }
+///* 148 */       if (fe.b != paramgp.a || fe.c != paramgp.b || fe.d != paramgp.c || fe.e != paramgp.d) {
+///* 149 */         System.out.println("MISMATCH: Got " + paramgp.a + ", " + paramgp.b + ", " + paramgp.c + ", " + paramgp.d + ", but expected " + fe.b + ", " + fe.c + ", " + fe.d + ", " + fe.e);
+///*     */         return;
+///*     */       }
 /*     */     } 
 /* 153 */     int i = paramgp.a;
 /* 154 */     int j = paramgp.b;
 /* 155 */     int k = paramgp.c;
 /* 156 */     int m = paramgp.d;
-/* 157 */     int n = (int)fw.e((i - this.d.e.l));
-/* 158 */     int i1 = (int)fw.e((k - this.d.e.n));
+/* 157 */     int n = (int) MathHelper.e((i - this.d.e.l));
+/* 158 */     int i1 = (int) MathHelper.e((k - this.d.e.n));
 /* 159 */     if (n > i1) i1 = n; 
 /* 160 */     if (paramgp.e == 0) {
 /* 161 */       if (i1 > 16) this.e.ac.a(i, j, k); 
@@ -228,9 +228,9 @@ public void a(Packet10Flying paramfs) {
 /* 164 */     } else if (paramgp.e == 1) {
 /* 165 */       if (i1 > 16) this.e.ac.a(i, j, k, m); 
 /* 166 */     } else if (paramgp.e == 3) {
-/* 167 */       double d1 = this.e.k - i + 0.5D;
-/* 168 */       double d2 = this.e.l - j + 0.5D;
-/* 169 */       double d3 = this.e.m - k + 0.5D;
+/* 167 */       double d1 = this.e.posX - i + 0.5D;
+/* 168 */       double d2 = this.e.posY - j + 0.5D;
+/* 169 */       double d3 = this.e.posZ - k + 0.5D;
 /* 170 */       double d4 = d1 * d1 + d2 * d2 + d3 * d3;
 /* 171 */       if (d4 < 256.0D) {
 /* 172 */         this.e.playerNetServerHandler.sendPacket(new Packet53BlockChange(i, j, k, this.d.e));
@@ -243,8 +243,8 @@ public void a(Packet10Flying paramfs) {
 /* 179 */     int j = parames.c;
 /* 180 */     int k = parames.d;
 /* 181 */     int m = parames.e;
-/* 182 */     int n = (int)fw.e((i - this.d.e.l));
-/* 183 */     int i1 = (int)fw.e((k - this.d.e.n));
+/* 182 */     int n = (int) MathHelper.e((i - this.d.e.l));
+/* 183 */     int i1 = (int) MathHelper.e((k - this.d.e.n));
 /* 184 */     if (n > i1) i1 = n; 
 /* 185 */     if (i1 > 16) {
 /* 186 */       ItemStack gc = new ItemStack(parames.a);
@@ -255,7 +255,7 @@ public void a(Packet10Flying paramfs) {
 /*     */   
 /*     */   public void a(String paramString) {
 /* 193 */     a.info(this.e.username + " lost connection: " + paramString);
-/* 194 */     this.d.f.c(this.e);
+/* 194 */     this.d.configManager.c(this.e);
 /* 195 */     this.c = true;
 /*     */   }
 /*     */   
@@ -275,13 +275,13 @@ public void a(Packet10Flying paramfs) {
 /*     */     } else {
 /* 212 */       this.e.ai.a[this.e.ai.d] = new ItemStack(i);
 /*     */     } 
-/* 214 */     this.d.k.a(this.e, new Packet16BlockItemSwitch(this.e.c, i));
+/* 214 */     this.d.k.sendPacketToTrackedPlayers(this.e, new Packet16BlockItemSwitch(this.e.entityId, i));
 /*     */   }
 /*     */   
 /*     */   public void a(Packet21PickupSpawn paramj) {
-/* 218 */     double d1 = paramj.b / 32.0D;
-/* 219 */     double d2 = paramj.c / 32.0D;
-/* 220 */     double d3 = paramj.d / 32.0D;
+/* 218 */     double d1 = paramj.xPosition / 32.0D;
+/* 219 */     double d2 = paramj.yPosition / 32.0D;
+/* 220 */     double d3 = paramj.zPosition / 32.0D;
 /* 221 */     EntityItem fa = new EntityItem(this.d.e, d1, d2, d3, new ItemStack(paramj.h, paramj.i));
 /* 222 */     fa.n = paramj.e / 128.0D;
 /* 223 */     fa.o = paramj.f / 128.0D;
@@ -309,7 +309,7 @@ public void a(Packet10Flying paramfs) {
 /*     */     } else {
 /* 246 */       str = "<" + this.e.username + "> " + str;
 /* 247 */       a.info(str);
-/* 248 */       this.d.f.a(new Packet3Chat(str));
+/* 248 */       this.d.configManager.a(new Packet3Chat(str));
 /*     */     } 
 /*     */   }
 /*     */ 
@@ -318,7 +318,7 @@ public void a(Packet10Flying paramfs) {
 /* 254 */     if (paramString.toLowerCase().startsWith("/me ")) {
 /* 255 */       paramString = "* " + this.e.username + " " + paramString.substring(paramString.indexOf(" ")).trim();
 /* 256 */       a.info(paramString);
-/* 257 */       this.d.f.a(new Packet3Chat(paramString));
+/* 257 */       this.d.configManager.a(new Packet3Chat(paramString));
 /* 258 */     } else if (paramString.toLowerCase().equalsIgnoreCase("/home")) {
 /* 259 */       a.info(this.e.username + " returned home");
 /* 260 */       int i = this.d.e.d(this.d.e.l, this.d.e.n);

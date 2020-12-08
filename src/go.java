@@ -45,9 +45,9 @@
 /*    */       
 /*    */       return;
 /*    */     } 
-/* 48 */     this.h = this.k;
-/* 49 */     this.i = this.l;
-/* 50 */     this.j = this.m;
+/* 48 */     this.h = this.posX;
+/* 49 */     this.i = this.posY;
+/* 50 */     this.j = this.posZ;
 /* 51 */     this.b++;
 /*    */     
 /* 53 */     this.o -= 0.03999999910593033D;
@@ -56,9 +56,9 @@
 /* 56 */     this.o *= 0.9800000190734863D;
 /* 57 */     this.p *= 0.9800000190734863D;
 /*    */     
-/* 59 */     int i = fw.b(this.k);
-/* 60 */     int j = fw.b(this.l);
-/* 61 */     int k = fw.b(this.m);
+/* 59 */     int i = MathHelper.floor_double(this.posX);
+/* 60 */     int j = MathHelper.floor_double(this.posY);
+/* 61 */     int k = MathHelper.floor_double(this.posZ);
 /* 62 */     if (this.g.getBlockId(i, j, k) == this.a) {
 /* 63 */       this.g.setBlockWithNotify(i, j, k, 0);
 /*    */     }

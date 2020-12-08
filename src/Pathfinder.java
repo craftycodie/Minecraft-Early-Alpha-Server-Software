@@ -19,7 +19,7 @@
 /*     */   }
 /*     */   
 /*     */   public bx a(Entity paramdb1, Entity paramdb2, float paramFloat) {
-/*  22 */     return a(paramdb1, paramdb2.k, paramdb2.u.b, paramdb2.m, paramFloat);
+/*  22 */     return a(paramdb1, paramdb2.posX, paramdb2.u.b, paramdb2.posZ, paramFloat);
 /*     */   }
 /*     */   
 /*     */   public bx a(Entity paramdb, int paramInt1, int paramInt2, int paramInt3, float paramFloat) {
@@ -30,10 +30,10 @@
 /*  30 */     this.b.a();
 /*  31 */     this.c.clearMap();
 /*     */     
-/*  33 */     PathPoint a1 = a(fw.b(paramdb.u.a), fw.b(paramdb.u.b), fw.b(paramdb.u.c));
-/*  34 */     PathPoint a2 = a(fw.b(paramDouble1 - (paramdb.C / 2.0F)), fw.b(paramDouble2), fw.b(paramDouble3 - (paramdb.C / 2.0F)));
+/*  33 */     PathPoint a1 = a(MathHelper.floor_double(paramdb.u.a), MathHelper.floor_double(paramdb.u.b), MathHelper.floor_double(paramdb.u.c));
+/*  34 */     PathPoint a2 = a(MathHelper.floor_double(paramDouble1 - (paramdb.C / 2.0F)), MathHelper.floor_double(paramDouble2), MathHelper.floor_double(paramDouble3 - (paramdb.C / 2.0F)));
 /*     */     
-/*  36 */     PathPoint a3 = new PathPoint(fw.d(paramdb.C + 1.0F), fw.d(paramdb.D + 1.0F), fw.d(paramdb.C + 1.0F));
+/*  36 */     PathPoint a3 = new PathPoint(MathHelper.floor_float(paramdb.C + 1.0F), MathHelper.floor_float(paramdb.D + 1.0F), MathHelper.floor_float(paramdb.C + 1.0F));
 /*  37 */     return a(paramdb, a1, a2, a3, paramFloat);
 /*     */   }
 /*     */ 

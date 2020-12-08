@@ -252,9 +252,9 @@
 /* 252 */     int i = 0;
 /* 253 */     int j = arrayOfInt1[b2] + b5;
 /* 254 */     while (i != j) {
-/* 255 */       arrayOfInt2[b2] = fw.b((paramArrayOfint1[b2] + i) + 0.5D);
-/* 256 */       arrayOfInt2[b3] = fw.b(paramArrayOfint1[b3] + i * d1 + 0.5D);
-/* 257 */       arrayOfInt2[b4] = fw.b(paramArrayOfint1[b4] + i * d2 + 0.5D);
+/* 255 */       arrayOfInt2[b2] = MathHelper.floor_double((paramArrayOfint1[b2] + i) + 0.5D);
+/* 256 */       arrayOfInt2[b3] = MathHelper.floor_double(paramArrayOfint1[b3] + i * d1 + 0.5D);
+/* 257 */       arrayOfInt2[b4] = MathHelper.floor_double(paramArrayOfint1[b4] + i * d2 + 0.5D);
 /* 258 */       this.c.setBlock(arrayOfInt2[0], arrayOfInt2[1], arrayOfInt2[2], paramInt);
 /* 259 */       i += b5;
 /*     */     } 

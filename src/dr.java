@@ -18,11 +18,11 @@
 /*    */ 
 /*    */   
 /*    */   public void a(Entity paramdb) {
-/* 20 */     this.a.k.a(paramdb);
+/* 20 */     this.a.k.trackEntity(paramdb);
 /*    */   }
 /*    */   
 /*    */   public void b(Entity paramdb) {
-/* 24 */     this.a.k.b(paramdb);
+/* 24 */     this.a.k.untrackEntity(paramdb);
 /*    */   }
 /*    */ 
 /*    */ 
@@ -38,7 +38,7 @@
 /*    */ 
 /*    */   
 /*    */   public void a(int paramInt1, int paramInt2, int paramInt3) {
-/* 40 */     this.a.f.a(paramInt1, paramInt2, paramInt3);
+/* 40 */     this.a.configManager.a(paramInt1, paramInt2, paramInt3);
 /*    */   }
 /*    */   
 /*    */   public void a(String paramString, int paramInt1, int paramInt2, int paramInt3) {}

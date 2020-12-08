@@ -101,7 +101,7 @@
 /* 101 */           if (i > gc1.a) i = gc1.a; 
 /* 102 */           gc1.a -= i;
 /*     */           
-/* 104 */           EntityItem fa = new EntityItem(this.g, this.k + f1, this.l + f2, this.m + f3, new ItemStack(gc1.c, i, gc1.d));
+/* 104 */           EntityItem fa = new EntityItem(this.g, this.posX + f1, this.posY + f2, this.posZ + f3, new ItemStack(gc1.c, i, gc1.d));
 /* 105 */           float f = 0.05F;
 /* 106 */           fa.n = ((float)this.Q.nextGaussian() * f);
 /* 107 */           fa.o = ((float)this.Q.nextGaussian() * f + 0.2F);
@@ -132,40 +132,40 @@
 /*     */   public void b_() {
 /* 133 */     if (this.g.t) {
 /* 134 */       if (this.ak > 0) {
-/* 135 */         double d6 = this.k + (this.al - this.k) / this.ak;
-/* 136 */         double d7 = this.l + (this.am - this.l) / this.ak;
-/* 137 */         double d8 = this.m + (this.an - this.m) / this.ak;
+/* 135 */         double d6 = this.posX + (this.al - this.posX) / this.ak;
+/* 136 */         double d7 = this.posY + (this.am - this.posY) / this.ak;
+/* 137 */         double d8 = this.posZ + (this.an - this.posZ) / this.ak;
 /*     */         
-/* 139 */         double d9 = this.ao - this.q;
+/* 139 */         double d9 = this.ao - this.rotationYaw;
 /* 140 */         while (d9 < -180.0D)
 /* 141 */           d9 += 360.0D; 
 /* 142 */         while (d9 >= 180.0D) {
 /* 143 */           d9 -= 360.0D;
 /*     */         }
-/* 145 */         this.q = (float)(this.q + d9 / this.ak);
-/* 146 */         this.r = (float)(this.r + (this.ap - this.r) / this.ak);
+/* 145 */         this.rotationYaw = (float)(this.rotationYaw + d9 / this.ak);
+/* 146 */         this.rotationPitch = (float)(this.rotationPitch + (this.ap - this.rotationPitch) / this.ak);
 /*     */         
 /* 148 */         this.ak--;
 /* 149 */         a(d6, d7, d8);
-/* 150 */         b(this.q, this.r);
+/* 150 */         b(this.rotationYaw, this.rotationPitch);
 /*     */       } else {
-/* 152 */         a(this.k, this.l, this.m);
-/* 153 */         b(this.q, this.r);
+/* 152 */         a(this.posX, this.posY, this.posZ);
+/* 153 */         b(this.rotationYaw, this.rotationPitch);
 /*     */       } 
 /*     */       
 /*     */       return;
 /*     */     } 
 /* 158 */     if (this.b > 0) this.b--; 
 /* 159 */     if (this.a > 0) this.a--; 
-/* 160 */     this.h = this.k;
-/* 161 */     this.i = this.l;
-/* 162 */     this.j = this.m;
+/* 160 */     this.h = this.posX;
+/* 161 */     this.i = this.posY;
+/* 162 */     this.j = this.posZ;
 /*     */     
 /* 164 */     this.o -= 0.03999999910593033D;
 /*     */     
-/* 166 */     int i = fw.b(this.k);
-/* 167 */     int j = fw.b(this.l);
-/* 168 */     int k = fw.b(this.m);
+/* 166 */     int i = MathHelper.floor_double(this.posX);
+/* 167 */     int j = MathHelper.floor_double(this.posY);
+/* 168 */     int k = MathHelper.floor_double(this.posZ);
 /* 169 */     if (this.g.getBlockId(i, j - 1, k) == Block.aG.blockId) {
 /* 170 */       j--;
 /*     */     }
@@ -175,11 +175,11 @@
 /*     */     
 /* 176 */     double d2 = 0.0078125D;
 /* 177 */     if (this.g.getBlockId(i, j, k) == Block.aG.blockId) {
-/* 178 */       Vec3D as1 = g(this.k, this.l, this.m);
+/* 178 */       Vec3D as1 = g(this.posX, this.posY, this.posZ);
 /* 179 */       int m = this.g.getBlockMetadata(i, j, k);
-/* 180 */       this.l = j;
+/* 180 */       this.posY = j;
 /* 181 */       if (m >= 2 && m <= 5) {
-/* 182 */         this.l = (j + 1);
+/* 182 */         this.posY = (j + 1);
 /*     */       }
 /*     */       
 /* 185 */       if (m == 2) this.n -= d2; 
@@ -215,24 +215,24 @@
 /* 215 */       d7 = d15 - d13;
 /*     */       
 /* 217 */       if (d6 == 0.0D) {
-/* 218 */         this.k = i + 0.5D;
-/* 219 */         d11 = this.m - k;
+/* 218 */         this.posX = i + 0.5D;
+/* 219 */         d11 = this.posZ - k;
 /* 220 */       } else if (d7 == 0.0D) {
-/* 221 */         this.m = k + 0.5D;
-/* 222 */         d11 = this.k - i;
+/* 221 */         this.posZ = k + 0.5D;
+/* 222 */         d11 = this.posX - i;
 /*     */       } else {
 /*     */         
-/* 225 */         double d18 = this.k - d12;
-/* 226 */         double d19 = this.m - d13;
+/* 225 */         double d18 = this.posX - d12;
+/* 226 */         double d19 = this.posZ - d13;
 /*     */         
 /* 228 */         double d20 = (d18 * d6 + d19 * d7) * 2.0D;
 /* 229 */         d11 = d20;
 /*     */       } 
 /*     */       
-/* 232 */       this.k = d12 + d6 * d11;
-/* 233 */       this.m = d13 + d7 * d11;
+/* 232 */       this.posX = d12 + d6 * d11;
+/* 233 */       this.posZ = d13 + d7 * d11;
 /*     */       
-/* 235 */       a(this.k, this.l + this.B, this.m);
+/* 235 */       a(this.posX, this.posY + this.B, this.posZ);
 /*     */       
 /* 237 */       double d16 = this.n;
 /* 238 */       double d17 = this.p;
@@ -246,10 +246,10 @@
 /* 246 */       if (d17 > d1) d17 = d1; 
 /* 247 */       c(d16, 0.0D, d17);
 /*     */       
-/* 249 */       if (arrayOfInt[0][1] != 0 && fw.b(this.k) - i == arrayOfInt[0][0] && fw.b(this.m) - k == arrayOfInt[0][2]) {
-/* 250 */         a(this.k, this.l + arrayOfInt[0][1], this.m);
-/* 251 */       } else if (arrayOfInt[1][1] != 0 && fw.b(this.k) - i == arrayOfInt[1][0] && fw.b(this.m) - k == arrayOfInt[1][2]) {
-/* 252 */         a(this.k, this.l + arrayOfInt[1][1], this.m);
+/* 249 */       if (arrayOfInt[0][1] != 0 && MathHelper.floor_double(this.posX) - i == arrayOfInt[0][0] && MathHelper.floor_double(this.posZ) - k == arrayOfInt[0][2]) {
+/* 250 */         a(this.posX, this.posY + arrayOfInt[0][1], this.posZ);
+/* 251 */       } else if (arrayOfInt[1][1] != 0 && MathHelper.floor_double(this.posX) - i == arrayOfInt[1][0] && MathHelper.floor_double(this.posZ) - k == arrayOfInt[1][2]) {
+/* 252 */         a(this.posX, this.posY + arrayOfInt[1][1], this.posZ);
 /*     */       } 
 /*     */ 
 /*     */       
@@ -259,7 +259,7 @@
 /* 259 */         this.p *= 0.996999979019165D;
 /*     */       } else {
 /* 261 */         if (this.ad == 2) {
-/* 262 */           double d = fw.a(this.af * this.af + this.ag * this.ag);
+/* 262 */           double d = MathHelper.a(this.af * this.af + this.ag * this.ag);
 /* 263 */           if (d > 0.01D) {
 /* 264 */             bool = true;
 /* 265 */             this.af /= d;
@@ -282,7 +282,7 @@
 /*     */       } 
 /*     */ 
 /*     */       
-/* 285 */       Vec3D as2 = g(this.k, this.l, this.m);
+/* 285 */       Vec3D as2 = g(this.posX, this.posY, this.posZ);
 /* 286 */       if (as2 != null && as1 != null) {
 /* 287 */         double d = (as1.b - as2.b) * 0.05D;
 /*     */         
@@ -291,11 +291,11 @@
 /* 291 */           this.n = this.n / d10 * (d10 + d);
 /* 292 */           this.p = this.p / d10 * (d10 + d);
 /*     */         } 
-/* 294 */         a(this.k, as2.b, this.m);
+/* 294 */         a(this.posX, as2.b, this.posZ);
 /*     */       } 
 /*     */       
-/* 297 */       int n = fw.b(this.k);
-/* 298 */       int i1 = fw.b(this.m);
+/* 297 */       int n = MathHelper.floor_double(this.posX);
+/* 298 */       int i1 = MathHelper.floor_double(this.posZ);
 /* 299 */       if (n != i || i1 != k) {
 /* 300 */         d10 = Math.sqrt(this.n * this.n + this.p * this.p);
 /*     */         
@@ -304,7 +304,7 @@
 /*     */       } 
 /*     */       
 /* 306 */       if (this.ad == 2) {
-/* 307 */         double d = fw.a(this.af * this.af + this.ag * this.ag);
+/* 307 */         double d = MathHelper.a(this.af * this.af + this.ag * this.ag);
 /* 308 */         if (d > 0.01D && this.n * this.n + this.p * this.p > 0.001D) {
 /* 309 */           this.af /= d;
 /* 310 */           this.ag /= d;
@@ -340,24 +340,24 @@
 /*     */       } 
 /*     */     } 
 /*     */     
-/* 343 */     this.r = 0.0F;
-/* 344 */     double d3 = this.h - this.k;
-/* 345 */     double d4 = this.j - this.m;
+/* 343 */     this.rotationPitch = 0.0F;
+/* 344 */     double d3 = this.h - this.posX;
+/* 345 */     double d4 = this.j - this.posZ;
 /* 346 */     if (d3 * d3 + d4 * d4 > 0.001D) {
-/* 347 */       this.q = (float)(Math.atan2(d4, d3) * 180.0D / Math.PI);
-/* 348 */       if (this.ai) this.q += 180.0F;
+/* 347 */       this.rotationYaw = (float)(Math.atan2(d4, d3) * 180.0D / Math.PI);
+/* 348 */       if (this.ai) this.rotationYaw += 180.0F;
 /*     */     
 /*     */     } 
-/* 351 */     double d5 = (this.q - this.s);
+/* 351 */     double d5 = (this.rotationYaw - this.s);
 /* 352 */     while (d5 >= 180.0D)
 /* 353 */       d5 -= 360.0D; 
 /* 354 */     while (d5 < -180.0D)
 /* 355 */       d5 += 360.0D; 
 /* 356 */     if (d5 < -170.0D || d5 >= 170.0D) {
-/* 357 */       this.q += 180.0F;
+/* 357 */       this.rotationYaw += 180.0F;
 /* 358 */       this.ai = !this.ai;
 /*     */     } 
-/* 360 */     b(this.q, this.r);
+/* 360 */     b(this.rotationYaw, this.rotationPitch);
 /*     */     
 /* 362 */     List<Entity> list = this.g.b(this, this.u.b(0.20000000298023224D, 0.0D, 0.20000000298023224D));
 /* 363 */     if (list != null && list.size() > 0) {
@@ -378,7 +378,7 @@
 /* 378 */       if (this.ae < 0) {
 /* 379 */         this.af = this.ag = 0.0D;
 /*     */       }
-/* 381 */       this.g.a("largesmoke", this.k, this.l + 0.8D, this.m, 0.0D, 0.0D, 0.0D);
+/* 381 */       this.g.a("largesmoke", this.posX, this.posY + 0.8D, this.posZ, 0.0D, 0.0D, 0.0D);
 /*     */     } 
 /*     */   }
 /*     */ 
@@ -423,9 +423,9 @@
 /*     */ 
 /*     */   
 /*     */   public Vec3D g(double paramDouble1, double paramDouble2, double paramDouble3) {
-/* 426 */     int i = fw.b(paramDouble1);
-/* 427 */     int j = fw.b(paramDouble2);
-/* 428 */     int k = fw.b(paramDouble3);
+/* 426 */     int i = MathHelper.floor_double(paramDouble1);
+/* 427 */     int j = MathHelper.floor_double(paramDouble2);
+/* 428 */     int k = MathHelper.floor_double(paramDouble3);
 /* 429 */     if (this.g.getBlockId(i, j - 1, k) == Block.aG.blockId) {
 /* 430 */       j--;
 /*     */     }
@@ -528,12 +528,12 @@
 /*     */     }
 /*     */ 
 /*     */     
-/* 531 */     double d1 = paramdb.k - this.k;
-/* 532 */     double d2 = paramdb.m - this.m;
+/* 531 */     double d1 = paramdb.posX - this.posX;
+/* 532 */     double d2 = paramdb.posZ - this.posZ;
 /*     */     
 /* 534 */     double d3 = d1 * d1 + d2 * d2;
 /* 535 */     if (d3 >= 9.999999747378752E-5D) {
-/* 536 */       d3 = fw.a(d3);
+/* 536 */       d3 = MathHelper.a(d3);
 /* 537 */       d1 /= d3;
 /* 538 */       d2 /= d3;
 /* 539 */       double d = 1.0D / d3;

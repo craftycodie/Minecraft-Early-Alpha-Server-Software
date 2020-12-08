@@ -16,7 +16,7 @@
 /* 16 */     if (this.g.a()) {
 /* 17 */       float f = b(1.0F);
 /* 18 */       if (f > 0.5F && 
-/* 19 */         this.g.g(fw.b(this.k), fw.b(this.l), fw.b(this.m)) && this.Q.nextFloat() * 30.0F < (f - 0.4F) * 2.0F) {
+/* 19 */         this.g.g(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ)) && this.Q.nextFloat() * 30.0F < (f - 0.4F) * 2.0F) {
 /* 20 */         this.T = 300;
 /*    */       }
 /*    */     } 

@@ -87,7 +87,7 @@
 /*  85 */     if (!paramdb.A && 
 /*  86 */       paramdb instanceof EntityItem) {
 /*  87 */       this.playerNetServerHandler.sendPacket(new Packet17UnknownItemStack(((EntityItem)paramdb).a, paramInt));
-/*  88 */       this.b.k.a(paramdb, new Packet22Collect(paramdb.c, this.c));
+/*  88 */       this.b.k.sendPacketToTrackedPlayers(paramdb, new Packet22Collect(paramdb.entityId, this.entityId));
 /*     */     } 
 /*     */     
 /*  91 */     super.c(paramdb, paramInt);
@@ -97,7 +97,7 @@
 /*  95 */     if (!this.an) {
 /*  96 */       this.ao = -1;
 /*  97 */       this.an = true;
-/*  98 */       this.b.k.a(this, new Packet18Animation(this, 1));
+/*  98 */       this.b.k.sendPacketToTrackedPlayers(this, new Packet18Animation(this, 1));
 /*     */     } 
 /*     */   }
 /*     */   

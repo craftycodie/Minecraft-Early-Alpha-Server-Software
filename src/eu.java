@@ -65,9 +65,9 @@
 /*    */   }
 /*    */   
 /*    */   public boolean a() {
-/* 68 */     int i = fw.b(this.k);
-/* 69 */     int j = fw.b(this.u.b);
-/* 70 */     int k = fw.b(this.m);
+/* 68 */     int i = MathHelper.floor_double(this.posX);
+/* 69 */     int j = MathHelper.floor_double(this.u.b);
+/* 70 */     int k = MathHelper.floor_double(this.posZ);
 /* 71 */     if (this.g.a(cr.a, i, j, k) > this.Q.nextInt(32)) return false; 
 /* 72 */     int m = this.g.h(i, j, k);
 /* 73 */     return (m <= this.Q.nextInt(8) && super.a());

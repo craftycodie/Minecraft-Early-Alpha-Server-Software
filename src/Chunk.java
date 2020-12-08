@@ -280,12 +280,12 @@
                     return;
                 }
                 this.r = true;
-                int n2 = fw.b(db2.k / 16.0);
-                int n3 = fw.b(db2.m / 16.0);
+                int n2 = MathHelper.floor_double(db2.posX / 16.0);
+                int n3 = MathHelper.floor_double(db2.posZ / 16.0);
                 if (n2 != this.xPosition || n3 != this.zPosition) {
                     System.out.println("Wrong location! " + db2);
                 }
-                if ((n = fw.b(db2.l / 16.0)) < 0) {
+                if ((n = MathHelper.floor_double(db2.posY / 16.0)) < 0) {
                     n = 0;
                 }
                 if (n >= this.m.length) {
@@ -382,8 +382,8 @@
             }
 
             public void a(Entity db2, AxisAlignedBB cy2, List list) {
-                int n = fw.b((cy2.b - 2.0) / 16.0);
-                int n2 = fw.b((cy2.e + 2.0) / 16.0);
+                int n = MathHelper.floor_double((cy2.b - 2.0) / 16.0);
+                int n2 = MathHelper.floor_double((cy2.e + 2.0) / 16.0);
                 if (n < 0) {
                     n = 0;
                 }
@@ -401,8 +401,8 @@
             }
 
             public void a(Class class_, AxisAlignedBB cy2, List list) {
-                int n = fw.b((cy2.b - 2.0) / 16.0);
-                int n2 = fw.b((cy2.e + 2.0) / 16.0);
+                int n = MathHelper.floor_double((cy2.b - 2.0) / 16.0);
+                int n2 = MathHelper.floor_double((cy2.e + 2.0) / 16.0);
                 if (n < 0) {
                     n = 0;
                 }

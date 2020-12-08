@@ -23,8 +23,8 @@
 /* 23 */     double d1 = (this.a * 16 + 8);
 /* 24 */     double d2 = (this.b * 16 + 8);
 /*    */     
-/* 26 */     double d3 = d1 - paramdb.k;
-/* 27 */     double d4 = d2 - paramdb.m;
+/* 26 */     double d3 = d1 - paramdb.posX;
+/* 27 */     double d4 = d2 - paramdb.posZ;
 /*    */     
 /* 29 */     return d3 * d3 + d4 * d4;
 /*    */   }

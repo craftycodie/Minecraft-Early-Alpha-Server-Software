@@ -112,12 +112,12 @@
 /* 112 */       this.ai++;
 /*     */     } 
 /*     */     
-/* 115 */     Vec3D as1 = Vec3D.b(this.k, this.l, this.m);
-/* 116 */     Vec3D as2 = Vec3D.b(this.k + this.n, this.l + this.o, this.m + this.p);
+/* 115 */     Vec3D as1 = Vec3D.b(this.posX, this.posY, this.posZ);
+/* 116 */     Vec3D as2 = Vec3D.b(this.posX + this.n, this.posY + this.o, this.posZ + this.p);
 /* 117 */     fe fe = this.g.a(as1, as2);
 /*     */     
-/* 119 */     as1 = Vec3D.b(this.k, this.l, this.m);
-/* 120 */     as2 = Vec3D.b(this.k + this.n, this.l + this.o, this.m + this.p);
+/* 119 */     as1 = Vec3D.b(this.posX, this.posY, this.posZ);
+/* 120 */     as2 = Vec3D.b(this.posX + this.n, this.posY + this.o, this.posZ + this.p);
 /* 121 */     if (fe != null) {
 /* 122 */       as2 = Vec3D.b(fe.f.a, fe.f.b, fe.f.c);
 /*     */     }
@@ -167,29 +167,29 @@
 /*     */ 
 /*     */       
 /* 169 */       for (b = 0; b < 8; b++)
-/* 170 */         this.g.a("snowballpoof", this.k, this.l, this.m, 0.0D, 0.0D, 0.0D); 
+/* 170 */         this.g.a("snowballpoof", this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D);
 /* 171 */       i();
 /*     */     } 
-/* 173 */     this.k += this.n;
-/* 174 */     this.l += this.o;
-/* 175 */     this.m += this.p;
+/* 173 */     this.posX += this.n;
+/* 174 */     this.posY += this.o;
+/* 175 */     this.posZ += this.p;
 /*     */     
-/* 177 */     float f1 = fw.a(this.n * this.n + this.p * this.p);
-/* 178 */     this.q = (float)(Math.atan2(this.n, this.p) * 180.0D / 3.1415927410125732D);
-/* 179 */     this.r = (float)(Math.atan2(this.o, f1) * 180.0D / 3.1415927410125732D);
+/* 177 */     float f1 = MathHelper.a(this.n * this.n + this.p * this.p);
+/* 178 */     this.rotationYaw = (float)(Math.atan2(this.n, this.p) * 180.0D / 3.1415927410125732D);
+/* 179 */     this.rotationPitch = (float)(Math.atan2(this.o, f1) * 180.0D / 3.1415927410125732D);
 /*     */     
-/* 181 */     while (this.r - this.t < -180.0F)
+/* 181 */     while (this.rotationPitch - this.t < -180.0F)
 /* 182 */       this.t -= 360.0F; 
-/* 183 */     while (this.r - this.t >= 180.0F) {
+/* 183 */     while (this.rotationPitch - this.t >= 180.0F) {
 /* 184 */       this.t += 360.0F;
 /*     */     }
-/* 186 */     while (this.q - this.s < -180.0F)
+/* 186 */     while (this.rotationYaw - this.s < -180.0F)
 /* 187 */       this.s -= 360.0F; 
-/* 188 */     while (this.q - this.s >= 180.0F) {
+/* 188 */     while (this.rotationYaw - this.s >= 180.0F) {
 /* 189 */       this.s += 360.0F;
 /*     */     }
-/* 191 */     this.r = this.t + (this.r - this.t) * 0.2F;
-/* 192 */     this.q = this.s + (this.q - this.s) * 0.2F;
+/* 191 */     this.rotationPitch = this.t + (this.rotationPitch - this.t) * 0.2F;
+/* 192 */     this.rotationYaw = this.s + (this.rotationYaw - this.s) * 0.2F;
 /*     */ 
 /*     */     
 /* 195 */     float f2 = 0.99F;
@@ -198,7 +198,7 @@
 /* 198 */     if (m()) {
 /* 199 */       for (int b1 = 0; b1 < 4; b1++) {
 /* 200 */         float f = 0.25F;
-/* 201 */         this.g.a("bubble", this.k - this.n * f, this.l - this.o * f, this.m - this.p * f, this.n, this.o, this.p);
+/* 201 */         this.g.a("bubble", this.posX - this.n * f, this.posY - this.o * f, this.posZ - this.p * f, this.n, this.o, this.p);
 /*     */       } 
 /* 203 */       f2 = 0.8F;
 /*     */     } 
@@ -208,7 +208,7 @@
 /* 208 */     this.p *= f2;
 /* 209 */     this.o -= f3;
 /*     */     
-/* 211 */     a(this.k, this.l, this.m);
+/* 211 */     a(this.posX, this.posY, this.posZ);
 /*     */   }
 /*     */   
 /*     */   public void a(NBTTagCompound paramr) {

@@ -24,7 +24,7 @@ import java.util.logging.Logger;
 /*     */     } 
 /*     */ 
 /*     */     
-/*  23 */     EntityPlayerMP dq = this.d.f.a(this, paramx.b, paramx.c);
+/*  23 */     EntityPlayerMP dq = this.d.configManager.a(this, paramx.b, paramx.c);
 /*     */ 
 /*     */ 
 /*     */ 
@@ -74,14 +74,14 @@ import java.util.logging.Logger;
 /*     */ 
 /*     */ 
 /*     */       
-/*  73 */       this.d.f.a(dq);
+/*  73 */       this.d.configManager.a(dq);
 /*     */ 
 /*     */ 
 /*     */ 
 /*     */ 
 /*     */ 
 /*     */       
-/*  80 */       hm.a(dq.k, dq.l, dq.m, dq.q, dq.r);
+/*  80 */       hm.a(dq.posX, dq.posY, dq.posZ, dq.rotationYaw, dq.rotationPitch);
 /*     */ 
 /*     */ 
 /*     */ 

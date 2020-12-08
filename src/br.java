@@ -38,9 +38,9 @@
 /*     */             
 /*  39 */             float f2 = 0.3F;
 /*  40 */             while (f1 > 0.0F) {
-/*  41 */               int i3 = fw.b(d5);
-/*  42 */               int i4 = fw.b(d6);
-/*  43 */               int i5 = fw.b(d7);
+/*  41 */               int i3 = MathHelper.floor_double(d5);
+/*  42 */               int i4 = MathHelper.floor_double(d6);
+/*  43 */               int i5 = MathHelper.floor_double(d7);
 /*  44 */               int i6 = paramdp.getBlockId(i3, i4, i5);
 /*  45 */               if (i6 > 0) {
 /*  46 */                 f1 -= (Block.blocksList[i6].a(paramdb) + 0.3F) * f2;
@@ -60,23 +60,23 @@
 /*     */     } 
 /*     */     
 /*  62 */     paramFloat *= 2.0F;
-/*  63 */     i = fw.b(paramDouble1 - paramFloat - 1.0D);
-/*  64 */     int j = fw.b(paramDouble1 + paramFloat + 1.0D);
-/*  65 */     int k = fw.b(paramDouble2 - paramFloat - 1.0D);
-/*  66 */     int m = fw.b(paramDouble2 + paramFloat + 1.0D);
-/*  67 */     int n = fw.b(paramDouble3 - paramFloat - 1.0D);
-/*  68 */     int i1 = fw.b(paramDouble3 + paramFloat + 1.0D);
+/*  63 */     i = MathHelper.floor_double(paramDouble1 - paramFloat - 1.0D);
+/*  64 */     int j = MathHelper.floor_double(paramDouble1 + paramFloat + 1.0D);
+/*  65 */     int k = MathHelper.floor_double(paramDouble2 - paramFloat - 1.0D);
+/*  66 */     int m = MathHelper.floor_double(paramDouble2 + paramFloat + 1.0D);
+/*  67 */     int n = MathHelper.floor_double(paramDouble3 - paramFloat - 1.0D);
+/*  68 */     int i1 = MathHelper.floor_double(paramDouble3 + paramFloat + 1.0D);
 /*  69 */     List<Entity> list = paramdp.b(paramdb, AxisAlignedBB.b(i, k, n, j, m, i1));
 /*  70 */     Vec3D as = Vec3D.b(paramDouble1, paramDouble2, paramDouble3);
 /*  71 */     for (int b2 = 0; b2 < list.size(); b2++) {
 /*  72 */       Entity db1 = list.get(b2);
 /*  73 */       double d = db1.e(paramDouble1, paramDouble2, paramDouble3) / paramFloat;
 /*  74 */       if (d <= 1.0D) {
-/*  75 */         double d1 = db1.k - paramDouble1;
-/*  76 */         double d2 = db1.l - paramDouble2;
-/*  77 */         double d3 = db1.m - paramDouble3;
+/*  75 */         double d1 = db1.posX - paramDouble1;
+/*  76 */         double d2 = db1.posY - paramDouble2;
+/*  77 */         double d3 = db1.posZ - paramDouble3;
 /*     */         
-/*  79 */         double d4 = fw.a(d1 * d1 + d2 * d2 + d3 * d3);
+/*  79 */         double d4 = MathHelper.a(d1 * d1 + d2 * d2 + d3 * d3);
 /*     */         
 /*  81 */         d1 /= d4;
 /*  82 */         d2 /= d4;
@@ -113,7 +113,7 @@
 /* 113 */         double d5 = d2 - paramDouble2;
 /* 114 */         double d6 = d3 - paramDouble3;
 /*     */         
-/* 116 */         double d7 = fw.a(d4 * d4 + d5 * d5 + d6 * d6);
+/* 116 */         double d7 = MathHelper.a(d4 * d4 + d5 * d5 + d6 * d6);
 /*     */         
 /* 118 */         d4 /= d7;
 /* 119 */         d5 /= d7;

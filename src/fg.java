@@ -21,7 +21,7 @@
 /* 20 */     this.d = new PlayerManager(paramMinecraftServer);
 /*    */   }
 /*    */   
-/*    */   public int a() {
+/*    */   public int getMaxTrackingDistance() {
 /* 24 */     return this.d.b();
 /*    */   }
 /*    */   

@@ -30,7 +30,7 @@
 /*  30 */     a(paramDouble1, paramDouble2, paramDouble3);
 /*  31 */     this.a = paramgc;
 /*     */     
-/*  33 */     this.q = (float)(Math.random() * 360.0D);
+/*  33 */     this.rotationYaw = (float)(Math.random() * 360.0D);
 /*     */     
 /*  35 */     this.n = (float)(Math.random() * 0.20000000298023224D - 0.10000000149011612D);
 /*  36 */     this.o = 0.20000000298023224D;
@@ -47,18 +47,18 @@
 /*     */   public void b_() {
 /*  48 */     super.b_();
 /*  49 */     if (this.ac > 0) this.ac--; 
-/*  50 */     this.h = this.k;
-/*  51 */     this.i = this.l;
-/*  52 */     this.j = this.m;
+/*  50 */     this.h = this.posX;
+/*  51 */     this.i = this.posY;
+/*  52 */     this.j = this.posZ;
 /*     */     
 /*  54 */     this.o -= 0.03999999910593033D;
-/*  55 */     if (this.g.getBlockMaterial(fw.b(this.k), fw.b(this.l), fw.b(this.m)) == Material.g) {
+/*  55 */     if (this.g.getBlockMaterial(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ)) == Material.g) {
 /*  56 */       this.o = 0.20000000298023224D;
 /*  57 */       this.n = ((this.Q.nextFloat() - this.Q.nextFloat()) * 0.2F);
 /*  58 */       this.p = ((this.Q.nextFloat() - this.Q.nextFloat()) * 0.2F);
 /*  59 */       this.g.a(this, "random.fizz", 0.4F, 2.0F + this.Q.nextFloat() * 0.4F);
 /*     */     } 
-/*  61 */     g(this.k, this.l, this.m);
+/*  61 */     g(this.posX, this.posY, this.posZ);
 /*  62 */     m();
 /*  63 */     c(this.n, this.o, this.p);
 /*     */ 
@@ -66,7 +66,7 @@
 /*  66 */     float f = 0.98F;
 /*  67 */     if (this.v) {
 /*  68 */       f = 0.58800006F;
-/*  69 */       int i = this.g.getBlockId(fw.b(this.k), fw.b(this.u.b) - 1, fw.b(this.m));
+/*  69 */       int i = this.g.getBlockId(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.u.b) - 1, MathHelper.floor_double(this.posZ));
 /*  70 */       if (i > 0) {
 /*  71 */         f = (Block.blocksList[i]).bm * 0.98F;
 /*     */       }
@@ -111,9 +111,9 @@
 /*     */   }
 /*     */   
 /*     */   private boolean g(double paramDouble1, double paramDouble2, double paramDouble3) {
-/* 114 */     int i = fw.b(paramDouble1);
-/* 115 */     int j = fw.b(paramDouble2);
-/* 116 */     int k = fw.b(paramDouble3);
+/* 114 */     int i = MathHelper.floor_double(paramDouble1);
+/* 115 */     int j = MathHelper.floor_double(paramDouble2);
+/* 116 */     int k = MathHelper.floor_double(paramDouble3);
 /*     */     
 /* 118 */     double d1 = paramDouble1 - i;
 /* 119 */     double d2 = paramDouble2 - j;

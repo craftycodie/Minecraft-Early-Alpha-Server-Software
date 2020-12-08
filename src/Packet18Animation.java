@@ -18,7 +18,7 @@ import java.io.IOException;
 /*    */   public Packet18Animation() {}
 /*    */   
 /*    */   public Packet18Animation(Entity paramdb, int paramInt) {
-/* 19 */     this.a = paramdb.c;
+/* 19 */     this.a = paramdb.entityId;
 /* 20 */     this.b = paramInt;
 /*    */   }
 /*    */   

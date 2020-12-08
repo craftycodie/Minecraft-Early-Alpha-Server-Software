@@ -541,16 +541,16 @@
         this.aK = 10;
         this.d = true;
         this.at = (float) (Math.random() + 1.0D) * 0.01F;
-        a(this.k, this.l, this.m);
+        a(this.posX, this.posY, this.posZ);
         this.ar = (float) Math.random() * 12398.0F;
-        this.q = (float) (Math.random() * 3.1415927410125732D * 2.0D);
+        this.rotationYaw = (float) (Math.random() * 3.1415927410125732D * 2.0D);
         this.as = 1.0F;
         this.M = 0.5F;
     }
 
     /*     */
     protected boolean g(Entity paramdb) {
-        return (this.g.a(Vec3D.b(this.k, this.l + n(), this.m), Vec3D.b(paramdb.k, paramdb.l + paramdb.n(), paramdb.m)) == null);
+        return (this.g.a(Vec3D.b(this.posX, this.posY + n(), this.posZ), Vec3D.b(paramdb.posX, paramdb.posY + paramdb.n(), paramdb.posZ)) == null);
     }
 
     /*     */
@@ -588,7 +588,7 @@
                     float f1 = this.Q.nextFloat() - this.Q.nextFloat();
                     float f2 = this.Q.nextFloat() - this.Q.nextFloat();
                     float f3 = this.Q.nextFloat() - this.Q.nextFloat();
-                    this.g.a("bubble", this.k + f1, this.l + f2, this.m + f3, this.n, this.o, this.p);
+                    this.g.a("bubble", this.posX + f1, this.posY + f2, this.posZ + f3, this.n, this.o, this.p);
                 }
                 a((Entity) null, 2);
             }
@@ -609,14 +609,14 @@
                     double d1 = this.Q.nextGaussian() * 0.02D;
                     double d2 = this.Q.nextGaussian() * 0.02D;
                     double d3 = this.Q.nextGaussian() * 0.02D;
-                    this.g.a("explode", this.k + (this.Q.nextFloat() * this.C * 2.0F) - this.C, this.l + (this.Q.nextFloat() * this.D), this.m + (this.Q.nextFloat() * this.C * 2.0F) - this.C, d1, d2, d3);
+                    this.g.a("explode", this.posX + (this.Q.nextFloat() * this.C * 2.0F) - this.C, this.posY + (this.Q.nextFloat() * this.D), this.posZ + (this.Q.nextFloat() * this.C * 2.0F) - this.C, d1, d2, d3);
                 }
             }
         }
         this.az = this.ay;
         this.av = this.au;
-        this.s = this.q;
-        this.t = this.r;
+        this.s = this.rotationYaw;
+        this.t = this.rotationPitch;
     }
 
     public void C() {
@@ -625,7 +625,7 @@
             double d2 = this.Q.nextGaussian() * 0.02D;
             double d3 = this.Q.nextGaussian() * 0.02D;
             double d4 = 10.0D;
-            this.g.a("explode", this.k + (this.Q.nextFloat() * this.C * 2.0F) - this.C - d1 * d4, this.l + (this.Q.nextFloat() * this.D) - d2 * d4, this.m + (this.Q.nextFloat() * this.C * 2.0F) - this.C - d3 * d4, d1, d2, d3);
+            this.g.a("explode", this.posX + (this.Q.nextFloat() * this.C * 2.0F) - this.C - d1 * d4, this.posY + (this.Q.nextFloat() * this.D) - d2 * d4, this.posZ + (this.Q.nextFloat() * this.C * 2.0F) - this.C - d3 * d4, d1, d2, d3);
         }
     }
 
@@ -638,9 +638,9 @@
     public void b_() {
         super.b_();
         x();
-        double d1 = this.k - this.h;
-        double d2 = this.m - this.j;
-        float f1 = fw.a(d1 * d1 + d2 * d2);
+        double d1 = this.posX - this.h;
+        double d2 = this.posZ - this.j;
+        float f1 = MathHelper.a(d1 * d1 + d2 * d2);
         float f2 = this.au;
         float f3 = 0.0F;
         this.aw = this.ax;
@@ -650,28 +650,28 @@
             f3 = f1 * 3.0F;
             f2 = (float) Math.atan2(d2, d1) * 180.0F / 3.1415927F - 90.0F;
         }
-        if (this.aJ > 0.0F) f2 = this.q;
+        if (this.aJ > 0.0F) f2 = this.rotationYaw;
         if (!this.v) f4 = 0.0F;
         this.ax += (f4 - this.ax) * 0.3F;
         float f5 = f2 - this.au;
         while (f5 < -180.0F) f5 += 360.0F;
         while (f5 >= 180.0F) f5 -= 360.0F;
         this.au += f5 * 0.3F;
-        float f6 = this.q - this.au;
+        float f6 = this.rotationYaw - this.au;
         while (f6 < -180.0F) f6 += 360.0F;
         while (f6 >= 180.0F) f6 -= 360.0F;
         boolean bool = (f6 < -90.0F || f6 >= 90.0F) ? true : false;
         if (f6 < -75.0F) f6 = -75.0F;
         if (f6 >= 75.0F) f6 = 75.0F;
-        this.au = this.q - f6;
+        this.au = this.rotationYaw - f6;
         if (f6 * f6 > 2500.0F) this.au += f6 * 0.2F;
         if (bool) f3 *= -1.0F;
-        while (this.q - this.s < -180.0F) this.s -= 360.0F;
-        while (this.q - this.s >= 180.0F) this.s += 360.0F;
+        while (this.rotationYaw - this.s < -180.0F) this.s -= 360.0F;
+        while (this.rotationYaw - this.s >= 180.0F) this.s += 360.0F;
         while (this.au - this.av < -180.0F) this.av -= 360.0F;
         while (this.au - this.av >= 180.0F) this.av += 360.0F;
-        while (this.r - this.t < -180.0F) this.t -= 360.0F;
-        while (this.r - this.t >= 180.0F) this.t += 360.0F;
+        while (this.rotationPitch - this.t < -180.0F) this.t -= 360.0F;
+        while (this.rotationPitch - this.t >= 180.0F) this.t += 360.0F;
         this.ay += f3;
     }
 
@@ -700,13 +700,13 @@ public boolean a(Entity paramdb, int paramInt) {
     }
     this.aO = 0.0F;
     if (paramdb != null) {
-        double d1 = paramdb.k - this.k;
-        double d2 = paramdb.m - this.m;
+        double d1 = paramdb.posX - this.posX;
+        double d2 = paramdb.posZ - this.posZ;
         while (d1 * d1 + d2 * d2 < 1.0E-4D) {
             d1 = (Math.random() - Math.random()) * 0.01D;
             d2 = (Math.random() - Math.random()) * 0.01D;
         }
-        this.aO = (float) (Math.atan2(d2, d1) * 180.0D / 3.1415927410125732D) - this.q;
+        this.aO = (float) (Math.atan2(d2, d1) * 180.0D / 3.1415927410125732D) - this.rotationYaw;
         a(paramdb, paramInt, d1, d2);
     } else {
         this.aO = ((int) (Math.random() * 2.0D) * 180);
@@ -730,11 +730,11 @@ protected void d_() {
     /* 529 */
     if (eq != null) {
         /* 530 */
-        double d1 = eq.k - this.k;
+        double d1 = eq.posX - this.posX;
         /* 531 */
-        double d2 = eq.l - this.l;
+        double d2 = eq.posY - this.posY;
         /* 532 */
-        double d3 = eq.m - this.m;
+        double d3 = eq.posZ - this.posZ;
         /* 533 */
         double d4 = d1 * d1 + d2 * d2 + d3 * d3;
         /*     */
@@ -813,9 +813,9 @@ protected void d_() {
             /*     */
         }
         /* 577 */
-        this.q += this.bc;
+        this.rotationYaw += this.bc;
         /* 578 */
-        this.r = this.be;
+        this.rotationPitch = this.be;
         /*     */
     }
     /*     */
@@ -829,23 +829,23 @@ protected void d_() {
 /*     */   protected String c() { return null; }
 /*     */   protected String getHurtSound() { return "random.hurt"; }
 /*     */   protected String getDeathSound() { return "random.hurt"; }
-/* 587 */   public void a(Entity paramdb, int paramInt, double paramDouble1, double paramDouble2) { float f1 = fw.a(paramDouble1 * paramDouble1 + paramDouble2 * paramDouble2); float f2 = 0.4F; this.n /= 2.0D; this.o /= 2.0D; this.p /= 2.0D; this.n -= paramDouble1 / f1 * f2; this.o += 0.4000000059604645D; this.p -= paramDouble2 / f1 * f2; if (this.o > 0.4000000059604645D) this.o = 0.4000000059604645D;  } public void f(Entity paramdb) { if (this.aG > 0 && paramdb != null) paramdb.b(this, this.aG);  this.aT = true; int i = g(); if (i > 0) { int j = this.Q.nextInt(3); for (int b = 0; b < j; b++) a(i, 1);  }  } protected int g() { return 0; } protected void a(float paramFloat) { int i = (int)Math.ceil((paramFloat - 3.0F)); if (i > 0) { a((Entity)null, i); int j = this.g.getBlockId(fw.b(this.k), fw.b(this.l - 0.20000000298023224D - this.B), fw.b(this.m)); if (j > 0) { StepSound bl = (Block.blocksList[j]).bj; this.g.a(this, bl.c(), bl.a() * 0.5F, bl.b() * 0.75F); }  }  } public void c(float paramFloat1, float paramFloat2) { if (m()) { double d = this.l; a(paramFloat1, paramFloat2, 0.02F); c(this.n, this.o, this.p); this.n *= 0.800000011920929D; this.o *= 0.800000011920929D; this.p *= 0.800000011920929D; this.o -= 0.02D; if (this.w && b(this.n, this.o + 0.6000000238418579D - this.l + d, this.p)) this.o = 0.30000001192092896D;  } else if (o()) { double d = this.l; a(paramFloat1, paramFloat2, 0.02F); c(this.n, this.o, this.p); this.n *= 0.5D; this.o *= 0.5D; this.p *= 0.5D; this.o -= 0.02D; if (this.w && b(this.n, this.o + 0.6000000238418579D - this.l + d, this.p)) this.o = 0.30000001192092896D;  } else { float f1 = 0.91F; if (this.v) { f1 = 0.54600006F; int i = this.g.getBlockId(fw.b(this.k), fw.b(this.u.b) - 1, fw.b(this.m)); if (i > 0) f1 = (Block.blocksList[i]).bm * 0.91F;  }  float f2 = 0.16277136F / f1 * f1 * f1; a(paramFloat1, paramFloat2, this.v ? (0.1F * f2) : 0.02F); f1 = 0.91F; if (this.v) { f1 = 0.54600006F; int i = this.g.getBlockId(fw.b(this.k), fw.b(this.u.b) - 1, fw.b(this.m)); if (i > 0) f1 = (Block.blocksList[i]).bm * 0.91F;  }  if (D()) { this.H = 0.0F; if (this.o < -0.15D) this.o = -0.15D;  }  c(this.n, this.o, this.p); if (this.w && D()) this.o = 0.2D;  this.o -= 0.08D; this.o *= 0.9800000190734863D; this.n *= f1; this.p *= f1; }  this.aW = this.aX; double d1 = this.k - this.h; double d2 = this.m - this.j; float f = fw.a(d1 * d1 + d2 * d2) * 4.0F; if (f > 1.0F) f = 1.0F;  this.aX += (f - this.aX) * 0.4F; this.aY += this.aX; } public boolean D() { int i = fw.b(this.k); int j = fw.b(this.u.b); int k = fw.b(this.m); return (this.g.getBlockId(i, j, k) == Block.aF.blockId || this.g.getBlockId(i, j + 1, k) == Block.aF.blockId); } public void a(NBTTagCompound paramr) { paramr.a("Health", (short)this.aK); paramr.a("HurtTime", (short)this.aM); paramr.a("DeathTime", (short)this.aP); paramr.a("AttackTime", (short)this.aQ); } public void b(NBTTagCompound paramr) { this.aK = paramr.c("Health"); if (!paramr.a("Health")) this.aK = 10;  this.aM = paramr.c("HurtTime"); this.aP = paramr.c("DeathTime"); this.aQ = paramr.c("AttackTime"); } public boolean r() { return (!this.A && this.aK > 0); } public void x() { if (this.aK <= 0) { this.bd = false; this.ba = 0.0F; this.bb = 0.0F; this.bc = 0.0F; } else { d_(); }  boolean bool1 = m(); boolean bool2 = o(); if (this.bd) if (bool1) { this.o += 0.03999999910593033D; } else if (bool2) { this.o += 0.03999999910593033D; } else if (this.v) { E(); }   this.ba *= 0.98F; this.bb *= 0.98F; this.bc *= 0.9F; c(this.ba, this.bb); List<Entity> list = this.g.b(this, this.u.b(0.20000000298023224D, 0.0D, 0.20000000298023224D)); if (list != null && list.size() > 0) for (int b = 0; b < list.size(); b++) { Entity db1 = list.get(b); if (db1.p()) db1.c(this);  }   } protected void E() { this.o = 0.41999998688697815D; } public void b(Entity paramdb, float paramFloat) { double d2, d1 = paramdb.k - this.k;
+/* 587 */   public void a(Entity paramdb, int paramInt, double paramDouble1, double paramDouble2) { float f1 = MathHelper.a(paramDouble1 * paramDouble1 + paramDouble2 * paramDouble2); float f2 = 0.4F; this.n /= 2.0D; this.o /= 2.0D; this.p /= 2.0D; this.n -= paramDouble1 / f1 * f2; this.o += 0.4000000059604645D; this.p -= paramDouble2 / f1 * f2; if (this.o > 0.4000000059604645D) this.o = 0.4000000059604645D;  } public void f(Entity paramdb) { if (this.aG > 0 && paramdb != null) paramdb.b(this, this.aG);  this.aT = true; int i = g(); if (i > 0) { int j = this.Q.nextInt(3); for (int b = 0; b < j; b++) a(i, 1);  }  } protected int g() { return 0; } protected void a(float paramFloat) { int i = (int)Math.ceil((paramFloat - 3.0F)); if (i > 0) { a((Entity)null, i); int j = this.g.getBlockId(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY - 0.20000000298023224D - this.B), MathHelper.floor_double(this.posZ)); if (j > 0) { StepSound bl = (Block.blocksList[j]).bj; this.g.a(this, bl.c(), bl.a() * 0.5F, bl.b() * 0.75F); }  }  } public void c(float paramFloat1, float paramFloat2) { if (m()) { double d = this.posY; a(paramFloat1, paramFloat2, 0.02F); c(this.n, this.o, this.p); this.n *= 0.800000011920929D; this.o *= 0.800000011920929D; this.p *= 0.800000011920929D; this.o -= 0.02D; if (this.w && b(this.n, this.o + 0.6000000238418579D - this.posY + d, this.p)) this.o = 0.30000001192092896D;  } else if (o()) { double d = this.posY; a(paramFloat1, paramFloat2, 0.02F); c(this.n, this.o, this.p); this.n *= 0.5D; this.o *= 0.5D; this.p *= 0.5D; this.o -= 0.02D; if (this.w && b(this.n, this.o + 0.6000000238418579D - this.posY + d, this.p)) this.o = 0.30000001192092896D;  } else { float f1 = 0.91F; if (this.v) { f1 = 0.54600006F; int i = this.g.getBlockId(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.u.b) - 1, MathHelper.floor_double(this.posZ)); if (i > 0) f1 = (Block.blocksList[i]).bm * 0.91F;  }  float f2 = 0.16277136F / f1 * f1 * f1; a(paramFloat1, paramFloat2, this.v ? (0.1F * f2) : 0.02F); f1 = 0.91F; if (this.v) { f1 = 0.54600006F; int i = this.g.getBlockId(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.u.b) - 1, MathHelper.floor_double(this.posZ)); if (i > 0) f1 = (Block.blocksList[i]).bm * 0.91F;  }  if (D()) { this.H = 0.0F; if (this.o < -0.15D) this.o = -0.15D;  }  c(this.n, this.o, this.p); if (this.w && D()) this.o = 0.2D;  this.o -= 0.08D; this.o *= 0.9800000190734863D; this.n *= f1; this.p *= f1; }  this.aW = this.aX; double d1 = this.posX - this.h; double d2 = this.posZ - this.j; float f = MathHelper.a(d1 * d1 + d2 * d2) * 4.0F; if (f > 1.0F) f = 1.0F;  this.aX += (f - this.aX) * 0.4F; this.aY += this.aX; } public boolean D() { int i = MathHelper.floor_double(this.posX); int j = MathHelper.floor_double(this.u.b); int k = MathHelper.floor_double(this.posZ); return (this.g.getBlockId(i, j, k) == Block.aF.blockId || this.g.getBlockId(i, j + 1, k) == Block.aF.blockId); } public void a(NBTTagCompound paramr) { paramr.a("Health", (short)this.aK); paramr.a("HurtTime", (short)this.aM); paramr.a("DeathTime", (short)this.aP); paramr.a("AttackTime", (short)this.aQ); } public void b(NBTTagCompound paramr) { this.aK = paramr.c("Health"); if (!paramr.a("Health")) this.aK = 10;  this.aM = paramr.c("HurtTime"); this.aP = paramr.c("DeathTime"); this.aQ = paramr.c("AttackTime"); } public boolean r() { return (!this.A && this.aK > 0); } public void x() { if (this.aK <= 0) { this.bd = false; this.ba = 0.0F; this.bb = 0.0F; this.bc = 0.0F; } else { d_(); }  boolean bool1 = m(); boolean bool2 = o(); if (this.bd) if (bool1) { this.o += 0.03999999910593033D; } else if (bool2) { this.o += 0.03999999910593033D; } else if (this.v) { E(); }   this.ba *= 0.98F; this.bb *= 0.98F; this.bc *= 0.9F; c(this.ba, this.bb); List<Entity> list = this.g.b(this, this.u.b(0.20000000298023224D, 0.0D, 0.20000000298023224D)); if (list != null && list.size() > 0) for (int b = 0; b < list.size(); b++) { Entity db1 = list.get(b); if (db1.p()) db1.c(this);  }   } protected void E() { this.o = 0.41999998688697815D; } public void b(Entity paramdb, float paramFloat) { double d2, d1 = paramdb.posX - this.posX;
 /*     */     
-/* 589 */     double d3 = paramdb.m - this.m;
+/* 589 */     double d3 = paramdb.posZ - this.posZ;
 /*     */     
 /* 591 */     if (paramdb instanceof EntityLiving) {
 /* 592 */       EntityLiving ic1 = (EntityLiving)paramdb;
-/* 593 */       d2 = ic1.l + ic1.n() - this.l + n();
+/* 593 */       d2 = ic1.posY + ic1.n() - this.posY + n();
 /*     */     } else {
-/* 595 */       d2 = (paramdb.u.b + paramdb.u.e) / 2.0D - this.l + n();
+/* 595 */       d2 = (paramdb.u.b + paramdb.u.e) / 2.0D - this.posY + n();
 /*     */     } 
 /*     */     
-/* 598 */     double d4 = fw.a(d1 * d1 + d3 * d3);
+/* 598 */     double d4 = MathHelper.a(d1 * d1 + d3 * d3);
 /*     */     
 /* 600 */     float f1 = (float)(Math.atan2(d3, d1) * 180.0D / 3.1415927410125732D) - 90.0F;
 /* 601 */     float f2 = (float)(Math.atan2(d2, d4) * 180.0D / 3.1415927410125732D);
-/* 602 */     this.r = b(this.r, f2, paramFloat);
-/* 603 */     this.q = b(this.q, f1, paramFloat); }
+/* 602 */     this.rotationPitch = b(this.rotationPitch, f2, paramFloat);
+/* 603 */     this.rotationYaw = b(this.rotationYaw, f1, paramFloat); }
 /*     */ 
 /*     */   
 /*     */   private float b(float paramFloat1, float paramFloat2, float paramFloat3) {
@@ -883,31 +883,31 @@ protected void d_() {
 /*     */   
 /*     */   public Vec3D c(float paramFloat) {
 /* 640 */     if (paramFloat == 1.0F) {
-/* 641 */       return Vec3D.b(this.k, this.l, this.m);
+/* 641 */       return Vec3D.b(this.posX, this.posY, this.posZ);
 /*     */     }
-/* 643 */     double d1 = this.h + (this.k - this.h) * paramFloat;
-/* 644 */     double d2 = this.i + (this.l - this.i) * paramFloat;
-/* 645 */     double d3 = this.j + (this.m - this.j) * paramFloat;
+/* 643 */     double d1 = this.h + (this.posX - this.h) * paramFloat;
+/* 644 */     double d2 = this.i + (this.posY - this.i) * paramFloat;
+/* 645 */     double d3 = this.j + (this.posZ - this.j) * paramFloat;
 /*     */     
 /* 647 */     return Vec3D.b(d1, d2, d3);
 /*     */   }
 /*     */   
 /*     */   public Vec3D d(float paramFloat) {
 /* 651 */     if (paramFloat == 1.0F) {
-/* 652 */       float f7 = fw.b(-this.q * 0.017453292F - 3.1415927F);
-/* 653 */       float f8 = fw.a(-this.q * 0.017453292F - 3.1415927F);
-/* 654 */       float f9 = -fw.b(-this.r * 0.017453292F);
-/* 655 */       float f10 = fw.a(-this.r * 0.017453292F);
+/* 652 */       float f7 = MathHelper.b(-this.rotationYaw * 0.017453292F - 3.1415927F);
+/* 653 */       float f8 = MathHelper.a(-this.rotationYaw * 0.017453292F - 3.1415927F);
+/* 654 */       float f9 = -MathHelper.b(-this.rotationPitch * 0.017453292F);
+/* 655 */       float f10 = MathHelper.a(-this.rotationPitch * 0.017453292F);
 /*     */       
 /* 657 */       return Vec3D.b((f8 * f9), f10, (f7 * f9));
 /*     */     } 
-/* 659 */     float f1 = this.t + (this.r - this.t) * paramFloat;
-/* 660 */     float f2 = this.s + (this.q - this.s) * paramFloat;
+/* 659 */     float f1 = this.t + (this.rotationPitch - this.t) * paramFloat;
+/* 660 */     float f2 = this.s + (this.rotationYaw - this.s) * paramFloat;
 /*     */     
-/* 662 */     float f3 = fw.b(-f2 * 0.017453292F - 3.1415927F);
-/* 663 */     float f4 = fw.a(-f2 * 0.017453292F - 3.1415927F);
-/* 664 */     float f5 = -fw.b(-f1 * 0.017453292F);
-/* 665 */     float f6 = fw.a(-f1 * 0.017453292F);
+/* 662 */     float f3 = MathHelper.b(-f2 * 0.017453292F - 3.1415927F);
+/* 663 */     float f4 = MathHelper.a(-f2 * 0.017453292F - 3.1415927F);
+/* 664 */     float f5 = -MathHelper.b(-f1 * 0.017453292F);
+/* 665 */     float f6 = MathHelper.a(-f1 * 0.017453292F);
 /*     */     
 /* 667 */     return Vec3D.b((f4 * f5), f6, (f3 * f5));
 /*     */   }

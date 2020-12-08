@@ -58,13 +58,13 @@
 
 /*     */   
 /*     */   public void a(EntityPlayerMP paramdq) {
-/* 160 */     this.mcServer.f.a(new Packet3Chat("§e" + paramdq.username + " joined the game."));
+/* 160 */     this.mcServer.configManager.a(new Packet3Chat("§e" + paramdq.username + " joined the game."));
 /*     */     
-/* 162 */     int i = (int)paramdq.k >> 4;
-/* 163 */     int j = (int)paramdq.m >> 4;
+/* 162 */     int i = (int)paramdq.posX >> 4;
+/* 163 */     int j = (int)paramdq.posZ >> 4;
 /*     */     
-/* 165 */     paramdq.ad = paramdq.k;
-/* 166 */     paramdq.ae = paramdq.m;
+/* 165 */     paramdq.ad = paramdq.posX;
+/* 166 */     paramdq.ae = paramdq.posZ;
 /*     */     
 /* 168 */     for (int k = i - 10; k <= i + 10; k++) {
 /* 169 */       for (int m = j - 10; m <= j + 10; m++) {
@@ -75,9 +75,9 @@
 /*     */   }
 /*     */   
 /*     */   public void b(EntityPlayerMP paramdq) {
-/* 177 */     this.mcServer.f.a(new Packet3Chat("§e" + paramdq.username + " left the game."));
-/* 178 */     int i = (int)paramdq.k >> 4;
-/* 179 */     int j = (int)paramdq.m >> 4;
+/* 177 */     this.mcServer.configManager.a(new Packet3Chat("§e" + paramdq.username + " left the game."));
+/* 178 */     int i = (int)paramdq.posX >> 4;
+/* 179 */     int j = (int)paramdq.posZ >> 4;
 /*     */     
 /* 181 */     for (int k = i - 10; k <= i + 10; k++) {
 /* 182 */       for (int m = j - 10; m <= j + 10; m++) {
@@ -97,11 +97,11 @@
 /*     */   }
 /*     */   
 /*     */   public void c(EntityPlayerMP paramdq) {
-/* 199 */     int i = (int)paramdq.k >> 4;
-/* 200 */     int j = (int)paramdq.m >> 4;
+/* 199 */     int i = (int)paramdq.posX >> 4;
+/* 200 */     int j = (int)paramdq.posZ >> 4;
 /*     */     
-/* 202 */     double d1 = paramdq.ad - paramdq.k;
-/* 203 */     double d2 = paramdq.ae - paramdq.m;
+/* 202 */     double d1 = paramdq.ad - paramdq.posX;
+/* 203 */     double d2 = paramdq.ae - paramdq.posZ;
 /* 204 */     double d3 = d1 * d1 + d2 * d2;
 /* 205 */     if (d3 < 64.0D)
 /*     */       return; 
@@ -123,8 +123,8 @@
 /*     */         } 
 /*     */       } 
 /*     */     } 
-/* 225 */     paramdq.ad = paramdq.k;
-/* 226 */     paramdq.ae = paramdq.m;
+/* 225 */     paramdq.ad = paramdq.posX;
+/* 226 */     paramdq.ae = paramdq.posZ;
 /*     */   }
 /*     */   
 /*     */   public int b() {

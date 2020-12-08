@@ -18,7 +18,7 @@
 /*     */ {
 /*  19 */   private static int a = 0;
 /*     */   
-/*  21 */   public int c = a++;
+/*  21 */   public int entityId = a++;
 /*     */   
 /*     */   public boolean d = false;
 /*     */   
@@ -29,8 +29,8 @@
 /*     */   public double h;
 /*     */   public double i;
 /*     */   public double j;
-/*     */   public double k;
-/*  33 */   public final AxisAlignedBB u = AxisAlignedBB.a(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D); public double l; public double m; public double n; public double o; public double p; public float q; public float r; public float s; public float t;
+/*     */   public double posX;
+/*  33 */   public final AxisAlignedBB u = AxisAlignedBB.a(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D); public double posY; public double posZ; public double n; public double o; public double p; public float rotationYaw; public float rotationPitch; public float s; public float t;
 /*     */   public boolean v = false;
 /*     */   public boolean w;
 /*     */   public boolean x;
@@ -77,13 +77,13 @@
 /*     */   
 /*     */   public boolean equals(Object paramObject) {
 /*  79 */     if (paramObject instanceof Entity) {
-/*  80 */       return (((Entity)paramObject).c == this.c);
+/*  80 */       return (((Entity)paramObject).entityId == this.entityId);
 /*     */     }
 /*  82 */     return false;
 /*     */   }
 /*     */   
 /*     */   public int hashCode() {
-/*  86 */     return this.c;
+/*  86 */     return this.entityId;
 /*     */   }
 /*     */ 
 /*     */ 
@@ -120,14 +120,14 @@
 /*     */ 
 /*     */   
 /*     */   protected void b(float paramFloat1, float paramFloat2) {
-/* 123 */     this.q = paramFloat1;
-/* 124 */     this.r = paramFloat2;
+/* 123 */     this.rotationYaw = paramFloat1;
+/* 124 */     this.rotationPitch = paramFloat2;
 /*     */   }
 /*     */   
 /*     */   public void a(double paramDouble1, double paramDouble2, double paramDouble3) {
-/* 128 */     this.k = paramDouble1;
-/* 129 */     this.l = paramDouble2;
-/* 130 */     this.m = paramDouble3;
+/* 128 */     this.posX = paramDouble1;
+/* 129 */     this.posY = paramDouble2;
+/* 130 */     this.posZ = paramDouble3;
 /* 131 */     float f1 = this.C / 2.0F;
 /* 132 */     float f2 = this.D;
 /*     */     
@@ -143,27 +143,27 @@
 /*     */     
 /* 164 */     this.R++;
 /* 165 */     this.E = this.F;
-/* 166 */     this.h = this.k;
-/* 167 */     this.i = this.l;
-/* 168 */     this.j = this.m;
-/* 169 */     this.t = this.r;
-/* 170 */     this.s = this.q;
+/* 166 */     this.h = this.posX;
+/* 167 */     this.i = this.posY;
+/* 168 */     this.j = this.posZ;
+/* 169 */     this.t = this.rotationPitch;
+/* 170 */     this.s = this.rotationYaw;
 /*     */     
 /* 172 */     if (m()) {
 /* 173 */       if (!this.V && !this.ac) {
-/* 174 */         float f1 = fw.a(this.n * this.n * 0.20000000298023224D + this.o * this.o + this.p * this.p * 0.20000000298023224D) * 0.2F;
+/* 174 */         float f1 = MathHelper.a(this.n * this.n * 0.20000000298023224D + this.o * this.o + this.p * this.p * 0.20000000298023224D) * 0.2F;
 /* 175 */         if (f1 > 1.0F) f1 = 1.0F; 
 /* 176 */         this.g.a(this, "random.splash", f1, 1.0F + (this.Q.nextFloat() - this.Q.nextFloat()) * 0.4F);
-/* 177 */         float f2 = fw.b(this.u.b);
+/* 177 */         float f2 = MathHelper.floor_double(this.u.b);
 /* 178 */         for (int b = 0; b < 1.0F + this.C * 20.0F; b++) {
 /* 179 */           float f3 = (this.Q.nextFloat() * 2.0F - 1.0F) * this.C;
 /* 180 */           float f4 = (this.Q.nextFloat() * 2.0F - 1.0F) * this.C;
-/* 181 */           this.g.a("bubble", this.k + f3, (f2 + 1.0F), this.m + f4, this.n, this.o - (this.Q.nextFloat() * 0.2F), this.p);
+/* 181 */           this.g.a("bubble", this.posX + f3, (f2 + 1.0F), this.posZ + f4, this.n, this.o - (this.Q.nextFloat() * 0.2F), this.p);
 /*     */         } 
 /* 183 */         for (int b = 0; b < 1.0F + this.C * 20.0F; b++) {
 /* 184 */           float f3 = (this.Q.nextFloat() * 2.0F - 1.0F) * this.C;
 /* 185 */           float f4 = (this.Q.nextFloat() * 2.0F - 1.0F) * this.C;
-/* 186 */           this.g.a("splash", this.k + f3, (f2 + 1.0F), this.m + f4, this.n, this.o, this.p);
+/* 186 */           this.g.a("splash", this.posX + f3, (f2 + 1.0F), this.posZ + f4, this.n, this.o, this.p);
 /*     */         } 
 /*     */       } 
 /* 189 */       this.H = 0.0F;
@@ -185,7 +185,7 @@
 /* 205 */       this.T = 600;
 /*     */     } 
 /*     */     
-/* 208 */     if (this.l < -64.0D) {
+/* 208 */     if (this.posY < -64.0D) {
 /* 209 */       k();
 /*     */     }
 /*     */     
@@ -217,14 +217,14 @@
 /*     */   public void c(double paramDouble1, double paramDouble2, double paramDouble3) {
 /* 238 */     if (this.N) {
 /* 239 */       this.u.d(paramDouble1, paramDouble2, paramDouble3);
-/* 240 */       this.k = (this.u.a + this.u.d) / 2.0D;
-/* 241 */       this.l = this.u.b + this.B - this.L;
-/* 242 */       this.m = (this.u.c + this.u.f) / 2.0D;
+/* 240 */       this.posX = (this.u.a + this.u.d) / 2.0D;
+/* 241 */       this.posY = this.u.b + this.B - this.L;
+/* 242 */       this.posZ = (this.u.c + this.u.f) / 2.0D;
 /*     */       
 /*     */       return;
 /*     */     } 
-/* 246 */     double d1 = this.k;
-/* 247 */     double d2 = this.m;
+/* 246 */     double d1 = this.posX;
+/* 247 */     double d2 = this.posZ;
 /*     */     
 /* 249 */     double d3 = paramDouble1;
 /* 250 */     double d4 = paramDouble2;
@@ -311,9 +311,9 @@
 /*     */     } 
 /*     */ 
 /*     */     
-/* 334 */     this.k = (this.u.a + this.u.d) / 2.0D;
-/* 335 */     this.l = this.u.b + this.B - this.L;
-/* 336 */     this.m = (this.u.c + this.u.f) / 2.0D;
+/* 334 */     this.posX = (this.u.a + this.u.d) / 2.0D;
+/* 335 */     this.posY = this.u.b + this.B - this.L;
+/* 336 */     this.posZ = (this.u.c + this.u.f) / 2.0D;
 /*     */     
 /* 338 */     this.w = (d3 != paramDouble1 || d5 != paramDouble3);
 /* 339 */     this.x = (d4 != paramDouble2);
@@ -332,14 +332,14 @@
 /* 352 */     if (d4 != paramDouble2) this.o = 0.0D; 
 /* 353 */     if (d5 != paramDouble3) this.p = 0.0D;
 /*     */     
-/* 355 */     double d6 = this.k - d1;
-/* 356 */     double d7 = this.m - d2;
-/* 357 */     this.F = (float)(this.F + fw.a(d6 * d6 + d7 * d7) * 0.6D);
+/* 355 */     double d6 = this.posX - d1;
+/* 356 */     double d7 = this.posZ - d2;
+/* 357 */     this.F = (float)(this.F + MathHelper.a(d6 * d6 + d7 * d7) * 0.6D);
 /*     */     
 /* 359 */     if (this.G) {
-/* 360 */       int i3 = fw.b(this.k);
-/* 361 */       int i4 = fw.b(this.l - 0.20000000298023224D - this.B);
-/* 362 */       int i5 = fw.b(this.m);
+/* 360 */       int i3 = MathHelper.floor_double(this.posX);
+/* 361 */       int i4 = MathHelper.floor_double(this.posY - 0.20000000298023224D - this.B);
+/* 362 */       int i5 = MathHelper.floor_double(this.posZ);
 /* 363 */       int i6 = this.g.getBlockId(i3, i4, i5);
 /* 364 */       if (this.F > this.b && i6 > 0) {
 /* 365 */         this.b++;
@@ -355,12 +355,12 @@
 /*     */     } 
 /*     */ 
 /*     */     
-/* 378 */     int i = fw.b(this.u.a);
-/* 379 */     int j = fw.b(this.u.b);
-/* 380 */     int k = fw.b(this.u.c);
-/* 381 */     int m = fw.b(this.u.d);
-/* 382 */     int n = fw.b(this.u.e);
-/* 383 */     int i1 = fw.b(this.u.f);
+/* 378 */     int i = MathHelper.floor_double(this.u.a);
+/* 379 */     int j = MathHelper.floor_double(this.u.b);
+/* 380 */     int k = MathHelper.floor_double(this.u.c);
+/* 381 */     int m = MathHelper.floor_double(this.u.d);
+/* 382 */     int n = MathHelper.floor_double(this.u.e);
+/* 383 */     int i1 = MathHelper.floor_double(this.u.f);
 /* 384 */     for (int i2 = i; i2 <= m; i2++) {
 /* 385 */       for (int i3 = j; i3 <= n; i3++) {
 /* 386 */         for (int i4 = k; i4 <= i1; i4++) {
@@ -408,10 +408,10 @@
 /*     */   }
 /*     */   
 /*     */   public boolean a(Material paramhz) {
-/* 431 */     double d = this.l + n();
-/* 432 */     int i = fw.b(this.k);
-/* 433 */     int j = fw.d(fw.b(d));
-/* 434 */     int k = fw.b(this.m);
+/* 431 */     double d = this.posY + n();
+/* 432 */     int i = MathHelper.floor_double(this.posX);
+/* 433 */     int j = MathHelper.floor_float(MathHelper.floor_double(d));
+/* 434 */     int k = MathHelper.floor_double(this.posZ);
 /* 435 */     int m = this.g.getBlockId(i, j, k);
 /* 436 */     if (m != 0 && (Block.blocksList[m]).blockMaterial == paramhz) {
 /* 437 */       float f1 = cg.b(this.g.getBlockMetadata(i, j, k)) - 0.11111111F;
@@ -430,7 +430,7 @@
 /*     */   }
 /*     */   
 /*     */   public void a(float paramFloat1, float paramFloat2, float paramFloat3) {
-/* 453 */     float f1 = fw.c(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2);
+/* 453 */     float f1 = MathHelper.c(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2);
 /* 454 */     if (f1 < 0.01F)
 /*     */       return; 
 /* 456 */     if (f1 < 1.0F) f1 = 1.0F; 
@@ -439,8 +439,8 @@
 /* 459 */     paramFloat2 *= f1;
 /*     */ 
 /*     */     
-/* 462 */     float f2 = fw.a(this.q * 3.1415927F / 180.0F);
-/* 463 */     float f3 = fw.b(this.q * 3.1415927F / 180.0F);
+/* 462 */     float f2 = MathHelper.a(this.rotationYaw * 3.1415927F / 180.0F);
+/* 463 */     float f3 = MathHelper.b(this.rotationYaw * 3.1415927F / 180.0F);
 /*     */     
 /* 465 */     this.n += (paramFloat1 * f3 - paramFloat2 * f2);
 /* 466 */     this.p += (paramFloat2 * f3 + paramFloat1 * f2);
@@ -448,11 +448,11 @@
 /*     */ 
 /*     */   
 /*     */   public float b(float paramFloat) {
-/* 471 */     int i = fw.b(this.k);
+/* 471 */     int i = MathHelper.floor_double(this.posX);
 /*     */     
 /* 473 */     double d = (this.u.e - this.u.b) * 0.66D;
-/* 474 */     int j = fw.b(this.l - this.B + d);
-/* 475 */     int k = fw.b(this.m);
+/* 474 */     int j = MathHelper.floor_double(this.posY - this.B + d);
+/* 475 */     int k = MathHelper.floor_double(this.posZ);
 /* 476 */     return this.g.j(i, j, k);
 /*     */   }
 /*     */ 
@@ -461,53 +461,53 @@
 /*     */ 
 /*     */   
 /*     */   public void b(double paramDouble1, double paramDouble2, double paramDouble3, float paramFloat1, float paramFloat2) {
-/* 484 */     this.h = this.k = paramDouble1;
-/* 485 */     this.i = this.l = paramDouble2;
-/* 486 */     this.j = this.m = paramDouble3;
-/* 487 */     this.q = paramFloat1;
-/* 488 */     this.r = paramFloat2;
+/* 484 */     this.h = this.posX = paramDouble1;
+/* 485 */     this.i = this.posY = paramDouble2;
+/* 486 */     this.j = this.posZ = paramDouble3;
+/* 487 */     this.rotationYaw = paramFloat1;
+/* 488 */     this.rotationPitch = paramFloat2;
 /* 489 */     this.L = 0.0F;
 /*     */     
 /* 491 */     double d = (this.s - paramFloat1);
 /* 492 */     if (d < -180.0D) this.s += 360.0F; 
 /* 493 */     if (d >= 180.0D) this.s -= 360.0F; 
-/* 494 */     a(this.k, this.l, this.m);
+/* 494 */     a(this.posX, this.posY, this.posZ);
 /*     */   }
 /*     */   
 /*     */   public void c(double paramDouble1, double paramDouble2, double paramDouble3, float paramFloat1, float paramFloat2) {
-/* 498 */     this.h = this.k = paramDouble1;
-/* 499 */     this.i = this.l = paramDouble2 + this.B;
-/* 500 */     this.j = this.m = paramDouble3;
-/* 501 */     this.q = paramFloat1;
-/* 502 */     this.r = paramFloat2;
-/* 503 */     a(this.k, this.l, this.m);
+/* 498 */     this.h = this.posX = paramDouble1;
+/* 499 */     this.i = this.posY = paramDouble2 + this.B;
+/* 500 */     this.j = this.posZ = paramDouble3;
+/* 501 */     this.rotationYaw = paramFloat1;
+/* 502 */     this.rotationPitch = paramFloat2;
+/* 503 */     a(this.posX, this.posY, this.posZ);
 /*     */   }
 /*     */   
 /*     */   public float a(Entity paramdb) {
-/* 507 */     float f1 = (float)(this.k - paramdb.k);
-/* 508 */     float f2 = (float)(this.l - paramdb.l);
-/* 509 */     float f3 = (float)(this.m - paramdb.m);
-/* 510 */     return fw.c(f1 * f1 + f2 * f2 + f3 * f3);
+/* 507 */     float f1 = (float)(this.posX - paramdb.posX);
+/* 508 */     float f2 = (float)(this.posY - paramdb.posY);
+/* 509 */     float f3 = (float)(this.posZ - paramdb.posZ);
+/* 510 */     return MathHelper.c(f1 * f1 + f2 * f2 + f3 * f3);
 /*     */   }
 /*     */   
-/*     */   public double d(double paramDouble1, double paramDouble2, double paramDouble3) {
-/* 514 */     double d1 = this.k - paramDouble1;
-/* 515 */     double d2 = this.l - paramDouble2;
-/* 516 */     double d3 = this.m - paramDouble3;
+/*     */   public double getDistanceSq(double paramDouble1, double paramDouble2, double paramDouble3) {
+/* 514 */     double d1 = this.posX - paramDouble1;
+/* 515 */     double d2 = this.posY - paramDouble2;
+/* 516 */     double d3 = this.posZ - paramDouble3;
 /* 517 */     return d1 * d1 + d2 * d2 + d3 * d3;
 /*     */   }
 /*     */   
 /*     */   public double e(double paramDouble1, double paramDouble2, double paramDouble3) {
-/* 521 */     double d1 = this.k - paramDouble1;
-/* 522 */     double d2 = this.l - paramDouble2;
-/* 523 */     double d3 = this.m - paramDouble3;
-/* 524 */     return fw.a(d1 * d1 + d2 * d2 + d3 * d3);
+/* 521 */     double d1 = this.posX - paramDouble1;
+/* 522 */     double d2 = this.posY - paramDouble2;
+/* 523 */     double d3 = this.posZ - paramDouble3;
+/* 524 */     return MathHelper.a(d1 * d1 + d2 * d2 + d3 * d3);
 /*     */   }
 /*     */   
 /*     */   public double b(Entity paramdb) {
-/* 528 */     double d1 = this.k - paramdb.k;
-/* 529 */     double d2 = this.l - paramdb.l;
-/* 530 */     double d3 = this.m - paramdb.m;
+/* 528 */     double d1 = this.posX - paramdb.posX;
+/* 529 */     double d2 = this.posY - paramdb.posY;
+/* 530 */     double d3 = this.posZ - paramdb.posZ;
 /* 531 */     return d1 * d1 + d2 * d2 + d3 * d3;
 /*     */   }
 /*     */ 
@@ -517,14 +517,14 @@
 /*     */   public void c(Entity paramdb) {
 /* 538 */     if (paramdb.e == this || paramdb.f == this)
 /*     */       return; 
-/* 540 */     double d1 = paramdb.k - this.k;
-/* 541 */     double d2 = paramdb.m - this.m;
+/* 540 */     double d1 = paramdb.posX - this.posX;
+/* 541 */     double d2 = paramdb.posZ - this.posZ;
 /*     */ 
 /*     */     
-/* 544 */     double d3 = fw.a(d1, d2);
+/* 544 */     double d3 = MathHelper.a(d1, d2);
 /*     */     
 /* 546 */     if (d3 >= 0.009999999776482582D) {
-/* 547 */       d3 = fw.a(d3);
+/* 547 */       d3 = MathHelper.a(d3);
 /* 548 */       d1 /= d3;
 /* 549 */       d2 /= d3;
 /*     */       
@@ -606,9 +606,9 @@
 /*     */   }
 /*     */   
 /*     */   public void d(NBTTagCompound paramr) {
-/* 629 */     paramr.a("Pos", a(new double[] { this.k, this.l, this.m }));
+/* 629 */     paramr.a("Pos", a(new double[] { this.posX, this.posY, this.posZ}));
 /* 630 */     paramr.a("Motion", a(new double[] { this.n, this.o, this.p }));
-/* 631 */     paramr.a("Rotation", a(new float[] { this.q, this.r }));
+/* 631 */     paramr.a("Rotation", a(new float[] { this.rotationYaw, this.rotationPitch}));
 /*     */     
 /* 633 */     paramr.a("FallDistance", this.H);
 /* 634 */     paramr.a("Fire", (short)this.T);
@@ -629,19 +629,19 @@
 /* 649 */     this.o = ((NBTTagDouble)de2.a(1)).a;
 /* 650 */     this.p = ((NBTTagDouble)de2.a(2)).a;
 /*     */     
-/* 652 */     this.h = this.I = this.k = ((NBTTagDouble)de1.a(0)).a;
-/* 653 */     this.i = this.J = this.l = ((NBTTagDouble)de1.a(1)).a;
-/* 654 */     this.j = this.K = this.m = ((NBTTagDouble)de1.a(2)).a;
+/* 652 */     this.h = this.I = this.posX = ((NBTTagDouble)de1.a(0)).a;
+/* 653 */     this.i = this.J = this.posY = ((NBTTagDouble)de1.a(1)).a;
+/* 654 */     this.j = this.K = this.posZ = ((NBTTagDouble)de1.a(2)).a;
 /*     */     
-/* 656 */     this.s = this.q = ((NBTTagFloat)de3.a(0)).a;
-/* 657 */     this.t = this.r = ((NBTTagFloat)de3.a(1)).a;
+/* 656 */     this.s = this.rotationYaw = ((NBTTagFloat)de3.a(0)).a;
+/* 657 */     this.t = this.rotationPitch = ((NBTTagFloat)de3.a(1)).a;
 /*     */     
 /* 659 */     this.H = paramr.f("FallDistance");
 /* 660 */     this.T = paramr.c("Fire");
 /* 661 */     this.X = paramr.c("Air");
 /* 662 */     this.v = paramr.getBoolean("OnGround");
 /*     */     
-/* 664 */     a(this.k, this.l, this.m);
+/* 664 */     a(this.posX, this.posY, this.posZ);
 /*     */     
 /* 666 */     b(paramr);
 /*     */   }
@@ -677,7 +677,7 @@
 /*     */   }
 /*     */   
 /*     */   public EntityItem a(int paramInt1, int paramInt2, float paramFloat) {
-/* 700 */     EntityItem fa = new EntityItem(this.g, this.k, this.l + paramFloat, this.m, new ItemStack(paramInt1, paramInt2));
+/* 700 */     EntityItem fa = new EntityItem(this.g, this.posX, this.posY + paramFloat, this.posZ, new ItemStack(paramInt1, paramInt2));
 /* 701 */     fa.ac = 10;
 /* 702 */     this.g.a(fa);
 /* 703 */     return fa;
@@ -688,9 +688,9 @@
 /*     */   }
 /*     */   
 /*     */   public boolean s() {
-/* 711 */     int i = fw.b(this.k);
-/* 712 */     int j = fw.b(this.l + n());
-/* 713 */     int k = fw.b(this.m);
+/* 711 */     int i = MathHelper.floor_double(this.posX);
+/* 712 */     int j = MathHelper.floor_double(this.posY + n());
+/* 713 */     int k = MathHelper.floor_double(this.posZ);
 /* 714 */     return this.g.d(i, j, k);
 /*     */   }
 /*     */ 
@@ -719,8 +719,8 @@
 /* 739 */     b_();
 /* 740 */     this.f.u();
 /*     */     
-/* 742 */     this.ae += (this.f.q - this.f.s);
-/* 743 */     this.ad += (this.f.r - this.f.t);
+/* 742 */     this.ae += (this.f.rotationYaw - this.f.s);
+/* 743 */     this.ad += (this.f.rotationPitch - this.f.t);
 /*     */     
 /* 745 */     while (this.ae >= 180.0D)
 /* 746 */       this.ae -= 360.0D; 
@@ -744,12 +744,12 @@
 /* 764 */     this.ae -= d1;
 /* 765 */     this.ad -= d2;
 /*     */     
-/* 767 */     this.q = (float)(this.q + d1);
-/* 768 */     this.r = (float)(this.r + d2);
+/* 767 */     this.rotationYaw = (float)(this.rotationYaw + d1);
+/* 768 */     this.rotationPitch = (float)(this.rotationPitch + d2);
 /*     */   }
 /*     */   
 /*     */   protected void u() {
-/* 772 */     this.e.a(this.k, this.l + w() + this.e.v(), this.m);
+/* 772 */     this.e.a(this.posX, this.posY + w() + this.e.v(), this.posZ);
 /*     */   }
 /*     */   
 /*     */   public double v() {
@@ -766,7 +766,7 @@
 /* 786 */     if (this.f == paramdb) {
 /* 787 */       this.f.e = null;
 /* 788 */       this.f = null;
-/* 789 */       c(paramdb.k, paramdb.u.b + paramdb.D, paramdb.m, this.q, this.r);
+/* 789 */       c(paramdb.posX, paramdb.u.b + paramdb.D, paramdb.posZ, this.rotationYaw, this.rotationPitch);
 /*     */       return;
 /*     */     } 
 /* 792 */     if (this.f != null) {

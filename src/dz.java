@@ -33,7 +33,7 @@
 /* 33 */     if (this.g.a()) {
 /* 34 */       float f = b(1.0F);
 /* 35 */       if (f > 0.5F && 
-/* 36 */         this.g.g(fw.b(this.k), fw.b(this.l), fw.b(this.m)) && this.Q.nextFloat() * 30.0F < (f - 0.4F) * 2.0F) {
+/* 36 */         this.g.g(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY), MathHelper.floor_double(this.posZ)) && this.Q.nextFloat() * 30.0F < (f - 0.4F) * 2.0F) {
 /* 37 */         this.T = 300;
 /*    */       }
 /*    */     } 
@@ -44,23 +44,23 @@
 /*    */   
 /*    */   protected void a(Entity paramdb, float paramFloat) {
 /* 46 */     if (paramFloat < 10.0F) {
-/* 47 */       double d1 = paramdb.k - this.k;
-/* 48 */       double d2 = paramdb.m - this.m;
+/* 47 */       double d1 = paramdb.posX - this.posX;
+/* 48 */       double d2 = paramdb.posZ - this.posZ;
 /*    */       
 /* 50 */       if (this.aQ == 0) {
 /* 51 */         da da = new da(this.g, this);
-/* 52 */         da.l += 1.399999976158142D;
+/* 52 */         da.posY += 1.399999976158142D;
 /*    */         
-/* 54 */         double d = paramdb.l - 0.20000000298023224D - da.l;
+/* 54 */         double d = paramdb.posY - 0.20000000298023224D - da.posY;
 /*    */         
-/* 56 */         float f = fw.a(d1 * d1 + d2 * d2) * 0.2F;
+/* 56 */         float f = MathHelper.a(d1 * d1 + d2 * d2) * 0.2F;
 /*    */         
 /* 58 */         this.g.a(this, "random.bow", 1.0F, 1.0F / (this.Q.nextFloat() * 0.4F + 0.8F));
 /* 59 */         this.g.a(da);
 /* 60 */         da.a(d1, d + f, d2, 0.6F, 12.0F);
 /* 61 */         this.aQ = 30;
 /*    */       } 
-/* 63 */       this.q = (float)(Math.atan2(d2, d1) * 180.0D / 3.1415927410125732D) - 90.0F;
+/* 63 */       this.rotationYaw = (float)(Math.atan2(d2, d1) * 180.0D / 3.1415927410125732D) - 90.0F;
 /*    */       
 /* 65 */       this.ag = true;
 /*    */     } 

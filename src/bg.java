@@ -46,9 +46,9 @@
 /*    */     } 
 /* 47 */     if (paramFloat > 2.0F && paramFloat < 6.0F && this.Q.nextInt(10) == 0) {
 /* 48 */       if (this.v) {
-/* 49 */         double d1 = paramdb.k - this.k;
-/* 50 */         double d2 = paramdb.m - this.m;
-/* 51 */         float f1 = fw.a(d1 * d1 + d2 * d2);
+/* 49 */         double d1 = paramdb.posX - this.posX;
+/* 50 */         double d2 = paramdb.posZ - this.posZ;
+/* 51 */         float f1 = MathHelper.a(d1 * d1 + d2 * d2);
 /* 52 */         this.n = d1 / f1 * 0.5D * 0.800000011920929D + this.n * 0.20000000298023224D;
 /* 53 */         this.p = d2 / f1 * 0.5D * 0.800000011920929D + this.p * 0.20000000298023224D;
 /* 54 */         this.o = 0.4000000059604645D;

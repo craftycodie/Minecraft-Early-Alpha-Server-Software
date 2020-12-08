@@ -27,9 +27,9 @@
 /*    */   }
 /*    */   
 /*    */   public boolean a() {
-/* 30 */     int i = fw.b(this.k);
-/* 31 */     int j = fw.b(this.u.b);
-/* 32 */     int k = fw.b(this.m);
+/* 30 */     int i = MathHelper.floor_double(this.posX);
+/* 31 */     int j = MathHelper.floor_double(this.u.b);
+/* 32 */     int k = MathHelper.floor_double(this.posZ);
 /* 33 */     return (this.g.getBlockId(i, j - 1, k) == Block.u.blockId && this.g.h(i, j, k) > 8 && super.a());
 /*    */   }
 /*    */   

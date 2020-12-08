@@ -34,25 +34,25 @@
 /*     */     
 /*  35 */     a(0.5F, 0.5F);
 /*     */     
-/*  37 */     c(paramic.k, paramic.l, paramic.m, paramic.q, paramic.r);
+/*  37 */     c(paramic.posX, paramic.posY, paramic.posZ, paramic.rotationYaw, paramic.rotationPitch);
 /*     */ 
 /*     */     
-/*  40 */     this.k -= (fw.b(this.q / 180.0F * 3.1415927F) * 0.16F);
-/*  41 */     this.l -= 0.10000000149011612D;
-/*  42 */     this.m -= (fw.a(this.q / 180.0F * 3.1415927F) * 0.16F);
-/*  43 */     a(this.k, this.l, this.m);
+/*  40 */     this.posX -= (MathHelper.b(this.rotationYaw / 180.0F * 3.1415927F) * 0.16F);
+/*  41 */     this.posY -= 0.10000000149011612D;
+/*  42 */     this.posZ -= (MathHelper.a(this.rotationYaw / 180.0F * 3.1415927F) * 0.16F);
+/*  43 */     a(this.posX, this.posY, this.posZ);
 /*  44 */     this.B = 0.0F;
 /*     */ 
 /*     */     
-/*  47 */     this.n = (-fw.a(this.q / 180.0F * 3.1415927F) * fw.b(this.r / 180.0F * 3.1415927F));
-/*  48 */     this.p = (fw.b(this.q / 180.0F * 3.1415927F) * fw.b(this.r / 180.0F * 3.1415927F));
-/*  49 */     this.o = -fw.a(this.r / 180.0F * 3.1415927F);
+/*  47 */     this.n = (-MathHelper.a(this.rotationYaw / 180.0F * 3.1415927F) * MathHelper.b(this.rotationPitch / 180.0F * 3.1415927F));
+/*  48 */     this.p = (MathHelper.b(this.rotationYaw / 180.0F * 3.1415927F) * MathHelper.b(this.rotationPitch / 180.0F * 3.1415927F));
+/*  49 */     this.o = -MathHelper.a(this.rotationPitch / 180.0F * 3.1415927F);
 /*     */     
 /*  51 */     a(this.n, this.o, this.p, 1.5F, 1.0F);
 /*     */   }
 /*     */   
 /*     */   public void a(double paramDouble1, double paramDouble2, double paramDouble3, float paramFloat1, float paramFloat2) {
-/*  55 */     float f1 = fw.a(paramDouble1 * paramDouble1 + paramDouble2 * paramDouble2 + paramDouble3 * paramDouble3);
+/*  55 */     float f1 = MathHelper.a(paramDouble1 * paramDouble1 + paramDouble2 * paramDouble2 + paramDouble3 * paramDouble3);
 /*     */     
 /*  57 */     paramDouble1 /= f1;
 /*  58 */     paramDouble2 /= f1;
@@ -70,10 +70,10 @@
 /*  70 */     this.o = paramDouble2;
 /*  71 */     this.p = paramDouble3;
 /*     */     
-/*  73 */     float f2 = fw.a(paramDouble1 * paramDouble1 + paramDouble3 * paramDouble3);
+/*  73 */     float f2 = MathHelper.a(paramDouble1 * paramDouble1 + paramDouble3 * paramDouble3);
 /*     */     
-/*  75 */     this.s = this.q = (float)(Math.atan2(paramDouble1, paramDouble3) * 180.0D / 3.1415927410125732D);
-/*  76 */     this.t = this.r = (float)(Math.atan2(paramDouble2, f2) * 180.0D / 3.1415927410125732D);
+/*  75 */     this.s = this.rotationYaw = (float)(Math.atan2(paramDouble1, paramDouble3) * 180.0D / 3.1415927410125732D);
+/*  76 */     this.t = this.rotationPitch = (float)(Math.atan2(paramDouble2, f2) * 180.0D / 3.1415927410125732D);
 /*  77 */     this.ah = 0;
 /*     */   }
 /*     */   
@@ -104,12 +104,12 @@
 /* 104 */       this.ai++;
 /*     */     } 
 /*     */     
-/* 107 */     Vec3D as1 = Vec3D.b(this.k, this.l, this.m);
-/* 108 */     Vec3D as2 = Vec3D.b(this.k + this.n, this.l + this.o, this.m + this.p);
+/* 107 */     Vec3D as1 = Vec3D.b(this.posX, this.posY, this.posZ);
+/* 108 */     Vec3D as2 = Vec3D.b(this.posX + this.n, this.posY + this.o, this.posZ + this.p);
 /* 109 */     fe fe = this.g.a(as1, as2);
 /*     */     
-/* 111 */     as1 = Vec3D.b(this.k, this.l, this.m);
-/* 112 */     as2 = Vec3D.b(this.k + this.n, this.l + this.o, this.m + this.p);
+/* 111 */     as1 = Vec3D.b(this.posX, this.posY, this.posZ);
+/* 112 */     as2 = Vec3D.b(this.posX + this.n, this.posY + this.o, this.posZ + this.p);
 /* 113 */     if (fe != null) {
 /* 114 */       as2 = Vec3D.b(fe.f.a, fe.f.b, fe.f.c);
 /*     */     }
@@ -161,7 +161,7 @@
 /* 161 */           this.n *= -0.10000000149011612D;
 /* 162 */           this.o *= -0.10000000149011612D;
 /* 163 */           this.p *= -0.10000000149011612D;
-/* 164 */           this.q += 180.0F;
+/* 164 */           this.rotationYaw += 180.0F;
 /* 165 */           this.s += 180.0F;
 /* 166 */           this.ai = 0;
 /*     */         } 
@@ -171,39 +171,39 @@
 /* 171 */         this.ac = fe.c;
 /* 172 */         this.ad = fe.d;
 /* 173 */         this.ae = this.g.getBlockId(this.b, this.ac, this.ad);
-/* 174 */         this.n = (float)(fe.f.a - this.k);
-/* 175 */         this.o = (float)(fe.f.b - this.l);
-/* 176 */         this.p = (float)(fe.f.c - this.m);
-/* 177 */         float f = fw.a(this.n * this.n + this.o * this.o + this.p * this.p);
-/* 178 */         this.k -= this.n / f * 0.05000000074505806D;
-/* 179 */         this.l -= this.o / f * 0.05000000074505806D;
-/* 180 */         this.m -= this.p / f * 0.05000000074505806D;
+/* 174 */         this.n = (float)(fe.f.a - this.posX);
+/* 175 */         this.o = (float)(fe.f.b - this.posY);
+/* 176 */         this.p = (float)(fe.f.c - this.posZ);
+/* 177 */         float f = MathHelper.a(this.n * this.n + this.o * this.o + this.p * this.p);
+/* 178 */         this.posX -= this.n / f * 0.05000000074505806D;
+/* 179 */         this.posY -= this.o / f * 0.05000000074505806D;
+/* 180 */         this.posZ -= this.p / f * 0.05000000074505806D;
 /*     */         
 /* 182 */         this.g.a(this, "random.drr", 1.0F, 1.2F / (this.Q.nextFloat() * 0.2F + 0.9F));
 /* 183 */         this.af = true;
 /* 184 */         this.a = 7;
 /*     */       } 
 /*     */     }
-/* 187 */     this.k += this.n;
-/* 188 */     this.l += this.o;
-/* 189 */     this.m += this.p;
+/* 187 */     this.posX += this.n;
+/* 188 */     this.posY += this.o;
+/* 189 */     this.posZ += this.p;
 /*     */     
-/* 191 */     float f1 = fw.a(this.n * this.n + this.p * this.p);
-/* 192 */     this.q = (float)(Math.atan2(this.n, this.p) * 180.0D / 3.1415927410125732D);
-/* 193 */     this.r = (float)(Math.atan2(this.o, f1) * 180.0D / 3.1415927410125732D);
+/* 191 */     float f1 = MathHelper.a(this.n * this.n + this.p * this.p);
+/* 192 */     this.rotationYaw = (float)(Math.atan2(this.n, this.p) * 180.0D / 3.1415927410125732D);
+/* 193 */     this.rotationPitch = (float)(Math.atan2(this.o, f1) * 180.0D / 3.1415927410125732D);
 /*     */     
-/* 195 */     while (this.r - this.t < -180.0F)
+/* 195 */     while (this.rotationPitch - this.t < -180.0F)
 /* 196 */       this.t -= 360.0F; 
-/* 197 */     while (this.r - this.t >= 180.0F) {
+/* 197 */     while (this.rotationPitch - this.t >= 180.0F) {
 /* 198 */       this.t += 360.0F;
 /*     */     }
-/* 200 */     while (this.q - this.s < -180.0F)
+/* 200 */     while (this.rotationYaw - this.s < -180.0F)
 /* 201 */       this.s -= 360.0F; 
-/* 202 */     while (this.q - this.s >= 180.0F) {
+/* 202 */     while (this.rotationYaw - this.s >= 180.0F) {
 /* 203 */       this.s += 360.0F;
 /*     */     }
-/* 205 */     this.r = this.t + (this.r - this.t) * 0.2F;
-/* 206 */     this.q = this.s + (this.q - this.s) * 0.2F;
+/* 205 */     this.rotationPitch = this.t + (this.rotationPitch - this.t) * 0.2F;
+/* 206 */     this.rotationYaw = this.s + (this.rotationYaw - this.s) * 0.2F;
 /*     */ 
 /*     */     
 /* 209 */     float f2 = 0.99F;
@@ -212,7 +212,7 @@
 /* 212 */     if (m()) {
 /* 213 */       for (int b1 = 0; b1 < 4; b1++) {
 /* 214 */         float f = 0.25F;
-/* 215 */         this.g.a("bubble", this.k - this.n * f, this.l - this.o * f, this.m - this.p * f, this.n, this.o, this.p);
+/* 215 */         this.g.a("bubble", this.posX - this.n * f, this.posY - this.o * f, this.posZ - this.p * f, this.n, this.o, this.p);
 /*     */       } 
 /* 217 */       f2 = 0.8F;
 /*     */     } 
@@ -222,7 +222,7 @@
 /* 222 */     this.p *= f2;
 /* 223 */     this.o -= f3;
 /*     */     
-/* 225 */     a(this.k, this.l, this.m);
+/* 225 */     a(this.posX, this.posY, this.posZ);
 /*     */   }
 /*     */   
 /*     */   public void a(NBTTagCompound paramr) {

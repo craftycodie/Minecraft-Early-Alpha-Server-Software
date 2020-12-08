@@ -19,7 +19,7 @@
 /*    */   public fe(Entity paramdb) {
 /* 20 */     this.a = 1;
 /* 21 */     this.g = paramdb;
-/* 22 */     this.f = Vec3D.b(paramdb.k, paramdb.l, paramdb.m);
+/* 22 */     this.f = Vec3D.b(paramdb.posX, paramdb.posY, paramdb.posZ);
 /*    */   }
 /*    */ }
 

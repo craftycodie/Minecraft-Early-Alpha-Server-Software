@@ -17,12 +17,12 @@ import java.io.IOException;
 /*    */   public Packet34EntityTeleport() {}
 /*    */   
 /*    */   public Packet34EntityTeleport(Entity paramdb) {
-/* 18 */     this.a = paramdb.c;
-/* 19 */     this.b = fw.b(paramdb.k * 32.0D);
-/* 20 */     this.c = fw.b(paramdb.l * 32.0D);
-/* 21 */     this.d = fw.b(paramdb.m * 32.0D);
-/* 22 */     this.e = (byte)(int)(paramdb.q * 256.0F / 360.0F);
-/* 23 */     this.f = (byte)(int)(paramdb.r * 256.0F / 360.0F);
+/* 18 */     this.a = paramdb.entityId;
+/* 19 */     this.b = MathHelper.floor_double(paramdb.posX * 32.0D);
+/* 20 */     this.c = MathHelper.floor_double(paramdb.posY * 32.0D);
+/* 21 */     this.d = MathHelper.floor_double(paramdb.posZ * 32.0D);
+/* 22 */     this.e = (byte)(int)(paramdb.rotationYaw * 256.0F / 360.0F);
+/* 23 */     this.f = (byte)(int)(paramdb.rotationPitch * 256.0F / 360.0F);
 /*    */   }
 /*    */   
 /*    */   public Packet34EntityTeleport(int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte paramByte1, byte paramByte2) {

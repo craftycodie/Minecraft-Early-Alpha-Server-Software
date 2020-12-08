@@ -1,8 +1,8 @@
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
 
-class u extends FocusAdapter {
-  u(ServerGUI paramfb) {}
+class ServerGuiFocusAdapter extends FocusAdapter {
+  ServerGuiFocusAdapter(ServerGUI paramfb) {}
   
   public void focusGained(FocusEvent paramFocusEvent) {}
 }

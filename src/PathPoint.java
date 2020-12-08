@@ -23,7 +23,7 @@
 /* 23 */     float f1 = (parama.a - this.a);
 /* 24 */     float f2 = (parama.b - this.b);
 /* 25 */     float f3 = (parama.c - this.c);
-/* 26 */     return fw.c(f1 * f1 + f2 * f2 + f3 * f3);
+/* 26 */     return MathHelper.c(f1 * f1 + f2 * f2 + f3 * f3);
 /*    */   }
 /*    */   
 /*    */   public boolean equals(Object paramObject) {

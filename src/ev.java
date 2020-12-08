@@ -29,7 +29,7 @@
 /*  29 */     this.ac = paramInt;
 /*  30 */     a(0.6F * paramInt, 0.6F * paramInt);
 /*  31 */     this.aK = paramInt * paramInt;
-/*  32 */     a(this.k, this.l, this.m);
+/*  32 */     a(this.posX, this.posY, this.posZ);
 /*     */   }
 /*     */   
 /*     */   public void a(NBTTagCompound paramr) {
@@ -50,9 +50,9 @@
 /*  50 */       for (int b = 0; b < this.ac * 8; b++) {
 /*  51 */         float f1 = this.Q.nextFloat() * 3.1415927F * 2.0F;
 /*  52 */         float f2 = this.Q.nextFloat() * 0.5F + 0.5F;
-/*  53 */         float f3 = fw.a(f1) * this.ac * 0.5F * f2;
-/*  54 */         float f4 = fw.b(f1) * this.ac * 0.5F * f2;
-/*  55 */         this.g.a("slime", this.k + f3, this.u.b, this.m + f4, 0.0D, 0.0D, 0.0D);
+/*  53 */         float f3 = MathHelper.a(f1) * this.ac * 0.5F * f2;
+/*  54 */         float f4 = MathHelper.b(f1) * this.ac * 0.5F * f2;
+/*  55 */         this.g.a("slime", this.posX + f3, this.u.b, this.posZ + f4, 0.0D, 0.0D, 0.0D);
 /*     */       } 
 /*     */       
 /*  58 */       if (this.ac > 2) {
@@ -96,7 +96,7 @@
 /*  96 */         float f2 = ((b / 2) - 0.5F) * this.ac / 4.0F;
 /*  97 */         ev ev1 = new ev(this.g);
 /*  98 */         ev1.c(this.ac / 2);
-/*  99 */         ev1.c(this.k + f1, this.l + 0.5D, this.m + f2, this.Q.nextFloat() * 360.0F, 0.0F);
+/*  99 */         ev1.c(this.posX + f1, this.posY + 0.5D, this.posZ + f2, this.Q.nextFloat() * 360.0F, 0.0F);
 /* 100 */         this.g.a(ev1);
 /*     */       } 
 /*     */     }
@@ -128,8 +128,8 @@
 /*     */   }
 /*     */   
 /*     */   public boolean a() {
-/* 131 */     Chunk hv = this.g.a(fw.b(this.k), fw.b(this.l));
-/* 132 */     return ((this.ac == 1 || this.g.j > 0) && this.Q.nextInt(10) == 0 && hv.a(987234911L).nextInt(100) == 0 && this.l < 16.0D);
+/* 131 */     Chunk hv = this.g.a(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY));
+/* 132 */     return ((this.ac == 1 || this.g.j > 0) && this.Q.nextInt(10) == 0 && hv.a(987234911L).nextInt(100) == 0 && this.posY < 16.0D);
 /*     */   }
 /*     */   
 /*     */   protected float f() {

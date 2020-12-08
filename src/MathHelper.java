@@ -11,7 +11,7 @@
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */ public class fw
+/*    */ public class MathHelper
 /*    */ {
 /* 16 */   private static float[] a = new float[65536]; static {
 /* 17 */     for (int b = 0; b < 65536; b++) {
@@ -35,7 +35,7 @@
 /* 35 */     return (float)Math.sqrt(paramDouble);
 /*    */   }
 /*    */   
-/*    */   public static int d(float paramFloat) {
+/*    */   public static int floor_float(float paramFloat) {
 /* 39 */     int i = (int)paramFloat;
 /* 40 */     return (paramFloat < i) ? (i - 1) : i;
 /*    */   }
@@ -44,7 +44,7 @@
 /*    */ 
 /*    */ 
 /*    */   
-/*    */   public static int b(double paramDouble) {
+/*    */   public static int floor_double(double paramDouble) {
 /* 48 */     int i = (int)paramDouble;
 /* 49 */     return (paramDouble < i) ? (i - 1) : i;
 /*    */   }

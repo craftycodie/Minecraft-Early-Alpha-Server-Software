@@ -82,7 +82,7 @@
 /*     */   
 /*     */   public void a(int paramInt) {
 /*  84 */     this.a = paramInt;
-/*  85 */     this.s = this.q = (paramInt * 90);
+/*  85 */     this.s = this.rotationYaw = (paramInt * 90);
 /*     */     
 /*  87 */     float f1 = this.b.u;
 /*  88 */     float f2 = this.b.v;
@@ -135,7 +135,7 @@
 /* 135 */     if (this.ac++ == 100 && !b()) {
 /* 136 */       this.ac = 0;
 /* 137 */       i();
-/* 138 */       this.g.a(new EntityItem(this.g, this.k, this.l, this.m, new ItemStack(Item.aq)));
+/* 138 */       this.g.a(new EntityItem(this.g, this.posX, this.posY, this.posZ, new ItemStack(Item.aq)));
 /*     */     } 
 /*     */   }
 /*     */   
@@ -149,11 +149,11 @@
 /* 149 */     int k = this.ad;
 /* 150 */     int m = this.ae;
 /* 151 */     int n = this.af;
-/* 152 */     if (this.a == 0) k = fw.b(this.k - (this.b.u / 32.0F)); 
-/* 153 */     if (this.a == 1) n = fw.b(this.m - (this.b.u / 32.0F)); 
-/* 154 */     if (this.a == 2) k = fw.b(this.k - (this.b.u / 32.0F)); 
-/* 155 */     if (this.a == 3) n = fw.b(this.m - (this.b.u / 32.0F)); 
-/* 156 */     m = fw.b(this.l - (this.b.v / 32.0F));
+/* 152 */     if (this.a == 0) k = MathHelper.floor_double(this.posX - (this.b.u / 32.0F));
+/* 153 */     if (this.a == 1) n = MathHelper.floor_double(this.posZ - (this.b.u / 32.0F));
+/* 154 */     if (this.a == 2) k = MathHelper.floor_double(this.posX - (this.b.u / 32.0F));
+/* 155 */     if (this.a == 3) n = MathHelper.floor_double(this.posZ - (this.b.u / 32.0F));
+/* 156 */     m = MathHelper.floor_double(this.posY - (this.b.v / 32.0F));
 /*     */ 
 /*     */     
 /* 159 */     for (int b1 = 0; b1 < i; b1++) {
@@ -180,7 +180,7 @@
 /*     */   
 /*     */   public boolean a(Entity paramdb, int paramInt) {
 /* 182 */     i();
-/* 183 */     this.g.a(new EntityItem(this.g, this.k, this.l, this.m, new ItemStack(Item.aq)));
+/* 183 */     this.g.a(new EntityItem(this.g, this.posX, this.posY, this.posZ, new ItemStack(Item.aq)));
 /* 184 */     return true;
 /*     */   }
 /*     */   

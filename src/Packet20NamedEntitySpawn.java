@@ -20,13 +20,13 @@ import java.io.IOException;
 /*    */   public Packet20NamedEntitySpawn() {}
 /*    */   
 /*    */   public Packet20NamedEntitySpawn(EntityPlayer parameq) {
-/* 21 */     this.a = parameq.c;
+/* 21 */     this.a = parameq.entityId;
 /* 22 */     this.b = parameq.username;
-/* 23 */     this.c = fw.b(parameq.k * 32.0D);
-/* 24 */     this.d = fw.b(parameq.l * 32.0D);
-/* 25 */     this.e = fw.b(parameq.m * 32.0D);
-/* 26 */     this.f = (byte)(int)(parameq.q * 256.0F / 360.0F);
-/* 27 */     this.g = (byte)(int)(parameq.r * 256.0F / 360.0F);
+/* 23 */     this.c = MathHelper.floor_double(parameq.posX * 32.0D);
+/* 24 */     this.d = MathHelper.floor_double(parameq.posY * 32.0D);
+/* 25 */     this.e = MathHelper.floor_double(parameq.posZ * 32.0D);
+/* 26 */     this.f = (byte)(int)(parameq.rotationYaw * 256.0F / 360.0F);
+/* 27 */     this.g = (byte)(int)(parameq.rotationPitch * 256.0F / 360.0F);
 /*    */     
 /* 29 */     ItemStack gc = parameq.ai.b();
 /* 30 */     this.h = (gc == null) ? 0 : gc.c;

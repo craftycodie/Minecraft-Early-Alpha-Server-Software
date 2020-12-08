@@ -59,7 +59,7 @@
 /*     */ 
 /*     */   
 /*     */   public Vec3D b() {
-/*  62 */     double d = fw.a(this.a * this.a + this.b * this.b + this.c * this.c);
+/*  62 */     double d = MathHelper.a(this.a * this.a + this.b * this.b + this.c * this.c);
 /*  63 */     if (d < 1.0E-4D) return b(0.0D, 0.0D, 0.0D); 
 /*  64 */     return b(this.a / d, this.b / d, this.c / d);
 /*     */   }
@@ -80,7 +80,7 @@
 /*  80 */     double d1 = paramas.a - this.a;
 /*  81 */     double d2 = paramas.b - this.b;
 /*  82 */     double d3 = paramas.c - this.c;
-/*  83 */     return fw.a(d1 * d1 + d2 * d2 + d3 * d3);
+/*  83 */     return MathHelper.a(d1 * d1 + d2 * d2 + d3 * d3);
 /*     */   }
 /*     */   
 /*     */   public double b(Vec3D paramas) {
@@ -102,7 +102,7 @@
 /*     */ 
 /*     */   
 /*     */   public double c() {
-/* 105 */     return fw.a(this.a * this.a + this.b * this.b + this.c * this.c);
+/* 105 */     return MathHelper.a(this.a * this.a + this.b * this.b + this.c * this.c);
 /*     */   }
 /*     */   
 /*     */   public Vec3D a(Vec3D paramas, double paramDouble) {

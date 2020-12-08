@@ -39,7 +39,7 @@
         this.ai.c();
         this.al = this.am;
         super.x();
-        float f1 = fw.a(this.n * this.n + this.p * this.p);
+        float f1 = MathHelper.a(this.n * this.n + this.p * this.p);
         float f2 = (float) Math.atan(-this.o * 0.20000000298023224D) * 15.0F;
         if (f1 > 0.1F) f1 = 0.1F;
         if (!this.v || this.aK <= 0) f1 = 0.0F;
@@ -75,9 +75,9 @@ public EntityPlayer(World paramdp) {
         this.aB = "/char.png";
 
     }
-/*     */   public void f(Entity paramdb) { a(0.2F, 0.2F); a(this.k, this.l, this.m); this.o = 0.10000000149011612D; if (this.username.equals("Notch")) a(new ItemStack(Item.h, 1), true);  this.ai.f(); if (paramdb != null) { this.n = (-fw.b((this.aO + this.q) * 3.1415927F / 180.0F) * 0.1F); this.p = (-fw.a((this.aO + this.q) * 3.1415927F / 180.0F) * 0.1F); } else { this.n = this.p = 0.0D; }  this.B = 0.1F; }
+/*     */   public void f(Entity paramdb) { a(0.2F, 0.2F); a(this.posX, this.posY, this.posZ); this.o = 0.10000000149011612D; if (this.username.equals("Notch")) a(new ItemStack(Item.h, 1), true);  this.ai.f(); if (paramdb != null) { this.n = (-MathHelper.b((this.aO + this.rotationYaw) * 3.1415927F / 180.0F) * 0.1F); this.p = (-MathHelper.a((this.aO + this.rotationYaw) * 3.1415927F / 180.0F) * 0.1F); } else { this.n = this.p = 0.0D; }  this.B = 0.1F; }
 /*     */   public void b(Entity paramdb, int paramInt) { this.ak += paramInt; }
-/* 222 */   public void a(ItemStack paramgc) { a(paramgc, false); } public void a(ItemStack paramgc, boolean paramBoolean) { if (paramgc == null) return;  EntityItem fa = new EntityItem(this.g, this.k, this.l - 0.30000001192092896D + n(), this.m, paramgc); fa.ac = 40; float f = 0.1F; if (paramBoolean) { float f1 = this.Q.nextFloat() * 0.5F; float f2 = this.Q.nextFloat() * 3.1415927F * 2.0F; fa.n = (-fw.a(f2) * f1); fa.p = (fw.b(f2) * f1); fa.o = 0.20000000298023224D; } else { f = 0.3F; fa.n = (-fw.a(this.q / 180.0F * 3.1415927F) * fw.b(this.r / 180.0F * 3.1415927F) * f); fa.p = (fw.b(this.q / 180.0F * 3.1415927F) * fw.b(this.r / 180.0F * 3.1415927F) * f); fa.o = (-fw.a(this.r / 180.0F * 3.1415927F) * f + 0.1F); f = 0.02F; float f1 = this.Q.nextFloat() * 3.1415927F * 2.0F; f *= this.Q.nextFloat(); fa.n += Math.cos(f1) * f; fa.o += ((this.Q.nextFloat() - this.Q.nextFloat()) * 0.1F); fa.p += Math.sin(f1) * f; }  a(fa); } public boolean a(Entity paramdb, int paramInt) { this.aZ = 0;
+/* 222 */   public void a(ItemStack paramgc) { a(paramgc, false); } public void a(ItemStack paramgc, boolean paramBoolean) { if (paramgc == null) return;  EntityItem fa = new EntityItem(this.g, this.posX, this.posY - 0.30000001192092896D + n(), this.posZ, paramgc); fa.ac = 40; float f = 0.1F; if (paramBoolean) { float f1 = this.Q.nextFloat() * 0.5F; float f2 = this.Q.nextFloat() * 3.1415927F * 2.0F; fa.n = (-MathHelper.a(f2) * f1); fa.p = (MathHelper.b(f2) * f1); fa.o = 0.20000000298023224D; } else { f = 0.3F; fa.n = (-MathHelper.a(this.rotationYaw / 180.0F * 3.1415927F) * MathHelper.b(this.rotationPitch / 180.0F * 3.1415927F) * f); fa.p = (MathHelper.b(this.rotationYaw / 180.0F * 3.1415927F) * MathHelper.b(this.rotationPitch / 180.0F * 3.1415927F) * f); fa.o = (-MathHelper.a(this.rotationPitch / 180.0F * 3.1415927F) * f + 0.1F); f = 0.02F; float f1 = this.Q.nextFloat() * 3.1415927F * 2.0F; f *= this.Q.nextFloat(); fa.n += Math.cos(f1) * f; fa.o += ((this.Q.nextFloat() - this.Q.nextFloat()) * 0.1F); fa.p += Math.sin(f1) * f; }  a(fa); } public boolean a(Entity paramdb, int paramInt) { this.aZ = 0;
 /* 223 */     if (this.aK <= 0) return false;
 /*     */     
 /* 225 */     if (this.W > this.aq / 2.0F) return false;

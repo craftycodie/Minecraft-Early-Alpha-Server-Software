@@ -27,7 +27,7 @@
 /*    */     
 /* 28 */     if (!et.a(paramdp, paramInt1, paramInt2, paramInt3)) return false;
 /*    */     
-/* 30 */     int i = fw.b(((parameq.q + 180.0F) * 4.0F / 360.0F) - 0.5D) & 0x3;
+/* 30 */     int i = MathHelper.floor_double(((parameq.rotationYaw + 180.0F) * 4.0F / 360.0F) - 0.5D) & 0x3;
 /*    */     
 /* 32 */     int b1 = 0;
 /* 33 */     int b2 = 0;

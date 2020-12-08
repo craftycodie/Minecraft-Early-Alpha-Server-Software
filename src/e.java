@@ -22,10 +22,10 @@
 /*    */     
 /* 23 */     float f = paramRandom.nextFloat() * 3.1415927F;
 /*    */     
-/* 25 */     double d1 = ((paramInt1 + 8) + fw.a(f) * this.b / 8.0F);
-/* 26 */     double d2 = ((paramInt1 + 8) - fw.a(f) * this.b / 8.0F);
-/* 27 */     double d3 = ((paramInt3 + 8) + fw.b(f) * this.b / 8.0F);
-/* 28 */     double d4 = ((paramInt3 + 8) - fw.b(f) * this.b / 8.0F);
+/* 25 */     double d1 = ((paramInt1 + 8) + MathHelper.a(f) * this.b / 8.0F);
+/* 26 */     double d2 = ((paramInt1 + 8) - MathHelper.a(f) * this.b / 8.0F);
+/* 27 */     double d3 = ((paramInt3 + 8) + MathHelper.b(f) * this.b / 8.0F);
+/* 28 */     double d4 = ((paramInt3 + 8) - MathHelper.b(f) * this.b / 8.0F);
 /*    */     
 /* 30 */     double d5 = (paramInt2 + paramRandom.nextInt(3) + 2);
 /* 31 */     double d6 = (paramInt2 + paramRandom.nextInt(3) + 2);
@@ -36,8 +36,8 @@
 /* 36 */       double d9 = d3 + (d4 - d3) * b / this.b;
 /*    */       
 /* 38 */       double d10 = paramRandom.nextDouble() * this.b / 16.0D;
-/* 39 */       double d11 = (fw.a(b * 3.1415927F / this.b) + 1.0F) * d10 + 1.0D;
-/* 40 */       double d12 = (fw.a(b * 3.1415927F / this.b) + 1.0F) * d10 + 1.0D;
+/* 39 */       double d11 = (MathHelper.a(b * 3.1415927F / this.b) + 1.0F) * d10 + 1.0D;
+/* 40 */       double d12 = (MathHelper.a(b * 3.1415927F / this.b) + 1.0F) * d10 + 1.0D;
 /*    */       
 /* 42 */       for (int i = (int)(d7 - d11 / 2.0D); i <= (int)(d7 + d11 / 2.0D); i++) {
 /* 43 */         for (int j = (int)(d8 - d12 / 2.0D); j <= (int)(d8 + d12 / 2.0D); j++) {

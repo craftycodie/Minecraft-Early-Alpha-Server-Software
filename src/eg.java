@@ -80,9 +80,9 @@
 /*  80 */     super.b_();
 /*  81 */     if (this.b > 0) this.b--; 
 /*  82 */     if (this.a > 0) this.a--; 
-/*  83 */     this.h = this.k;
-/*  84 */     this.i = this.l;
-/*  85 */     this.j = this.m;
+/*  83 */     this.h = this.posX;
+/*  84 */     this.i = this.posY;
+/*  85 */     this.j = this.posZ;
 /*     */ 
 /*     */     
 /*  88 */     int b1 = 5;
@@ -118,8 +118,8 @@
 /* 118 */     c(this.n, this.o, this.p);
 /* 119 */     double d4 = Math.sqrt(this.n * this.n + this.p * this.p);
 /* 120 */     if (d4 > 0.15D) {
-/* 121 */       double d9 = Math.cos(this.q * Math.PI / 180.0D);
-/* 122 */       double d10 = Math.sin(this.q * Math.PI / 180.0D);
+/* 121 */       double d9 = Math.cos(this.rotationYaw * Math.PI / 180.0D);
+/* 122 */       double d10 = Math.sin(this.rotationYaw * Math.PI / 180.0D);
 /*     */       
 /* 124 */       for (int b = 0; b < 1.0D + d4 * 60.0D; b++) {
 /*     */         
@@ -127,13 +127,13 @@
 /*     */         
 /* 128 */         double d12 = (this.Q.nextInt(2) * 2 - 1) * 0.7D;
 /* 129 */         if (this.Q.nextBoolean()) {
-/* 130 */           double d13 = this.k - d9 * d11 * 0.8D + d10 * d12;
-/* 131 */           double d14 = this.m - d10 * d11 * 0.8D - d9 * d12;
-/* 132 */           this.g.a("splash", d13, this.l - 0.125D, d14, this.n, this.o, this.p);
+/* 130 */           double d13 = this.posX - d9 * d11 * 0.8D + d10 * d12;
+/* 131 */           double d14 = this.posZ - d10 * d11 * 0.8D - d9 * d12;
+/* 132 */           this.g.a("splash", d13, this.posY - 0.125D, d14, this.n, this.o, this.p);
 /*     */         } else {
-/* 134 */           double d13 = this.k + d9 + d10 * d11 * 0.7D;
-/* 135 */           double d14 = this.m + d10 - d9 * d11 * 0.7D;
-/* 136 */           this.g.a("splash", d13, this.l - 0.125D, d14, this.n, this.o, this.p);
+/* 134 */           double d13 = this.posX + d9 + d10 * d11 * 0.7D;
+/* 135 */           double d14 = this.posZ + d10 - d9 * d11 * 0.7D;
+/* 136 */           this.g.a("splash", d13, this.posY - 0.125D, d14, this.n, this.o, this.p);
 /*     */         } 
 /*     */       } 
 /*     */     } 
@@ -152,15 +152,15 @@
 /* 152 */       this.p *= 0.9900000095367432D;
 /*     */     } 
 /*     */     
-/* 155 */     this.r = 0.0F;
-/* 156 */     double d5 = this.q;
-/* 157 */     double d6 = this.h - this.k;
-/* 158 */     double d7 = this.j - this.m;
+/* 155 */     this.rotationPitch = 0.0F;
+/* 156 */     double d5 = this.rotationYaw;
+/* 157 */     double d6 = this.h - this.posX;
+/* 158 */     double d7 = this.j - this.posZ;
 /* 159 */     if (d6 * d6 + d7 * d7 > 0.001D) {
 /* 160 */       d5 = (float)(Math.atan2(d7, d6) * 180.0D / Math.PI);
 /*     */     }
 /*     */     
-/* 163 */     double d8 = d5 - this.q;
+/* 163 */     double d8 = d5 - this.rotationYaw;
 /* 164 */     while (d8 >= 180.0D)
 /* 165 */       d8 -= 360.0D; 
 /* 166 */     while (d8 < -180.0D) {
@@ -169,8 +169,8 @@
 /* 169 */     if (d8 > 20.0D) d8 = 20.0D; 
 /* 170 */     if (d8 < -20.0D) d8 = -20.0D;
 /*     */     
-/* 172 */     this.q = (float)(this.q + d8);
-/* 173 */     b(this.q, this.r);
+/* 172 */     this.rotationYaw = (float)(this.rotationYaw + d8);
+/* 173 */     b(this.rotationYaw, this.rotationPitch);
 /*     */     
 /* 175 */     List<Entity> list = this.g.b(this, this.u.b(0.20000000298023224D, 0.0D, 0.20000000298023224D));
 /* 176 */     if (list != null && list.size() > 0) {
@@ -188,9 +188,9 @@
 /*     */   }
 /*     */   
 /*     */   protected void u() {
-/* 191 */     double d1 = Math.cos(this.q * Math.PI / 180.0D) * 0.4D;
-/* 192 */     double d2 = Math.sin(this.q * Math.PI / 180.0D) * 0.4D;
-/* 193 */     this.e.a(this.k + d1, this.l + w() + this.e.v(), this.m + d2);
+/* 191 */     double d1 = Math.cos(this.rotationYaw * Math.PI / 180.0D) * 0.4D;
+/* 192 */     double d2 = Math.sin(this.rotationYaw * Math.PI / 180.0D) * 0.4D;
+/* 193 */     this.e.a(this.posX + d1, this.posY + w() + this.e.v(), this.posZ + d2);
 /*     */   }
 /*     */   
 /*     */   protected void a(NBTTagCompound paramr) {}

@@ -22,10 +22,10 @@ import java.io.IOException;
 /*    */   public Packet23VehicleSpawn() {}
 /*    */   
 /*    */   public Packet23VehicleSpawn(Entity paramdb, int paramInt) {
-/* 23 */     this.a = paramdb.c;
-/* 24 */     this.b = fw.b(paramdb.k * 32.0D);
-/* 25 */     this.c = fw.b(paramdb.l * 32.0D);
-/* 26 */     this.d = fw.b(paramdb.m * 32.0D);
+/* 23 */     this.a = paramdb.entityId;
+/* 24 */     this.b = MathHelper.floor_double(paramdb.posX * 32.0D);
+/* 25 */     this.c = MathHelper.floor_double(paramdb.posY * 32.0D);
+/* 26 */     this.d = MathHelper.floor_double(paramdb.posZ * 32.0D);
 /* 27 */     this.e = paramInt;
 /*    */   }
 /*    */   

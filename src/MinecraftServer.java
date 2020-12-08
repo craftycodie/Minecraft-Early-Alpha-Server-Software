@@ -29,7 +29,7 @@ import java.util.logging.Level;
 /*     */   
 /*     */   public WorldManager e;
 /*     */   
-/*     */   public fg f;
+/*     */   public fg configManager;
 /*     */   private boolean l = true;
 /*     */   public boolean g = false;
 /*  30 */   int h = 0;
@@ -40,7 +40,7 @@ import java.util.logging.Level;
 /*  35 */   private List n = Collections.synchronizedList(new ArrayList());
 /*     */ 
 /*     */   
-/*     */   public fj k;
+/*     */   public EntityTracker k;
 /*     */ 
 /*     */   
 /*     */   private boolean startServer() throws UnknownHostException {
@@ -54,7 +54,8 @@ import java.util.logging.Level;
 /*  72 */     bi.start();
 /*     */     
 /*  74 */     ey.a();
-/*  75 */     a.info("Starting minecraft server version 0.0.1");
+/*  75 */     a.info("Alpha 1.0.10 Server Remake");
+/*  75 */     a.info("Starting minecraft server.");
 /*     */     
 /*  77 */     if (Runtime.getRuntime().maxMemory() / 1024L / 1024L < 512L) {
 /*  78 */       a.warning("**** NOT ENOUGH RAM!");
@@ -78,8 +79,8 @@ import java.util.logging.Level;
 /*  96 */       a.warning("Perhaps chunkExists server is already running on that port?");
 /*  97 */       return false;
 /*     */     } 
-/*  99 */     this.f = new fg(this);
-/* 100 */     this.k = new fj(this);
+/*  99 */     this.configManager = new fg(this);
+/* 100 */     this.k = new EntityTracker(this);
 /*     */     
 /* 102 */     String str2 = this.d.a("level-name", "world");
 /* 103 */     a.info("Preparing level \"" + str2 + "\"");
@@ -206,8 +207,8 @@ import java.util.logging.Level;
 /*     */     
 /* 226 */     this.e.b();
 /* 227 */     this.c.a();
-/* 228 */     this.f.b();
-/* 229 */     this.k.a();
+/* 228 */     this.configManager.b();
+/* 229 */     this.k.updateTrackedEntities();
 /*     */     
 /* 231 */     for (int b = 0; b < this.m.size(); b++) {
 /* 232 */       ((dn)this.m.get(b)).a();
@@ -239,14 +240,14 @@ import java.util.logging.Level;
 /* 258 */         a.info("   list                 lists all currently connected players");
 /* 259 */         a.info("   say <message>        broadcasts chunkExists message to all players"); continue;
 /* 260 */       }  if (str.toLowerCase().startsWith("list")) {
-/* 261 */         a.info("Connected players: " + this.f.c()); continue;
+/* 261 */         a.info("Connected players: " + this.configManager.c()); continue;
 /* 262 */       }  if (str.toLowerCase().startsWith("stop")) {
 /* 263 */         this.l = false; continue;
 /* 264 */       }  if (str.toLowerCase().startsWith("kick ")) {
 /* 265 */         String str1 = str.substring(str.indexOf(" ")).trim();
 /* 266 */         EntityPlayerMP dq = null;
-/* 267 */         for (int b = 0; b < this.f.b.size(); b++) {
-/* 268 */           EntityPlayerMP dq1 = (EntityPlayerMP)this.f.b.get(b);
+/* 267 */         for (int b = 0; b < this.configManager.b.size(); b++) {
+/* 268 */           EntityPlayerMP dq1 = (EntityPlayerMP)this.configManager.b.get(b);
 /* 269 */           if (dq1.username.equalsIgnoreCase(str1)) {
 /* 270 */             dq = dq1;
 /*     */           }
@@ -266,8 +267,8 @@ import java.util.logging.Level;
 /*     */         
 /* 286 */         String str1 = arrayOfString[1];
 /* 287 */         EntityPlayerMP dq = null; int i;
-/* 288 */         for (i = 0; i < this.f.b.size(); i++) {
-/* 289 */           EntityPlayerMP dq1 = (EntityPlayerMP)this.f.b.get(i);
+/* 288 */         for (i = 0; i < this.configManager.b.size(); i++) {
+/* 289 */           EntityPlayerMP dq1 = (EntityPlayerMP)this.configManager.b.get(i);
 /* 290 */           if (dq1.username.equalsIgnoreCase(str1)) {
 /* 291 */             dq = dq1;
 /*     */           }
@@ -291,7 +292,7 @@ import java.util.logging.Level;
 /* 310 */       if (str.toLowerCase().startsWith("say ")) {
 /* 311 */         str = str.substring(str.indexOf(" ")).trim();
 /* 312 */         a.info("[Server] " + str);
-/* 313 */         this.f.a(new Packet3Chat("§getChunkBlockTileEntity[Server] " + str)); continue;
+/* 313 */         this.configManager.a(new Packet3Chat("§getChunkBlockTileEntity[Server] " + str)); continue;
 /*     */       } 
 /* 315 */       a.warning("Unknown console command. Type \"help\" for help.");
 /*     */     } 
