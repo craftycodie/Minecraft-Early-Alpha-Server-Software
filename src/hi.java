@@ -151,12 +151,12 @@
 /* 591 */       (new WorldGenDungeons()).a(this.p, this.j, n, i1, i2);
 /*     */     }
 /*     */     
-/* 594 */     for (k = 0; k < 10; k++) {
-/* 595 */       int n = i + this.j.nextInt(16);
-/* 596 */       int i1 = this.j.nextInt(128);
-/* 597 */       int i2 = j + this.j.nextInt(16);
-/* 598 */       (new e(32)).a(this.p, this.j, n, i1, i2);
-/*     */     } 
+///* 594 */     for (k = 0; k < 10; k++) {
+///* 595 */       int motionX = setEntityDead + this.j.nextInt(16);
+///* 596 */       int i1 = this.j.nextInt(128);
+///* 597 */       int i2 = j + this.j.nextInt(16);
+///* 598 */       (new e(32)).item(this.motionZ, this.j, motionX, i1, i2);
+///*     */     }
 /*     */     
 /* 601 */     for (k = 0; k < 20; k++) {
 /* 602 */       int n = i + this.j.nextInt(16);
@@ -232,36 +232,36 @@
 /* 668 */       int n = i + this.j.nextInt(16) + 8;
 /* 669 */       int i1 = this.j.nextInt(128);
 /* 670 */       int i2 = j + this.j.nextInt(16) + 8;
-/* 671 */       (new an(Block.ad.blockId)).a(this.p, this.j, n, i1, i2);
+/* 671 */       (new WorldGenFlowers(Block.ad.blockId)).a(this.p, this.j, n, i1, i2);
 /*     */     } 
 /*     */     
 /* 674 */     if (this.j.nextInt(2) == 0) {
 /* 675 */       m = i + this.j.nextInt(16) + 8;
 /* 676 */       int n = this.j.nextInt(128);
 /* 677 */       int i1 = j + this.j.nextInt(16) + 8;
-/* 678 */       (new an(Block.ae.blockId)).a(this.p, this.j, m, n, i1);
+/* 678 */       (new WorldGenFlowers(Block.ae.blockId)).a(this.p, this.j, m, n, i1);
 /*     */     } 
 /*     */     
 /* 681 */     if (this.j.nextInt(4) == 0) {
 /* 682 */       m = i + this.j.nextInt(16) + 8;
 /* 683 */       int n = this.j.nextInt(128);
 /* 684 */       int i1 = j + this.j.nextInt(16) + 8;
-/* 685 */       (new an(Block.af.blockId)).a(this.p, this.j, m, n, i1);
+/* 685 */       (new WorldGenFlowers(Block.af.blockId)).a(this.p, this.j, m, n, i1);
 /*     */     } 
 /*     */     
 /* 688 */     if (this.j.nextInt(8) == 0) {
 /* 689 */       m = i + this.j.nextInt(16) + 8;
 /* 690 */       int n = this.j.nextInt(128);
 /* 691 */       int i1 = j + this.j.nextInt(16) + 8;
-/* 692 */       (new an(Block.ag.blockId)).a(this.p, this.j, m, n, i1);
+/* 692 */       (new WorldGenFlowers(Block.ag.blockId)).a(this.p, this.j, m, n, i1);
 /*     */     } 
 /*     */     
-/* 695 */     for (m = 0; m < 10; m++) {
-/* 696 */       int n = i + this.j.nextInt(16) + 8;
-/* 697 */       int i1 = this.j.nextInt(128);
-/* 698 */       int i2 = j + this.j.nextInt(16) + 8;
-/* 699 */       (new fy()).a(this.p, this.j, n, i1, i2);
-/*     */     } 
+///* 695 */     for (handleWaterMovement = 0; handleWaterMovement < 10; handleWaterMovement++) {
+///* 696 */       int motionX = setEntityDead + this.j.nextInt(16) + 8;
+///* 697 */       int i1 = this.j.nextInt(128);
+///* 698 */       int i2 = j + this.j.nextInt(16) + 8;
+///* 699 */       (new fy()).item(this.motionZ, this.j, motionX, i1, i2);
+///*     */     }
 /*     */     
 /* 702 */     for (m = 0; m < 1; m++) {
 /* 703 */       int n = i + this.j.nextInt(16) + 8;

@@ -133,7 +133,7 @@ public void a(Packet10Flying paramfs) {
         /*  96 */
         float f3 = 0.0625F;
         /*  97 */
-        boolean bool1 = (this.d.e.a(this.e, this.e.u.b().e(f3, f3, f3)).size() == 0) ? true : false;
+        boolean bool1 = (this.d.e.a(this.e, this.e.boundingBox.b().e(f3, f3, f3)).size() == 0) ? true : false;
         /*     */
         /*  99 */
         this.e.c(d4, d5, d6);
@@ -165,7 +165,7 @@ public void a(Packet10Flying paramfs) {
         this.e.b(d1, d2, d3, f1, f2);
         /*     */
         /* 114 */
-        boolean bool3 = (this.d.e.a(this.e, this.e.u.b().e(f3, f3, f3)).size() == 0) ? true : false;
+        boolean bool3 = (this.d.e.a(this.e, this.e.boundingBox.b().e(f3, f3, f3)).size() == 0) ? true : false;
         /* 115 */
         if (bool1 && (bool2 || !bool3)) {
             /* 116 */
@@ -207,10 +207,10 @@ public void a(Packet10Flying paramfs) {
 /* 144 */       this.e.posY = d;
 // TODO: Fix maybe.
 ///* 145 */       if (fe == null) {
-///* 146 */         System.out.println("MISMATCH: Got " + paramgp.a + ", " + paramgp.b + ", " + paramgp.c + ", " + paramgp.d + ", but expected <NO HIT>"); return;
+///* 146 */         System.out.println("MISMATCH: Got " + paramgp.item + ", " + paramgp.expand + ", " + paramgp.onItemPickup + ", " + paramgp.d + ", but expected <NO HIT>"); return;
 ///*     */       }
-///* 148 */       if (fe.b != paramgp.a || fe.c != paramgp.b || fe.d != paramgp.c || fe.e != paramgp.d) {
-///* 149 */         System.out.println("MISMATCH: Got " + paramgp.a + ", " + paramgp.b + ", " + paramgp.c + ", " + paramgp.d + ", but expected " + fe.b + ", " + fe.c + ", " + fe.d + ", " + fe.e);
+///* 148 */       if (fe.expand != paramgp.item || fe.onItemPickup != paramgp.expand || fe.d != paramgp.onItemPickup || fe.e != paramgp.d) {
+///* 149 */         System.out.println("MISMATCH: Got " + paramgp.item + ", " + paramgp.expand + ", " + paramgp.onItemPickup + ", " + paramgp.d + ", but expected " + fe.expand + ", " + fe.onItemPickup + ", " + fe.d + ", " + fe.e);
 ///*     */         return;
 ///*     */       }
 /*     */     } 
@@ -260,7 +260,7 @@ public void a(Packet10Flying paramfs) {
 /*     */   }
 /*     */   
 /*     */   public void a(Packet paramha) {
-/* 199 */     a.warning(getClass() + " wasn't prepared to deal with lookup " + paramha.getClass());
+/* 199 */     a.warning(getClass() + " wasn'singleplayerWorld prepared to deal with lookup " + paramha.getClass());
 /* 200 */     b("Protocol error, unexpected packet");
 /*     */   }
 /*     */   
@@ -271,9 +271,9 @@ public void a(Packet10Flying paramfs) {
 /*     */   public void a(Packet16BlockItemSwitch paramfi) {
 /* 208 */     int i = paramfi.b;
 /* 209 */     if (i == 0) {
-/* 210 */       this.e.ai.a[this.e.ai.d] = null;
+/* 210 */       this.e.inventory.a[this.e.inventory.d] = null;
 /*     */     } else {
-/* 212 */       this.e.ai.a[this.e.ai.d] = new ItemStack(i);
+/* 212 */       this.e.inventory.a[this.e.inventory.d] = new ItemStack(i);
 /*     */     } 
 /* 214 */     this.d.k.sendPacketToTrackedPlayers(this.e, new Packet16BlockItemSwitch(this.e.entityId, i));
 /*     */   }
@@ -283,10 +283,10 @@ public void a(Packet10Flying paramfs) {
 /* 219 */     double d2 = paramj.yPosition / 32.0D;
 /* 220 */     double d3 = paramj.zPosition / 32.0D;
 /* 221 */     EntityItem fa = new EntityItem(this.d.e, d1, d2, d3, new ItemStack(paramj.h, paramj.i));
-/* 222 */     fa.n = paramj.e / 128.0D;
-/* 223 */     fa.o = paramj.f / 128.0D;
-/* 224 */     fa.p = paramj.g / 128.0D;
-/* 225 */     fa.ac = 10;
+/* 222 */     fa.motionX = paramj.e / 128.0D;
+/* 223 */     fa.motionY = paramj.f / 128.0D;
+/* 224 */     fa.motionZ = paramj.g / 128.0D;
+/* 225 */     fa.delayBeforeCanPickup = 10;
 /* 226 */     this.d.e.a(fa);
 /*     */   }
 /*     */   

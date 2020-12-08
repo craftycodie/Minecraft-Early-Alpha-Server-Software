@@ -10,7 +10,7 @@
 /*    */   
 /*    */   public ItemMinecart(int paramInt1, int paramInt2) {
 /* 12 */     super(paramInt1);
-/* 13 */     this.aR = 1;
+/* 13 */     this.maxStackSize = 1;
 /* 14 */     this.a = paramInt2;
 /*    */   }
 /*    */ 
@@ -20,8 +20,8 @@
 /* 20 */     int i = paramdp.getBlockId(paramInt1, paramInt2, paramInt3);
 /*    */     
 /* 22 */     if (i == Block.aG.blockId) {
-/* 23 */       paramdp.a(new hs(paramdp, (paramInt1 + 0.5F), (paramInt2 + 0.5F), (paramInt3 + 0.5F), this.a));
-/* 24 */       paramgc.a--;
+/* 23 */       paramdp.a(new EntityMinecart(paramdp, (paramInt1 + 0.5F), (paramInt2 + 0.5F), (paramInt3 + 0.5F), this.a));
+/* 24 */       paramgc.itemID--;
 /* 25 */       return true;
 /*    */     } 
 /* 27 */     return false;

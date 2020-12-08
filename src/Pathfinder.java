@@ -18,19 +18,19 @@
 /*  18 */     this.a = paramhb;
 /*     */   }
 /*     */   
-/*     */   public bx a(Entity paramdb1, Entity paramdb2, float paramFloat) {
-/*  22 */     return a(paramdb1, paramdb2.posX, paramdb2.u.b, paramdb2.posZ, paramFloat);
+/*     */   public PathEntity a(Entity paramdb1, Entity paramdb2, float paramFloat) {
+/*  22 */     return a(paramdb1, paramdb2.posX, paramdb2.boundingBox.b, paramdb2.posZ, paramFloat);
 /*     */   }
 /*     */   
-/*     */   public bx a(Entity paramdb, int paramInt1, int paramInt2, int paramInt3, float paramFloat) {
+/*     */   public PathEntity a(Entity paramdb, int paramInt1, int paramInt2, int paramInt3, float paramFloat) {
 /*  26 */     return a(paramdb, (paramInt1 + 0.5F), (paramInt2 + 0.5F), (paramInt3 + 0.5F), paramFloat);
 /*     */   }
 /*     */   
-/*     */   private bx a(Entity paramdb, double paramDouble1, double paramDouble2, double paramDouble3, float paramFloat) {
+/*     */   private PathEntity a(Entity paramdb, double paramDouble1, double paramDouble2, double paramDouble3, float paramFloat) {
 /*  30 */     this.b.a();
 /*  31 */     this.c.clearMap();
 /*     */     
-/*  33 */     PathPoint a1 = a(MathHelper.floor_double(paramdb.u.a), MathHelper.floor_double(paramdb.u.b), MathHelper.floor_double(paramdb.u.c));
+/*  33 */     PathPoint a1 = a(MathHelper.floor_double(paramdb.boundingBox.a), MathHelper.floor_double(paramdb.boundingBox.b), MathHelper.floor_double(paramdb.boundingBox.c));
 /*  34 */     PathPoint a2 = a(MathHelper.floor_double(paramDouble1 - (paramdb.C / 2.0F)), MathHelper.floor_double(paramDouble2), MathHelper.floor_double(paramDouble3 - (paramdb.C / 2.0F)));
 /*     */     
 /*  36 */     PathPoint a3 = new PathPoint(MathHelper.floor_float(paramdb.C + 1.0F), MathHelper.floor_float(paramdb.D + 1.0F), MathHelper.floor_float(paramdb.C + 1.0F));
@@ -39,7 +39,7 @@
 /*     */ 
 /*     */ 
 /*     */   
-/*     */   private bx a(Entity paramdb, PathPoint parama1, PathPoint parama2, PathPoint parama3, float paramFloat) {
+/*     */   private PathEntity a(Entity paramdb, PathPoint parama1, PathPoint parama2, PathPoint parama3, float paramFloat) {
 /*  43 */     parama1.f = 0.0F;
 /*  44 */     parama1.g = parama1.a(parama2);
 /*  45 */     parama1.h = parama1.g;
@@ -165,7 +165,7 @@
 /*     */   }
 /*     */ 
 /*     */   
-/*     */   private bx a(PathPoint parama1, PathPoint parama2) {
+/*     */   private PathEntity a(PathPoint parama1, PathPoint parama2) {
 /* 169 */     int b = 1;
 /* 170 */     PathPoint a1 = parama2;
 /* 171 */     while (a1.i != null) {
@@ -180,7 +180,7 @@
 /* 180 */       a1 = a1.i;
 /* 181 */       arrayOfA[--b] = a1;
 /*     */     } 
-/* 183 */     return new bx(arrayOfA);
+/* 183 */     return new PathEntity(arrayOfA);
 /*     */   }
 /*     */ }
 

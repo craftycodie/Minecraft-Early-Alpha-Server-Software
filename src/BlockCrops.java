@@ -92,7 +92,7 @@
 /*  92 */         float f3 = paramdp.k.nextFloat() * f1 + (1.0F - f1) * 0.5F;
 /*  93 */         float f4 = paramdp.k.nextFloat() * f1 + (1.0F - f1) * 0.5F;
 /*  94 */         EntityItem fa = new EntityItem(paramdp, (paramInt1 + f2), (paramInt2 + f3), (paramInt3 + f4), new ItemStack(Item.Q));
-/*  95 */         fa.ac = 10;
+/*  95 */         fa.delayBeforeCanPickup = 10;
 /*  96 */         paramdp.a(fa);
 /*     */       } 
 /*     */     } 

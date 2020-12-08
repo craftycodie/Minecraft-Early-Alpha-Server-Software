@@ -19,14 +19,14 @@ import java.io.IOException;
 /*    */
 /*    */   public Packet21PickupSpawn(EntityItem paramfa) {
 /* 21 */     this.a = paramfa.entityId;
-/* 22 */     this.h = paramfa.a.c;
-/* 23 */     this.i = paramfa.a.a;
+/* 22 */     this.h = paramfa.item.c;
+/* 23 */     this.i = paramfa.item.itemID;
 /* 24 */     this.xPosition = MathHelper.floor_double(paramfa.posX * 32.0D);
 /* 25 */     this.yPosition = MathHelper.floor_double(paramfa.posY * 32.0D);
 /* 26 */     this.zPosition = MathHelper.floor_double(paramfa.posZ * 32.0D);
-/* 27 */     this.e = (byte)(int)(paramfa.n * 128.0D);
-/* 28 */     this.f = (byte)(int)(paramfa.o * 128.0D);
-/* 29 */     this.g = (byte)(int)(paramfa.p * 128.0D);
+/* 27 */     this.e = (byte)(paramfa.motionX * 128.0D);
+/* 28 */     this.f = (byte)(paramfa.motionY * 128.0D);
+/* 29 */     this.g = (byte)(paramfa.motionZ * 128.0D);
 /*    */   }
 /*    */   
 /*    */   public void a(DataInputStream paramDataInputStream) throws IOException {

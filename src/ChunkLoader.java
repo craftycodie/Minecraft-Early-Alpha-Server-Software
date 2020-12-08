@@ -19,7 +19,7 @@
 /*     */   }
 /*     */   
 /*     */   private File a(int paramInt1, int paramInt2) {
-/*  22 */     String str1 = "getKey." + Integer.toString(paramInt1, 36) + "." + Integer.toString(paramInt2, 36) + ".dat";
+/*  22 */     String str1 = "onItemPickup." + Integer.toString(paramInt1, 36) + "." + Integer.toString(paramInt2, 36) + ".dat";
 /*  23 */     String str2 = Integer.toString(paramInt1 & 0x3F, 36);
 /*  24 */     String str3 = Integer.toString(paramInt2 & 0x3F, 36);
 /*  25 */     File file = new File(this.a, str2);
@@ -81,7 +81,7 @@
 /*  81 */       FileOutputStream fileOutputStream = new FileOutputStream(file1);
 /*  82 */       NBTTagCompound r1 = new NBTTagCompound();
 /*  83 */       NBTTagCompound r2 = new NBTTagCompound();
-/*  84 */       r1.a("Level", r2);
+/*  84 */       r1.setCompoundTag("Level", r2);
 /*  85 */       a(paramhv, paramdp, r2);
 /*  86 */       CompressedStreamTools.a(r1, fileOutputStream);
 /*  87 */       fileOutputStream.close();
@@ -163,7 +163,7 @@
 /* 163 */     if (de1 != null) {
 /* 164 */       for (int b = 0; b < de1.b(); b++) {
 /* 165 */         NBTTagCompound r1 = (NBTTagCompound)de1.a(b);
-/* 166 */         Entity db = ge.a(r1, paramdp);
+/* 166 */         Entity db = EntityList.a(r1, paramdp);
 /* 167 */         hv.r = true;
 /* 168 */         if (db != null) {
 /* 169 */           hv.a(db);

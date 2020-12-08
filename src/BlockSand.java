@@ -30,10 +30,10 @@
 /* 30 */     int j = paramInt2;
 /* 31 */     int k = paramInt3;
 /* 32 */     if (g(paramdp, i, j - 1, k) && j >= 0) {
-/* 33 */       go go = new go(paramdp, paramInt1 + 0.5F, paramInt2 + 0.5F, paramInt3 + 0.5F, this.blockId);
+/* 33 */       EntityFallingSand go = new EntityFallingSand(paramdp, paramInt1 + 0.5F, paramInt2 + 0.5F, paramInt3 + 0.5F, this.blockId);
 /* 34 */       if (a) {
-/* 35 */         while (!go.A) {
-/* 36 */           go.b_();
+/* 35 */         while (!go.isDead) {
+/* 36 */           go.onUpdate();
 /*    */         }
 /*    */       } else {
 /* 39 */         paramdp.a(go);

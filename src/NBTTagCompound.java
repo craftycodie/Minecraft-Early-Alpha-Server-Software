@@ -34,7 +34,7 @@ import java.util.HashMap;
 /*  33 */     this.a.put(paramString, (new NBTTagByte(paramByte)).setKey(paramString));
 /*     */   }
 /*     */   
-/*     */   public void a(String paramString, short paramShort) {
+/*     */   public void setShort(String paramString, short paramShort) {
 /*  37 */     this.a.put(paramString, (new NBTTagShort(paramShort)).setKey(paramString));
 /*     */   }
 /*     */   
@@ -62,7 +62,7 @@ import java.util.HashMap;
 /*  61 */     this.a.put(paramString, (new NbtTagByteArray(paramArrayOfbyte)).setKey(paramString));
 /*     */   }
 /*     */   
-/*     */   public void a(String paramString, NBTTagCompound paramr) {
+/*     */   public void setCompoundTag(String paramString, NBTTagCompound paramr) {
 /*  65 */     this.a.put(paramString, paramr.setKey(paramString));
 /*     */   }
 /*     */   
@@ -83,7 +83,7 @@ import java.util.HashMap;
 /*  82 */     return ((NBTTagByte)this.a.get(paramString)).a;
 /*     */   }
 /*     */   
-/*     */   public short c(String paramString) {
+/*     */   public short getShort(String paramString) {
 /*  86 */     if (!this.a.containsKey(paramString)) return 0; 
 /*  87 */     return ((NBTTagShort)this.a.get(paramString)).a;
 /*     */   }

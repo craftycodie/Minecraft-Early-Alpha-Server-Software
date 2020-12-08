@@ -1,9 +1,9 @@
 /*    */ 
 /*    */ 
 /*    */ public class ItemSpade
-/*    */   extends ci
+/*    */   extends ItemTool
 /*    */ {
-/*  6 */   private static Block[] aV = new Block[] { Block.u, Block.v, Block.E, Block.F, Block.aS, Block.aU, Block.aW };
+/*  6 */   private static Block[] aV = new Block[] { Block.u, Block.v, Block.E, Block.F, Block.aS, Block.aU };
 /*    */   
 /*    */   public ItemSpade(int paramInt1, int paramInt2) {
 /*  9 */     super(paramInt1, 1, paramInt2, aV);

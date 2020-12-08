@@ -25,7 +25,7 @@ import java.util.logging.Level;
 /*     */   
 /*     */   public NetworkListenThread c;
 /*     */   
-/*     */   public cj d;
+/*     */   public PropertyManager d;
 /*     */   
 /*     */   public WorldManager e;
 /*     */   
@@ -44,7 +44,7 @@ import java.util.logging.Level;
 /*     */ 
 /*     */   
 /*     */   private boolean startServer() throws UnknownHostException {
-/*  42 */     Runtime.getRuntime().addShutdownHook((Thread)new bk(this));
+/*  42 */     Runtime.getRuntime().addShutdownHook((Thread)new ServerShutdownHook(this));
 /*     */
 /*     */     
 /*  58 */     ThreadCommandReader bi = new ThreadCommandReader(this);
@@ -63,7 +63,7 @@ import java.util.logging.Level;
 /*     */     } 
 /*     */     
 /*  82 */     a.info("Loading properties");
-/*  83 */     this.d = new cj(new File("server.properties"));
+/*  83 */     this.d = new PropertyManager(new File("server.properties"));
 /*  84 */     String str1 = this.d.a("server-ip", "");
 /*     */     
 /*  86 */     InetAddress inetAddress = null;
@@ -211,7 +211,7 @@ import java.util.logging.Level;
 /* 229 */     this.k.updateTrackedEntities();
 /*     */     
 /* 231 */     for (int b = 0; b < this.m.size(); b++) {
-/* 232 */       ((dn)this.m.get(b)).a();
+/* 232 */       ((IUpdatePlayerListBox)this.m.get(b)).a();
 /*     */     }
 /*     */     
 /*     */     try {
@@ -234,11 +234,11 @@ import java.util.logging.Level;
 /* 252 */         a.info("   java -Xmx1024M -Xms1024M -jar minecraft_server.jar nogui");
 /* 253 */         a.info("Console commands:");
 /* 254 */         a.info("   help  or  ?          shows this message");
-/* 255 */         a.info("   kick <player>        removes chunkExists player from the server");
-/* 256 */         a.info("   give <player> <id>   gives chunkExists player chunkExists resource");
+/* 255 */         a.info("   kick <player>        removes item player from the server");
+/* 256 */         a.info("   give <player> <id>   gives item player item resource");
 /* 257 */         a.info("   stop                 gracefully stops the server");
 /* 258 */         a.info("   list                 lists all currently connected players");
-/* 259 */         a.info("   say <message>        broadcasts chunkExists message to all players"); continue;
+/* 259 */         a.info("   say <message>        broadcasts item message to all players"); continue;
 /* 260 */       }  if (str.toLowerCase().startsWith("list")) {
 /* 261 */         a.info("Connected players: " + this.configManager.c()); continue;
 /* 262 */       }  if (str.toLowerCase().startsWith("stop")) {
@@ -292,14 +292,14 @@ import java.util.logging.Level;
 /* 310 */       if (str.toLowerCase().startsWith("say ")) {
 /* 311 */         str = str.substring(str.indexOf(" ")).trim();
 /* 312 */         a.info("[Server] " + str);
-/* 313 */         this.configManager.a(new Packet3Chat("§getChunkBlockTileEntity[Server] " + str)); continue;
+/* 313 */         this.configManager.a(new Packet3Chat("§d[Server] " + str)); continue;
 /*     */       } 
 /* 315 */       a.warning("Unknown console command. Type \"help\" for help.");
 /*     */     } 
 /*     */   }
 /*     */ 
 /*     */   
-/*     */   public void a(dn paramdn) {
+/*     */   public void a(IUpdatePlayerListBox paramdn) {
 /* 321 */     this.m.add(paramdn);
 /*     */   }
 /*     */   

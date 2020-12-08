@@ -31,15 +31,15 @@
 /*    */   }
 /*    */   
 /*    */   public void c(World paramdp, int paramInt1, int paramInt2, int paramInt3) {
-/* 34 */     bs bs = new bs(paramdp, paramInt1 + 0.5F, paramInt2 + 0.5F, paramInt3 + 0.5F);
+/* 34 */     EntityTNTPrimed bs = new EntityTNTPrimed(paramdp, paramInt1 + 0.5F, paramInt2 + 0.5F, paramInt3 + 0.5F);
 /* 35 */     bs.a = paramdp.k.nextInt(bs.a / 4) + bs.a / 8;
 /* 36 */     paramdp.a(bs);
 /*    */   }
 /*    */   
 /*    */   public void a(World paramdp, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
-/* 40 */     bs bs = new bs(paramdp, paramInt1 + 0.5F, paramInt2 + 0.5F, paramInt3 + 0.5F);
+/* 40 */     EntityTNTPrimed bs = new EntityTNTPrimed(paramdp, paramInt1 + 0.5F, paramInt2 + 0.5F, paramInt3 + 0.5F);
 /* 41 */     paramdp.a(bs);
-/* 42 */     paramdp.a(bs, "random.fuse", 1.0F, 1.0F);
+/* 42 */     paramdp.playSoundAtEntity(bs, "random.fuse", 1.0F, 1.0F);
 /*    */   }
 /*    */ }
 

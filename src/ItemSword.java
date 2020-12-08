@@ -8,7 +8,7 @@
 /*    */   
 /*    */   public ItemSword(int paramInt1, int paramInt2) {
 /* 10 */     super(paramInt1);
-/* 11 */     this.aR = 1;
+/* 11 */     this.maxStackSize = 1;
 /* 12 */     this.aS = 32 << paramInt2;
 /* 13 */     if (paramInt2 == 3) this.aS *= 4;
 /*    */     

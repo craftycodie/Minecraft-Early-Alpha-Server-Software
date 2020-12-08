@@ -60,7 +60,7 @@
 /*     */   }
 /*     */   
 /*     */   private JComponent b() {
-/*  69 */     g g = new g(this.b);
+/*  69 */     PlayerListBox g = new PlayerListBox(this.b);
 /*  70 */     JScrollPane jScrollPane = new JScrollPane(g, 22, 30);
 /*  71 */     jScrollPane.setBorder(new TitledBorder(new EtchedBorder(), "Players"));
 /*     */     
@@ -70,7 +70,7 @@
 /*     */   private JComponent c() {
 /*  77 */     JPanel jPanel = new JPanel(new BorderLayout());
 /*  78 */     JTextArea jTextArea = new JTextArea();
-/*  79 */     a.addHandler(new ch(jTextArea));
+/*  79 */     a.addHandler(new GuiLogOutputHandler(jTextArea));
 /*  80 */     JScrollPane jScrollPane = new JScrollPane(jTextArea, 22, 30);
 /*  81 */     jTextArea.setEditable(false);
 /*     */     

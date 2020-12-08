@@ -52,7 +52,7 @@
 /* 51 */         dq.playerNetServerHandler.b("You logged in from another location");
 /*    */       }
 /*    */     } 
-/* 54 */     return new EntityPlayerMP(this.c, this.c.e, paramString1, new hw(this.c.e));
+/* 54 */     return new EntityPlayerMP(this.c, this.c.e, paramString1, new ItemInWorldManager(this.c.e));
 /*    */   }
 /*    */   
 /*    */   public void b() {

@@ -15,7 +15,7 @@
 /* 15 */     this.aX = paramInt3;
 /* 16 */     this.aW = aY[paramInt4];
 /* 17 */     this.aS = aZ[paramInt4] * 3 << paramInt2;
-/* 18 */     this.aR = 1;
+/* 18 */     this.maxStackSize = 1;
 /*    */   }
 /*    */ }
 

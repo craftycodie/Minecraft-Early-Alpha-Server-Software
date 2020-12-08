@@ -1,7 +1,7 @@
 /*     */ import java.util.Random;
 /*     */ 
 /*     */ public class BlockFlowing
-/*     */   extends cg {
+/*     */   extends BlockFluid {
 /*     */   int a;
 /*     */   boolean[] b;
 /*     */   int[] c;
@@ -181,7 +181,7 @@
 /*     */         if (this.blockMaterial == Material.g) { h(paramdp, paramInt1, paramInt2, paramInt3); } else { Block.blocksList[i].a_(paramdp, paramInt1, paramInt2, paramInt3, paramdp.getBlockMetadata(paramInt1, paramInt2, paramInt3)); }
 /*     */           paramdp.b(paramInt1, paramInt2, paramInt3, this.blockId, paramInt4); }
 /* 183 */      } private boolean k(World paramdp, int paramInt1, int paramInt2, int paramInt3) { int i = paramdp.getBlockId(paramInt1, paramInt2, paramInt3);
-/* 184 */     if (i == Block.aE.blockId || i == Block.aL.blockId || i == Block.aD.blockId || i == Block.aF.blockId || i == Block.aX.blockId) {
+/* 184 */     if (i == Block.aE.blockId || i == Block.aL.blockId || i == Block.aD.blockId || i == Block.aF.blockId) {
 /* 185 */       return true;
 /*     */     }
 /* 187 */     if (i == 0) return false; 
@@ -215,7 +215,7 @@
 /*     */ }
 
 
-/* Location:              D:\Projects\Local\MinecraftBetaOfflineLauncher\Binaries\Test Server\a0.0.1.jar!\ai.class
+/* Location:              D:\Projects\Local\MinecraftBetaOfflineLauncher\Binaries\Test Server\a0.0.1.jar!\inventory.class
  * Java compiler version: 5 (49.0)
  * JD-Core Version:       1.1.3
  */

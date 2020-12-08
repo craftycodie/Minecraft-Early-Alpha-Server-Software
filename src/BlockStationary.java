@@ -4,7 +4,7 @@
 /*    */ 
 /*    */ 
 /*    */ public class BlockStationary
-/*    */   extends cg
+/*    */   extends BlockFluid
 /*    */ {
 /*    */   protected BlockStationary(int paramInt, Material paramhz) {
 /* 10 */     super(paramInt, paramhz);

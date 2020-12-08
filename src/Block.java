@@ -9,13 +9,13 @@
 /*  46 */   public static final StepSound soundGrassFootstep = new StepSound("grass", 1.0F, 1.0F);
 /*  47 */   public static final StepSound soundStoneFootstep = new StepSound("stone", 1.0F, 1.0F);
 /*  48 */   public static final StepSound soundMetalFootstep = new StepSound("stone", 1.0F, 1.5F);
-/*  49 */   public static final StepSound soundGlassFootstep = new aa("stone", 1.0F, 1.0F);
+/*  49 */   public static final StepSound soundGlassFootstep = new StepSoundStone("stone", 1.0F, 1.0F);
 /*     */ 
 /*     */ 
 /*     */ 
 /*     */   
 /*  54 */   public static final StepSound soundClothFootstep = new StepSound("cloth", 1.0F, 1.0F);
-/*  55 */   public static final StepSound soundSandFootstep = new z("sand", 1.0F, 1.0F);
+/*  55 */   public static final StepSound soundSandFootstep = new StepSoundSand("sand", 1.0F, 1.0F);
 /*     */
 /*     */   
 /*  77 */   public static final Block[] blocksList = new Block[256];
@@ -96,9 +96,9 @@
 /* 152 */   public static final Block aH = new BlockStairs(67, w);
 /* 153 */   public static final Block aI = (new BlockSign(68, TileEntitySign.class, false)).c(1.0F).a(soundWoodFootstep);
 /* 154 */   public static final Block aJ = (new BlockLever(69, 96)).c(0.5F).a(soundWoodFootstep);
-/* 155 */   public static final Block aK = (new BlockPressurePlate(70, stone.aZ, ck.b)).c(0.5F).a(soundStoneFootstep);
+/* 155 */   public static final Block aK = (new BlockPressurePlate(70, stone.aZ, EnumMobType.mobs)).c(0.5F).a(soundStoneFootstep);
 /* 156 */   public static final Block aL = (new BlockDoor(71, Material.e)).c(5.0F).a(soundMetalFootstep);
-/* 157 */   public static final Block aM = (new BlockPressurePlate(72, x.aZ, ck.a)).c(0.5F).a(soundWoodFootstep);
+/* 157 */   public static final Block aM = (new BlockPressurePlate(72, x.aZ, EnumMobType.everything)).c(0.5F).a(soundWoodFootstep);
 /* 158 */   public static final Block aN = (new BlockRedstoneOre(73, 51, false)).c(3.0F).b(5.0F).a(soundStoneFootstep);
 /* 159 */   public static final Block aO = (new BlockRedstoneOre(74, 51, true)).a(0.625F).c(3.0F).b(5.0F).a(soundStoneFootstep);
 /* 160 */   public static final Block aP = (new BlockRedstoneTorch(75, 115, false)).c(0.0F).a(soundWoodFootstep);
@@ -108,9 +108,6 @@
 /* 164 */   public static final Block aT = (new BlockIce(79, 67)).c(0.5F).c(3).a(soundGlassFootstep);
 /* 165 */   public static final Block aU = (new BlockSnowBlock(80, 66)).c(0.2F).a(soundClothFootstep);
 /* 166 */   public static final Block aV = (new BlockCactus(81, 70)).c(0.4F).a(soundClothFootstep);
-/* 167 */   public static final Block aW = (new BlockClay(82, 72)).c(0.6F).a(soundGravelFootstep);
-/* 168 */   public static final Block aX = (new BlockReed(83, 73)).c(0.0F).a(soundGrassFootstep);
-/* 169 */   public static final Block aY = (new BlockJukeBox(84, 74)).c(2.0F).b(10.0F).a(soundStoneFootstep);
 /*     */   public int aZ;
 /*     */   public final int blockId;
 /*     */   
@@ -307,7 +304,7 @@
 /*     */   }
 /*     */   
 /*     */   public void a(World paramdp, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat) {
-/* 366 */     if (paramdp.t)
+/* 366 */     if (paramdp.singleplayerWorld)
 /* 367 */       return;  int i = a(paramdp.k);
 /* 368 */     for (int b = 0; b < i; b++) {
 /* 369 */       if (paramdp.k.nextFloat() <= paramFloat) {
@@ -318,7 +315,7 @@
 /* 374 */           double d2 = (paramdp.k.nextFloat() * f) + (1.0F - f) * 0.5D;
 /* 375 */           double d3 = (paramdp.k.nextFloat() * f) + (1.0F - f) * 0.5D;
 /* 376 */           EntityItem fa = new EntityItem(paramdp, paramInt1 + d1, paramInt2 + d2, paramInt3 + d3, new ItemStack(j));
-/* 377 */           fa.ac = 10;
+/* 377 */           fa.delayBeforeCanPickup = 10;
 /* 378 */           paramdp.a(fa);
 /*     */         } 
 /*     */       } 

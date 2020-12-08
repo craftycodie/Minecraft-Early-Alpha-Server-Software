@@ -112,16 +112,16 @@
 /* 112 */         float f2 = this.a.nextFloat() * 0.8F + 0.1F;
 /* 113 */         float f3 = this.a.nextFloat() * 0.8F + 0.1F;
 /*     */         
-/* 115 */         while (gc.a > 0) {
+/* 115 */         while (gc.itemID > 0) {
 /* 116 */           int i = this.a.nextInt(21) + 10;
-/* 117 */           if (i > gc.a) i = gc.a; 
-/* 118 */           gc.a -= i;
+/* 117 */           if (i > gc.itemID) i = gc.itemID;
+/* 118 */           gc.itemID -= i;
 /*     */           
 /* 120 */           EntityItem fa = new EntityItem(paramdp, (paramInt1 + f1), (paramInt2 + f2), (paramInt3 + f3), new ItemStack(gc.c, i, gc.d));
 /* 121 */           float f = 0.05F;
-/* 122 */           fa.n = ((float)this.a.nextGaussian() * f);
-/* 123 */           fa.o = ((float)this.a.nextGaussian() * f + 0.2F);
-/* 124 */           fa.p = ((float)this.a.nextGaussian() * f);
+/* 122 */           fa.motionX = ((float)this.a.nextGaussian() * f);
+/* 123 */           fa.motionY = ((float)this.a.nextGaussian() * f + 0.2F);
+/* 124 */           fa.motionZ = ((float)this.a.nextGaussian() * f);
 /* 125 */           paramdp.a(fa);
 /*     */         } 
 /*     */       } 

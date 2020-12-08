@@ -18,9 +18,9 @@
 /*  18 */   public static Item d = (new ItemSpade(0, 2)).a(82);
 /*  19 */   public static Item e = (new ItemPickaxe(1, 2)).a(98);
 /*  20 */   public static Item f = (new ItemAxe(2, 2)).a(114);
-/*  21 */   public static Item g = (new hj(3)).a(5);
-/*  22 */   public static Item h = (new ig(4, 4)).a(10);
-/*  23 */   public static Item i = (new bu(5)).a(21);
+/*  21 */   public static Item g = (new ItemFlintAndSteel(3)).a(5);
+/*  22 */   public static Item h = (new ItemFood(4, 4)).a(10);
+/*  23 */   public static Item i = (new ItemBow(5)).a(21);
 /*  24 */   public static Item j = (new Item(6)).a(37);
 /*  25 */   public static Item k = (new Item(7)).a(7);
 /*  26 */   public static Item l = (new Item(8)).a(55);
@@ -45,7 +45,7 @@
 /*     */   
 /*  46 */   public static Item B = (new Item(24)).a(53).c();
 /*  47 */   public static Item C = (new Item(25)).a(71);
-/*  48 */   public static Item D = (new az(26, 10)).a(72);
+/*  48 */   public static Item D = (new ItemSoup(26, 10)).a(72);
 /*     */   
 /*  50 */   public static Item E = (new ItemSword(27, 0)).a(68);
 /*  51 */   public static Item F = (new ItemSpade(28, 0)).a(84);
@@ -56,15 +56,15 @@
 /*  56 */   public static Item J = (new Item(32)).a(24);
 /*  57 */   public static Item K = (new Item(33)).a(40);
 /*     */   
-/*  59 */   public static Item L = (new hk(34, 0)).a(128);
-/*  60 */   public static Item M = (new hk(35, 1)).a(129);
-/*  61 */   public static Item N = (new hk(36, 2)).a(130);
-/*  62 */   public static Item O = (new hk(37, 3)).a(131);
-/*  63 */   public static Item P = (new hk(38, 4)).a(132);
+/*  59 */   public static Item L = (new ItemHoe(34, 0)).a(128);
+/*  60 */   public static Item M = (new ItemHoe(35, 1)).a(129);
+/*  61 */   public static Item N = (new ItemHoe(36, 2)).a(130);
+/*  62 */   public static Item O = (new ItemHoe(37, 3)).a(131);
+/*  63 */   public static Item P = (new ItemHoe(38, 4)).a(132);
 /*     */   
-/*  65 */   public static Item Q = (new cc(39, Block.az.blockId)).a(9);
+/*  65 */   public static Item Q = (new ItemSeeds(39, Block.az.blockId)).a(9);
 /*  66 */   public static Item R = (new Item(40)).a(25);
-/*  67 */   public static Item S = (new ig(41, 5)).a(41);
+/*  67 */   public static Item S = (new ItemFood(41, 5)).a(41);
 /*     */   
 /*  69 */   public static Item T = (new ItemArmour(42, 0, 0, 0)).a(0);
 /*  70 */   public static Item U = (new ItemArmour(43, 0, 0, 1)).a(16);
@@ -92,49 +92,34 @@
 /*  92 */   public static Item am = (new ItemArmour(61, 1, 4, 3)).a(52);
 /*     */   
 /*  94 */   public static Item an = (new Item(62)).a(6);
-/*  95 */   public static Item ao = (new ig(63, 3)).a(87);
-/*  96 */   public static Item ap = (new ig(64, 8)).a(88);
-/*  97 */   public static Item aq = (new ht(65)).a(26);
+/*  95 */   public static Item ao = (new ItemFood(63, 3)).a(87);
+/*  96 */   public static Item ap = (new ItemFood(64, 8)).a(88);
+/*  97 */   public static Item aq = (new ItemPainting(65)).a(26);
 /*     */   
-/*  99 */   public static Item ar = (new ig(66, 42)).a(11);
+/*  99 */   public static Item ar = (new ItemFood(66, 42)).a(11);
 /*     */   
-/* 101 */   public static Item as = (new fd(67)).a(42);
-/* 102 */   public static Item at = (new fn(68, Material.c)).a(43);
+/* 101 */   public static Item as = (new ItemSign(67)).a(42);
+/* 102 */   public static Item at = (new ItemDoor(68, Material.c)).a(43);
 /*     */   
-/* 104 */   public static Item au = (new ak(69, 0)).a(74);
-/* 105 */   public static Item av = (new ak(70, Block.A.blockId)).a(75);
-/* 106 */   public static Item aw = (new ak(71, Block.C.blockId)).a(76);
+/* 104 */   public static Item au = (new ItemBucket(69, 0)).a(74);
+/* 105 */   public static Item av = (new ItemBucket(70, Block.A.blockId)).a(75);
+/* 106 */   public static Item aw = (new ItemBucket(71, Block.C.blockId)).a(76);
 /*     */   
 /* 108 */   public static Item ax = (new ItemMinecart(72, 0)).a(135);
-/* 109 */   public static Item ay = (new cp(73)).a(104);
-/* 110 */   public static Item az = (new fn(74, Material.e)).a(44);
-/* 111 */   public static Item aA = (new fr(75)).a(56);
-/* 112 */   public static Item aB = (new cb(76)).a(14);
+/* 109 */   public static Item ay = (new ItemSaddle(73)).a(104);
+/* 110 */   public static Item az = (new ItemDoor(74, Material.e)).a(44);
+/* 111 */   public static Item aA = (new ItemRedstone(75)).a(56);
+/* 112 */   public static Item aB = (new ItemSnowball(76)).a(14);
 /*     */   
-/* 114 */   public static Item aC = (new ff(77)).a(136);
+/* 114 */   public static Item aC = (new ItemBoat(77)).a(136);
 /*     */   
 /* 116 */   public static Item aD = (new Item(78)).a(103);
 /* 117 */   public static Item aE = (new Item(79)).a(77);
-/* 118 */   public static Item aF = (new Item(80)).a(22);
-/* 119 */   public static Item aG = (new Item(81)).a(57);
-/* 120 */   public static Item aH = (new ItemReed(82, Block.aX)).a(27);
-/* 121 */   public static Item aI = (new Item(83)).a(58);
-/* 122 */   public static Item aJ = (new Item(84)).a(59);
-/*     */   
-/* 124 */   public static Item aK = (new Item(85)).a(30);
-/*     */   
-/* 126 */   public static Item aL = (new ItemMinecart(86, 1)).a(151);
-/* 127 */   public static Item aM = (new ItemMinecart(87, 2)).a(167);
-/*     */   
-/* 129 */   public static Item aN = (new Item(88)).a(12);
-/*     */ 
-/*     */   
-/* 132 */   public static Item aO = (new ItemRecord(2000, "13")).a(240);
-/* 133 */   public static Item aP = (new ItemRecord(2001, "cat")).a(241);
+/*     */
 /*     */   
 /*     */   public final int aQ;
 /*     */   
-/* 137 */   protected int aR = 64;
+/* 137 */   protected int maxStackSize = 64;
 /* 138 */   protected int aS = 32;
 /*     */   
 /*     */   protected int aT;
@@ -175,7 +160,7 @@
 /*     */ 
 /*     */   
 /*     */   public int a() {
-/* 178 */     return this.aR;
+/* 178 */     return this.maxStackSize;
 /*     */   }
 /*     */   
 /*     */   public int b() {

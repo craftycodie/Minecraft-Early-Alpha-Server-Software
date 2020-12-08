@@ -96,9 +96,9 @@
             private void f(int n, int n2, int n3) {
                 int n4 = this.d.c(n, n2);
                 if (n4 > n3) {
-                    this.d.a(cr.a, n, n3, n2, n, n4, n2);
+                    this.d.a(EnumSkyBlock.Sky, n, n3, n2, n, n4, n2);
                 } else if (n4 < n3) {
-                    this.d.a(cr.a, n, n4, n2, n, n3, n2);
+                    this.d.a(EnumSkyBlock.Sky, n, n4, n2, n, n3, n2);
                 }
                 this.o = true;
             }
@@ -140,7 +140,7 @@
                         this.f.a(n, n4, n3, 15);
                     }
                 } else {
-                    this.d.a(cr.a, n6, n7, n5, n6, n8, n5);
+                    this.d.a(EnumSkyBlock.Sky, n6, n7, n5, n6, n8, n5);
                     for (n4 = n7; n4 < n8; ++n4) {
                         this.f.a(n, n4, n3, 0);
                     }
@@ -161,7 +161,7 @@
                     --n8;
                 }
                 if (n8 != n10) {
-                    this.d.a(cr.a, n6 - 1, n8, n5 - 1, n6 + 1, n10, n5 + 1);
+                    this.d.a(EnumSkyBlock.Sky, n6 - 1, n8, n5 - 1, n6 + 1, n10, n5 + 1);
                 }
                 this.o = true;
             }
@@ -180,7 +180,7 @@
                 int n8 = this.xPosition * 16 + n;
                 int n9 = this.zPosition * 16 + n3;
                 this.b[n << 11 | n3 << 7 | n2] = by;
-                if (n7 != 0 && !this.d.t) {
+                if (n7 != 0 && !this.d.singleplayerWorld) {
                     Block.blocksList[n7].b(this.d, n8, n2, n9);
                 }
                 this.e.a(n, n2, n3, n5);
@@ -191,8 +191,8 @@
                 } else if (n2 == n6 - 1) {
                     this.g(n, n2, n3);
                 }
-                this.d.a(cr.a, n8, n2, n9, n8, n2, n9);
-                this.d.a(cr.b, n8, n2, n9, n8, n2, n9);
+                this.d.a(EnumSkyBlock.Sky, n8, n2, n9, n8, n2, n9);
+                this.d.a(EnumSkyBlock.Block, n8, n2, n9, n8, n2, n9);
                 this.c(n, n3);
                 if (n4 != 0) {
                     Block.blocksList[n4].onBlockAdded(this.d, n8, n2, n9);
@@ -222,10 +222,10 @@
                 } else if (n2 == n5 - 1) {
                     this.g(n, n2, n3);
                 }
-                this.d.a(cr.a, n7, n2, n8, n7, n2, n8);
-                this.d.a(cr.b, n7, n2, n8, n7, n2, n8);
+                this.d.a(EnumSkyBlock.Sky, n7, n2, n8, n7, n2, n8);
+                this.d.a(EnumSkyBlock.Block, n7, n2, n8, n7, n2, n8);
                 this.c(n, n3);
-                if (n4 != 0 && !this.d.t) {
+                if (n4 != 0 && !this.d.singleplayerWorld) {
                     Block.blocksList[n4].onBlockAdded(this.d, n7, n2, n8);
                 }
                 this.o = true;
@@ -241,21 +241,21 @@
                 this.e.a(n, n2, n3, n4);
             }
 
-            public int a(cr cr2, int n, int n2, int n3) {
-                if (cr2 == cr.a) {
+            public int a(EnumSkyBlock cr2, int n, int n2, int n3) {
+                if (cr2 == EnumSkyBlock.Sky) {
                     return this.f.a(n, n2, n3);
                 }
-                if (cr2 == cr.b) {
+                if (cr2 == EnumSkyBlock.Block) {
                     return this.g.a(n, n2, n3);
                 }
                 return 0;
             }
 
-            public void a(cr cr2, int n, int n2, int n3, int n4) {
+            public void a(EnumSkyBlock cr2, int n, int n2, int n3, int n4) {
                 this.o = true;
-                if (cr2 == cr.a) {
+                if (cr2 == EnumSkyBlock.Sky) {
                     this.f.a(n, n2, n3, n4);
-                } else if (cr2 == cr.b) {
+                } else if (cr2 == EnumSkyBlock.Block) {
                     this.g.a(n, n2, n3, n4);
                 } else {
                     return;
@@ -394,7 +394,7 @@
                     List list2 = this.m[i];
                     for (int j = 0; j < list2.size(); ++j) {
                         Entity db3 = (Entity) list2.get(j);
-                        if (db3 == db2 || !db3.u.a(cy2)) continue;
+                        if (db3 == db2 || !db3.boundingBox.a(cy2)) continue;
                         list.add(db3);
                     }
                 }
@@ -413,7 +413,7 @@
                     List list2 = this.m[i];
                     for (int j = 0; j < list2.size(); ++j) {
                         Entity db2 = (Entity) list2.get(j);
-                        if (!class_.isAssignableFrom(db2.getClass()) || !db2.u.a(cy2)) continue;
+                        if (!class_.isAssignableFrom(db2.getClass()) || !db2.boundingBox.a(cy2)) continue;
                         list.add(db2);
                     }
                 }

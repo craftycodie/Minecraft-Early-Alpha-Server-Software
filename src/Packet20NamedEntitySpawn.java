@@ -28,7 +28,7 @@ import java.io.IOException;
 /* 26 */     this.f = (byte)(int)(parameq.rotationYaw * 256.0F / 360.0F);
 /* 27 */     this.g = (byte)(int)(parameq.rotationPitch * 256.0F / 360.0F);
 /*    */     
-/* 29 */     ItemStack gc = parameq.ai.b();
+/* 29 */     ItemStack gc = parameq.inventory.b();
 /* 30 */     this.h = (gc == null) ? 0 : gc.c;
 /*    */   }
 /*    */   

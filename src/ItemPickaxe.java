@@ -2,7 +2,7 @@
 /*    */ 
 /*    */ 
 /*    */ public class ItemPickaxe
-/*    */   extends ci
+/*    */   extends ItemTool
 /*    */ {
 /*  7 */   private static Block[] aV = new Block[] { Block.w, Block.aj, Block.ak, Block.stone, Block.ao, Block.H, Block.ai, Block.I, Block.ah, Block.G, Block.aw, Block.ax, Block.aT };
 /*    */   

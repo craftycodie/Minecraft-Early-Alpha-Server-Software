@@ -69,7 +69,7 @@
 /*    */   }
 /*    */   
 /*    */   public void a(World paramdp, int paramInt1, int paramInt2, int paramInt3, Random paramRandom) {
-/* 72 */     if (paramdp.a(cr.b, paramInt1, paramInt2, paramInt3) > 11) {
+/* 72 */     if (paramdp.a(EnumSkyBlock.Block, paramInt1, paramInt2, paramInt3) > 11) {
 /* 73 */       a_(paramdp, paramInt1, paramInt2, paramInt3, paramdp.getBlockMetadata(paramInt1, paramInt2, paramInt3));
 /* 74 */       paramdp.setBlockWithNotify(paramInt1, paramInt2, paramInt3, 0);
 /*    */     } 

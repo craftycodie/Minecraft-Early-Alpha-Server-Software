@@ -64,7 +64,7 @@
 /*  64 */     return b(d1, d2, d3, d4, d5, d6);
 /*     */   }
 /*     */   
-/*     */   public AxisAlignedBB b(double paramDouble1, double paramDouble2, double paramDouble3) {
+/*     */   public AxisAlignedBB expand(double paramDouble1, double paramDouble2, double paramDouble3) {
 /*  68 */     double d1 = this.a - paramDouble1;
 /*  69 */     double d2 = this.b - paramDouble2;
 /*  70 */     double d3 = this.c - paramDouble3;

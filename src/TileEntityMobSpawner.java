@@ -50,10 +50,10 @@
 /*     */     } 
 /*  51 */     int b1 = 4;
 /*  52 */     for (int b2 = 0; b2 < b1; b2++) {
-/*  53 */       EntityLiving ic = (EntityLiving)ge.a(this.f, this.a);
+/*  53 */       EntityLiving ic = (EntityLiving) EntityList.a(this.f, this.a);
 /*  54 */       if (ic == null)
 /*     */         return; 
-/*  56 */       int i = this.a.a(ic.getClass(), AxisAlignedBB.b(this.b, this.c, this.d, (this.b + 1), (this.c + 1), (this.d + 1)).b(8.0D, 4.0D, 8.0D)).size();
+/*  56 */       int i = this.a.a(ic.getClass(), AxisAlignedBB.b(this.b, this.c, this.d, (this.b + 1), (this.c + 1), (this.d + 1)).expand(8.0D, 4.0D, 8.0D)).size();
 /*  57 */       if (i >= 6) {
 /*  58 */         c();
 /*     */         
@@ -95,13 +95,13 @@
 /*     */   public void a(NBTTagCompound paramr) {
 /*  96 */     super.a(paramr);
 /*  97 */     this.f = paramr.h("EntityId");
-/*  98 */     this.e = paramr.c("Delay");
+/*  98 */     this.e = paramr.getShort("Delay");
 /*     */   }
 /*     */   
 /*     */   public void b(NBTTagCompound paramr) {
 /* 102 */     super.b(paramr);
 /* 103 */     paramr.a("EntityId", this.f);
-/* 104 */     paramr.a("Delay", (short)this.e);
+/* 104 */     paramr.setShort("Delay", (short)this.e);
 /*     */   }
 /*     */ }
 

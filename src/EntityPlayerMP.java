@@ -13,7 +13,7 @@
 /*     */ {
 /*     */   public NetServerHandler playerNetServerHandler;
 /*     */   public MinecraftServer b;
-/*     */   public hw ac;
+/*     */   public ItemInWorldManager ac;
 /*     */   public double ad;
 /*     */   public double ae;
 /*  18 */   public List loadedChunks = new LinkedList();
@@ -22,7 +22,7 @@
 /*     */   
 /*     */   public double ah;
 /*     */   
-/*     */   public EntityPlayerMP(MinecraftServer paramMinecraftServer, World paramdp, String paramString, hw paramhw) {
+/*     */   public EntityPlayerMP(MinecraftServer paramMinecraftServer, World paramdp, String paramString, ItemInWorldManager paramhw) {
 /*  25 */     super(paramdp);
 /*     */     
 /*  27 */     int i = paramdp.l + this.Q.nextInt(20) - 10;
@@ -31,19 +31,19 @@
 /*  30 */     c(i + 0.5D, k, j + 0.5D, 0.0F, 0.0F);
 /*  31 */     this.b = paramMinecraftServer;
 /*  32 */     this.M = 0.0F;
-/*  33 */     paramhw.a = this;
+/*  33 */     paramhw.thisPlayer = this;
 /*  34 */     this.username = paramString;
 /*  35 */     this.ac = paramhw;
-/*  36 */     this.B = 0.0F;
+/*  36 */     this.yOffset = 0.0F;
 /*     */   }
 /*     */ 
 /*     */   
-/*     */   public void b_() {}
+/*     */   public void onUpdate() {}
 /*     */ 
 /*     */   
 /*     */   public void f(Entity paramdb) {}
 /*     */   
-/*     */   public boolean a(Entity paramdb, int paramInt) {
+/*     */   public boolean attackEntityFrom(Entity paramdb, int paramInt) {
 /*  46 */     return false;
 /*     */   }
 /*     */ 
@@ -51,7 +51,7 @@
 /*     */   public void a(int paramInt) {}
 /*     */   
 /*     */   public void h() {
-/*  53 */     super.b_();
+/*  53 */     super.onUpdate();
 /*     */     
 /*  55 */     ChunkCoordIntPair ih = null;
 /*  56 */     double d = 0.0D;
@@ -78,19 +78,20 @@
 /*     */   }
 /*     */   
 /*     */   public void x() {
-/*  79 */     this.n = this.o = this.p = 0.0D;
+/*  79 */     this.motionX = this.motionY = this.motionZ = 0.0D;
 /*  80 */     this.bd = false;
 /*  81 */     super.x();
 /*     */   }
-/*     */   
-/*     */   public void c(Entity paramdb, int paramInt) {
-/*  85 */     if (!paramdb.A && 
-/*  86 */       paramdb instanceof EntityItem) {
-/*  87 */       this.playerNetServerHandler.sendPacket(new Packet17UnknownItemStack(((EntityItem)paramdb).a, paramInt));
-/*  88 */       this.b.k.sendPacketToTrackedPlayers(paramdb, new Packet22Collect(paramdb.entityId, this.entityId));
+/*     */
+            @Override
+/*     */   public void onItemPickup(Entity entity, int paramInt) {
+/*  85 */     if (!entity.isDead &&
+/*  86 */       entity instanceof EntityItem) {
+/*  87 */       this.playerNetServerHandler.sendPacket(new Packet17UnknownItemStack(((EntityItem)entity).item, paramInt));
+/*  88 */       this.b.k.sendPacketToTrackedPlayers(entity, new Packet22Collect(entity.entityId, this.entityId));
 /*     */     } 
 /*     */     
-/*  91 */     super.c(paramdb, paramInt);
+/*  91 */     super.onItemPickup(entity, paramInt);
 /*     */   }
 /*     */   
 /*     */   public void y() {

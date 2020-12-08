@@ -9,7 +9,7 @@
 /*    */ class fo
 /*    */   extends Formatter
 /*    */ {
-/*    */   fo(ch paramch) {}
+/*    */   fo(GuiLogOutputHandler paramch) {}
 /*    */   
 /*    */   public String format(LogRecord paramLogRecord) {
 /* 15 */     StringBuilder stringBuilder = new StringBuilder();

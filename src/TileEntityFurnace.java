@@ -58,15 +58,15 @@
 /*  58 */       if (b1 >= 0 && b1 < this.e.length) this.e[b1] = new ItemStack(r1);
 /*     */     
 /*     */     } 
-/*  61 */     this.f = paramr.c("BurnTime");
-/*  62 */     this.h = paramr.c("CookTime");
+/*  61 */     this.f = paramr.getShort("BurnTime");
+/*  62 */     this.h = paramr.getShort("CookTime");
 /*  63 */     this.g = a(this.e[1]);
 /*     */   }
 /*     */   
 /*     */   public void b(NBTTagCompound paramr) {
 /*  67 */     super.b(paramr);
-/*  68 */     paramr.a("BurnTime", (short)this.f);
-/*  69 */     paramr.a("CookTime", (short)this.h);
+/*  68 */     paramr.setShort("BurnTime", (short)this.f);
+/*  69 */     paramr.setShort("CookTime", (short)this.h);
 /*  70 */     NBTTagList de = new NBTTagList();
 /*     */     
 /*  72 */     for (int b = 0; b < this.e.length; b++) {
@@ -110,8 +110,8 @@
 /* 110 */       if (this.f > 0) {
 /* 111 */         bool2 = true;
 /* 112 */         if (this.e[1] != null) {
-/* 113 */           (this.e[1]).a--;
-/* 114 */           if ((this.e[1]).a == 0) this.e[1] = null;
+/* 113 */           (this.e[1]).itemID--;
+/* 114 */           if ((this.e[1]).itemID == 0) this.e[1] = null;
 /*     */         
 /*     */         } 
 /*     */       } 
@@ -141,8 +141,8 @@
 /* 141 */     if (i < 0) return false; 
 /* 142 */     if (this.e[2] == null) return true; 
 /* 143 */     if ((this.e[2]).c != i) return false; 
-/* 144 */     if ((this.e[2]).a < c() && (this.e[2]).a < this.e[2].b()) return true; 
-/* 145 */     if ((this.e[2]).a < Item.c[i].a()) return true;
+/* 144 */     if ((this.e[2]).itemID < c() && (this.e[2]).itemID < this.e[2].b()) return true;
+/* 145 */     if ((this.e[2]).itemID < Item.c[i].a()) return true;
 /* 146 */     return false;
 /*     */   }
 /*     */   
@@ -151,10 +151,10 @@
 /*     */       return; 
 /* 152 */     int i = b((this.e[0].a()).aQ);
 /* 153 */     if (this.e[2] == null) { this.e[2] = new ItemStack(i, 1); }
-/* 154 */     else if ((this.e[2]).c == i) { (this.e[2]).a++; }
+/* 154 */     else if ((this.e[2]).c == i) { (this.e[2]).itemID++; }
 /*     */     
-/* 156 */     (this.e[0]).a--;
-/* 157 */     if ((this.e[0]).a <= 0) this.e[0] = null; 
+/* 156 */     (this.e[0]).itemID--;
+/* 157 */     if ((this.e[0]).itemID <= 0) this.e[0] = null;
 /*     */   }
 /*     */   
 /*     */   private int b(int paramInt) {
@@ -164,7 +164,7 @@
 /* 164 */     if (paramInt == Block.E.blockId) return Block.M.blockId;
 /* 165 */     if (paramInt == Item.ao.aQ) return Item.ap.aQ;
 /* 166 */     if (paramInt == Block.w.blockId) return Block.stone.blockId;
-/* 167 */     if (paramInt == Item.aG.aQ) return Item.aF.aQ;
+///* 167 */     if (paramInt == Item.aG.aQ) return Item.aF.aQ;
 /* 168 */     return -1;
 /*     */   }
 /*     */   

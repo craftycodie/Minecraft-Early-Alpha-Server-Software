@@ -104,8 +104,7 @@
 /* 104 */     if (i == 6) return new ItemStack(Item.au);
 /* 105 */     if (i == 7 && paramRandom.nextInt(100) == 0) return new ItemStack(Item.ar);
 /* 106 */     if (i == 8 && paramRandom.nextInt(2) == 0) return new ItemStack(Item.aA, paramRandom.nextInt(4) + 1);
-/* 107 */     if (i == 9 && paramRandom.nextInt(10) == 0) return new ItemStack(Item.c[Item.aO.aQ + paramRandom.nextInt(2)]);
-/*     */     
+/*     */
 /* 109 */     return null;
 /*     */   }
 /*     */   

@@ -1,7 +1,7 @@
 /*   */ 
 /*   */ 
 /*   */ public class ItemAxe
-/*   */   extends ci
+/*   */   extends ItemTool
 /*   */ {
 /* 6 */   private static Block[] aV = new Block[] { Block.x, Block.an, Block.J, Block.au };
 /*   */   

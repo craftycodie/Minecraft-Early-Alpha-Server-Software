@@ -13,9 +13,9 @@
 /*     */ public class BlockPressurePlate
 /*     */   extends Block
 /*     */ {
-/*     */   private ck a;
+/*     */   private EnumMobType a;
 /*     */   
-/*     */   protected BlockPressurePlate(int paramInt1, int paramInt2, ck paramck) {
+/*     */   protected BlockPressurePlate(int paramInt1, int paramInt2, EnumMobType paramck) {
 /*  19 */     super(paramInt1, paramInt2, Material.d);
 /*  20 */     this.a = paramck;
 /*  21 */     a(true);
@@ -85,9 +85,9 @@
 /*     */     
 /*  86 */     float f = 0.125F;
 /*  87 */     List list = null;
-/*  88 */     if (this.a == ck.a) list = paramdp.b((Entity)null, AxisAlignedBB.b((paramInt1 + f), paramInt2, (paramInt3 + f), ((paramInt1 + 1) - f), paramInt2 + 0.25D, ((paramInt3 + 1) - f)));
-/*  89 */     if (this.a == ck.b) list = paramdp.a(EntityLiving.class, AxisAlignedBB.b((paramInt1 + f), paramInt2, (paramInt3 + f), ((paramInt1 + 1) - f), paramInt2 + 0.25D, ((paramInt3 + 1) - f)));
-/*  90 */     if (this.a == ck.c) list = paramdp.a(EntityPlayer.class, AxisAlignedBB.b((paramInt1 + f), paramInt2, (paramInt3 + f), ((paramInt1 + 1) - f), paramInt2 + 0.25D, ((paramInt3 + 1) - f)));
+/*  88 */     if (this.a == EnumMobType.everything) list = paramdp.b((Entity)null, AxisAlignedBB.b((paramInt1 + f), paramInt2, (paramInt3 + f), ((paramInt1 + 1) - f), paramInt2 + 0.25D, ((paramInt3 + 1) - f)));
+/*  89 */     if (this.a == EnumMobType.mobs) list = paramdp.a(EntityLiving.class, AxisAlignedBB.b((paramInt1 + f), paramInt2, (paramInt3 + f), ((paramInt1 + 1) - f), paramInt2 + 0.25D, ((paramInt3 + 1) - f)));
+/*  90 */     if (this.a == EnumMobType.players) list = paramdp.a(EntityPlayer.class, AxisAlignedBB.b((paramInt1 + f), paramInt2, (paramInt3 + f), ((paramInt1 + 1) - f), paramInt2 + 0.25D, ((paramInt3 + 1) - f)));
 /*  91 */     if (list.size() > 0) {
 /*  92 */       bool2 = true;
 /*     */     }

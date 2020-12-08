@@ -38,7 +38,7 @@
     /*     */
     /*     */   public float aJ;
     /*     */
-    /*     */   public int aK;
+    /*     */   public int health;
     /*     */
     /*     */   public int aL;
     /*     */   private int a;
@@ -538,10 +538,10 @@
         /*     */
         /* 522 */
         this.ac = 0;
-        this.aK = 10;
+        this.health = 10;
         this.d = true;
         this.at = (float) (Math.random() + 1.0D) * 0.01F;
-        a(this.posX, this.posY, this.posZ);
+        setPosition(this.posX, this.posY, this.posZ);
         this.ar = (float) Math.random() * 12398.0F;
         this.rotationYaw = (float) (Math.random() * 3.1415927410125732D * 2.0D);
         this.as = 1.0F;
@@ -550,17 +550,17 @@
 
     /*     */
     protected boolean g(Entity paramdb) {
-        return (this.g.a(Vec3D.b(this.posX, this.posY + n(), this.posZ), Vec3D.b(paramdb.posX, paramdb.posY + paramdb.n(), paramdb.posZ)) == null);
+        return (this.worldObj.a(Vec3D.b(this.posX, this.posY + n(), this.posZ), Vec3D.b(paramdb.posX, paramdb.posY + paramdb.n(), paramdb.posZ)) == null);
     }
 
     /*     */
     public boolean c_() {
-        return !this.A;
+        return !this.isDead;
     }
 
     /* 525 */
     public boolean p() {
-        return !this.A;
+        return !this.isDead;
     }
 
     protected float n() {
@@ -577,9 +577,9 @@
         if (this.Q.nextInt(1000) < this.a++) {
             this.a = -b();
             String str = c();
-            if (str != null) this.g.a(this, str, f(), (this.Q.nextFloat() - this.Q.nextFloat()) * 0.2F + 1.0F);
+            if (str != null) this.worldObj.playSoundAtEntity(this, str, f(), (this.Q.nextFloat() - this.Q.nextFloat()) * 0.2F + 1.0F);
         }
-        if (r() && s()) a((Entity) null, 1);
+        if (r() && s()) attackEntityFrom((Entity) null, 1);
         if (r() && a(Material.f)) {
             this.X--;
             if (this.X == -20) {
@@ -588,9 +588,9 @@
                     float f1 = this.Q.nextFloat() - this.Q.nextFloat();
                     float f2 = this.Q.nextFloat() - this.Q.nextFloat();
                     float f3 = this.Q.nextFloat() - this.Q.nextFloat();
-                    this.g.a("bubble", this.posX + f1, this.posY + f2, this.posZ + f3, this.n, this.o, this.p);
+                    this.worldObj.a("bubble", this.posX + f1, this.posY + f2, this.posZ + f3, this.motionX, this.motionY, this.motionZ);
                 }
-                a((Entity) null, 2);
+                attackEntityFrom((Entity) null, 2);
             }
             this.T = 0;
         } else {
@@ -600,16 +600,16 @@
         if (this.aQ > 0) this.aQ--;
         if (this.aM > 0) this.aM--;
         if (this.W > 0) this.W--;
-        if (this.aK <= 0) {
+        if (this.health <= 0) {
             this.aP++;
             if (this.aP > 20) {
                 F();
-                i();
+                setEntityDead();
                 for (int b = 0; b < 20; b++) {
                     double d1 = this.Q.nextGaussian() * 0.02D;
                     double d2 = this.Q.nextGaussian() * 0.02D;
                     double d3 = this.Q.nextGaussian() * 0.02D;
-                    this.g.a("explode", this.posX + (this.Q.nextFloat() * this.C * 2.0F) - this.C, this.posY + (this.Q.nextFloat() * this.D), this.posZ + (this.Q.nextFloat() * this.C * 2.0F) - this.C, d1, d2, d3);
+                    this.worldObj.a("explode", this.posX + (this.Q.nextFloat() * this.C * 2.0F) - this.C, this.posY + (this.Q.nextFloat() * this.D), this.posZ + (this.Q.nextFloat() * this.C * 2.0F) - this.C, d1, d2, d3);
                 }
             }
         }
@@ -625,7 +625,7 @@
             double d2 = this.Q.nextGaussian() * 0.02D;
             double d3 = this.Q.nextGaussian() * 0.02D;
             double d4 = 10.0D;
-            this.g.a("explode", this.posX + (this.Q.nextFloat() * this.C * 2.0F) - this.C - d1 * d4, this.posY + (this.Q.nextFloat() * this.D) - d2 * d4, this.posZ + (this.Q.nextFloat() * this.C * 2.0F) - this.C - d3 * d4, d1, d2, d3);
+            this.worldObj.a("explode", this.posX + (this.Q.nextFloat() * this.C * 2.0F) - this.C - d1 * d4, this.posY + (this.Q.nextFloat() * this.D) - d2 * d4, this.posZ + (this.Q.nextFloat() * this.C * 2.0F) - this.C - d3 * d4, d1, d2, d3);
         }
     }
 
@@ -635,8 +635,8 @@
         this.ax = 0.0F;
     }
 
-    public void b_() {
-        super.b_();
+    public void onUpdate() {
+        super.onUpdate();
         x();
         double d1 = this.posX - this.h;
         double d2 = this.posZ - this.j;
@@ -675,27 +675,27 @@
         this.ay += f3;
     }
 
-    protected void a(float paramFloat1, float paramFloat2) {
-        super.a(paramFloat1, paramFloat2);
+    protected void setSize(float paramFloat1, float paramFloat2) {
+        super.setSize(paramFloat1, paramFloat2);
     }
 public void a(int paramInt) {
-        if (this.aK <= 0) return;
-        this.aK += paramInt;
-        if (this.aK > 20) this.aK = 20;
+        if (this.health <= 0) return;
+        this.health += paramInt;
+        if (this.health > 20) this.health = 20;
         this.W = this.aq / 2;
 
     }
-public boolean a(Entity paramdb, int paramInt) {
+public boolean attackEntityFrom(Entity paramdb, int paramInt) {
     this.aZ = 0;
-    if (this.aK <= 0) return false;
+    if (this.health <= 0) return false;
     this.aX = 1.5F;
     if (this.W > this.aq / 2.0F) {
-        if (this.aL - paramInt >= this.aK) return false;
-        this.aK = this.aL - paramInt;
+        if (this.aL - paramInt >= this.health) return false;
+        this.health = this.aL - paramInt;
     } else {
-        this.aL = this.aK;
+        this.aL = this.health;
         this.W = this.aq;
-        this.aK -= paramInt;
+        this.health -= paramInt;
         this.aM = this.aN = 10;
     }
     this.aO = 0.0F;
@@ -711,11 +711,11 @@ public boolean a(Entity paramdb, int paramInt) {
     } else {
         this.aO = ((int) (Math.random() * 2.0D) * 180);
     }
-    if (this.aK <= 0) {
-        this.g.a(this, getDeathSound(), f(), (this.Q.nextFloat() - this.Q.nextFloat()) * 0.2F + 1.0F);
+    if (this.health <= 0) {
+        this.worldObj.playSoundAtEntity(this, getDeathSound(), f(), (this.Q.nextFloat() - this.Q.nextFloat()) * 0.2F + 1.0F);
         f(paramdb);
     } else {
-        this.g.a(this, getHurtSound(), f(), (this.Q.nextFloat() - this.Q.nextFloat()) * 0.2F + 1.0F);
+        this.worldObj.playSoundAtEntity(this, getHurtSound(), f(), (this.Q.nextFloat() - this.Q.nextFloat()) * 0.2F + 1.0F);
     }
     return true;
 
@@ -725,7 +725,7 @@ protected void d_() {
     this.aZ++;
     /*     */
     /* 527 */
-    EntityPlayer eq = this.g.a(this, -1.0D);
+    EntityPlayer eq = this.worldObj.a(this, -1.0D);
     /*     */
     /* 529 */
     if (eq != null) {
@@ -741,7 +741,7 @@ protected void d_() {
         /* 535 */
         if (d4 > 16384.0D) {
             /* 536 */
-            i();
+            setEntityDead();
             /*     */
         }
         /*     */
@@ -754,7 +754,7 @@ protected void d_() {
                 /*     */
             } else {
                 /* 543 */
-                i();
+                setEntityDead();
                 /*     */
             }
             /*     */
@@ -778,7 +778,7 @@ protected void d_() {
     /* 558 */
     if (this.Q.nextFloat() < 0.02F) {
         /* 559 */
-        eq = this.g.a(this, f);
+        eq = this.worldObj.a(this, f);
         /* 560 */
         if (eq != null) {
             /* 561 */
@@ -799,7 +799,7 @@ protected void d_() {
         /* 569 */
         b(this.b, 10.0F);
         /* 570 */
-        if (this.ac-- <= 0 || this.b.A || this.b.b(this) > (f * f)) {
+        if (this.ac-- <= 0 || this.b.isDead || this.b.b(this) > (f * f)) {
             /* 571 */
             this.b = null;
             /*     */
@@ -820,7 +820,7 @@ protected void d_() {
     }
     /*     */
     /* 581 */
-    boolean bool1 = m();
+    boolean bool1 = handleWaterMovement();
     /* 582 */
     boolean bool2 = o();
     /* 583 */
@@ -829,7 +829,7 @@ protected void d_() {
 /*     */   protected String c() { return null; }
 /*     */   protected String getHurtSound() { return "random.hurt"; }
 /*     */   protected String getDeathSound() { return "random.hurt"; }
-/* 587 */   public void a(Entity paramdb, int paramInt, double paramDouble1, double paramDouble2) { float f1 = MathHelper.a(paramDouble1 * paramDouble1 + paramDouble2 * paramDouble2); float f2 = 0.4F; this.n /= 2.0D; this.o /= 2.0D; this.p /= 2.0D; this.n -= paramDouble1 / f1 * f2; this.o += 0.4000000059604645D; this.p -= paramDouble2 / f1 * f2; if (this.o > 0.4000000059604645D) this.o = 0.4000000059604645D;  } public void f(Entity paramdb) { if (this.aG > 0 && paramdb != null) paramdb.b(this, this.aG);  this.aT = true; int i = g(); if (i > 0) { int j = this.Q.nextInt(3); for (int b = 0; b < j; b++) a(i, 1);  }  } protected int g() { return 0; } protected void a(float paramFloat) { int i = (int)Math.ceil((paramFloat - 3.0F)); if (i > 0) { a((Entity)null, i); int j = this.g.getBlockId(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY - 0.20000000298023224D - this.B), MathHelper.floor_double(this.posZ)); if (j > 0) { StepSound bl = (Block.blocksList[j]).bj; this.g.a(this, bl.c(), bl.a() * 0.5F, bl.b() * 0.75F); }  }  } public void c(float paramFloat1, float paramFloat2) { if (m()) { double d = this.posY; a(paramFloat1, paramFloat2, 0.02F); c(this.n, this.o, this.p); this.n *= 0.800000011920929D; this.o *= 0.800000011920929D; this.p *= 0.800000011920929D; this.o -= 0.02D; if (this.w && b(this.n, this.o + 0.6000000238418579D - this.posY + d, this.p)) this.o = 0.30000001192092896D;  } else if (o()) { double d = this.posY; a(paramFloat1, paramFloat2, 0.02F); c(this.n, this.o, this.p); this.n *= 0.5D; this.o *= 0.5D; this.p *= 0.5D; this.o -= 0.02D; if (this.w && b(this.n, this.o + 0.6000000238418579D - this.posY + d, this.p)) this.o = 0.30000001192092896D;  } else { float f1 = 0.91F; if (this.v) { f1 = 0.54600006F; int i = this.g.getBlockId(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.u.b) - 1, MathHelper.floor_double(this.posZ)); if (i > 0) f1 = (Block.blocksList[i]).bm * 0.91F;  }  float f2 = 0.16277136F / f1 * f1 * f1; a(paramFloat1, paramFloat2, this.v ? (0.1F * f2) : 0.02F); f1 = 0.91F; if (this.v) { f1 = 0.54600006F; int i = this.g.getBlockId(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.u.b) - 1, MathHelper.floor_double(this.posZ)); if (i > 0) f1 = (Block.blocksList[i]).bm * 0.91F;  }  if (D()) { this.H = 0.0F; if (this.o < -0.15D) this.o = -0.15D;  }  c(this.n, this.o, this.p); if (this.w && D()) this.o = 0.2D;  this.o -= 0.08D; this.o *= 0.9800000190734863D; this.n *= f1; this.p *= f1; }  this.aW = this.aX; double d1 = this.posX - this.h; double d2 = this.posZ - this.j; float f = MathHelper.a(d1 * d1 + d2 * d2) * 4.0F; if (f > 1.0F) f = 1.0F;  this.aX += (f - this.aX) * 0.4F; this.aY += this.aX; } public boolean D() { int i = MathHelper.floor_double(this.posX); int j = MathHelper.floor_double(this.u.b); int k = MathHelper.floor_double(this.posZ); return (this.g.getBlockId(i, j, k) == Block.aF.blockId || this.g.getBlockId(i, j + 1, k) == Block.aF.blockId); } public void a(NBTTagCompound paramr) { paramr.a("Health", (short)this.aK); paramr.a("HurtTime", (short)this.aM); paramr.a("DeathTime", (short)this.aP); paramr.a("AttackTime", (short)this.aQ); } public void b(NBTTagCompound paramr) { this.aK = paramr.c("Health"); if (!paramr.a("Health")) this.aK = 10;  this.aM = paramr.c("HurtTime"); this.aP = paramr.c("DeathTime"); this.aQ = paramr.c("AttackTime"); } public boolean r() { return (!this.A && this.aK > 0); } public void x() { if (this.aK <= 0) { this.bd = false; this.ba = 0.0F; this.bb = 0.0F; this.bc = 0.0F; } else { d_(); }  boolean bool1 = m(); boolean bool2 = o(); if (this.bd) if (bool1) { this.o += 0.03999999910593033D; } else if (bool2) { this.o += 0.03999999910593033D; } else if (this.v) { E(); }   this.ba *= 0.98F; this.bb *= 0.98F; this.bc *= 0.9F; c(this.ba, this.bb); List<Entity> list = this.g.b(this, this.u.b(0.20000000298023224D, 0.0D, 0.20000000298023224D)); if (list != null && list.size() > 0) for (int b = 0; b < list.size(); b++) { Entity db1 = list.get(b); if (db1.p()) db1.c(this);  }   } protected void E() { this.o = 0.41999998688697815D; } public void b(Entity paramdb, float paramFloat) { double d2, d1 = paramdb.posX - this.posX;
+/* 587 */   public void a(Entity paramdb, int paramInt, double paramDouble1, double paramDouble2) { float f1 = MathHelper.a(paramDouble1 * paramDouble1 + paramDouble2 * paramDouble2); float f2 = 0.4F; this.motionX /= 2.0D; this.motionY /= 2.0D; this.motionZ /= 2.0D; this.motionX -= paramDouble1 / f1 * f2; this.motionY += 0.4000000059604645D; this.motionZ -= paramDouble2 / f1 * f2; if (this.motionY > 0.4000000059604645D) this.motionY = 0.4000000059604645D;  } public void f(Entity paramdb) { if (this.aG > 0 && paramdb != null) paramdb.b(this, this.aG);  this.aT = true; int i = g(); if (i > 0) { int j = this.Q.nextInt(3); for (int b = 0; b < j; b++) a(i, 1);  }  } protected int g() { return 0; } protected void a(float paramFloat) { int i = (int)Math.ceil((paramFloat - 3.0F)); if (i > 0) { attackEntityFrom((Entity)null, i); int j = this.worldObj.getBlockId(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.posY - 0.20000000298023224D - this.yOffset), MathHelper.floor_double(this.posZ)); if (j > 0) { StepSound bl = (Block.blocksList[j]).bj; this.worldObj.playSoundAtEntity(this, bl.c(), bl.a() * 0.5F, bl.b() * 0.75F); }  }  } public void c(float paramFloat1, float paramFloat2) { if (handleWaterMovement()) { double d = this.posY; a(paramFloat1, paramFloat2, 0.02F); c(this.motionX, this.motionY, this.motionZ); this.motionX *= 0.800000011920929D; this.motionY *= 0.800000011920929D; this.motionZ *= 0.800000011920929D; this.motionY -= 0.02D; if (this.w && b(this.motionX, this.motionY + 0.6000000238418579D - this.posY + d, this.motionZ)) this.motionY = 0.30000001192092896D;  } else if (o()) { double d = this.posY; a(paramFloat1, paramFloat2, 0.02F); c(this.motionX, this.motionY, this.motionZ); this.motionX *= 0.5D; this.motionY *= 0.5D; this.motionZ *= 0.5D; this.motionY -= 0.02D; if (this.w && b(this.motionX, this.motionY + 0.6000000238418579D - this.posY + d, this.motionZ)) this.motionY = 0.30000001192092896D;  } else { float f1 = 0.91F; if (this.v) { f1 = 0.54600006F; int i = this.worldObj.getBlockId(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.boundingBox.b) - 1, MathHelper.floor_double(this.posZ)); if (i > 0) f1 = (Block.blocksList[i]).bm * 0.91F;  }  float f2 = 0.16277136F / f1 * f1 * f1; a(paramFloat1, paramFloat2, this.v ? (0.1F * f2) : 0.02F); f1 = 0.91F; if (this.v) { f1 = 0.54600006F; int i = this.worldObj.getBlockId(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.boundingBox.b) - 1, MathHelper.floor_double(this.posZ)); if (i > 0) f1 = (Block.blocksList[i]).bm * 0.91F;  }  if (D()) { this.H = 0.0F; if (this.motionY < -0.15D) this.motionY = -0.15D;  }  c(this.motionX, this.motionY, this.motionZ); if (this.w && D()) this.motionY = 0.2D;  this.motionY -= 0.08D; this.motionY *= 0.9800000190734863D; this.motionX *= f1; this.motionZ *= f1; }  this.aW = this.aX; double d1 = this.posX - this.h; double d2 = this.posZ - this.j; float f = MathHelper.a(d1 * d1 + d2 * d2) * 4.0F; if (f > 1.0F) f = 1.0F;  this.aX += (f - this.aX) * 0.4F; this.aY += this.aX; } public boolean D() { int i = MathHelper.floor_double(this.posX); int j = MathHelper.floor_double(this.boundingBox.b); int k = MathHelper.floor_double(this.posZ); return (this.worldObj.getBlockId(i, j, k) == Block.aF.blockId || this.worldObj.getBlockId(i, j + 1, k) == Block.aF.blockId); } public void writeEntityToNBT(NBTTagCompound paramr) { paramr.setShort("Health", (short)this.health); paramr.setShort("HurtTime", (short)this.aM); paramr.setShort("DeathTime", (short)this.aP); paramr.setShort("AttackTime", (short)this.aQ); } public void readEntityFromNBT(NBTTagCompound paramr) { this.health = paramr.getShort("Health"); if (!paramr.a("Health")) this.health = 10;  this.aM = paramr.getShort("HurtTime"); this.aP = paramr.getShort("DeathTime"); this.aQ = paramr.getShort("AttackTime"); } public boolean r() { return (!this.isDead && this.health > 0); } public void x() { if (this.health <= 0) { this.bd = false; this.ba = 0.0F; this.bb = 0.0F; this.bc = 0.0F; } else { d_(); }  boolean bool1 = handleWaterMovement(); boolean bool2 = o(); if (this.bd) if (bool1) { this.motionY += 0.03999999910593033D; } else if (bool2) { this.motionY += 0.03999999910593033D; } else if (this.v) { E(); }   this.ba *= 0.98F; this.bb *= 0.98F; this.bc *= 0.9F; c(this.ba, this.bb); List<Entity> list = this.worldObj.b(this, this.boundingBox.expand(0.20000000298023224D, 0.0D, 0.20000000298023224D)); if (list != null && list.size() > 0) for (int b = 0; b < list.size(); b++) { Entity db1 = list.get(b); if (db1.p()) db1.c(this);  }   } protected void E() { this.motionY = 0.41999998688697815D; } public void b(Entity paramdb, float paramFloat) { double d2, d1 = paramdb.posX - this.posX;
 /*     */     
 /* 589 */     double d3 = paramdb.posZ - this.posZ;
 /*     */     
@@ -837,7 +837,7 @@ protected void d_() {
 /* 592 */       EntityLiving ic1 = (EntityLiving)paramdb;
 /* 593 */       d2 = ic1.posY + ic1.n() - this.posY + n();
 /*     */     } else {
-/* 595 */       d2 = (paramdb.u.b + paramdb.u.e) / 2.0D - this.posY + n();
+/* 595 */       d2 = (paramdb.boundingBox.b + paramdb.boundingBox.e) / 2.0D - this.posY + n();
 /*     */     } 
 /*     */     
 /* 598 */     double d4 = MathHelper.a(d1 * d1 + d3 * d3);
@@ -867,11 +867,11 @@ protected void d_() {
 /*     */   public void F() {}
 /*     */   
 /*     */   public boolean a() {
-/* 625 */     return (this.g.a(this.u) && this.g.a(this, this.u).size() == 0 && !this.g.b(this.u));
+/* 625 */     return (this.worldObj.a(this.boundingBox) && this.worldObj.a(this, this.boundingBox).size() == 0 && !this.worldObj.b(this.boundingBox));
 /*     */   }
 /*     */   
 /*     */   protected void k() {
-/* 629 */     a((Entity)null, 4);
+/* 629 */     attackEntityFrom((Entity)null, 4);
 /*     */   }
 /*     */ 
 /*     */ 
@@ -916,7 +916,7 @@ protected void d_() {
 /* 671 */     Vec3D as1 = c(paramFloat);
 /* 672 */     Vec3D as2 = d(paramFloat);
 /* 673 */     Vec3D as3 = as1.c(as2.a * paramDouble, as2.b * paramDouble, as2.c * paramDouble);
-/* 674 */     return this.g.a(as1, as3);
+/* 674 */     return this.worldObj.a(as1, as3);
 /*     */   }
 /*     */ }
 

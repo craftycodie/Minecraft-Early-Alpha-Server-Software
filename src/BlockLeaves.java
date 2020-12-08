@@ -5,7 +5,7 @@
 /*     */ 
 /*     */ 
 /*     */ public class BlockLeaves
-/*     */   extends o
+/*     */   extends BlockLeavesBase
 /*     */ {
 /*     */   private int b;
 /*  11 */   private int c = 0;

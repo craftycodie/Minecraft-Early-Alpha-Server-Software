@@ -82,7 +82,7 @@
 /*    */   }
 /*    */   
 /*    */   public void a(World paramdp, int paramInt1, int paramInt2, int paramInt3, Entity paramdb) {
-/* 85 */     paramdb.a((Entity)null, 1);
+/* 85 */     paramdb.attackEntityFrom((Entity)null, 1);
 /*    */   }
 /*    */ }
 
