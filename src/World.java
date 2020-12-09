@@ -779,10 +779,7 @@ public int getBlockMetadata(int i, int j, int k)
 /*  752 */       this.v.add(paramdb);
 /*  753 */       b(paramdb);
 /*  754 */       return true;
-/*      */     } else {
-        /*  729 */       System.out.println("Failed to add entity " + paramdb + " because the chunk wasn't loaded");
-
-                }
+/*      */     }
 /*  756 */     return false;
 /*      */   }
 /*      */   
