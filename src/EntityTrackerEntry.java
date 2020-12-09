@@ -76,9 +76,6 @@ import java.util.List;
 //                boolean bool1 = Math.abs(i) >= 8 || Math.abs(difficultySetting) >= 8 || Math.abs(k) >= 8;
 //                boolean bool2 = Math.abs(m - encodedRotationYaw) >= 8 || Math.abs(n - encodedRotationPitch) >= 8;
 ///*     */
-//        if (!(trackedEntity instanceof EntityPlayer))
-//            return;
-
 /*  75 */       if (i1 < -128 || i1 >= 128 || i2 < -128 || i2 >= 128 || i3 < -128 || i3 >= 128) {
 /*  76 */         el = new Packet26EntityTeleport(this.trackedEntity.entityId, i, j, k, (byte)m, (byte)n);
 /*     */       }
@@ -158,8 +155,7 @@ public void sendDestroyEntityPacketToTrackedPlayers()
             {
                 trackedPlayers.add(entityplayermp);
                 Packet packet = getSpawnPacket();
-                if (packet != null)
-                    entityplayermp.playerNetServerHandler.sendPacket(packet);
+                entityplayermp.playerNetServerHandler.sendPacket(packet);
 //                if(shouldSendMotionUpdates)
 //                {
 //                    entityplayermp.playerNetServerHandler.sendPacket(new Packet28EntityVelocity(trackedEntity.entityId, trackedEntity.motionX, trackedEntity.motionY, trackedEntity.motionZ));
@@ -214,11 +210,11 @@ public void sendDestroyEntityPacketToTrackedPlayers()
 //
 //                return packet21pickupspawn;
 //            }
-    if(trackedEntity instanceof EntityPlayerMP)
-    {
+//    if(trackedEntity instanceof EntityPlayer)
+//    {
         return new Packet24NamedEntitySpawn((EntityPlayer)trackedEntity);
-    }
-    return null;
+//    }
+//    return null;
 ///* 160 */     throw new IllegalArgumentException("Don't know how to add " + this.trackedEntity.getClass() + "!");
 /*     */   }
 /*     */ }
