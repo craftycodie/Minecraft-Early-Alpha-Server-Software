@@ -4,7 +4,7 @@
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */ public class hl
+/*    */ public class WorldGenTree
 /*    */   extends WorldGenerator
 /*    */ {
 /*    */   public boolean a(World paramdp, Random paramRandom, int paramInt1, int paramInt2, int paramInt3) {

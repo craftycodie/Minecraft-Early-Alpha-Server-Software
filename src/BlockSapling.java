@@ -22,8 +22,9 @@
 /* 22 */       if (i < 15) {
 /* 23 */         paramdp.b(paramInt1, paramInt2, paramInt3, i + 1);
 /*    */       } else {
-/* 25 */         WorldGenBigTree fv = null; paramdp.setBlock(paramInt1, paramInt2, paramInt3, 0);
-/* 26 */         hl hl = new hl();
+/* 25 */         WorldGenerator fv;
+                paramdp.setBlock(paramInt1, paramInt2, paramInt3, 0);
+/* 26 */         fv = new WorldGenTree();
 /* 27 */         if (paramRandom.nextInt(10) == 0) {
 /* 28 */           fv = new WorldGenBigTree();
 /*    */         }
