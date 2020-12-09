@@ -19,6 +19,18 @@ import java.io.IOException;
 /* 126 */     paramdy.a(this);
 /*     */   }
 /*     */
+/*    */   public Packet10Flying(double paramDouble1, double paramDouble2, double paramDouble3, float paramFloat1, float paramFloat2, boolean onGround) {
+    /* 13 */
+    this.xPosition = paramDouble1;
+    /* 14 */     this.yPosition = paramDouble2;
+    /* 15 */     this.zPosition = paramDouble3;
+    /* 17 */     this.yaw = paramFloat1;
+    /* 18 */     this.pitch = paramFloat2;
+    /* 19 */     this.onGround = onGround;
+    /* 20 */     this.rotating = true;
+    /* 21 */     this.moving = true;
+    /*    */   }
+
 /*    */   public Packet10Flying() {
 
     /*    */   }

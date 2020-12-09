@@ -72,13 +72,7 @@
 /*     */       
 /*  71 */       if (b != 0) {
 /*  72 */         this.loadedChunks.remove(ih);
-//                    short[] blocks = new short[16 * 128 * 16];
-//                    byte[] blocks2 = this.mcServer.worldserver.c(ih.a * 16, 0, ih.b * 16, 16, 128, 16);
-//                    for(int i = 0; i < blocks2.length; i++) {
-//                        blocks[i] = blocks2[i];
-//                    }
-//
-///*  73 */         this.playerNetServerHandler.sendPacket(new Packet52MultiBlockChange(ih.a, ih.b, blocks, 16 * 128 * 16, worldObj));
+/*  73 */         this.playerNetServerHandler.sendPacket(new Packet52MultiBlockChange(ih.a, ih.b, worldObj));
 /*     */       } 
 /*     */     } 
 /*     */   }
