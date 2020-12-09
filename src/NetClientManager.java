@@ -78,10 +78,6 @@
 /* 78 */     a(parameb);
 /*    */   }
 /*    */   
-/*    */   public void a(Packet23VehicleSpawn paramdd) {
-/* 82 */     a(paramdd);
-/*    */   }
-/*    */   
 /*    */   public void a(Packet18Animation paramn) {
 /* 86 */     a(paramn);
 /*    */   }

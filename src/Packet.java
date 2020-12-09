@@ -34,9 +34,6 @@ import java.util.HashMap;
 /* 33 */     addIdClassMapping(21, Packet21PickupSpawn.class);
 /* 34 */     addIdClassMapping(22, Packet22Collect.class);
 
-            // Vehicle spawn was not sent in the a1.0.10 Client.
-/* 35 */     addIdClassMapping(23, Packet23VehicleSpawn.class);
-
 /* 36 */     addIdClassMapping(29, Packet29DestroyEntity.class);
 /*    */     
 /* 38 */     addIdClassMapping(30, Packet30Entity.class);
