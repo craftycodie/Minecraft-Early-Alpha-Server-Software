@@ -132,16 +132,16 @@ public void markBlockNeedsUpdate(int i, int j, int k)
                 int k1 = this.chunkZ * 16 + this.minZ;
                 sendPacketToPlayersInInstance(new Packet53BlockChange(i, l, k1, (PlayerManager.getMinecraftServer(this.playerManager)).worldserver));
 ///* 102 */       eh = new Packet53BlockChange(this.chunkX * 16 + this.minX, this.minY, this.chunkZ * 16 + this.minZ, (PlayerManager.markBlockNeedsUpdate(this.markBlockNeedsUpdate)).removeEntry);
-/* 103 */     } else if (this.numBlocksToUpdate == 10) {
-                minY = (minY / 2) * 2;
-                maxY = (maxY / 2 + 1) * 2;
-                int j = minX + chunkX * 16;
-                int i1 = minY;
-                int l1 = minZ + chunkZ * 16;
-                int j2 = (maxX - minX) + 1;
-                int l2 = (maxY - minY) + 2;
-                int i3 = (maxZ - minZ) + 1;
-                sendPacketToPlayersInInstance(new Packet51MapChunk(j, i1, l1, j2, l2, i3, (PlayerManager.getMinecraftServer(this.playerManager)).worldserver));
+///* 103 */     } else if (this.numBlocksToUpdate == 10) {
+//                minY = (minY / 2) * 2;
+//                maxY = (maxY / 2 + 1) * 2;
+//                int j = minX + chunkX * 16;
+//                int i1 = minY;
+//                int l1 = minZ + chunkZ * 16;
+//                int j2 = (maxX - minX) + 1;
+//                int l2 = (maxY - minY) + 2;
+//                int i3 = (maxZ - minZ) + 1;
+//                sendPacketToPlayersInInstance(new Packet51MapChunk(j, i1, l1, j2, l2, i3, (PlayerManager.getMinecraftServer(this.playerManager)).worldserver));
 /*     */     } else {
 /* 114 */       gs = new Packet52MultiBlockChange(this.chunkX, this.chunkZ, this.blocksToUpdate, this.numBlocksToUpdate, (PlayerManager.getMinecraftServer(this.playerManager)).worldserver);
 /*     */     }
