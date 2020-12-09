@@ -50,7 +50,7 @@ import java.io.IOException;
                     for (int x = 0; x < 16; x ++) {
                         for (int y = 0; y < 128; y++) {
                             for (int z = 0; z < 16; z ++) {
-                                /* 33 */       this.c[b] = (short)(x << 12 | y << 8 | z);;
+                                /* 33 */       this.c[b] = (short)(x << 12 | z << 8 | y);;
                                 /* 34 */       this.d[b] = (byte)hv.getBlockID(x, y, z);
                                 /* 35 */       this.e[b] = (byte)hv.getBlockMetadata(x, y, z);
                             }
