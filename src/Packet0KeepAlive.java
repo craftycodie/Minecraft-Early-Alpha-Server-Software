@@ -6,11 +6,11 @@
 /*    */ public class Packet0KeepAlive
 /*    */   extends Packet
 /*    */ {
-/*    */   public void a(NetClientManager paramdy) {}
+/*    */   public void processPacket(NetClientManager paramdy) {}
 /*    */   
-/*    */   public void a(DataInputStream paramDataInputStream) {}
+/*    */   public void readPacketData(DataInputStream paramDataInputStream) {}
 /*    */   
-/*    */   public void a(DataOutputStream paramDataOutputStream) {}
+/*    */   public void writePacketData(DataOutputStream paramDataOutputStream) {}
 /*    */   
 /*    */   public int getPacketSize() {
 /* 16 */     return 0;

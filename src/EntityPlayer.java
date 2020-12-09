@@ -104,8 +104,8 @@
 //        if (this.health > 0) {
 //            List<Entity> list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(1.0D, 0.0D, 1.0D));
 //            if (list != null)
-//                for (int b = 0; b < list.size(); b++)
-//                    unknownPickupRelated(list.get(b));
+//                for (int getCurrentItem = 0; getCurrentItem < list.size(); getCurrentItem++)
+//                    unknownPickupRelated(list.get(getCurrentItem));
 //        }
     }
 
@@ -257,7 +257,7 @@ public void z() {}
 /*     */   public void a(TileEntityFurnace paramcx) {}
 /*     */   public void a(TileEntitySign paramhp) {}
 /*     */   public ItemStack A() {
-/* 254 */     return this.inventory.b();
+/* 254 */     return this.inventory.getCurrentItem();
 /*     */   }
 /*     */   
 /*     */   public void B() {

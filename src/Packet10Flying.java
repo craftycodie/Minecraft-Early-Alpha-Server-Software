@@ -15,15 +15,31 @@ import java.io.IOException;
 /*     */   public boolean moving;
 /*     */   public boolean rotating;
 /*     */   
-/*     */   public void a(NetClientManager paramdy) {
+/*     */   public void processPacket(NetClientManager paramdy) {
 /* 126 */     paramdy.a(this);
 /*     */   }
-/*     */   
-/*     */   public void a(DataInputStream paramDataInputStream) throws IOException {
+/*     */
+/*    */   public Packet10Flying() {
+
+    /*    */   }
+
+/*    */   public Packet10Flying(double paramDouble1, double paramDouble2, double paramDouble3, float paramFloat1, float paramFloat2, boolean onGround) {
+    /* 13 */
+    this.xPosition = paramDouble1;
+    /* 14 */     this.yPosition = paramDouble2;
+    /* 15 */     this.zPosition = paramDouble3;
+    /* 17 */     this.yaw = paramFloat1;
+    /* 18 */     this.pitch = paramFloat2;
+    /* 19 */     this.onGround = onGround;
+    /* 20 */     this.rotating = true;
+    /* 21 */     this.moving = true;
+    /*    */   }
+
+/*     */   public void readPacketData(DataInputStream paramDataInputStream) throws IOException {
 /* 130 */     this.onGround = (paramDataInputStream.read() != 0);
 /*     */   }
 /*     */   
-/*     */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
+/*     */   public void writePacketData(DataOutputStream paramDataOutputStream) throws IOException {
 /* 134 */     paramDataOutputStream.write(this.onGround ? 1 : 0);
 /*     */   }
 /*     */   

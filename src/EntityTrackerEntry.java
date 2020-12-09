@@ -77,7 +77,7 @@ import java.util.List;
 //                boolean bool2 = Math.abs(m - encodedRotationYaw) >= 8 || Math.abs(n - encodedRotationPitch) >= 8;
 ///*     */
 ///*  75 */       if (i1 < -128 || i1 >= 128 || i2 < -128 || i2 >= 128 || i3 < -128 || i3 >= 128) {
-/*  76 */         el = new Packet34EntityTeleport(this.trackedEntity.entityId, i, j, k, (byte)m, (byte)n);
+/*  76 */         el = new Packet26EntityTeleport(this.trackedEntity.entityId, i, j, k, (byte)m, (byte)n);
 ///*     */       }
 ///*  78 */       else if (bool1 && bool2) {
 ///*  79 */         el = new Packet33RelEntityMoveLook(this.trackedEntity.entityId, (byte)i1, (byte)i2, (byte)i3, (byte)m, (byte)n);
@@ -120,7 +120,7 @@ public void sendPacketToTrackedPlayers(Packet packet)
 /*     */
 public void sendDestroyEntityPacketToTrackedPlayers()
 {
-    sendPacketToTrackedPlayers(new Packet29DestroyEntity(trackedEntity.entityId));
+    sendPacketToTrackedPlayers(new Packet25DestroyEntity(trackedEntity.entityId));
 }
 /*     */
 /*     */
@@ -154,7 +154,9 @@ public void sendDestroyEntityPacketToTrackedPlayers()
             if(!trackedPlayers.contains(entityplayermp))
             {
                 trackedPlayers.add(entityplayermp);
-                entityplayermp.playerNetServerHandler.sendPacket(getSpawnPacket());
+                Packet packet = getSpawnPacket();
+                if (packet != null)
+                    entityplayermp.playerNetServerHandler.sendPacket(packet);
 //                if(shouldSendMotionUpdates)
 //                {
 //                    entityplayermp.playerNetServerHandler.sendPacket(new Packet28EntityVelocity(trackedEntity.entityId, trackedEntity.motionX, trackedEntity.motionY, trackedEntity.motionZ));
@@ -181,7 +183,7 @@ public void sendDestroyEntityPacketToTrackedPlayers()
         if(trackedPlayers.contains(entityplayermp))
         {
             trackedPlayers.remove(entityplayermp);
-            entityplayermp.playerNetServerHandler.sendPacket(new Packet29DestroyEntity(trackedEntity.entityId));
+            entityplayermp.playerNetServerHandler.sendPacket(new Packet25DestroyEntity(trackedEntity.entityId));
         }
     }
 /*     */
@@ -196,24 +198,25 @@ public void sendDestroyEntityPacketToTrackedPlayers()
             }
 /*     */
 /*     */   private Packet getSpawnPacket() {
-            if(trackedEntity instanceof EntityItem)
-            {
-                EntityItem entityitem = (EntityItem)trackedEntity;
-                Packet21PickupSpawn packet21pickupspawn = new Packet21PickupSpawn(entityitem);
-                entityitem.posX = (double)packet21pickupspawn.xPosition / 32D;
-                entityitem.posY = (double)packet21pickupspawn.yPosition / 32D;
-                entityitem.posZ = (double)packet21pickupspawn.zPosition / 32D;
-//                entityitem.rotationYaw = (float) packet21pickupspawn.rotation / 128.0;
-//                entityitem.rotationPitch = (float) packet21pickupspawn.pitch / 128.0;
-                //entityitem.posZ = (double)packet21pickupspawn.roll / 128.0;
-
-                return packet21pickupspawn;
-            }
+//            if(trackedEntity instanceof EntityItem)
+//            {
+//                EntityItem entityitem = (EntityItem)trackedEntity;
+//                Packet21PickupSpawn packet21pickupspawn = new Packet21PickupSpawn(entityitem);
+//                entityitem.posX = (double)packet21pickupspawn.xPosition / 32D;
+//                entityitem.posY = (double)packet21pickupspawn.yPosition / 32D;
+//                entityitem.posZ = (double)packet21pickupspawn.zPosition / 32D;
+////                entityitem.rotationYaw = (float) packet21pickupspawn.rotation / 128.0;
+////                entityitem.rotationPitch = (float) packet21pickupspawn.pitch / 128.0;
+//                //entityitem.posZ = (double)packet21pickupspawn.roll / 128.0;
+//
+//                return packet21pickupspawn;
+//            }
     if(trackedEntity instanceof EntityPlayerMP)
     {
-        return new Packet20NamedEntitySpawn((EntityPlayer)trackedEntity);
+        return new Packet24NamedEntitySpawn((EntityPlayerMP)trackedEntity);
     }
-/* 160 */     throw new IllegalArgumentException("Don't know how to add " + this.trackedEntity.getClass() + "!");
+    return null;
+///* 160 */     throw new IllegalArgumentException("Don't know how to add " + this.trackedEntity.getClass() + "!");
 /*     */   }
 /*     */ }
 

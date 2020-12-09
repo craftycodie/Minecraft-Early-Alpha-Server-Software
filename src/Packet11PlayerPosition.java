@@ -9,21 +9,21 @@ import java.io.IOException;
         /* 44 */     this.moving = true;
         /*    */   }
 
-/*    */   public void a(DataInputStream paramDataInputStream) throws IOException {
+/*    */   public void readPacketData(DataInputStream paramDataInputStream) throws IOException {
 /* 64 */     this.xPosition = paramDataInputStream.readDouble();
 /* 65 */     this.yPosition = paramDataInputStream.readDouble();
 ///* 66 */     this.removeObject = paramDataInputStream.readDouble();
 /* 67 */     this.zPosition = paramDataInputStream.readDouble();
             this.moving = true;
-/* 68 */     super.a(paramDataInputStream);
+/* 68 */     super.readPacketData(paramDataInputStream);
     /*    */   }
 /*    */   
-/*    */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
+/*    */   public void writePacketData(DataOutputStream paramDataOutputStream) throws IOException {
 /* 72 */     paramDataOutputStream.writeDouble(this.xPosition);
 /* 73 */     paramDataOutputStream.writeDouble(this.yPosition);
 ///* 74 */     paramDataOutputStream.writeDouble(this.removeObject);
 /* 75 */     paramDataOutputStream.writeDouble(this.zPosition);
-/* 76 */     super.a(paramDataOutputStream);
+/* 76 */     super.writePacketData(paramDataOutputStream);
 /*    */   }
 /*    */   
 /*    */   public int getPacketSize() {

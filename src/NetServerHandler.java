@@ -155,7 +155,7 @@
 /* 129 */     this.lastPosY = paramDouble2;
 /* 130 */     this.lastPosZ = paramDouble3;
 /* 131 */     this.playerEntity.setPositionAndRotation(paramDouble1, paramDouble2, paramDouble3, paramFloat1, paramFloat2);
-/* 132 */     this.playerEntity.playerNetServerHandler.sendPacket(new Packet13PlayerLookMove(paramDouble1, paramDouble2, paramDouble3, paramFloat1, paramFloat2, false));
+/* 132 */     this.playerEntity.playerNetServerHandler.sendPacket(new Packet10Flying(paramDouble1, paramDouble2, paramDouble3, paramFloat1, paramFloat2, false));
 /*     */   }
 /*     */   
 /*     */   public void a(Packet14BlockDig paramgp) {
@@ -240,18 +240,7 @@
 /*     */     } 
 /* 214 */     this.mcServer.k.sendPacketToTrackedPlayers(this.playerEntity, new Packet16BlockItemSwitch(this.playerEntity.entityId, i));
 /*     */   }
-/*     */   
-/*     */   public void a(Packet21PickupSpawn paramj) {
-/* 218 */     double d1 = paramj.xPosition / 32.0D;
-/* 219 */     double d2 = paramj.yPosition / 32.0D;
-/* 220 */     double d3 = paramj.zPosition / 32.0D;
-/* 221 */     EntityItem fa = new EntityItem(this.mcServer.worldserver, d1, d2, d3, new ItemStack(paramj.itemID, paramj.count));
-/* 222 */     fa.motionX = paramj.rotation / 128.0D;
-/* 223 */     fa.motionY = paramj.pitch / 128.0D;
-/* 224 */     fa.motionZ = paramj.roll / 128.0D;
-/* 225 */     fa.delayBeforeCanPickup = 10;
-/* 226 */     this.mcServer.worldserver.a(fa);
-/*     */   }
+/*     */
 /*     */
 /*     */   private void c(String paramString) {
 /* 254 */     if (paramString.toLowerCase().startsWith("/me ")) {

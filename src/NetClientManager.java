@@ -38,15 +38,15 @@
 /* 38 */     a(paramct);
 /*    */   }
 /*    */   
-/*    */   public void a(Packet20NamedEntitySpawn paramc) {
+/*    */   public void a(Packet24NamedEntitySpawn paramc) {
 /* 42 */     a(paramc);
 /*    */   }
 /*    */   
-/*    */   public void a(Packet30Entity paramel) {
+/*    */   public void a(Packet20Entity paramel) {
 /* 46 */     a(paramel);
 /*    */   }
 /*    */   
-/*    */   public void a(Packet34EntityTeleport paramby) {
+/*    */   public void a(Packet26EntityTeleport paramby) {
 /* 50 */     a(paramby);
 /*    */   }
 /*    */   
@@ -58,13 +58,10 @@
 /* 58 */     a(paramfi);
 /*    */   }
 /*    */   
-/*    */   public void a(Packet29DestroyEntity paramcm) {
+/*    */   public void a(Packet25DestroyEntity paramcm) {
 /* 62 */     a(paramcm);
 /*    */   }
-/*    */   
-/*    */   public void a(Packet21PickupSpawn paramj) {
-/* 66 */     a(paramj);
-/*    */   }
+/*    */
 /*    */
 /*    */
 /*    */ }

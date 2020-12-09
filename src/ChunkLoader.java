@@ -19,7 +19,7 @@
 /*     */   }
 /*     */   
 /*     */   private File a(int paramInt1, int paramInt2) {
-/*  22 */     String str1 = "onItemPickup." + Integer.toString(paramInt1, 36) + "." + Integer.toString(paramInt2, 36) + ".dat";
+/*  22 */     String str1 = "c." + Integer.toString(paramInt1, 36) + "." + Integer.toString(paramInt2, 36) + ".dat";
 /*  23 */     String str2 = Integer.toString(paramInt1 & 0x3F, 36);
 /*  24 */     String str3 = Integer.toString(paramInt2 & 0x3F, 36);
 /*  25 */     File file = new File(this.a, str2);

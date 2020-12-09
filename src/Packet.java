@@ -27,16 +27,18 @@ import java.util.HashMap;
 /* 27 */     addIdClassMapping(15, Packet15Place.class);
 /* 28 */     addIdClassMapping(16, Packet16BlockItemSwitch.class);
 /*    */     
-/* 32 */     addIdClassMapping(20, Packet20NamedEntitySpawn.class);
-/* 33 */     addIdClassMapping(21, Packet21PickupSpawn.class);
 
-/* 36 */     addIdClassMapping(29, Packet29DestroyEntity.class);
+///* 33 */     addIdClassMapping(21, Packet21PickupSpawn.class);
+
+
 /*    */     
-/* 38 */     addIdClassMapping(30, Packet30Entity.class);
-/* 39 */     addIdClassMapping(31, Packet31RelEntityMove.class);
-/* 40 */     addIdClassMapping(32, Packet32EntityLook.class);
-/* 41 */     addIdClassMapping(33, Packet33RelEntityMoveLook.class);
-/* 42 */     addIdClassMapping(34, Packet34EntityTeleport.class);
+/* 38 */     addIdClassMapping(20, Packet20Entity.class);
+/* 39 */     addIdClassMapping(21, Packet21RelEntityMove.class);
+/* 40 */     addIdClassMapping(22, Packet22EntityLook.class);
+/* 41 */     addIdClassMapping(23, Packet23RelEntityMoveLook.class);
+/* 42 */     addIdClassMapping(24, Packet24NamedEntitySpawn.class);
+/* 36 */     addIdClassMapping(25, Packet25DestroyEntity.class);
+/* 32 */     addIdClassMapping(26, Packet26EntityTeleport.class);
 /*    */     
 /* 44 */     addIdClassMapping(50, Packet50PreChunk.class);
 /* 45 */     addIdClassMapping(51, Packet51MapChunk.class);
@@ -70,20 +72,20 @@ import java.util.HashMap;
 /*    */
     /* 74 */     Packet ha1 = a(i);
 /* 75 */     if (ha1 == null) throw new IOException("Bad packet id " + i);
-/* 76 */     ha1.a(paramDataInputStream);
+/* 76 */     ha1.readPacketData(paramDataInputStream);
 /* 77 */     return ha1;
 /*    */   }
 /*    */   
 /*    */   public static void writePacket(Packet paramha, DataOutputStream paramDataOutputStream) throws IOException {
-        /* 81 */     paramDataOutputStream.write(paramha.b());
-/* 82 */     paramha.a(paramDataOutputStream);
+    /* 81 */     paramDataOutputStream.write(paramha.b());
+/* 82 */     paramha.writePacketData(paramDataOutputStream);
 /*    */   }
 /*    */   
-/*    */   public abstract void a(DataInputStream paramDataInputStream) throws IOException;
+/*    */   public abstract void readPacketData(DataInputStream paramDataInputStream) throws IOException;
 /*    */   
-/*    */   public abstract void a(DataOutputStream paramDataOutputStream) throws IOException;
+/*    */   public abstract void writePacketData(DataOutputStream paramDataOutputStream) throws IOException;
 /*    */   
-/*    */   public abstract void a(NetClientManager paramdy);
+/*    */   public abstract void processPacket(NetClientManager paramdy);
 /*    */   
 /*    */   public abstract int getPacketSize();
 /*    */ }

@@ -35,7 +35,8 @@ import java.net.Socket;
 /*     */   
 /*     */   public void a(Packet paramha) {
 /*  93 */     if (this.m)
-/*  94 */       return;  synchronized (this.d) {
+/*  94 */       return;
+synchronized (this.d) {
 /*  95 */       this.s += paramha.getPacketSize() + 1;
 /*  96 */       if (paramha.j) {
 /*  97 */         this.k.add(paramha);
@@ -158,7 +159,7 @@ import java.net.Socket;
 /* 215 */     int b = 100;
 /* 216 */     while (!this.i.isEmpty() && b-- >= 0) {
 /* 217 */       Packet ha = (Packet)this.i.remove(0);
-/* 218 */       ha.a(this.l);
+/* 218 */       ha.processPacket(this.l);
 /*     */     } 
 /*     */     
 /* 221 */     if (this.p && this.i.isEmpty()) {

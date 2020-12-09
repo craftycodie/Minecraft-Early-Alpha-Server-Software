@@ -24,7 +24,7 @@
 /*  24 */     this.e = parameq;
 /*     */   }
 /*     */   
-/*     */   public ItemStack b() {
+/*     */   public ItemStack getCurrentItem() {
 /*  28 */     return this.a[this.d];
 /*     */   }
 /*     */ 
