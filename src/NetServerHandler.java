@@ -155,7 +155,7 @@
 /* 129 */     this.lastPosY = paramDouble2;
 /* 130 */     this.lastPosZ = paramDouble3;
 /* 131 */     this.playerEntity.setPositionAndRotation(paramDouble1, paramDouble2, paramDouble3, paramFloat1, paramFloat2);
-/* 132 */     this.playerEntity.playerNetServerHandler.sendPacket(new Packet10Flying(paramDouble1, paramDouble2, paramDouble3, paramFloat1, paramFloat2, false));
+/* 132 */     this.playerEntity.playerNetServerHandler.sendPacket(new Packet26EntityTeleport(this.playerEntity));
 /*     */   }
 /*     */   
 /*     */   public void a(Packet14BlockDig paramgp) {

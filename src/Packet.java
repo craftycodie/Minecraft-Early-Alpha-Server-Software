@@ -26,11 +26,7 @@ import java.util.HashMap;
 /* 26 */     addIdClassMapping(14, Packet14BlockDig.class);
 /* 27 */     addIdClassMapping(15, Packet15Place.class);
 /* 28 */     addIdClassMapping(16, Packet16BlockItemSwitch.class);
-/*    */     
-
-///* 33 */     addIdClassMapping(21, Packet21PickupSpawn.class);
-
-
+/*    */
 /*    */     
 /* 38 */     addIdClassMapping(20, Packet20Entity.class);
 /* 39 */     addIdClassMapping(21, Packet21RelEntityMove.class);
@@ -70,6 +66,8 @@ import java.util.HashMap;
 /* 71 */     int i = paramDataInputStream.read();
 /* 72 */     if (i == -1) return null;
 /*    */
+
+
     /* 74 */     Packet ha1 = a(i);
 /* 75 */     if (ha1 == null) throw new IOException("Bad packet id " + i);
 /* 76 */     ha1.readPacketData(paramDataInputStream);
@@ -77,6 +75,7 @@ import java.util.HashMap;
 /*    */   }
 /*    */   
 /*    */   public static void writePacket(Packet paramha, DataOutputStream paramDataOutputStream) throws IOException {
+//    if(paramha.b() < 53)
     /* 81 */     paramDataOutputStream.write(paramha.b());
 /* 82 */     paramha.writePacketData(paramDataOutputStream);
 /*    */   }
