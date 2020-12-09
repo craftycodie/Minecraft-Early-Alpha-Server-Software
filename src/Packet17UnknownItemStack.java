@@ -10,7 +10,7 @@ import java.io.IOException;
 /*    */   public int b;
 /*    */   public int c;
 /*    */   
-///*    */   public Packet17UnknownItemStack() {}
+/*    */   public Packet17UnknownItemStack() {}
 /*    */   
 /*    */   public Packet17UnknownItemStack(ItemStack paramgc, int paramInt) {
 /* 14 */     this.a = paramgc.c;

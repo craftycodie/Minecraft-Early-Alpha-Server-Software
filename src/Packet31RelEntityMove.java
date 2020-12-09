@@ -9,23 +9,27 @@ import java.io.IOException;
 /*    */
 /*    */   public Packet31RelEntityMove(int paramInt, byte paramByte1, byte paramByte2, byte paramByte3) {
 /* 49 */     super(paramInt);
-/* 50 */     this.b = paramByte1;
-/* 51 */     this.c = paramByte2;
-/* 52 */     this.d = paramByte3;
+/* 50 */     this.xPosition = paramByte1;
+/* 51 */     this.yPosition = paramByte2;
+/* 52 */     this.zPosition = paramByte3;
+
+            // TODO: Remove
+//            if(xPosition != 0 && yPosition != 0)
+//                System.out.println("X " + xPosition + " y " + yPosition);
 /*    */   }
 /*    */   
 /*    */   public void a(DataInputStream paramDataInputStream) throws IOException {
 /* 56 */     super.a(paramDataInputStream);
-/* 57 */     this.b = paramDataInputStream.readByte();
-/* 58 */     this.c = paramDataInputStream.readByte();
-/* 59 */     this.d = paramDataInputStream.readByte();
+/* 57 */     this.xPosition = paramDataInputStream.readByte();
+/* 58 */     this.yPosition = paramDataInputStream.readByte();
+/* 59 */     this.zPosition = paramDataInputStream.readByte();
 /*    */   }
 /*    */   
 /*    */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
 /* 63 */     super.a(paramDataOutputStream);
-/* 64 */     paramDataOutputStream.writeByte(this.b);
-/* 65 */     paramDataOutputStream.writeByte(this.c);
-/* 66 */     paramDataOutputStream.writeByte(this.d);
+/* 64 */     paramDataOutputStream.writeByte(this.xPosition);
+/* 65 */     paramDataOutputStream.writeByte(this.yPosition);
+/* 66 */     paramDataOutputStream.writeByte(this.zPosition);
 /*    */   }
 /*    */   
 /*    */   public int getPacketSize() {

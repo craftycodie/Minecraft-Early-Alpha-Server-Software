@@ -28,7 +28,7 @@
 /*    */ 
 /*    */   
 /*    */   public void a(NBTTagCompound paramr) {
-/* 31 */     this.b = paramr.d("x");
+/* 31 */     this.b = paramr.d("onLivingUpdate");
 /* 32 */     this.c = paramr.d("y");
 /* 33 */     this.d = paramr.d("z");
 /*    */   }
@@ -39,7 +39,7 @@
 /* 39 */       throw new RuntimeException(getClass() + " is missing addIdClassMapping mapping! This is addIdClassMapping bug!");
 /*    */     }
 /* 41 */     paramr.a("id", str);
-/* 42 */     paramr.a("x", this.b);
+/* 42 */     paramr.a("onLivingUpdate", this.b);
 /* 43 */     paramr.a("y", this.c);
 /* 44 */     paramr.a("z", this.d);
 /*    */   }

@@ -59,8 +59,8 @@ import java.util.List;
 /*     */     }
 /*     */
 /*  60 */     if (this.updateCounter++ % this.field_9234_e == 0) {
-/*  61 */       Packet30Entity el = null;
-int i = MathHelper.floor_double(this.trackedEntity.posX * 32.0D);
+/*  61 */       Packet el = null;
+                int i = MathHelper.floor_double(this.trackedEntity.posX * 32.0D);
 /*  62 */       int j = MathHelper.floor_double(this.trackedEntity.posY * 32.0D);
 /*  63 */       int k = MathHelper.floor_double(this.trackedEntity.posZ * 32.0D);
 /*  64 */       int m = MathHelper.floor_float(this.trackedEntity.rotationYaw * 256.0F / 360.0F);
@@ -72,20 +72,22 @@ int i = MathHelper.floor_double(this.trackedEntity.posX * 32.0D);
 /*  70 */       int i1 = i - this.encodedPosX;
 /*  71 */       int i2 = j - this.encodedPosY;
 /*  72 */       int i3 = k - this.encodedPosZ;
-/*  73 */       Packet34EntityTeleport by = null;
-/*     */
-/*  75 */       if (i1 < -128 || i1 >= 128 || i2 < -128 || i2 >= 128 || i3 < -128 || i3 >= 128) {
-/*  76 */         by = new Packet34EntityTeleport(this.trackedEntity.entityId, i, j, k, (byte)m, (byte)n);
-/*     */       }
-/*  78 */       else if (bool1 && bool2) {
-/*  79 */         el = new Packet33RelEntityMoveLook(this.trackedEntity.entityId, (byte)i1, (byte)i2, (byte)i3, (byte)m, (byte)n);
-/*  80 */       } else if (bool1) {
-/*  81 */         el = new Packet31RelEntityMove(this.trackedEntity.entityId, (byte)i1, (byte)i2, (byte)i3);
-/*  82 */       } else if (bool2) {
-/*  83 */         el = new Packet32EntityLook(this.trackedEntity.entityId, (byte)m, (byte)n);
-/*     */       } else {
-/*  85 */         el = new Packet30Entity(this.trackedEntity.entityId);
-/*     */       }
+
+//                boolean bool1 = Math.abs(i) >= 8 || Math.abs(difficultySetting) >= 8 || Math.abs(k) >= 8;
+//                boolean bool2 = Math.abs(m - encodedRotationYaw) >= 8 || Math.abs(n - encodedRotationPitch) >= 8;
+///*     */
+///*  75 */       if (i1 < -128 || i1 >= 128 || i2 < -128 || i2 >= 128 || i3 < -128 || i3 >= 128) {
+/*  76 */         el = new Packet34EntityTeleport(this.trackedEntity.entityId, i, j, k, (byte)m, (byte)n);
+///*     */       }
+///*  78 */       else if (bool1 && bool2) {
+///*  79 */         el = new Packet33RelEntityMoveLook(this.trackedEntity.entityId, (byte)i1, (byte)i2, (byte)i3, (byte)m, (byte)n);
+///*  80 */       } else if (bool1) {
+///*  81 */         el = new Packet31RelEntityMove(this.trackedEntity.entityId, (byte)i1, (byte)i2, (byte)i3);
+///*  82 */       } else if (bool2) {
+///*  83 */         el = new Packet32EntityLook(this.trackedEntity.entityId, (byte)m, (byte)n);
+///*     */       } else {
+///*  85 */         el = new Packet30Entity(this.trackedEntity.entityId);
+///*     */       }
 /*     */
 /*     */
 /*  89 */       if (el != null) {
@@ -160,9 +162,9 @@ public void sendDestroyEntityPacketToTrackedPlayers()
 //                ItemStack aitemstack[] = trackedEntity.getInventory();
 //                if(aitemstack != null)
 //                {
-//                    for(int i = 0; i < aitemstack.length; i++)
+//                    for(int setEntityDead = 0; setEntityDead < aitemstack.length; setEntityDead++)
 //                    {
-//                        entityplayermp.playerNetServerHandler.sendPacket(new Packet5PlayerInventory(trackedEntity.entityId, i, aitemstack[i]));
+//                        entityplayermp.playerNetServerHandler.sendPacket(new Packet5PlayerInventory(trackedEntity.entityId, setEntityDead, aitemstack[setEntityDead]));
 //                    }
 //
 //                }
@@ -201,6 +203,10 @@ public void sendDestroyEntityPacketToTrackedPlayers()
                 entityitem.posX = (double)packet21pickupspawn.xPosition / 32D;
                 entityitem.posY = (double)packet21pickupspawn.yPosition / 32D;
                 entityitem.posZ = (double)packet21pickupspawn.zPosition / 32D;
+//                entityitem.rotationYaw = (float) packet21pickupspawn.rotation / 128.0;
+//                entityitem.rotationPitch = (float) packet21pickupspawn.pitch / 128.0;
+                //entityitem.posZ = (double)packet21pickupspawn.roll / 128.0;
+
                 return packet21pickupspawn;
             }
     if(trackedEntity instanceof EntityPlayerMP)

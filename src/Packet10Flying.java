@@ -6,25 +6,25 @@ import java.io.IOException;
 /*     */ public class Packet10Flying
 /*     */   extends Packet
 /*     */ {
-/*     */   public double a;
-/*     */   public double b;
-/*     */   public double c;
-/*     */   public float e;
-/*     */   public float f;
-/*     */   public boolean g;
-/*     */   public boolean h;
-/*     */   public boolean i;
+/*     */   public double xPosition;
+/*     */   public double yPosition;
+/*     */   public double zPosition;
+/*     */   public float yaw;
+/*     */   public float pitch;
+/*     */   public boolean onGround;
+/*     */   public boolean moving;
+/*     */   public boolean rotating;
 /*     */   
 /*     */   public void a(NetClientManager paramdy) {
 /* 126 */     paramdy.a(this);
 /*     */   }
 /*     */   
 /*     */   public void a(DataInputStream paramDataInputStream) throws IOException {
-/* 130 */     this.g = (paramDataInputStream.read() != 0);
+/* 130 */     this.onGround = (paramDataInputStream.read() != 0);
 /*     */   }
 /*     */   
 /*     */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
-/* 134 */     paramDataOutputStream.write(this.g ? 1 : 0);
+/* 134 */     paramDataOutputStream.write(this.onGround ? 1 : 0);
 /*     */   }
 /*     */   
 /*     */   public int getPacketSize() {

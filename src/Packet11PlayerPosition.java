@@ -5,19 +5,24 @@ import java.io.IOException;
 /*    */ public class Packet11PlayerPosition
 /*    */   extends Packet10Flying
 /*    */ {
+    /*    */   public Packet11PlayerPosition() {
+        /* 44 */     this.moving = true;
+        /*    */   }
+
 /*    */   public void a(DataInputStream paramDataInputStream) throws IOException {
-/* 64 */     this.a = paramDataInputStream.readDouble();
-/* 65 */     this.b = paramDataInputStream.readDouble();
+/* 64 */     this.xPosition = paramDataInputStream.readDouble();
+/* 65 */     this.yPosition = paramDataInputStream.readDouble();
 ///* 66 */     this.removeObject = paramDataInputStream.readDouble();
-/* 67 */     this.c = paramDataInputStream.readDouble();
+/* 67 */     this.zPosition = paramDataInputStream.readDouble();
+            this.moving = true;
 /* 68 */     super.a(paramDataInputStream);
-/*    */   }
+    /*    */   }
 /*    */   
 /*    */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
-/* 72 */     paramDataOutputStream.writeDouble(this.a);
-/* 73 */     paramDataOutputStream.writeDouble(this.b);
+/* 72 */     paramDataOutputStream.writeDouble(this.xPosition);
+/* 73 */     paramDataOutputStream.writeDouble(this.yPosition);
 ///* 74 */     paramDataOutputStream.writeDouble(this.removeObject);
-/* 75 */     paramDataOutputStream.writeDouble(this.c);
+/* 75 */     paramDataOutputStream.writeDouble(this.zPosition);
 /* 76 */     super.a(paramDataOutputStream);
 /*    */   }
 /*    */   

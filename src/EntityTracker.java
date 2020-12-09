@@ -34,7 +34,7 @@
 /* 40 */     EntityTrackerEntry fl = new EntityTrackerEntry(paramdb, paramInt1, paramInt2);
 /* 41 */     this.trackedEntitySet.add(fl);
 /* 42 */     this.trackedEntityHashTable.addKey(paramdb.entityId, fl);
-/* 43 */     fl.updatePlayerEntities(this.mcServer.e.i);
+/* 43 */     fl.updatePlayerEntities(this.mcServer.worldserver.i);
 /*    */   }
 /*    */   
 /*    */   public void untrackEntity(Entity paramdb) {
@@ -48,7 +48,7 @@
 /*    */   public void updateTrackedEntities() {
 /* 55 */     ArrayList<EntityPlayerMP> arrayList = new ArrayList();
 /* 56 */     for (Object entityTrackerEntry : this.trackedEntitySet) {
-/* 57 */       ((EntityTrackerEntry)entityTrackerEntry).updatePlayerList(this.mcServer.e.i);
+/* 57 */       ((EntityTrackerEntry)entityTrackerEntry).updatePlayerList(this.mcServer.worldserver.i);
 /* 58 */       if (((EntityTrackerEntry)entityTrackerEntry).playerEntitiesUpdated && ((EntityTrackerEntry)entityTrackerEntry).trackedEntity instanceof EntityPlayerMP) {
 /* 59 */         arrayList.add((EntityPlayerMP)((EntityTrackerEntry)entityTrackerEntry).trackedEntity);
 /*    */       }

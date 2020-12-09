@@ -10,8 +10,11 @@ import java.io.IOException;
 /*    */   public int c;
 /*    */   public int d;
 /*    */   public int e;
-/*    */   
-/*    */   public void a(DataInputStream paramDataInputStream) throws IOException {
+/*    */
+/*    */   public Packet15Place() {}
+
+
+    /*    */   public void a(DataInputStream paramDataInputStream) throws IOException {
 /* 25 */     this.a = paramDataInputStream.readShort();
 /* 26 */     this.b = paramDataInputStream.readInt();
 /* 27 */     this.c = paramDataInputStream.read();

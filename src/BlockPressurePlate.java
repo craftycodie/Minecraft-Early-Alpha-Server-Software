@@ -85,7 +85,7 @@
 /*     */     
 /*  86 */     float f = 0.125F;
 /*  87 */     List list = null;
-/*  88 */     if (this.a == EnumMobType.everything) list = paramdp.b((Entity)null, AxisAlignedBB.b((paramInt1 + f), paramInt2, (paramInt3 + f), ((paramInt1 + 1) - f), paramInt2 + 0.25D, ((paramInt3 + 1) - f)));
+/*  88 */     if (this.a == EnumMobType.everything) list = paramdp.getEntitiesWithinAABBExcludingEntity((Entity)null, AxisAlignedBB.b((paramInt1 + f), paramInt2, (paramInt3 + f), ((paramInt1 + 1) - f), paramInt2 + 0.25D, ((paramInt3 + 1) - f)));
 /*  89 */     if (this.a == EnumMobType.mobs) list = paramdp.a(EntityLiving.class, AxisAlignedBB.b((paramInt1 + f), paramInt2, (paramInt3 + f), ((paramInt1 + 1) - f), paramInt2 + 0.25D, ((paramInt3 + 1) - f)));
 /*  90 */     if (this.a == EnumMobType.players) list = paramdp.a(EntityPlayer.class, AxisAlignedBB.b((paramInt1 + f), paramInt2, (paramInt3 + f), ((paramInt1 + 1) - f), paramInt2 + 0.25D, ((paramInt3 + 1) - f)));
 /*  91 */     if (list.size() > 0) {

@@ -22,6 +22,9 @@ import java.io.IOException;
 /*    */   public int c;
 /*    */   public int d;
 /*    */   public int e;
+
+    /*    */   public Packet14BlockDig() {}
+
 /*    */   
 /*    */   public void a(DataInputStream paramDataInputStream) throws IOException {
 /* 25 */     this.e = paramDataInputStream.read();

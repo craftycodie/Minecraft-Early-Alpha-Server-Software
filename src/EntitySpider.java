@@ -45,10 +45,10 @@
 /*    */       return;
 /*    */     } 
 /* 47 */     if (paramFloat > 2.0F && paramFloat < 6.0F && this.Q.nextInt(10) == 0) {
-/* 48 */       if (this.v) {
+/* 48 */       if (this.onGround) {
 /* 49 */         double d1 = paramdb.posX - this.posX;
 /* 50 */         double d2 = paramdb.posZ - this.posZ;
-/* 51 */         float f1 = MathHelper.a(d1 * d1 + d2 * d2);
+/* 51 */         float f1 = MathHelper.sqrt_double(d1 * d1 + d2 * d2);
 /* 52 */         this.motionX = d1 / f1 * 0.5D * 0.800000011920929D + this.motionX * 0.20000000298023224D;
 /* 53 */         this.motionZ = d2 / f1 * 0.5D * 0.800000011920929D + this.motionZ * 0.20000000298023224D;
 /* 54 */         this.motionY = 0.4000000059604645D;

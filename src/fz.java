@@ -116,7 +116,7 @@
 /* 116 */     return paramInt2;
 /*     */   }
 /*     */   
-/*     */   public void c() {
+/*     */   public void decrementAnimations() {
 /* 120 */     for (int b = 0; b < this.a.length; b++) {
 /* 121 */       if (this.a[b] != null && (this.a[b]).b > 0) (this.a[b]).b--;
 /*     */     

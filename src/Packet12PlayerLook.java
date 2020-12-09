@@ -5,15 +5,21 @@ import java.io.IOException;
 /*     */ public class Packet12PlayerLook
 /*     */   extends Packet10Flying
 /*     */ {
-/*     */   public void a(DataInputStream paramDataInputStream) throws IOException {
-/*  97 */     this.e = paramDataInputStream.readFloat();
-/*  98 */     this.f = paramDataInputStream.readFloat();
+    /*    */   public Packet12PlayerLook() {
+        /* 72 */     this.rotating = true;
+        /*    */   }
+
+
+    /*     */   public void a(DataInputStream paramDataInputStream) throws IOException {
+/*  97 */     this.yaw = paramDataInputStream.readFloat();
+/*  98 */     this.pitch = paramDataInputStream.readFloat();
+                this.rotating = true;
 /*  99 */     super.a(paramDataInputStream);
 /*     */   }
 /*     */   
 /*     */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
-/* 103 */     paramDataOutputStream.writeFloat(this.e);
-/* 104 */     paramDataOutputStream.writeFloat(this.f);
+/* 103 */     paramDataOutputStream.writeFloat(this.yaw);
+/* 104 */     paramDataOutputStream.writeFloat(this.pitch);
 /* 105 */     super.a(paramDataOutputStream);
 /*     */   }
 /*     */   

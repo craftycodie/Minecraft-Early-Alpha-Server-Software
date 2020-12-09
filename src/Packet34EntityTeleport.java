@@ -7,49 +7,52 @@ import java.io.IOException;
 /*    */ public class Packet34EntityTeleport
 /*    */   extends Packet
 /*    */ {
-/*    */   public int a;
-/*    */   public int b;
-/*    */   public int c;
-/*    */   public int d;
-/*    */   public byte e;
-/*    */   public byte f;
+/*    */   public int entityId;
+/*    */   public int xPosition;
+/*    */   public int yPosition;
+/*    */   public int zPosition;
+/*    */   public byte yaw;
+/*    */   public byte pitch;
 /*    */   
 /*    */   public Packet34EntityTeleport() {}
 /*    */   
 /*    */   public Packet34EntityTeleport(Entity paramdb) {
-/* 18 */     this.a = paramdb.entityId;
-/* 19 */     this.b = MathHelper.floor_double(paramdb.posX * 32.0D);
-/* 20 */     this.c = MathHelper.floor_double(paramdb.posY * 32.0D);
-/* 21 */     this.d = MathHelper.floor_double(paramdb.posZ * 32.0D);
-/* 22 */     this.e = (byte)(int)(paramdb.rotationYaw * 256.0F / 360.0F);
-/* 23 */     this.f = (byte)(int)(paramdb.rotationPitch * 256.0F / 360.0F);
+/* 18 */     this.entityId = paramdb.entityId;
+/* 19 */     this.xPosition = MathHelper.floor_double(paramdb.posX * 32.0D);
+/* 20 */     this.yPosition = MathHelper.floor_double(paramdb.posY * 32.0D);
+/* 21 */     this.zPosition = MathHelper.floor_double(paramdb.posZ * 32.0D);
+/* 22 */     this.yaw = (byte)(int)(paramdb.rotationYaw * 256.0F / 360.0F);
+/* 23 */     this.pitch = (byte)(int)(paramdb.rotationPitch * 256.0F / 360.0F);
 /*    */   }
 /*    */   
 /*    */   public Packet34EntityTeleport(int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte paramByte1, byte paramByte2) {
-/* 27 */     this.a = paramInt1;
-/* 28 */     this.b = paramInt2;
-/* 29 */     this.c = paramInt3;
-/* 30 */     this.d = paramInt4;
-/* 31 */     this.e = paramByte1;
-/* 32 */     this.f = paramByte2;
+/* 27 */     this.entityId = paramInt1;
+/* 28 */     this.xPosition = paramInt2;
+/* 29 */     this.yPosition = paramInt3;
+/* 30 */     this.zPosition = paramInt4;
+/* 31 */     this.yaw = paramByte1;
+/* 32 */     this.pitch = paramByte2;
+
+//            if(xPosition != 0 && yPosition != 0)
+//                System.out.println("X " + xPosition + " y " + yPosition);
 /*    */   }
 /*    */   
 /*    */   public void a(DataInputStream paramDataInputStream) throws IOException {
-/* 36 */     this.a = paramDataInputStream.readInt();
-/* 37 */     this.b = paramDataInputStream.readInt();
-/* 38 */     this.c = paramDataInputStream.readInt();
-/* 39 */     this.d = paramDataInputStream.readInt();
-/* 40 */     this.e = (byte)paramDataInputStream.read();
-/* 41 */     this.f = (byte)paramDataInputStream.read();
+/* 36 */     this.entityId = paramDataInputStream.readInt();
+/* 37 */     this.xPosition = paramDataInputStream.readInt();
+/* 38 */     this.yPosition = paramDataInputStream.readInt();
+/* 39 */     this.zPosition = paramDataInputStream.readInt();
+/* 40 */     this.yaw = (byte)paramDataInputStream.read();
+/* 41 */     this.pitch = (byte)paramDataInputStream.read();
 /*    */   }
 /*    */   
 /*    */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
-/* 45 */     paramDataOutputStream.writeInt(this.a);
-/* 46 */     paramDataOutputStream.writeInt(this.b);
-/* 47 */     paramDataOutputStream.writeInt(this.c);
-/* 48 */     paramDataOutputStream.writeInt(this.d);
-/* 49 */     paramDataOutputStream.write(this.e);
-/* 50 */     paramDataOutputStream.write(this.f);
+/* 45 */     paramDataOutputStream.writeInt(this.entityId);
+/* 46 */     paramDataOutputStream.writeInt(this.xPosition);
+/* 47 */     paramDataOutputStream.writeInt(this.yPosition);
+/* 48 */     paramDataOutputStream.writeInt(this.zPosition);
+/* 49 */     paramDataOutputStream.write(this.yaw);
+/* 50 */     paramDataOutputStream.write(this.pitch);
 /*    */   }
 /*    */   
 /*    */   public void a(NetClientManager paramdy) {

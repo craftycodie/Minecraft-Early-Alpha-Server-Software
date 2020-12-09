@@ -32,11 +32,11 @@
 /*  28 */     this.chunkZ = paramInt2;
 /*  29 */     this.currentChunk = new ChunkCoordIntPair(paramInt1, paramInt2);
               this.playerManager = paramgr;
-/*  30 */     (PlayerManager.getMinecraftServer(paramgr)).e.chunkProviderServer.d(paramInt1, paramInt2);
+/*  30 */     (PlayerManager.getMinecraftServer(paramgr)).worldserver.chunkProviderServer.d(paramInt1, paramInt2);
 /*     */   }
 /*     */
 
-/*     */   public void a(EntityPlayerMP paramdq) {
+/*     */   public void addPlayer(EntityPlayerMP paramdq) {
 /*  34 */     if (this.players.contains(paramdq)) throw new IllegalStateException("Failed to add player. " + paramdq + " already is in chunk " + this.chunkX + ", " + this.chunkZ);
 /*  35 */     paramdq.field_420_ah.add(this.currentChunk);
 /*  36 */     paramdq.playerNetServerHandler.sendPacket(new Packet50PreChunk(this.currentChunk.a, this.currentChunk.b, true));
@@ -56,7 +56,7 @@
 /*  50 */       if (this.numBlocksToUpdate > 0) {
 /*  51 */         PlayerManager.getPlayerInstancesToUpdate(this.playerManager).remove(this);
 /*     */       }
-/*  53 */       (PlayerManager.getMinecraftServer(this.playerManager)).e.chunkProviderServer.func_374_c(this.chunkX, this.chunkZ);
+/*  53 */       (PlayerManager.getMinecraftServer(this.playerManager)).worldserver.chunkProviderServer.func_374_c(this.chunkX, this.chunkZ);
 /*     */     }
 /*     */
 /*  56 */     paramdq.loadedChunks.remove(this.currentChunk);
@@ -130,7 +130,7 @@ public void markBlockNeedsUpdate(int i, int j, int k)
                 int i = this.chunkX * 16 + this.minX;
                 int l = this.minY;
                 int k1 = this.chunkZ * 16 + this.minZ;
-                sendPacketToPlayersInInstance(new Packet53BlockChange(i, l, k1, (PlayerManager.getMinecraftServer(this.playerManager)).e));
+                sendPacketToPlayersInInstance(new Packet53BlockChange(i, l, k1, (PlayerManager.getMinecraftServer(this.playerManager)).worldserver));
 ///* 102 */       eh = new Packet53BlockChange(this.chunkX * 16 + this.minX, this.minY, this.chunkZ * 16 + this.minZ, (PlayerManager.markBlockNeedsUpdate(this.markBlockNeedsUpdate)).removeEntry);
 /* 103 */     } else if (this.numBlocksToUpdate == 10) {
                 minY = (minY / 2) * 2;
@@ -141,9 +141,9 @@ public void markBlockNeedsUpdate(int i, int j, int k)
                 int j2 = (maxX - minX) + 1;
                 int l2 = (maxY - minY) + 2;
                 int i3 = (maxZ - minZ) + 1;
-                sendPacketToPlayersInInstance(new Packet51MapChunk(j, i1, l1, j2, l2, i3, (PlayerManager.getMinecraftServer(this.playerManager)).e));
+                sendPacketToPlayersInInstance(new Packet51MapChunk(j, i1, l1, j2, l2, i3, (PlayerManager.getMinecraftServer(this.playerManager)).worldserver));
 /*     */     } else {
-/* 114 */       gs = new Packet52MultiBlockChange(this.chunkX, this.chunkZ, this.blocksToUpdate, this.numBlocksToUpdate, (PlayerManager.getMinecraftServer(this.playerManager)).e);
+/* 114 */       gs = new Packet52MultiBlockChange(this.chunkX, this.chunkZ, this.blocksToUpdate, this.numBlocksToUpdate, (PlayerManager.getMinecraftServer(this.playerManager)).worldserver);
 /*     */     }
               if (gs != null)
 /* 116 */       sendPacketToPlayersInInstance(gs);

@@ -51,7 +51,7 @@
 /* 51 */     this.b++;
 /*    */     
 /* 53 */     this.motionY -= 0.03999999910593033D;
-/* 54 */     c(this.motionX, this.motionY, this.motionZ);
+/* 54 */     moveEntity(this.motionX, this.motionY, this.motionZ);
 /* 55 */     this.motionX *= 0.9800000190734863D;
 /* 56 */     this.motionY *= 0.9800000190734863D;
 /* 57 */     this.motionZ *= 0.9800000190734863D;
@@ -63,7 +63,7 @@
 /* 63 */       this.worldObj.setBlockWithNotify(i, j, k, 0);
 /*    */     }
 /*    */     
-/* 66 */     if (this.v) {
+/* 66 */     if (this.onGround) {
 /* 67 */       this.motionX *= 0.699999988079071D;
 /* 68 */       this.motionZ *= 0.699999988079071D;
 /* 69 */       this.motionY *= -0.5D;

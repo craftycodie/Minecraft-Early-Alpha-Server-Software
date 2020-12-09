@@ -81,7 +81,7 @@ import java.util.logging.Logger;
 /*     */ 
 /*     */ 
 /*     */       
-/*  80 */       hm.a(dq.posX, dq.posY, dq.posZ, dq.rotationYaw, dq.rotationPitch);
+/*  80 */       hm.teleportTo(dq.posX, dq.posY, dq.posZ, dq.rotationYaw, dq.rotationPitch);
 /*     */ 
 /*     */ 
 /*     */ 

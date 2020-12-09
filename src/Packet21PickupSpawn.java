@@ -7,50 +7,52 @@ import java.io.IOException;
 /*    */ public class Packet21PickupSpawn
 /*    */   extends Packet
 /*    */ {
-/*    */   public int a;
+/*    */   public int entityId;
 /*    */   public int xPosition;
 /*    */   public int yPosition;
 /*    */   public int zPosition;
-/*    */   public byte e;
-/*    */   public byte f;
-/*    */   public byte g;
-/*    */   public int h;
-/*    */   public int i;
+/*    */   public byte rotation;
+/*    */   public byte pitch;
+/*    */   public byte roll;
+/*    */   public int itemID;
+/*    */   public int count;
 /*    */
-/*    */   public Packet21PickupSpawn(EntityItem paramfa) {
-/* 21 */     this.a = paramfa.entityId;
-/* 22 */     this.h = paramfa.item.c;
-/* 23 */     this.i = paramfa.item.itemID;
-/* 24 */     this.xPosition = MathHelper.floor_double(paramfa.posX * 32.0D);
-/* 25 */     this.yPosition = MathHelper.floor_double(paramfa.posY * 32.0D);
-/* 26 */     this.zPosition = MathHelper.floor_double(paramfa.posZ * 32.0D);
-/* 27 */     this.e = (byte)(paramfa.motionX * 128.0D);
-/* 28 */     this.f = (byte)(paramfa.motionY * 128.0D);
-/* 29 */     this.g = (byte)(paramfa.motionZ * 128.0D);
+/*    */   public Packet21PickupSpawn() {}
+
+/*    */   public Packet21PickupSpawn(EntityItem entityitem) {
+/* 21 */     this.entityId = entityitem.entityId;
+/* 22 */     this.itemID = entityitem.item.c;
+/* 23 */     this.count = entityitem.item.itemID;
+/* 24 */     this.xPosition = MathHelper.floor_double(entityitem.posX * 32.0D);
+/* 25 */     this.yPosition = MathHelper.floor_double(entityitem.posY * 32.0D);
+/* 26 */     this.zPosition = MathHelper.floor_double(entityitem.posZ * 32.0D);
+    rotation = (byte)(int)(entityitem.motionX * 128D);
+    pitch = (byte)(int)(entityitem.motionY * 128D);
+    roll = (byte)(int)(entityitem.motionZ * 128D);
 /*    */   }
 /*    */   
 /*    */   public void a(DataInputStream paramDataInputStream) throws IOException {
-/* 33 */     this.a = paramDataInputStream.readInt();
-/* 34 */     this.h = paramDataInputStream.readShort();
-/* 35 */     this.i = paramDataInputStream.readByte();
+/* 33 */     this.entityId = paramDataInputStream.readInt();
+/* 34 */     this.itemID = paramDataInputStream.readShort();
+/* 35 */     this.count = paramDataInputStream.readByte();
 /* 36 */     this.xPosition = paramDataInputStream.readInt();
 /* 37 */     this.yPosition = paramDataInputStream.readInt();
 /* 38 */     this.zPosition = paramDataInputStream.readInt();
-/* 39 */     this.e = paramDataInputStream.readByte();
-/* 40 */     this.f = paramDataInputStream.readByte();
-/* 41 */     this.g = paramDataInputStream.readByte();
+/* 39 */     this.rotation = paramDataInputStream.readByte();
+/* 40 */     this.pitch = paramDataInputStream.readByte();
+/* 41 */     this.roll = paramDataInputStream.readByte();
 /*    */   }
 /*    */   
 /*    */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
-/* 45 */     paramDataOutputStream.writeInt(this.a);
-/* 46 */     paramDataOutputStream.writeShort(this.h);
-/* 47 */     paramDataOutputStream.writeByte(this.i);
+/* 45 */     paramDataOutputStream.writeInt(this.entityId);
+/* 46 */     paramDataOutputStream.writeShort(this.itemID);
+/* 47 */     paramDataOutputStream.writeByte(this.count);
 /* 48 */     paramDataOutputStream.writeInt(this.xPosition);
 /* 49 */     paramDataOutputStream.writeInt(this.yPosition);
 /* 50 */     paramDataOutputStream.writeInt(this.zPosition);
-/* 51 */     paramDataOutputStream.writeByte(this.e);
-/* 52 */     paramDataOutputStream.writeByte(this.f);
-/* 53 */     paramDataOutputStream.writeByte(this.g);
+/* 51 */     paramDataOutputStream.writeByte(this.rotation);
+/* 52 */     paramDataOutputStream.writeByte(this.pitch);
+/* 53 */     paramDataOutputStream.writeByte(this.roll);
 /*    */   }
 /*    */   
 /*    */   public void a(NetClientManager paramdy) {

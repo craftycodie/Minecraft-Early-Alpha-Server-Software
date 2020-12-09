@@ -12,10 +12,10 @@
 /*     */   extends EntityPlayer
 /*     */ {
 /*     */   public NetServerHandler playerNetServerHandler;
-/*     */   public MinecraftServer b;
-/*     */   public ItemInWorldManager ac;
-/*     */   public double ad;
-/*     */   public double ae;
+/*     */   public MinecraftServer mcServer;
+/*     */   public ItemInWorldManager itemInWorldManager;
+/*     */   public double field_9155_d;
+/*     */   public double field_9154_e;
 /*  18 */   public List loadedChunks = new LinkedList();
 /*     */   
 /*  20 */   public Set field_420_ah = new HashSet();
@@ -29,11 +29,11 @@
 /*  28 */     int j = paramdp.n + this.Q.nextInt(20) - 10;
 /*  29 */     int k = paramdp.d(i, j);
 /*  30 */     c(i + 0.5D, k, j + 0.5D, 0.0F, 0.0F);
-/*  31 */     this.b = paramMinecraftServer;
+/*  31 */     this.mcServer = paramMinecraftServer;
 /*  32 */     this.M = 0.0F;
 /*  33 */     paramhw.thisPlayer = this;
 /*  34 */     this.username = paramString;
-/*  35 */     this.ac = paramhw;
+/*  35 */     this.itemInWorldManager = paramhw;
 /*  36 */     this.yOffset = 0.0F;
 /*     */   }
 /*     */ 
@@ -48,9 +48,9 @@
 /*     */   }
 /*     */ 
 /*     */   
-/*     */   public void a(int paramInt) {}
+/*     */   public void heal(int paramInt) {}
 /*     */   
-/*     */   public void h() {
+/*     */   public void onUpdateEntity() {
 /*  53 */     super.onUpdate();
 /*     */     
 /*  55 */     ChunkCoordIntPair ih = null;
@@ -72,15 +72,15 @@
 /*     */       
 /*  71 */       if (b != 0) {
 /*  72 */         this.loadedChunks.remove(ih);
-/*  73 */         this.playerNetServerHandler.sendPacket(new Packet51MapChunk(ih.a * 16, 0, ih.b * 16, 16, 128, 16, this.b.e));
+/*  73 */         this.playerNetServerHandler.sendPacket(new Packet51MapChunk(ih.a * 16, 0, ih.b * 16, 16, 128, 16, this.mcServer.worldserver));
 /*     */       } 
 /*     */     } 
 /*     */   }
 /*     */   
-/*     */   public void x() {
+/*     */   public void onLivingUpdate() {
 /*  79 */     this.motionX = this.motionY = this.motionZ = 0.0D;
 /*  80 */     this.bd = false;
-/*  81 */     super.x();
+/*  81 */     super.onLivingUpdate();
 /*     */   }
 /*     */
             @Override
@@ -88,7 +88,7 @@
 /*  85 */     if (!entity.isDead &&
 /*  86 */       entity instanceof EntityItem) {
 /*  87 */       this.playerNetServerHandler.sendPacket(new Packet17UnknownItemStack(((EntityItem)entity).item, paramInt));
-/*  88 */       this.b.k.sendPacketToTrackedPlayers(entity, new Packet22Collect(entity.entityId, this.entityId));
+/*  88 */       this.mcServer.k.sendPacketToTrackedPlayers(entity, new Packet22Collect(entity.entityId, this.entityId));
 /*     */     } 
 /*     */     
 /*  91 */     super.onItemPickup(entity, paramInt);
@@ -98,7 +98,7 @@
 /*  95 */     if (!this.an) {
 /*  96 */       this.ao = -1;
 /*  97 */       this.an = true;
-/*  98 */       this.b.k.sendPacketToTrackedPlayers(this, new Packet18Animation(this, 1));
+/*  98 */       this.mcServer.k.sendPacketToTrackedPlayers(this, new Packet18Animation(this, 1));
 /*     */     } 
 /*     */   }
 /*     */   

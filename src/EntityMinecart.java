@@ -244,7 +244,7 @@
 /* 244 */       if (d16 > d1) d16 = d1; 
 /* 245 */       if (d17 < -d1) d17 = -d1; 
 /* 246 */       if (d17 > d1) d17 = d1; 
-/* 247 */       c(d16, 0.0D, d17);
+/* 247 */       moveEntity(d16, 0.0D, d17);
 /*     */       
 /* 249 */       if (arrayOfInt[0][1] != 0 && MathHelper.floor_double(this.posX) - i == arrayOfInt[0][0] && MathHelper.floor_double(this.posZ) - k == arrayOfInt[0][2]) {
 /* 250 */         setPosition(this.posX, this.posY + arrayOfInt[0][1], this.posZ);
@@ -259,7 +259,7 @@
 /* 259 */         this.motionZ *= 0.996999979019165D;
 /*     */       } else {
 /* 261 */         if (this.ad == 2) {
-/* 262 */           double d = MathHelper.a(this.af * this.af + this.ag * this.ag);
+/* 262 */           double d = MathHelper.sqrt_double(this.af * this.af + this.ag * this.ag);
 /* 263 */           if (d > 0.01D) {
 /* 264 */             bool = true;
 /* 265 */             this.af /= d;
@@ -304,7 +304,7 @@
 /*     */       } 
 /*     */       
 /* 306 */       if (this.ad == 2) {
-/* 307 */         double d = MathHelper.a(this.af * this.af + this.ag * this.ag);
+/* 307 */         double d = MathHelper.sqrt_double(this.af * this.af + this.ag * this.ag);
 /* 308 */         if (d > 0.01D && this.motionX * this.motionX + this.motionZ * this.motionZ > 0.001D) {
 /* 309 */           this.af /= d;
 /* 310 */           this.ag /= d;
@@ -325,14 +325,14 @@
 /* 325 */       if (this.motionX > d1) this.motionX = d1;
 /* 326 */       if (this.motionZ < -d1) this.motionZ = -d1;
 /* 327 */       if (this.motionZ > d1) this.motionZ = d1;
-/* 328 */       if (this.v) {
+/* 328 */       if (this.onGround) {
 /* 329 */         this.motionX *= 0.5D;
 /* 330 */         this.motionY *= 0.5D;
 /* 331 */         this.motionZ *= 0.5D;
 /*     */       } 
-/* 333 */       c(this.motionX, this.motionY, this.motionZ);
+/* 333 */       moveEntity(this.motionX, this.motionY, this.motionZ);
 /*     */       
-/* 335 */       if (!this.v) {
+/* 335 */       if (!this.onGround) {
 /*     */         
 /* 337 */         this.motionX *= 0.949999988079071D;
 /* 338 */         this.motionY *= 0.949999988079071D;
@@ -359,7 +359,7 @@
 /*     */     } 
 /* 360 */     b(this.rotationYaw, this.rotationPitch);
 /*     */     
-/* 362 */     List<Entity> list = this.worldObj.b(this, this.boundingBox.expand(0.20000000298023224D, 0.0D, 0.20000000298023224D));
+/* 362 */     List<Entity> list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(0.20000000298023224D, 0.0D, 0.20000000298023224D));
 /* 363 */     if (list != null && list.size() > 0) {
 /* 364 */       for (int b = 0; b < list.size(); b++) {
 /* 365 */         Entity db1 = list.get(b);
@@ -533,7 +533,7 @@
 /*     */     
 /* 534 */     double d3 = d1 * d1 + d2 * d2;
 /* 535 */     if (d3 >= 9.999999747378752E-5D) {
-/* 536 */       d3 = MathHelper.a(d3);
+/* 536 */       d3 = MathHelper.sqrt_double(d3);
 /* 537 */       d1 /= d3;
 /* 538 */       d2 /= d3;
 /* 539 */       double d = 1.0D / d3;

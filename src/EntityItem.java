@@ -60,11 +60,11 @@
 /*     */     } 
 /*  61 */     g(this.posX, this.posY, this.posZ);
 /*  62 */     handleWaterMovement();
-/*  63 */     c(this.motionX, this.motionY, this.motionZ);
+/*  63 */     moveEntity(this.motionX, this.motionY, this.motionZ);
 /*     */ 
 /*     */     
 /*  66 */     float f = 0.98F;
-/*  67 */     if (this.v) {
+/*  67 */     if (this.onGround) {
 /*  68 */       f = 0.58800006F;
 /*  69 */       int i = this.worldObj.getBlockId(MathHelper.floor_double(this.posX), MathHelper.floor_double(this.boundingBox.b) - 1, MathHelper.floor_double(this.posZ));
 /*  70 */       if (i > 0) {
@@ -95,7 +95,7 @@
 /*     */ 
 /*     */ 
 /*     */     
-/*  98 */     if (this.v) {
+/*  98 */     if (this.onGround) {
 /*  99 */       this.motionY *= -0.5D;
 /*     */     }
 /*     */     

@@ -37,7 +37,7 @@
 /*     */   private Chunk b;
 /*     */   private IChunkProvider c;
 /*     */   private IChunkLoader d;
-/*  40 */   private Map e = new HashMap<Object, Object>();
+/*  40 */   private Map chunks = new HashMap<Object, Object>();
 /*  41 */   private List f = new ArrayList();
 /*     */   private World g;
 /*     */   
@@ -53,7 +53,7 @@
 /*     */   
 /*     */   public boolean chunkExists(int paramInt1, int paramInt2) {
 /*  55 */     ia ia = new ia(paramInt1, paramInt2);
-/*  56 */     return this.e.containsKey(ia);
+/*  56 */     return this.chunks.containsKey(ia);
 /*     */   }
 /*     */   
 /*     */   public void func_374_c(int paramInt1, int paramInt2) {
@@ -69,7 +69,7 @@
 /*  69 */     ia ia = new ia(paramInt1, paramInt2);
 /*  70 */     this.a.remove(new ia(paramInt1, paramInt2));
 /*     */     
-/*  72 */     Chunk hv1 = (Chunk)this.e.get(ia);
+/*  72 */     Chunk hv1 = (Chunk)this.chunks.get(ia);
 /*  73 */     if (hv1 == null) {
 /*  74 */       hv1 = e(paramInt1, paramInt2);
 /*  75 */       if (hv1 == null) {
@@ -81,7 +81,7 @@
 /*     */       }
 /*     */ 
 /*     */       
-/*  84 */       this.e.put(ia, hv1);
+/*  84 */       this.chunks.put(ia, hv1);
 /*  85 */       this.f.add(hv1);
 /*     */       
 /*  87 */       if (hv1 != null) {
@@ -102,7 +102,7 @@
 /*     */   
 /*     */   public Chunk b(int paramInt1, int paramInt2) {
 /* 104 */     ia ia = new ia(paramInt1, paramInt2);
-/* 105 */     Chunk hv1 = (Chunk)this.e.get(ia);
+/* 105 */     Chunk hv1 = (Chunk)this.chunks.get(ia);
 /*     */     
 /* 107 */     if (hv1 == null) {
 /* 108 */       if (this.g.s) {
@@ -190,7 +190,7 @@
 /* 190 */         a(hv1);
 /* 191 */         this.a.remove(ia);
 /*     */         
-/* 193 */         this.e.remove(ia);
+/* 193 */         this.chunks.remove(ia);
 /* 194 */         this.f.remove(hv1);
 /*     */       } 
 /*     */     } 

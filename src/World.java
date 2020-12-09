@@ -67,7 +67,7 @@
 /*      */   
 /*   68 */   public List i = new ArrayList();
 /*      */   
-/*      */   public int j;
+/*      */   public int difficultySetting;
 /*   71 */   public Random k = new Random(); public int l;
 /*      */   public int m;
 /*      */   public int n;
@@ -769,17 +769,20 @@ public int getBlockMetadata(int i, int j, int k)
 /*  742 */     if (paramdb instanceof EntityPlayer) {
 /*  743 */       bool = true;
 /*      */     }
-/*      */     
-/*  746 */     if (bool || chunkExists(i, j)) {
-/*  747 */       if (paramdb instanceof EntityPlayer) {
+/*      */
+               if (paramdb instanceof EntityPlayer) {
 /*  748 */         this.i.add((EntityPlayer)paramdb);
 /*  749 */         System.out.println("Player count: " + this.i.size());
-/*      */       } 
+/*      */       }
+/*  746 */     if (bool || chunkExists(i, j)) {
 /*  751 */       getChunkFromChunkCoords(i, j).a(paramdb);
 /*  752 */       this.v.add(paramdb);
 /*  753 */       b(paramdb);
 /*  754 */       return true;
-/*      */     } 
+/*      */     } else {
+        /*  729 */       System.out.println("Failed to add entity " + paramdb + " because the chunk wasn't loaded");
+
+                }
 /*  756 */     return false;
 /*      */   }
 /*      */   
@@ -820,7 +823,7 @@ public int getBlockMetadata(int i, int j, int k)
 
 /* 1450 */     this.K = new ArrayList();
 /* 1451 */     this.singleplayerWorld = false; this.r = paramString; this.chunkProvider = a(this.F); d(); } public World(File paramFile, String paramString, long paramLong) { this.H = new ArrayList(); this.I = new HashSet(); this.J = this.k.nextInt(12000); this.K = new ArrayList(); this.singleplayerWorld = false; this.r = paramString; paramFile.mkdirs(); this.F = new File(paramFile, paramString); this.F.mkdirs(); try { File file1 = new File(this.F, "session.lock"); DataOutputStream dataOutputStream = new DataOutputStream(new FileOutputStream(file1)); try { dataOutputStream.writeLong(this.C); } finally { dataOutputStream.close(); }  } catch (IOException iOException) { throw new RuntimeException("Failed to check session lock, aborting"); }  File file = new File(this.F, "level.dat"); this.o = !file.exists(); if (file.exists()) { try { NBTTagCompound r1 = CompressedStreamTools.a(new FileInputStream(file)); NBTTagCompound r2 = r1.j("Data"); this.p = r2.e("RandomSeed"); this.l = r2.d("SpawnX"); this.m = r2.d("SpawnY"); this.n = r2.d("SpawnZ"); this.b = r2.e("Time"); this.q = r2.e("SizeOnDisk"); this.c = r2.getBoolean("SnowCovered"); if (r2.a("Player")) this.G = r2.j("Player");  } catch (Exception exception) { exception.printStackTrace(); }  } else { this.c = (this.k.nextInt(4) == 0); }  boolean bool = false; if (this.p == 0L) { this.p = paramLong; bool = true; }  this.chunkProvider = a(this.F); if (bool) { this.s = true; this.l = 0; this.m = 64; this.n = 0; while (!e(this.l, this.n)) { this.l += this.k.nextInt(64) - this.k.nextInt(64); this.n += this.k.nextInt(64) - this.k.nextInt(64); }  this.s = false; }  d(); }
-/*      */   public List a(Entity paramdb, AxisAlignedBB paramcy) { this.H.clear(); int i = MathHelper.floor_double(paramcy.a); int j = MathHelper.floor_double(paramcy.d + 1.0D); int k = MathHelper.floor_double(paramcy.b); int m = MathHelper.floor_double(paramcy.e + 1.0D); int n = MathHelper.floor_double(paramcy.c); int i1 = MathHelper.floor_double(paramcy.f + 1.0D); for (int i2 = i; i2 < j; i2++) { for (int i3 = n; i3 < i1; i3++) { if (blockExists(i2, 64, i3)) for (int i4 = k - 1; i4 < m; i4++) { Block et = Block.blocksList[getBlockId(i2, i4, i3)]; if (et != null) et.a(this, i2, i4, i3, paramcy, this.H);  }   }  }  double d = 0.25D; List<Entity> list = b(paramdb, paramcy.expand(d, d, d)); for (int b = 0; b < list.size(); b++) { AxisAlignedBB cy1 = ((Entity)list.get(b)).l(); if (cy1 != null && cy1.a(paramcy)) this.H.add(cy1);  cy1 = paramdb.d(list.get(b)); if (cy1 != null && cy1.a(paramcy)) this.H.add(cy1);  }  return this.H; }
+/*      */   public List getCollidingBoundingBoxes(Entity paramdb, AxisAlignedBB paramcy) { this.H.clear(); int i = MathHelper.floor_double(paramcy.a); int j = MathHelper.floor_double(paramcy.d + 1.0D); int k = MathHelper.floor_double(paramcy.b); int m = MathHelper.floor_double(paramcy.e + 1.0D); int n = MathHelper.floor_double(paramcy.c); int i1 = MathHelper.floor_double(paramcy.f + 1.0D); for (int i2 = i; i2 < j; i2++) { for (int i3 = n; i3 < i1; i3++) { if (blockExists(i2, 64, i3)) for (int i4 = k - 1; i4 < m; i4++) { Block et = Block.blocksList[getBlockId(i2, i4, i3)]; if (et != null) et.a(this, i2, i4, i3, paramcy, this.H);  }   }  }  double d = 0.25D; List<Entity> list = getEntitiesWithinAABBExcludingEntity(paramdb, paramcy.expand(d, d, d)); for (int b = 0; b < list.size(); b++) { AxisAlignedBB cy1 = ((Entity)list.get(b)).l(); if (cy1 != null && cy1.a(paramcy)) this.H.add(cy1);  cy1 = paramdb.d(list.get(b)); if (cy1 != null && cy1.a(paramcy)) this.H.add(cy1);  }  return this.H; }
 /*      */   public int a(float paramFloat) { float f1 = b(paramFloat); float f2 = 1.0F - MathHelper.b(f1 * 3.1415927F * 2.0F) * 2.0F + 0.5F; if (f2 < 0.0F) f2 = 0.0F;  if (f2 > 1.0F) f2 = 1.0F;  return (int)(f2 * 11.0F); }
 /* 1454 */   public float b(float paramFloat) { int i = (int)(this.b % 24000L); float f1 = (i + paramFloat) / 24000.0F - 0.25F; if (f1 < 0.0F) f1++;  if (f1 > 1.0F) f1--;  float f2 = f1; f1 = 1.0F - (float)((Math.cos(f1 * Math.PI) + 1.0D) / 2.0D); f1 = f2 + (f1 - f2) / 3.0F; return f1; } public int d(int paramInt1, int paramInt2) {
         Chunk hv = a(paramInt1, paramInt2);
@@ -924,7 +927,7 @@ protected void e(Entity paramdb) {
     }
 
 public boolean a(AxisAlignedBB paramcy) {
-        List<Entity> list = b((Entity) null, paramcy);
+        List<Entity> list = getEntitiesWithinAABBExcludingEntity((Entity) null, paramcy);
         for (int b = 0; b < list.size(); b++) {
             Entity db = list.get(b);
             if (!db.isDead && db.d) return false;
@@ -1039,7 +1042,7 @@ public boolean b(AxisAlignedBB paramcy, Material paramhz) {
         }
         return false;
     }
-public List b(Entity paramdb, AxisAlignedBB paramcy) {
+public List getEntitiesWithinAABBExcludingEntity(Entity paramdb, AxisAlignedBB paramcy) {
         this.K.clear();
         /* 1455 */
         int i = MathHelper.floor_double((paramcy.a - 2.0D) / 16.0D);

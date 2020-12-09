@@ -110,12 +110,12 @@
 /* 110 */     if (this.motionX > d3) this.motionX = d3;
 /* 111 */     if (this.motionZ < -d3) this.motionZ = -d3;
 /* 112 */     if (this.motionZ > d3) this.motionZ = d3;
-/* 113 */     if (this.v) {
+/* 113 */     if (this.onGround) {
 /* 114 */       this.motionX *= 0.5D;
 /* 115 */       this.motionY *= 0.5D;
 /* 116 */       this.motionZ *= 0.5D;
 /*     */     } 
-/* 118 */     c(this.motionX, this.motionY, this.motionZ);
+/* 118 */     moveEntity(this.motionX, this.motionY, this.motionZ);
 /* 119 */     double d4 = Math.sqrt(this.motionX * this.motionX + this.motionZ * this.motionZ);
 /* 120 */     if (d4 > 0.15D) {
 /* 121 */       double d9 = Math.cos(this.rotationYaw * Math.PI / 180.0D);
@@ -172,7 +172,7 @@
 /* 172 */     this.rotationYaw = (float)(this.rotationYaw + d8);
 /* 173 */     b(this.rotationYaw, this.rotationPitch);
 /*     */     
-/* 175 */     List<Entity> list = this.worldObj.b(this, this.boundingBox.expand(0.20000000298023224D, 0.0D, 0.20000000298023224D));
+/* 175 */     List<Entity> list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(0.20000000298023224D, 0.0D, 0.20000000298023224D));
 /* 176 */     if (list != null && list.size() > 0) {
 /* 177 */       for (int b = 0; b < list.size(); b++) {
 /* 178 */         Entity db1 = list.get(b);

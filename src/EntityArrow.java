@@ -52,7 +52,7 @@
 /*     */   }
 /*     */   
 /*     */   public void a(double paramDouble1, double paramDouble2, double paramDouble3, float paramFloat1, float paramFloat2) {
-/*  55 */     float f1 = MathHelper.a(paramDouble1 * paramDouble1 + paramDouble2 * paramDouble2 + paramDouble3 * paramDouble3);
+/*  55 */     float f1 = MathHelper.sqrt_double(paramDouble1 * paramDouble1 + paramDouble2 * paramDouble2 + paramDouble3 * paramDouble3);
 /*     */     
 /*  57 */     paramDouble1 /= f1;
 /*  58 */     paramDouble2 /= f1;
@@ -70,7 +70,7 @@
 /*  70 */     this.motionY = paramDouble2;
 /*  71 */     this.motionZ = paramDouble3;
 /*     */     
-/*  73 */     float f2 = MathHelper.a(paramDouble1 * paramDouble1 + paramDouble3 * paramDouble3);
+/*  73 */     float f2 = MathHelper.sqrt_double(paramDouble1 * paramDouble1 + paramDouble3 * paramDouble3);
 /*     */     
 /*  75 */     this.s = this.rotationYaw = (float)(Math.atan2(paramDouble1, paramDouble3) * 180.0D / 3.1415927410125732D);
 /*  76 */     this.t = this.rotationPitch = (float)(Math.atan2(paramDouble2, f2) * 180.0D / 3.1415927410125732D);
@@ -114,7 +114,7 @@
 /* 114 */       as2 = Vec3D.b(fe.f.a, fe.f.b, fe.f.c);
 /*     */     }
 /* 116 */     Entity db1 = null;
-/* 117 */     List<Entity> list = this.worldObj.b(this, this.boundingBox.a(this.motionX, this.motionY, this.motionZ).expand(1.0D, 1.0D, 1.0D));
+/* 117 */     List<Entity> list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.a(this.motionX, this.motionY, this.motionZ).expand(1.0D, 1.0D, 1.0D));
 /* 118 */     double d = 0.0D;
 /* 119 */     for (int b = 0; b < list.size(); b++) {
 /* 120 */       Entity db2 = list.get(b);
@@ -174,7 +174,7 @@
 /* 174 */         this.motionX = (float)(fe.f.a - this.posX);
 /* 175 */         this.motionY = (float)(fe.f.b - this.posY);
 /* 176 */         this.motionZ = (float)(fe.f.c - this.posZ);
-/* 177 */         float f = MathHelper.a(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
+/* 177 */         float f = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionY * this.motionY + this.motionZ * this.motionZ);
 /* 178 */         this.posX -= this.motionX / f * 0.05000000074505806D;
 /* 179 */         this.posY -= this.motionY / f * 0.05000000074505806D;
 /* 180 */         this.posZ -= this.motionZ / f * 0.05000000074505806D;
@@ -188,7 +188,7 @@
 /* 188 */     this.posY += this.motionY;
 /* 189 */     this.posZ += this.motionZ;
 /*     */     
-/* 191 */     float f1 = MathHelper.a(this.motionX * this.motionX + this.motionZ * this.motionZ);
+/* 191 */     float f1 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
 /* 192 */     this.rotationYaw = (float)(Math.atan2(this.motionX, this.motionZ) * 180.0D / 3.1415927410125732D);
 /* 193 */     this.rotationPitch = (float)(Math.atan2(this.motionY, f1) * 180.0D / 3.1415927410125732D);
 /*     */     

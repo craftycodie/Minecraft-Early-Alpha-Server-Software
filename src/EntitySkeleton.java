@@ -29,7 +29,7 @@
 /*    */   }
 /*    */ 
 /*    */   
-/*    */   public void x() {
+/*    */   public void onLivingUpdate() {
 /* 33 */     if (this.worldObj.a()) {
 /* 34 */       float f = b(1.0F);
 /* 35 */       if (f > 0.5F && 
@@ -39,7 +39,7 @@
 /*    */     } 
 /*    */ 
 /*    */     
-/* 42 */     super.x();
+/* 42 */     super.onLivingUpdate();
 /*    */   }
 /*    */   
 /*    */   protected void a(Entity paramdb, float paramFloat) {
@@ -53,7 +53,7 @@
 /*    */         
 /* 54 */         double d = paramdb.posY - 0.20000000298023224D - da.posY;
 /*    */         
-/* 56 */         float f = MathHelper.a(d1 * d1 + d2 * d2) * 0.2F;
+/* 56 */         float f = MathHelper.sqrt_double(d1 * d1 + d2 * d2) * 0.2F;
 /*    */         
 /* 58 */         this.worldObj.playSoundAtEntity(this, "random.bow", 1.0F, 1.0F / (this.Q.nextFloat() * 0.4F + 0.8F));
 /* 59 */         this.worldObj.a(da);

@@ -152,10 +152,10 @@
 /*     */     }
 /*     */     
 ///* 594 */     for (k = 0; k < 10; k++) {
-///* 595 */       int motionX = setEntityDead + this.j.nextInt(16);
-///* 596 */       int i1 = this.j.nextInt(128);
-///* 597 */       int i2 = j + this.j.nextInt(16);
-///* 598 */       (new e(32)).item(this.motionZ, this.j, motionX, i1, i2);
+///* 595 */       int motionX = setEntityDead + this.difficultySetting.nextInt(16);
+///* 596 */       int i1 = this.difficultySetting.nextInt(128);
+///* 597 */       int i2 = difficultySetting + this.difficultySetting.nextInt(16);
+///* 598 */       (new rotation(32)).item(this.motionZ, this.difficultySetting, motionX, i1, i2);
 ///*     */     }
 /*     */     
 /* 601 */     for (k = 0; k < 20; k++) {
@@ -257,10 +257,10 @@
 /*     */     } 
 /*     */     
 ///* 695 */     for (handleWaterMovement = 0; handleWaterMovement < 10; handleWaterMovement++) {
-///* 696 */       int motionX = setEntityDead + this.j.nextInt(16) + 8;
-///* 697 */       int i1 = this.j.nextInt(128);
-///* 698 */       int i2 = j + this.j.nextInt(16) + 8;
-///* 699 */       (new fy()).item(this.motionZ, this.j, motionX, i1, i2);
+///* 696 */       int motionX = setEntityDead + this.difficultySetting.nextInt(16) + 8;
+///* 697 */       int i1 = this.difficultySetting.nextInt(128);
+///* 698 */       int i2 = difficultySetting + this.difficultySetting.nextInt(16) + 8;
+///* 699 */       (new fy()).item(this.motionZ, this.difficultySetting, motionX, i1, i2);
 ///*     */     }
 /*     */     
 /* 702 */     for (m = 0; m < 1; m++) {

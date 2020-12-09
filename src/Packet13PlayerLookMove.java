@@ -7,36 +7,37 @@ import java.io.IOException;
 /*    */   extends Packet10Flying
 /*    */ {
 /*    */   public Packet13PlayerLookMove() {
-/*  8 */     this.i = true;
-/*  9 */     this.h = true;
+/*  8 */     this.rotating = true;
+/*  9 */     this.moving = true;
 /*    */   }
 /*    */   
-/*    */   public Packet13PlayerLookMove(double paramDouble1, double paramDouble2, double paramDouble3, float paramFloat1, float paramFloat2, boolean paramBoolean) {
-/* 13 */     this.a = paramDouble1;
-/* 14 */     this.b = paramDouble2;
-/* 15 */     this.c = paramDouble3;
-/* 17 */     this.e = paramFloat1;
-/* 18 */     this.f = paramFloat2;
-/* 19 */     this.g = paramBoolean;
-/* 20 */     this.i = true;
-/* 21 */     this.h = true;
+/*    */   public Packet13PlayerLookMove(double paramDouble1, double paramDouble2, double paramDouble3, float paramFloat1, float paramFloat2, boolean onGround) {
+/* 13 */
+    this.xPosition = paramDouble1;
+/* 14 */     this.yPosition = paramDouble2;
+/* 15 */     this.zPosition = paramDouble3;
+/* 17 */     this.yaw = paramFloat1;
+/* 18 */     this.pitch = paramFloat2;
+/* 19 */     this.onGround = onGround;
+/* 20 */     this.rotating = true;
+/* 21 */     this.moving = true;
 /*    */   }
 /*    */   
 /*    */   public void a(DataInputStream paramDataInputStream) throws IOException {
-/* 25 */     this.a = paramDataInputStream.readDouble();
-/* 26 */     this.b = paramDataInputStream.readDouble();
-/* 27 */     this.c = paramDataInputStream.readDouble();
-/* 29 */     this.e = paramDataInputStream.readFloat();
-/* 30 */     this.f = paramDataInputStream.readFloat();
+/* 25 */     this.xPosition = paramDataInputStream.readDouble();
+/* 26 */     this.yPosition = paramDataInputStream.readDouble();
+/* 27 */     this.zPosition = paramDataInputStream.readDouble();
+/* 29 */     this.yaw = paramDataInputStream.readFloat();
+/* 30 */     this.pitch = paramDataInputStream.readFloat();
 /* 31 */     super.a(paramDataInputStream);
 /*    */   }
 /*    */   
 /*    */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
-/* 35 */     paramDataOutputStream.writeDouble(this.a);
-/* 36 */     paramDataOutputStream.writeDouble(this.b);
-/* 37 */     paramDataOutputStream.writeDouble(this.c);
-/* 39 */     paramDataOutputStream.writeFloat(this.e);
-/* 40 */     paramDataOutputStream.writeFloat(this.f);
+/* 35 */     paramDataOutputStream.writeDouble(this.xPosition);
+/* 36 */     paramDataOutputStream.writeDouble(this.yPosition);
+/* 37 */     paramDataOutputStream.writeDouble(this.zPosition);
+/* 39 */     paramDataOutputStream.writeFloat(this.yaw);
+/* 40 */     paramDataOutputStream.writeFloat(this.pitch);
 /* 41 */     super.a(paramDataOutputStream);
 /*    */   }
 /*    */   

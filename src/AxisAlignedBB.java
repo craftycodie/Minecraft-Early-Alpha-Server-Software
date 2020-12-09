@@ -141,7 +141,7 @@
 /*     */ 
 /*     */ 
 /*     */   
-/*     */   public AxisAlignedBB d(double paramDouble1, double paramDouble2, double paramDouble3) {
+/*     */   public AxisAlignedBB offset(double paramDouble1, double paramDouble2, double paramDouble3) {
 /* 145 */     this.a += paramDouble1;
 /* 146 */     this.b += paramDouble2;
 /* 147 */     this.c += paramDouble3;
@@ -172,7 +172,7 @@
 /*     */ 
 /*     */ 
 /*     */   
-/*     */   public AxisAlignedBB e(double paramDouble1, double paramDouble2, double paramDouble3) {
+/*     */   public AxisAlignedBB getInsetBoundingBox(double paramDouble1, double paramDouble2, double paramDouble3) {
 /* 176 */     double d1 = this.a;
 /* 177 */     double d2 = this.b;
 /* 178 */     double d3 = this.c;
@@ -192,7 +192,7 @@
 /* 192 */     return b(d1, d2, d3, d4, d5, d6);
 /*     */   }
 /*     */   
-/*     */   public AxisAlignedBB b() {
+/*     */   public AxisAlignedBB copy() {
 /* 196 */     return b(this.a, this.b, this.c, this.d, this.e, this.f);
 /*     */   }
 /*     */   

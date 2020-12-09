@@ -6,8 +6,8 @@
     /*  24 */   public fz inventory = new fz(this);
     /*  25 */   public byte aj = 0;
     /*  26 */   public int ak = 0;
-    public float al;
-    /*     */   public float am;
+    public float field_9150_ao;
+    /*     */   public float field_9149_ap;
     /*     */   public boolean an = false;
     /*  29 */   public int ao = 0;
     /*     */   public String username;
@@ -16,8 +16,8 @@
     /*     */
     public void t() {
         super.t();
-        this.al = this.am;
-        this.am = 0.0F;
+        this.field_9150_ao = this.field_9149_ap;
+        this.field_9149_ap = 0.0F;
     }
 
     /*     */
@@ -34,42 +34,83 @@
         this.aJ = this.ao / 8.0F;
     }
 
-    public void x() {
-        if (this.worldObj.j == 0 && this.health < 20 && this.R % 20 * 4 == 0) a(1);
-        this.inventory.c();
-        this.al = this.am;
-        super.x();
-        float f1 = MathHelper.a(this.motionX * this.motionX + this.motionZ * this.motionZ);
-        float f2 = (float) Math.atan(-this.motionY * 0.20000000298023224D) * 15.0F;
-        if (f1 > 0.1F) f1 = 0.1F;
-        if (!this.v || this.health <= 0) f1 = 0.0F;
-        if (this.v || this.health <= 0) f2 = 0.0F;
-        this.am += (f1 - this.am) * 0.4F;
-        this.aS += (f2 - this.aS) * 0.8F;
-
-        if (health > 0) {
-            List list = worldObj.b(this, boundingBox.expand(1.0D, 0.0D, 1.0D));
-            if (list != null) {
-                for (int i = 0; i < list.size(); i++) {
-                    Entity entity = (Entity) list.get(i);
-                    if (!entity.isDead) {
-                        h(entity);
+    public void onLivingUpdate() {
+        if(worldObj.difficultySetting == 0 && health < 20 && (ticksExisted % 20) * 12 == 0)
+        {
+            heal(1);
+        }
+        inventory.decrementAnimations();
+        field_9150_ao = field_9149_ap;
+        super.onLivingUpdate();
+        float f = MathHelper.sqrt_double(motionX * motionX + motionZ * motionZ);
+        float f1 = (float)Math.atan(-motionY * 0.20000000298023224D) * 15F;
+        if(f > 0.1F)
+        {
+            f = 0.1F;
+        }
+        if(!onGround || health <= 0)
+        {
+            f = 0.0F;
+        }
+        if(onGround || health <= 0)
+        {
+            f1 = 0.0F;
+        }
+        field_9149_ap += (f - field_9149_ap) * 0.4F;
+        field_9101_aY += (f1 - field_9101_aY) * 0.8F;
+        if(health > 0)
+        {
+            List list = worldObj.getEntitiesWithinAABBExcludingEntity(this, boundingBox.offset(0, -2, 0).expand(1.0D, 0.0D, 1.0D));
+            if(list != null)
+            {
+                for(int i = 0; i < list.size(); i++)
+                {
+                    Entity entity = (Entity)list.get(i);
+                    if(!entity.isDead)
+                    {
+                        unknownPickupRelated(entity);
                     }
                 }
 
             }
         }
 
-        if (this.health > 0) {
-            List<Entity> list = this.worldObj.b(this, this.boundingBox.expand(1.0D, 0.0D, 1.0D));
-            if (list != null)
-                for (int b = 0; b < list.size(); b++)
-                    h(list.get(b));
-        }
+//        if (this.worldObj.difficultySetting == 0 && this.health < 20 && this.ticksExisted % 20 * 4 == 0)
+//            heal(1);
+//        this.inventory.decrementAnimations();
+//        this.field_9150_ao = this.field_9149_ap;
+//        super.onLivingUpdate();
+//        float f1 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
+//        float f2 = (float) Math.atan(-this.motionY * 0.20000000298023224D) * 15.0F;
+//        if (f1 > 0.1F) f1 = 0.1F;
+//        if (!this.onGround || this.health <= 0) f1 = 0.0F;
+//        if (this.onGround || this.health <= 0) f2 = 0.0F;
+//        this.field_9149_ap += (f1 - this.field_9149_ap) * 0.4F;
+//        this.field_9101_aY += (f2 - this.field_9101_aY) * 0.8F;
+//
+//        if (health > 0) {
+//            List list = worldObj.getEntitiesWithinAABBExcludingEntity(this, boundingBox.expand(1.0D, 0.0D, 1.0D));
+//            if (list != null) {
+//                for (int i = 0; i < list.size(); i++) {
+//                    Entity entity = (Entity) list.get(i);
+//                    if (!entity.isDead) {
+//                        unknownPickupRelated(entity);
+//                    }
+//                }
+//
+//            }
+//        }
+//
+//        if (this.health > 0) {
+//            List<Entity> list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(1.0D, 0.0D, 1.0D));
+//            if (list != null)
+//                for (int b = 0; b < list.size(); b++)
+//                    unknownPickupRelated(list.get(b));
+//        }
     }
 
 
-    private void h(Entity paramdb) {
+    private void unknownPickupRelated(Entity paramdb) {
         paramdb.onCollideWithPlayer(this);
 
     }
@@ -153,11 +194,11 @@
         /* 227 */
         if (paramdb instanceof EntityMob || paramdb instanceof EntityArrow) {
             /* 228 */
-            if (this.worldObj.j == 0) paramInt = 0;
+            if (this.worldObj.difficultySetting == 0) paramInt = 0;
             /* 229 */
-            if (this.worldObj.j == 1) paramInt = paramInt / 3 + 1;
+            if (this.worldObj.difficultySetting == 1) paramInt = paramInt / 3 + 1;
             /* 230 */
-            if (this.worldObj.j == 3) paramInt = paramInt * 3 / 2;
+            if (this.worldObj.difficultySetting == 3) paramInt = paramInt * 3 / 2;
             /*     */
             /*     */
         }
@@ -189,7 +230,7 @@
         if (a(Material.f))
             /*     */ f /= 5.0F;
         /*     */
-        if (!this.v)
+        if (!this.onGround)
             /*     */ f /= 5.0F;
         /*     */
         return f;

@@ -41,8 +41,8 @@
 /* 41 */     return "mob.creeperdeath";
 /*    */   }
 /*    */   
-///*    */   public void f(Entity paramdb) {
-///* 45 */     super.f(paramdb);
+///*    */   public void pitch(Entity paramdb) {
+///* 45 */     super.pitch(paramdb);
 ///*    */
 ///* 47 */     if (paramdb instanceof dz) {
 ///* 48 */       item(Item.aO.aQ + this.Q.nextInt(2), 1);

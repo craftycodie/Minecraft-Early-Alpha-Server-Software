@@ -66,7 +66,7 @@
 /*  66 */     int m = MathHelper.floor_double(paramDouble2 + paramFloat + 1.0D);
 /*  67 */     int n = MathHelper.floor_double(paramDouble3 - paramFloat - 1.0D);
 /*  68 */     int i1 = MathHelper.floor_double(paramDouble3 + paramFloat + 1.0D);
-/*  69 */     List<Entity> list = paramdp.b(paramdb, AxisAlignedBB.b(i, k, n, j, m, i1));
+/*  69 */     List<Entity> list = paramdp.getEntitiesWithinAABBExcludingEntity(paramdb, AxisAlignedBB.b(i, k, n, j, m, i1));
 /*  70 */     Vec3D as = Vec3D.b(paramDouble1, paramDouble2, paramDouble3);
 /*  71 */     for (int b2 = 0; b2 < list.size(); b2++) {
 /*  72 */       Entity db1 = list.get(b2);
@@ -76,7 +76,7 @@
 /*  76 */         double d2 = db1.posY - paramDouble2;
 /*  77 */         double d3 = db1.posZ - paramDouble3;
 /*     */         
-/*  79 */         double d4 = MathHelper.a(d1 * d1 + d2 * d2 + d3 * d3);
+/*  79 */         double d4 = MathHelper.sqrt_double(d1 * d1 + d2 * d2 + d3 * d3);
 /*     */         
 /*  81 */         d1 /= d4;
 /*  82 */         d2 /= d4;
@@ -113,7 +113,7 @@
 /* 113 */         double d5 = d2 - paramDouble2;
 /* 114 */         double d6 = d3 - paramDouble3;
 /*     */         
-/* 116 */         double d7 = MathHelper.a(d4 * d4 + d5 * d5 + d6 * d6);
+/* 116 */         double d7 = MathHelper.sqrt_double(d4 * d4 + d5 * d5 + d6 * d6);
 /*     */         
 /* 118 */         d4 /= d7;
 /* 119 */         d5 /= d7;

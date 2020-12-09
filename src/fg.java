@@ -27,7 +27,7 @@
 /*    */   
 /*    */   public void a(EntityPlayerMP paramdq) {
 /* 28 */     this.b.add(paramdq);
-/* 29 */     this.c.e.a(paramdq);
+/* 29 */     this.c.worldserver.a(paramdq);
 /* 30 */     this.d.a(paramdq);
 /*    */   }
 /*    */   
@@ -36,7 +36,7 @@
 /*    */   }
 /*    */   
 /*    */   public void c(EntityPlayerMP paramdq) {
-/* 38 */     this.c.e.d(paramdq);
+/* 38 */     this.c.worldserver.d(paramdq);
 /* 39 */     this.b.remove(paramdq);
 /* 40 */     this.d.b(paramdq);
 /*    */   }
@@ -52,7 +52,7 @@
 /* 51 */         dq.playerNetServerHandler.b("You logged in from another location");
 /*    */       }
 /*    */     } 
-/* 54 */     return new EntityPlayerMP(this.c, this.c.e, paramString1, new ItemInWorldManager(this.c.e));
+/* 54 */     return new EntityPlayerMP(this.c, this.c.worldserver, paramString1, new ItemInWorldManager(this.c.worldserver));
 /*    */   }
 /*    */   
 /*    */   public void b() {

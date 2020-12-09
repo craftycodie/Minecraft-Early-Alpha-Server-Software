@@ -16,17 +16,17 @@
 /* 16 */     this.health = 20;
 /*    */   }
 /*    */   
-/*    */   public void x() {
+/*    */   public void onLivingUpdate() {
 /* 20 */     float f = b(1.0F);
 /* 21 */     if (f > 0.5F) {
 /* 22 */       this.aZ += 2;
 /*    */     }
-/* 24 */     super.x();
+/* 24 */     super.onLivingUpdate();
 /*    */   }
 /*    */   
 /*    */   public void onUpdate() {
 /* 28 */     super.onUpdate();
-/* 29 */     if (this.worldObj.j == 0) setEntityDead();
+/* 29 */     if (this.worldObj.difficultySetting == 0) setEntityDead();
 /*    */   }
 /*    */   
 /*    */   protected Entity h() {

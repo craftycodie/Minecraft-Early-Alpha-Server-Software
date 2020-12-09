@@ -79,7 +79,7 @@ import java.net.InetAddress;
 /* 77 */     for (b = 0; b < this.g.size(); b++) {
 /* 78 */       NetServerHandler hm = (NetServerHandler)this.g.get(b);
 /* 79 */       hm.a();
-/* 80 */       if (hm.c)
+/* 80 */       if (hm.connectionClosed)
 /* 81 */         this.g.remove(b--); 
 /*    */     } 
 /*    */   }

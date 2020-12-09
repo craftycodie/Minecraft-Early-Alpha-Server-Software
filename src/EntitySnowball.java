@@ -122,7 +122,7 @@
 /* 122 */       as2 = Vec3D.b(fe.f.a, fe.f.b, fe.f.c);
 /*     */     }
 /* 124 */     Entity db1 = null;
-/* 125 */     List<Entity> list = this.worldObj.b(this, this.boundingBox.a(this.motionX, this.motionY, this.motionZ).expand(1.0D, 1.0D, 1.0D));
+/* 125 */     List<Entity> list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.a(this.motionX, this.motionY, this.motionZ).expand(1.0D, 1.0D, 1.0D));
 /* 126 */     double d = 0.0D; byte b;
 /* 127 */     for (b = 0; b < list.size(); b++) {
 /* 128 */       Entity db2 = list.get(b);
@@ -174,7 +174,7 @@
 /* 174 */     this.posY += this.motionY;
 /* 175 */     this.posZ += this.motionZ;
 /*     */     
-/* 177 */     float f1 = MathHelper.a(this.motionX * this.motionX + this.motionZ * this.motionZ);
+/* 177 */     float f1 = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
 /* 178 */     this.rotationYaw = (float)(Math.atan2(this.motionX, this.motionZ) * 180.0D / 3.1415927410125732D);
 /* 179 */     this.rotationPitch = (float)(Math.atan2(this.motionY, f1) * 180.0D / 3.1415927410125732D);
 /*     */     

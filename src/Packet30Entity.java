@@ -5,25 +5,25 @@ import java.io.IOException;
 /*     */ public class Packet30Entity
 /*     */   extends Packet
 /*     */ {
-/*     */   public int a;
-/*     */   public byte b;
-/*     */   public byte c;
-/*     */   public byte d;
-/*     */   public byte e;
-/*     */   public byte f;
+/*     */   public int entityId;
+/*     */   public byte xPosition;
+/*     */   public byte yPosition;
+/*     */   public byte zPosition;
+/*     */   public byte yaw;
+/*     */   public byte pitch;
 /*     */
 /*     */   public Packet30Entity() {}
 /*     */
 /*     */   public Packet30Entity(int paramInt) {
-/* 111 */     this.a = paramInt;
+/* 111 */     this.entityId = paramInt;
 /*     */   }
 /*     */   
 /*     */   public void a(DataInputStream paramDataInputStream) throws IOException {
-/* 115 */     this.a = paramDataInputStream.readInt();
+/* 115 */     this.entityId = paramDataInputStream.readInt();
 /*     */   }
 /*     */   
 /*     */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
-/* 119 */     paramDataOutputStream.writeInt(this.a);
+/* 119 */     paramDataOutputStream.writeInt(this.entityId);
 /*     */   }
 /*     */   
 /*     */   public void a(NetClientManager paramdy) {

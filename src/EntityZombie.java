@@ -12,7 +12,7 @@
 /* 12 */     this.ae = 5;
 /*    */   }
 /*    */   
-/*    */   public void x() {
+/*    */   public void onLivingUpdate() {
 /* 16 */     if (this.worldObj.a()) {
 /* 17 */       float f = b(1.0F);
 /* 18 */       if (f > 0.5F && 
@@ -21,7 +21,7 @@
 /*    */       }
 /*    */     } 
 /*    */     
-/* 24 */     super.x();
+/* 24 */     super.onLivingUpdate();
 /*    */   }
 /*    */   
 /*    */   protected String c() {

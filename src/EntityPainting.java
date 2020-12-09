@@ -140,7 +140,7 @@
 /*     */   }
 /*     */   
 /*     */   public boolean b() {
-/* 143 */     if (this.worldObj.a(this, this.boundingBox).size() > 0) {
+/* 143 */     if (this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox).size() > 0) {
 /* 144 */       return false;
 /*     */     }
 /* 146 */     int i = this.b.u / 16;
@@ -166,7 +166,7 @@
 /*     */         } 
 /* 167 */         if (!hz.a()) return false; 
 /*     */       } 
-/* 169 */     }  List list = this.worldObj.b(this, this.boundingBox);
+/* 169 */     }  List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox);
 /* 170 */     for (int b2 = 0; b2 < list.size(); b2++) {
 /* 171 */       if (list.get(b2) instanceof EntityPainting) return false;
 /*     */     

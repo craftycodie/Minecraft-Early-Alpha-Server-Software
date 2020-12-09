@@ -31,7 +31,7 @@
 /* 31 */     return (float)Math.sqrt(paramFloat);
 /*    */   }
 /*    */   
-/*    */   public static final float a(double paramDouble) {
+/*    */   public static final float sqrt_double(double paramDouble) {
 /* 35 */     return (float)Math.sqrt(paramDouble);
 /*    */   }
 /*    */   

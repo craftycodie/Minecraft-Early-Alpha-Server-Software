@@ -21,7 +21,7 @@
 /* 135 */     this.playerInstancesToUpdate.clear();
 /*     */   }
 /*     */   
-/*     */   private PlayerInstance a(int paramInt1, int paramInt2, boolean paramBoolean) {
+/*     */   private PlayerInstance getPlayerInstance(int paramInt1, int paramInt2, boolean paramBoolean) {
 /* 139 */     long l = paramInt1 + 2147483647L | paramInt2 + 2147483647L << 32L;
 /* 140 */     PlayerInstance ab = (PlayerInstance)this.playerInstances.getValueByKey(l);
 /* 141 */     if (ab == null && paramBoolean) {
@@ -35,7 +35,7 @@
 /*     */   public void a(int paramInt1, int paramInt2, int paramInt3) {
 /* 150 */     int i = paramInt1 >> 4;
 /* 151 */     int j = paramInt3 >> 4;
-/* 152 */     PlayerInstance ab = a(i, j, false);
+/* 152 */     PlayerInstance ab = getPlayerInstance(i, j, false);
 /* 153 */     if (ab != null) {
 /* 154 */       ab.markBlockNeedsUpdate(paramInt1 & 0xF, paramInt2, paramInt3 & 0xF);
 /*     */     }
@@ -63,12 +63,12 @@
 /* 162 */     int i = (int)paramdq.posX >> 4;
 /* 163 */     int j = (int)paramdq.posZ >> 4;
 /*     */     
-/* 165 */     paramdq.ad = paramdq.posX;
-/* 166 */     paramdq.ae = paramdq.posZ;
+/* 165 */     paramdq.field_9155_d = paramdq.posX;
+/* 166 */     paramdq.field_9154_e = paramdq.posZ;
 /*     */     
 /* 168 */     for (int k = i - 10; k <= i + 10; k++) {
 /* 169 */       for (int m = j - 10; m <= j + 10; m++) {
-/* 170 */         a(k, m, true).a(paramdq);
+/* 170 */         getPlayerInstance(k, m, true).addPlayer(paramdq);
 /*     */       }
 /*     */     } 
 /* 173 */     this.players.add(paramdq);
@@ -81,14 +81,14 @@
 /*     */     
 /* 181 */     for (int k = i - 10; k <= i + 10; k++) {
 /* 182 */       for (int m = j - 10; m <= j + 10; m++) {
-/* 183 */         PlayerInstance ab = a(k, m, false);
+/* 183 */         PlayerInstance ab = getPlayerInstance(k, m, false);
 /* 184 */         if (ab != null) ab.removePlayer(paramdq);
 /*     */       } 
 /*     */     } 
 /* 187 */     this.players.remove(paramdq);
 /*     */   }
 /*     */   
-/*     */   private boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
+/*     */   private boolean func_544_a(int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
 /* 191 */     int i = paramInt1 - paramInt3;
 /* 192 */     int j = paramInt2 - paramInt4;
 /* 193 */     if (i < -10 || i > 10) return false; 
@@ -100,13 +100,13 @@
 /* 199 */     int i = (int)paramdq.posX >> 4;
 /* 200 */     int j = (int)paramdq.posZ >> 4;
 /*     */     
-/* 202 */     double d1 = paramdq.ad - paramdq.posX;
-/* 203 */     double d2 = paramdq.ae - paramdq.posZ;
+/* 202 */     double d1 = paramdq.field_9155_d - paramdq.posX;
+/* 203 */     double d2 = paramdq.field_9154_e - paramdq.posZ;
 /* 204 */     double d3 = d1 * d1 + d2 * d2;
 /* 205 */     if (d3 < 64.0D)
 /*     */       return; 
-/* 207 */     int k = (int)paramdq.ad >> 4;
-/* 208 */     int m = (int)paramdq.ae >> 4;
+/* 207 */     int k = (int)paramdq.field_9155_d >> 4;
+/* 208 */     int m = (int)paramdq.field_9154_e >> 4;
 /*     */     
 /* 210 */     int n = i - k;
 /* 211 */     int i1 = j - m;
@@ -114,17 +114,17 @@
 /*     */       return; 
 /* 214 */     for (int i2 = i - 10; i2 <= i + 10; i2++) {
 /* 215 */       for (int i3 = j - 10; i3 <= j + 10; i3++) {
-/* 216 */         if (!a(i2, i3, k, m)) {
-/* 217 */           a(i2, i3, true).a(paramdq);
+/* 216 */         if (!func_544_a(i2, i3, k, m)) {
+/* 217 */           getPlayerInstance(i2, i3, true).addPlayer(paramdq);
 /*     */         }
-/* 219 */         if (!a(i2 - n, i3 - i1, i, j)) {
-/* 220 */           PlayerInstance ab = a(i2 - n, i3 - i1, false);
+/* 219 */         if (!func_544_a(i2 - n, i3 - i1, i, j)) {
+/* 220 */           PlayerInstance ab = getPlayerInstance(i2 - n, i3 - i1, false);
 /* 221 */           if (ab != null) ab.removePlayer(paramdq);
 /*     */         } 
 /*     */       } 
 /*     */     } 
-/* 225 */     paramdq.ad = paramdq.posX;
-/* 226 */     paramdq.ae = paramdq.posZ;
+/* 225 */     paramdq.field_9155_d = paramdq.posX;
+/* 226 */     paramdq.field_9154_e = paramdq.posZ;
 /*     */   }
 /*     */   
 /*     */   public int b() {

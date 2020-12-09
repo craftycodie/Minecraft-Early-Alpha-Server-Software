@@ -10,24 +10,24 @@ import java.io.IOException;
 /*    */   
 /*    */   public Packet32EntityLook(int paramInt, byte paramByte1, byte paramByte2) {
 /* 80 */     super(paramInt);
-/* 81 */     this.e = paramByte1;
-/* 82 */     this.f = paramByte2;
+/* 81 */     this.yaw = paramByte1;
+/* 82 */     this.pitch = paramByte2;
 ///* 83 */     this.encodedRotationYaw = true;
 /*    */   }
 /*    */
 public void a(DataInputStream dataInputStream) throws IOException {
     super.a(dataInputStream);
-    this.b = dataInputStream.readByte();
-    this.c = dataInputStream.readByte();
-    this.d = dataInputStream.readByte();
+    this.xPosition = dataInputStream.readByte();
+    this.yPosition = dataInputStream.readByte();
+    this.zPosition = dataInputStream.readByte();
 }
 /*    */
 @Override
 public void a(DataOutputStream dataOutputStream) throws IOException {
     super.a(dataOutputStream);
-    dataOutputStream.writeByte(this.b);
-    dataOutputStream.writeByte(this.c);
-    dataOutputStream.writeByte(this.d);
+    dataOutputStream.writeByte(this.xPosition);
+    dataOutputStream.writeByte(this.yPosition);
+    dataOutputStream.writeByte(this.zPosition);
 }
 /*    */   
 /*    */   public int getPacketSize() {

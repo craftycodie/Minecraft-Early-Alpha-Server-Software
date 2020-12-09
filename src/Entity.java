@@ -31,7 +31,7 @@
 /*     */   public double j;
 /*     */   public double posX;
 /*  33 */   public final AxisAlignedBB boundingBox = AxisAlignedBB.a(0.0D, 0.0D, 0.0D, 0.0D, 0.0D, 0.0D); public double posY; public double posZ; public double motionX; public double motionY; public double motionZ; public float rotationYaw; public float rotationPitch; public float s; public float t;
-/*     */   public boolean v = false;
+/*     */   public boolean onGround = false;
 /*     */   public boolean w;
 /*     */   public boolean x;
 /*     */   public boolean y = false;
@@ -48,14 +48,14 @@
 /*  48 */   protected float H = 0.0F;
 /*  49 */   private int b = 1; public double I; public double J;
 /*     */   public double K;
-/*  51 */   public float L = 0.0F;
+/*  51 */   public float ySize = 0.0F;
 /*  52 */   public float M = 0.0F;
 /*     */   public boolean N = false;
 /*  54 */   public float O = 0.0F;
 /*     */   
 /*     */   public boolean P = false;
 /*  57 */   protected Random Q = new Random();
-/*  58 */   public int R = 0;
+/*  58 */   public int ticksExisted = 0;
 /*  59 */   public int S = 1;
 /*     */   
 /*  61 */   public int T = 0;
@@ -131,7 +131,7 @@
 /* 131 */     float f1 = this.C / 2.0F;
 /* 132 */     float f2 = this.D;
 /*     */     
-/* 134 */     this.boundingBox.c(paramDouble1 - f1, paramDouble2 - this.yOffset + this.L, paramDouble3 - f1, paramDouble1 + f1, paramDouble2 - this.yOffset + this.L + f2, paramDouble3 + f1);
+/* 134 */     this.boundingBox.c(paramDouble1 - f1, paramDouble2 - this.yOffset + this.ySize, paramDouble3 - f1, paramDouble1 + f1, paramDouble2 - this.yOffset + this.ySize + f2, paramDouble3 + f1);
 /*     */   }
 /*     */
 /*     */   public void onUpdate() {
@@ -141,7 +141,7 @@
 /*     */   public void j() {
 /* 162 */     if (this.f != null && this.f.isDead) this.f = null;
 /*     */     
-/* 164 */     this.R++;
+/* 164 */     this.ticksExisted++;
 /* 165 */     this.E = this.F;
 /* 166 */     this.h = this.posX;
 /* 167 */     this.i = this.posY;
@@ -151,7 +151,7 @@
 /*     */     
 /* 172 */     if (handleWaterMovement()) {
 /* 173 */       if (!this.V && !this.ac) {
-/* 174 */         float f1 = MathHelper.a(this.motionX * this.motionX * 0.20000000298023224D + this.motionY * this.motionY + this.motionZ * this.motionZ * 0.20000000298023224D) * 0.2F;
+/* 174 */         float f1 = MathHelper.sqrt_double(this.motionX * this.motionX * 0.20000000298023224D + this.motionY * this.motionY + this.motionZ * this.motionZ * 0.20000000298023224D) * 0.2F;
 /* 175 */         if (f1 > 1.0F) f1 = 1.0F; 
 /* 176 */         this.worldObj.playSoundAtEntity(this, "random.splash", f1, 1.0F + (this.Q.nextFloat() - this.Q.nextFloat()) * 0.4F);
 /* 177 */         float f2 = MathHelper.floor_double(this.boundingBox.b);
@@ -207,18 +207,18 @@
 /*     */   
 /*     */   public boolean b(double paramDouble1, double paramDouble2, double paramDouble3) {
 /* 229 */     AxisAlignedBB cy1 = this.boundingBox.c(paramDouble1, paramDouble2, paramDouble3);
-/* 230 */     List list = this.worldObj.a(this, cy1);
+/* 230 */     List list = this.worldObj.getCollidingBoundingBoxes(this, cy1);
 /* 231 */     if (list.size() > 0) return false; 
 /* 232 */     if (this.worldObj.b(cy1)) return false;
 /*     */     
 /* 234 */     return true;
 /*     */   }
 /*     */   
-/*     */   public void c(double paramDouble1, double paramDouble2, double paramDouble3) {
+/*     */   public void moveEntity(double paramDouble1, double paramDouble2, double paramDouble3) {
 /* 238 */     if (this.N) {
-/* 239 */       this.boundingBox.d(paramDouble1, paramDouble2, paramDouble3);
+/* 239 */       this.boundingBox.offset(paramDouble1, paramDouble2, paramDouble3);
 /* 240 */       this.posX = (this.boundingBox.a + this.boundingBox.d) / 2.0D;
-/* 241 */       this.posY = this.boundingBox.b + this.yOffset - this.L;
+/* 241 */       this.posY = this.boundingBox.b + this.yOffset - this.ySize;
 /* 242 */       this.posZ = (this.boundingBox.c + this.boundingBox.f) / 2.0D;
 /*     */       
 /*     */       return;
@@ -230,23 +230,23 @@
 /* 250 */     double d4 = paramDouble2;
 /* 251 */     double d5 = paramDouble3;
 /*     */     
-/* 253 */     AxisAlignedBB cy1 = this.boundingBox.b();
-/* 254 */     List<AxisAlignedBB> list = this.worldObj.a(this, this.boundingBox.a(paramDouble1, paramDouble2, paramDouble3));
+/* 253 */     AxisAlignedBB cy1 = this.boundingBox.copy();
+/* 254 */     List<AxisAlignedBB> list = this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox.a(paramDouble1, paramDouble2, paramDouble3));
 /*     */     
 /*     */     int b1;
 /* 257 */     for (b1 = 0; b1 < list.size(); b1++)
 /* 258 */       paramDouble2 = ((AxisAlignedBB)list.get(b1)).b(this.boundingBox, paramDouble2);
-/* 259 */     this.boundingBox.d(0.0D, paramDouble2, 0.0D);
+/* 259 */     this.boundingBox.offset(0.0D, paramDouble2, 0.0D);
 /*     */     
 /* 261 */     if (!this.z && d4 != paramDouble2) {
 /* 262 */       paramDouble1 = paramDouble2 = paramDouble3 = 0.0D;
 /*     */     }
 /*     */     
-/* 265 */     b1 = (this.v || (d4 != paramDouble2 && d4 < 0.0D)) ? 1 : 0;
+/* 265 */     b1 = (this.onGround || (d4 != paramDouble2 && d4 < 0.0D)) ? 1 : 0;
 /*     */     
 /* 268 */     for (int b2 = 0; b2 < list.size(); b2++)
 /* 269 */       paramDouble1 = ((AxisAlignedBB)list.get(b2)).a(this.boundingBox, paramDouble1);
-/* 270 */     this.boundingBox.d(paramDouble1, 0.0D, 0.0D);
+/* 270 */     this.boundingBox.offset(paramDouble1, 0.0D, 0.0D);
 /*     */     
 /* 272 */     if (!this.z && d3 != paramDouble1) {
 /* 273 */       paramDouble1 = paramDouble2 = paramDouble3 = 0.0D;
@@ -254,13 +254,13 @@
 /*     */     
 /* 276 */     for (int b2 = 0; b2 < list.size(); b2++)
 /* 277 */       paramDouble3 = ((AxisAlignedBB)list.get(b2)).c(this.boundingBox, paramDouble3);
-/* 278 */     this.boundingBox.d(0.0D, 0.0D, paramDouble3);
+/* 278 */     this.boundingBox.offset(0.0D, 0.0D, paramDouble3);
 /*     */     
 /* 280 */     if (!this.z && d5 != paramDouble3) {
 /* 281 */       paramDouble1 = paramDouble2 = paramDouble3 = 0.0D;
 /*     */     }
 /*     */     
-/* 284 */     if (this.M > 0.0F && b1 != 0 && this.L < 0.05F && (d3 != paramDouble1 || d5 != paramDouble3)) {
+/* 284 */     if (this.M > 0.0F && b1 != 0 && this.ySize < 0.05F && (d3 != paramDouble1 || d5 != paramDouble3)) {
 /* 285 */       double d8 = paramDouble1;
 /* 286 */       double d9 = paramDouble2;
 /* 287 */       double d10 = paramDouble3;
@@ -269,13 +269,13 @@
 /* 290 */       paramDouble2 = this.M;
 /* 291 */       paramDouble3 = d5;
 /*     */       
-/* 293 */       AxisAlignedBB cy2 = this.boundingBox.b();
+/* 293 */       AxisAlignedBB cy2 = this.boundingBox.copy();
 /* 294 */       this.boundingBox.b(cy1);
-/* 295 */       list = this.worldObj.a(this, this.boundingBox.a(paramDouble1, paramDouble2, paramDouble3));
+/* 295 */       list = this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox.a(paramDouble1, paramDouble2, paramDouble3));
 /*     */       
 /* 298 */       for (int b = 0; b < list.size(); b++)
 /* 299 */         paramDouble2 = ((AxisAlignedBB)list.get(b)).b(this.boundingBox, paramDouble2);
-/* 300 */       this.boundingBox.d(0.0D, paramDouble2, 0.0D);
+/* 300 */       this.boundingBox.offset(0.0D, paramDouble2, 0.0D);
 /*     */       
 /* 302 */       if (!this.z && d4 != paramDouble2) {
 /* 303 */         paramDouble1 = paramDouble2 = paramDouble3 = 0.0D;
@@ -284,7 +284,7 @@
 /*     */       
 /* 307 */       for (int b = 0; b < list.size(); b++)
 /* 308 */         paramDouble1 = ((AxisAlignedBB)list.get(b)).a(this.boundingBox, paramDouble1);
-/* 309 */       this.boundingBox.d(paramDouble1, 0.0D, 0.0D);
+/* 309 */       this.boundingBox.offset(paramDouble1, 0.0D, 0.0D);
 /*     */       
 /* 311 */       if (!this.z && d3 != paramDouble1) {
 /* 312 */         paramDouble1 = paramDouble2 = paramDouble3 = 0.0D;
@@ -292,7 +292,7 @@
 /*     */       
 /* 315 */       for (int b = 0; b < list.size(); b++)
 /* 316 */         paramDouble3 = ((AxisAlignedBB)list.get(b)).c(this.boundingBox, paramDouble3);
-/* 317 */       this.boundingBox.d(0.0D, 0.0D, paramDouble3);
+/* 317 */       this.boundingBox.offset(0.0D, 0.0D, paramDouble3);
 /*     */       
 /* 319 */       if (!this.z && d5 != paramDouble3) {
 /* 320 */         paramDouble1 = paramDouble2 = paramDouble3 = 0.0D;
@@ -304,20 +304,20 @@
 /* 326 */         paramDouble3 = d10;
 /* 327 */         this.boundingBox.b(cy2);
 /*     */       } else {
-/* 329 */         this.L = (float)(this.L + 0.5D);
+/* 329 */         this.ySize = (float)(this.ySize + 0.5D);
 /*     */       } 
 /*     */     } 
 /*     */ 
 /*     */     
 /* 334 */     this.posX = (this.boundingBox.a + this.boundingBox.d) / 2.0D;
-/* 335 */     this.posY = this.boundingBox.b + this.yOffset - this.L;
+/* 335 */     this.posY = this.boundingBox.b + this.yOffset - this.ySize;
 /* 336 */     this.posZ = (this.boundingBox.c + this.boundingBox.f) / 2.0D;
 /*     */     
 /* 338 */     this.w = (d3 != paramDouble1 || d5 != paramDouble3);
 /* 339 */     this.x = (d4 != paramDouble2);
-/* 340 */     this.v = (d4 != paramDouble2 && d4 < 0.0D);
+/* 340 */     this.onGround = (d4 != paramDouble2 && d4 < 0.0D);
 /* 341 */     this.y = (this.w || this.x);
-/* 342 */     if (this.v)
+/* 342 */     if (this.onGround)
 /* 343 */     { if (this.H > 0.0F) {
 /* 344 */         a(this.H);
 /* 345 */         this.H = 0.0F;
@@ -332,7 +332,7 @@
 /*     */     
 /* 355 */     double d6 = this.posX - d1;
 /* 356 */     double d7 = this.posZ - d2;
-/* 357 */     this.F = (float)(this.F + MathHelper.a(d6 * d6 + d7 * d7) * 0.6D);
+/* 357 */     this.F = (float)(this.F + MathHelper.sqrt_double(d6 * d6 + d7 * d7) * 0.6D);
 /*     */     
 /* 359 */     if (this.G) {
 /* 360 */       int i3 = MathHelper.floor_double(this.posX);
@@ -369,7 +369,7 @@
 /*     */         } 
 /*     */       } 
 /*     */     } 
-/* 394 */     this.L *= 0.4F;
+/* 394 */     this.ySize *= 0.4F;
 /*     */     
 /* 396 */     boolean bool = handleWaterMovement();
 /* 397 */     if (this.worldObj.c(this.boundingBox)) {
@@ -458,13 +458,13 @@
 /*     */ 
 /*     */ 
 /*     */   
-/*     */   public void b(double paramDouble1, double paramDouble2, double paramDouble3, float paramFloat1, float paramFloat2) {
+/*     */   public void setPositionAndRotation(double paramDouble1, double paramDouble2, double paramDouble3, float paramFloat1, float paramFloat2) {
 /* 484 */     this.h = this.posX = paramDouble1;
 /* 485 */     this.i = this.posY = paramDouble2;
 /* 486 */     this.j = this.posZ = paramDouble3;
 /* 487 */     this.rotationYaw = paramFloat1;
 /* 488 */     this.rotationPitch = paramFloat2;
-/* 489 */     this.L = 0.0F;
+/* 489 */     this.ySize = 0.0F;
 /*     */     
 /* 491 */     double d = (this.s - paramFloat1);
 /* 492 */     if (d < -180.0D) this.s += 360.0F; 
@@ -499,7 +499,7 @@
 /* 521 */     double d1 = this.posX - paramDouble1;
 /* 522 */     double d2 = this.posY - paramDouble2;
 /* 523 */     double d3 = this.posZ - paramDouble3;
-/* 524 */     return MathHelper.a(d1 * d1 + d2 * d2 + d3 * d3);
+/* 524 */     return MathHelper.sqrt_double(d1 * d1 + d2 * d2 + d3 * d3);
 /*     */   }
 /*     */   
 /*     */   public double b(Entity paramdb) {
@@ -522,7 +522,7 @@
 /* 544 */     double d3 = MathHelper.a(d1, d2);
 /*     */     
 /* 546 */     if (d3 >= 0.009999999776482582D) {
-/* 547 */       d3 = MathHelper.a(d3);
+/* 547 */       d3 = MathHelper.sqrt_double(d3);
 /* 548 */       d1 /= d3;
 /* 549 */       d2 /= d3;
 /*     */       
@@ -611,7 +611,7 @@
 /* 633 */     paramr.a("FallDistance", this.H);
 /* 634 */     paramr.setShort("Fire", (short)this.T);
 /* 635 */     paramr.setShort("Air", (short)this.X);
-/* 636 */     paramr.a("OnGround", this.v);
+/* 636 */     paramr.a("OnGround", this.onGround);
 /*     */     
 /* 638 */     writeEntityToNBT(paramr);
 /*     */   }
@@ -637,7 +637,7 @@
 /* 659 */     this.H = paramr.f("FallDistance");
 /* 660 */     this.T = paramr.getShort("Fire");
 /* 661 */     this.X = paramr.getShort("Air");
-/* 662 */     this.v = paramr.getBoolean("OnGround");
+/* 662 */     this.onGround = paramr.getBoolean("OnGround");
 /*     */     
 /* 664 */     setPosition(this.posX, this.posY, this.posZ);
 /*     */     

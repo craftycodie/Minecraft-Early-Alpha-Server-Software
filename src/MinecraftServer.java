@@ -27,7 +27,7 @@ import java.util.logging.Level;
 /*     */   
 /*     */   public PropertyManager d;
 /*     */   
-/*     */   public WorldManager e;
+/*     */   public WorldManager worldserver;
 /*     */   
 /*     */   public fg configManager;
 /*     */   private boolean l = true;
@@ -91,14 +91,14 @@ import java.util.logging.Level;
 /*     */   
 /*     */   private void b(String paramString) {
 /* 110 */     a.info("Preparing start region");
-/* 111 */     this.e = new WorldManager(new File("."), paramString);
-/* 112 */     this.e.a((ba)new dr(this));
+/* 111 */     this.worldserver = new WorldManager(new File("."), paramString);
+/* 112 */     this.worldserver.a((ba)new dr(this));
 /* 113 */     int b1 = 10;
 /* 114 */     for (int b2 = -b1; b2 <= b1; b2++) {
 /* 115 */       a("Preparing spawn area", (b2 + b1) * 100 / (b1 + b1 + 1));
 /* 116 */       for (int b = -b1; b <= b1; b++) {
 /* 117 */         if (!this.l)
-/* 118 */           return;  this.e.chunkProviderServer.d((this.e.l >> 4) + b2, (this.e.n >> 4) + b);
+/* 118 */           return;  this.worldserver.chunkProviderServer.d((this.worldserver.l >> 4) + b2, (this.worldserver.n >> 4) + b);
 /*     */       } 
 /*     */     } 
 /* 121 */     d();
@@ -117,12 +117,12 @@ import java.util.logging.Level;
 /*     */   
 /*     */   private void e() {
 /* 136 */     a.info("Saving chunks");
-/* 137 */     this.e.a(true, null);
+/* 137 */     this.worldserver.a(true, null);
 /*     */   }
 /*     */   
 /*     */   private void f() {
 /* 141 */     a.info("Stopping server");
-/* 142 */     if (this.e != null) {
+/* 142 */     if (this.worldserver != null) {
 /* 143 */       e();
 /*     */     }
 /*     */   }
@@ -202,10 +202,10 @@ import java.util.logging.Level;
 /* 220 */     Vec3D.a();
 /* 221 */     this.h++;
 /*     */     
-/* 223 */     this.e.e();
-/* 224 */     while (this.e.c());
+/* 223 */     this.worldserver.e();
+/* 224 */     while (this.worldserver.c());
 /*     */     
-/* 226 */     this.e.b();
+/* 226 */     this.worldserver.b();
 /* 227 */     this.c.a();
 /* 228 */     this.configManager.b();
 /* 229 */     this.k.updateTrackedEntities();
@@ -292,7 +292,7 @@ import java.util.logging.Level;
 /* 310 */       if (str.toLowerCase().startsWith("say ")) {
 /* 311 */         str = str.substring(str.indexOf(" ")).trim();
 /* 312 */         a.info("[Server] " + str);
-/* 313 */         this.configManager.a(new Packet3Chat("§d[Server] " + str)); continue;
+/* 313 */         this.configManager.a(new Packet3Chat("§offset[Server] " + str)); continue;
 /*     */       } 
 /* 315 */       a.warning("Unknown console command. Type \"help\" for help.");
 /*     */     } 
