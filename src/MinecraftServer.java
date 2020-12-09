@@ -293,8 +293,7 @@ import java.util.logging.Level;
 /* 310 */       if (str.toLowerCase().startsWith("say ")) {
 /* 311 */         str = str.substring(str.indexOf(" ")).trim();
 /* 312 */         a.info("[Server] " + str);
-/* 313 */         this.configManager.a(new Packet3Chat("§d[Server] " + str)); continue;
-/*     */       } 
+/*     */       }
 /* 315 */       a.warning("Unknown console command. Type \"help\" for help.");
 /*     */     } 
 /*     */   }

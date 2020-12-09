@@ -252,36 +252,11 @@
 /* 225 */     fa.delayBeforeCanPickup = 10;
 /* 226 */     this.mcServer.worldserver.a(fa);
 /*     */   }
-/*     */   
-/*     */   public void a(Packet3Chat paramax) {
-/* 230 */     String str = paramax.a;
-/* 231 */     if (str.length() > 100) {
-/* 232 */       b("Chat message too long");
-/*     */       return;
-/*     */     } 
-/* 235 */     str = str.trim();
-/* 236 */     for (int b = 0; b < str.length(); b++) {
-/* 237 */       if (" !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_'abcdefghijklmnopqrstuvwxyz{|}~⌂ÇüéâäàåçêëèïîìÄÅÉæÆôöòûùÿÖÜø£Ø×ƒáíóúñÑªº¿®¬½¼¡«»".indexOf(str.charAt(b)) < 0) {
-/* 238 */         b("Illegal characters in chat");
-/*     */         
-/*     */         return;
-/*     */       } 
-/*     */     } 
-/* 243 */     if (str.startsWith("/")) {
-/* 244 */       c(str);
-/*     */     } else {
-/* 246 */       str = "<" + this.playerEntity.username + "> " + str;
-/* 247 */       logger.info(str);
-/* 248 */       this.mcServer.configManager.a(new Packet3Chat(str));
-/*     */     } 
-/*     */   }
-/*     */ 
-/*     */   
+/*     */
 /*     */   private void c(String paramString) {
 /* 254 */     if (paramString.toLowerCase().startsWith("/me ")) {
 /* 255 */       paramString = "* " + this.playerEntity.username + " " + paramString.substring(paramString.indexOf(" ")).trim();
 /* 256 */       logger.info(paramString);
-/* 257 */       this.mcServer.configManager.a(new Packet3Chat(paramString));
 /* 258 */     } else if (paramString.toLowerCase().equalsIgnoreCase("/home")) {
 /* 259 */       logger.info(this.playerEntity.username + " returned home");
 /* 260 */       int i = this.mcServer.worldserver.d(this.mcServer.worldserver.l, this.mcServer.worldserver.n);
@@ -295,7 +270,6 @@
 /* 268 */     } else if (paramString.toLowerCase().equalsIgnoreCase("/iron")) {
 /* 269 */       if (MinecraftServer.b.containsKey(this.playerEntity.username)) {
 /* 270 */         logger.info(this.playerEntity.username + " failed to iron!");
-/* 271 */         sendPacket(new Packet3Chat("§cYou can't /iron again so soon!"));
 /*     */       } else {
 /* 273 */         MinecraftServer.b.put(this.playerEntity.username, Integer.valueOf(6000));
 /* 274 */         logger.info(this.playerEntity.username + " ironed!");
@@ -306,7 +280,6 @@
 /* 279 */     } else if (paramString.toLowerCase().equalsIgnoreCase("/wood")) {
 /* 280 */       if (MinecraftServer.b.containsKey(this.playerEntity.username)) {
 /* 281 */         logger.info(this.playerEntity.username + " failed to wood!");
-/* 282 */         sendPacket(new Packet3Chat("§cYou can't /wood again so soon!"));
 /*     */       } else {
 /* 284 */         MinecraftServer.b.put(this.playerEntity.username, Integer.valueOf(6000));
 /* 285 */         logger.info(this.playerEntity.username + " wooded!");
@@ -315,15 +288,9 @@
 /*     */         }
 /*     */       } 
 /*     */     } else {
-/* 291 */       sendPacket(new Packet3Chat("§9Unknown command"));
-/*     */     } 
-/*     */   }
-/*     */   
-/*     */   public void a(Packet18Animation paramn) {
-/* 296 */     if (paramn.b == 1) {
-/* 297 */       this.playerEntity.y();
 /*     */     }
 /*     */   }
+/*     */
 /*     */
 /*     */   public void a(Packet255KickDisconnect paramhx) {
 /* 302 */     this.netManager.a("Quitting");

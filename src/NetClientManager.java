@@ -65,22 +65,8 @@
 /*    */   public void a(Packet21PickupSpawn paramj) {
 /* 66 */     a(paramj);
 /*    */   }
-/*    */   
-/*    */   public void a(Packet22Collect parambz) {
-/* 70 */     a(parambz);
-/*    */   }
-/*    */   
-/*    */   public void a(Packet3Chat paramax) {
-/* 74 */     a(paramax);
-/*    */   }
-/*    */   
-/*    */   public void a(Packet17UnknownItemStack parameb) {
-/* 78 */     a(parameb);
-/*    */   }
-/*    */   
-/*    */   public void a(Packet18Animation paramn) {
-/* 86 */     a(paramn);
-/*    */   }
+/*    */
+/*    */
 /*    */ }
 
 

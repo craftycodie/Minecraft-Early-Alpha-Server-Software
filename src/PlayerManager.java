@@ -58,8 +58,7 @@
 
 /*     */   
 /*     */   public void a(EntityPlayerMP paramdq) {
-/* 160 */     this.mcServer.configManager.a(new Packet3Chat("§e" + paramdq.username + " joined the game."));
-/*     */     
+/*     */
 /* 162 */     int i = (int)paramdq.posX >> 4;
 /* 163 */     int j = (int)paramdq.posZ >> 4;
 /*     */     
@@ -75,7 +74,6 @@
 /*     */   }
 /*     */   
 /*     */   public void b(EntityPlayerMP paramdq) {
-/* 177 */     this.mcServer.configManager.a(new Packet3Chat("§e" + paramdq.username + " left the game."));
 /* 178 */     int i = (int)paramdq.posX >> 4;
 /* 179 */     int j = (int)paramdq.posZ >> 4;
 /*     */     

@@ -85,11 +85,10 @@
 /*     */
             @Override
 /*     */   public void onItemPickup(Entity entity, int paramInt) {
-/*  85 */     if (!entity.isDead &&
-/*  86 */       entity instanceof EntityItem) {
-/*  87 */       this.playerNetServerHandler.sendPacket(new Packet17UnknownItemStack(((EntityItem)entity).item, paramInt));
-/*  88 */       this.mcServer.k.sendPacketToTrackedPlayers(entity, new Packet22Collect(entity.entityId, this.entityId));
-/*     */     } 
+///*  85 */     if (!entity.isDead &&
+///*  86 */       entity instanceof EntityItem) {
+///*  88 */       this.mcServer.k.sendPacketToTrackedPlayers(entity, new Packet22Collect(entity.entityId, this.entityId));
+///*     */     }
 /*     */     
 /*  91 */     super.onItemPickup(entity, paramInt);
 /*     */   }
@@ -98,8 +97,7 @@
 /*  95 */     if (!this.an) {
 /*  96 */       this.ao = -1;
 /*  97 */       this.an = true;
-/*  98 */       this.mcServer.k.sendPacketToTrackedPlayers(this, new Packet18Animation(this, 1));
-/*     */     } 
+/*     */     }
 /*     */   }
 /*     */   
 /*     */   protected float n() {

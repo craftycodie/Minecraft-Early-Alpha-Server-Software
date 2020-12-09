@@ -18,8 +18,7 @@ import java.util.HashMap;
 /*    */   static {
 /* 18 */     addIdClassMapping(0, Packet0KeepAlive.class);
 /* 19 */     addIdClassMapping(1, Packet1Login.class);
-/* 20 */     addIdClassMapping(3, Packet3Chat.class);
-/*    */     
+/*    */
 /* 22 */     addIdClassMapping(10, Packet10Flying.class);
 /* 23 */     addIdClassMapping(11, Packet11PlayerPosition.class);
 /* 24 */     addIdClassMapping(12, Packet12PlayerLook.class);
@@ -27,12 +26,9 @@ import java.util.HashMap;
 /* 26 */     addIdClassMapping(14, Packet14BlockDig.class);
 /* 27 */     addIdClassMapping(15, Packet15Place.class);
 /* 28 */     addIdClassMapping(16, Packet16BlockItemSwitch.class);
-/* 29 */     addIdClassMapping(17, Packet17UnknownItemStack.class);
-/* 30 */     addIdClassMapping(18, Packet18Animation.class);
 /*    */     
 /* 32 */     addIdClassMapping(20, Packet20NamedEntitySpawn.class);
 /* 33 */     addIdClassMapping(21, Packet21PickupSpawn.class);
-/* 34 */     addIdClassMapping(22, Packet22Collect.class);
 
 /* 36 */     addIdClassMapping(29, Packet29DestroyEntity.class);
 /*    */     
