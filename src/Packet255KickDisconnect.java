@@ -14,15 +14,15 @@ import java.io.IOException;
 /* 12 */     this.a = paramString;
 /*    */   }
 /*    */   
-/*    */   public void a(DataInputStream paramDataInputStream) throws IOException {
+/*    */   public void readPacketData(DataInputStream paramDataInputStream) throws IOException {
 /* 16 */     this.a = paramDataInputStream.readUTF();
 /*    */   }
 /*    */   
-/*    */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
+/*    */   public void writePacketData(DataOutputStream paramDataOutputStream) throws IOException {
 /* 20 */     paramDataOutputStream.writeUTF(this.a);
 /*    */   }
 /*    */   
-/*    */   public void a(NetClientManager paramdy) {
+/*    */   public void processPacket(NetClientManager paramdy) {
 /* 24 */     paramdy.a(this);
 /*    */   }
 /*    */   

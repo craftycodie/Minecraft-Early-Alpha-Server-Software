@@ -15,17 +15,17 @@ import java.io.IOException;
 /* 13 */     this.b = paramInt2;
 /*    */   }
 /*    */   
-/*    */   public void a(DataInputStream paramDataInputStream) throws IOException {
+/*    */   public void readPacketData(DataInputStream paramDataInputStream) throws IOException {
 /* 17 */     this.a = paramDataInputStream.readInt();
 /* 18 */     this.b = paramDataInputStream.readShort();
 /*    */   }
 /*    */   
-/*    */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
+/*    */   public void writePacketData(DataOutputStream paramDataOutputStream) throws IOException {
 /* 22 */     paramDataOutputStream.writeInt(this.a);
 /* 23 */     paramDataOutputStream.writeShort(this.b);
 /*    */   }
 /*    */   
-/*    */   public void a(NetClientManager paramdy) {
+/*    */   public void processPacket(NetClientManager paramdy) {
 /* 27 */     paramdy.a(this);
 /*    */   }
 /*    */   

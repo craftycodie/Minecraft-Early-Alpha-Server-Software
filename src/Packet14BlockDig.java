@@ -26,7 +26,7 @@ import java.io.IOException;
     /*    */   public Packet14BlockDig() {}
 
 /*    */   
-/*    */   public void a(DataInputStream paramDataInputStream) throws IOException {
+/*    */   public void readPacketData(DataInputStream paramDataInputStream) throws IOException {
 /* 25 */     this.e = paramDataInputStream.read();
 /* 26 */     this.a = paramDataInputStream.readInt();
 /* 27 */     this.b = paramDataInputStream.read();
@@ -34,7 +34,7 @@ import java.io.IOException;
 /* 29 */     this.d = paramDataInputStream.read();
 /*    */   }
 /*    */   
-/*    */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
+/*    */   public void writePacketData(DataOutputStream paramDataOutputStream) throws IOException {
 /* 33 */     paramDataOutputStream.write(this.e);
 /* 34 */     paramDataOutputStream.writeInt(this.a);
 /* 35 */     paramDataOutputStream.write(this.b);
@@ -42,7 +42,7 @@ import java.io.IOException;
 /* 37 */     paramDataOutputStream.write(this.d);
 /*    */   }
 /*    */   
-/*    */   public void a(NetClientManager paramdy) {
+/*    */   public void processPacket(NetClientManager paramdy) {
 /* 41 */     paramdy.a(this);
 /*    */   }
 /*    */   

@@ -2,7 +2,7 @@
 /*     */ import java.io.DataOutputStream;
 import java.io.IOException;
 
-/*     */ public class Packet30Entity
+/*     */ public class Packet20Entity
 /*     */   extends Packet
 /*     */ {
 /*     */   public int entityId;
@@ -12,21 +12,21 @@ import java.io.IOException;
 /*     */   public byte yaw;
 /*     */   public byte pitch;
 /*     */
-/*     */   public Packet30Entity() {}
+/*     */   public Packet20Entity() {}
 /*     */
-/*     */   public Packet30Entity(int paramInt) {
+/*     */   public Packet20Entity(int paramInt) {
 /* 111 */     this.entityId = paramInt;
 /*     */   }
 /*     */   
-/*     */   public void a(DataInputStream paramDataInputStream) throws IOException {
+/*     */   public void readPacketData(DataInputStream paramDataInputStream) throws IOException {
 /* 115 */     this.entityId = paramDataInputStream.readInt();
 /*     */   }
 /*     */   
-/*     */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
+/*     */   public void writePacketData(DataOutputStream paramDataOutputStream) throws IOException {
 /* 119 */     paramDataOutputStream.writeInt(this.entityId);
 /*     */   }
 /*     */   
-/*     */   public void a(NetClientManager paramdy) {
+/*     */   public void processPacket(NetClientManager paramdy) {
 /* 123 */     paramdy.a(this);
 /*     */   }
 /*     */   

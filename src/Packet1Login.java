@@ -18,19 +18,19 @@ import java.io.IOException;
 /* 16 */     this.a = paramInt;
 /*    */   }
 /*    */   
-/*    */   public void a(DataInputStream paramDataInputStream) throws IOException {
+/*    */   public void readPacketData(DataInputStream paramDataInputStream) throws IOException {
 /* 20 */     this.a = paramDataInputStream.readInt();
 /* 21 */     this.b = paramDataInputStream.readUTF();
 /* 22 */     this.c = paramDataInputStream.readUTF();
 /*    */   }
 /*    */   
-/*    */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
+/*    */   public void writePacketData(DataOutputStream paramDataOutputStream) throws IOException {
 /* 26 */     paramDataOutputStream.writeInt(this.a);
 /* 27 */     paramDataOutputStream.writeUTF(this.b);
 /* 28 */     paramDataOutputStream.writeUTF(this.c);
 /*    */   }
 /*    */   
-/*    */   public void a(NetClientManager paramdy) {
+/*    */   public void processPacket(NetClientManager paramdy) {
 /* 32 */     paramdy.a(this);
 /*    */   }
 /*    */   

@@ -1,30 +1,30 @@
 /*    */ import java.io.DataInputStream;
 /*    */ import java.io.DataOutputStream;
 import java.io.IOException;
-/*    */ public class Packet32EntityLook
-/*    */   extends Packet30Entity
+/*    */ public class Packet22EntityLook
+/*    */   extends Packet20Entity
 /*    */ {
 ///*    */   public Packet32EntityLook() {
 /////* 76 */     this.encodedRotationYaw = true;
 ///*    */   }
 /*    */   
-/*    */   public Packet32EntityLook(int paramInt, byte paramByte1, byte paramByte2) {
+/*    */   public Packet22EntityLook(int paramInt, byte paramByte1, byte paramByte2) {
 /* 80 */     super(paramInt);
 /* 81 */     this.yaw = paramByte1;
 /* 82 */     this.pitch = paramByte2;
 ///* 83 */     this.encodedRotationYaw = true;
 /*    */   }
 /*    */
-public void a(DataInputStream dataInputStream) throws IOException {
-    super.a(dataInputStream);
+public void readPacketData(DataInputStream dataInputStream) throws IOException {
+    super.readPacketData(dataInputStream);
     this.xPosition = dataInputStream.readByte();
     this.yPosition = dataInputStream.readByte();
     this.zPosition = dataInputStream.readByte();
 }
 /*    */
 @Override
-public void a(DataOutputStream dataOutputStream) throws IOException {
-    super.a(dataOutputStream);
+public void writePacketData(DataOutputStream dataOutputStream) throws IOException {
+    super.writePacketData(dataOutputStream);
     dataOutputStream.writeByte(this.xPosition);
     dataOutputStream.writeByte(this.yPosition);
     dataOutputStream.writeByte(this.zPosition);

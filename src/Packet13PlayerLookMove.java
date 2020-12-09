@@ -23,22 +23,22 @@ import java.io.IOException;
 /* 21 */     this.moving = true;
 /*    */   }
 /*    */   
-/*    */   public void a(DataInputStream paramDataInputStream) throws IOException {
+/*    */   public void readPacketData(DataInputStream paramDataInputStream) throws IOException {
 /* 25 */     this.xPosition = paramDataInputStream.readDouble();
 /* 26 */     this.yPosition = paramDataInputStream.readDouble();
 /* 27 */     this.zPosition = paramDataInputStream.readDouble();
 /* 29 */     this.yaw = paramDataInputStream.readFloat();
 /* 30 */     this.pitch = paramDataInputStream.readFloat();
-/* 31 */     super.a(paramDataInputStream);
+/* 31 */     super.readPacketData(paramDataInputStream);
 /*    */   }
 /*    */   
-/*    */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
+/*    */   public void writePacketData(DataOutputStream paramDataOutputStream) throws IOException {
 /* 35 */     paramDataOutputStream.writeDouble(this.xPosition);
 /* 36 */     paramDataOutputStream.writeDouble(this.yPosition);
 /* 37 */     paramDataOutputStream.writeDouble(this.zPosition);
 /* 39 */     paramDataOutputStream.writeFloat(this.yaw);
 /* 40 */     paramDataOutputStream.writeFloat(this.pitch);
-/* 41 */     super.a(paramDataOutputStream);
+/* 41 */     super.writePacketData(paramDataOutputStream);
 /*    */   }
 /*    */   
 /*    */   public int getPacketSize() {

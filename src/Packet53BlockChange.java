@@ -23,7 +23,7 @@ import java.io.IOException;
 /* 21 */     this.e = paramdp.getBlockMetadata(paramInt1, paramInt2, paramInt3);
 /*    */   }
 /*    */   
-/*    */   public void a(DataInputStream paramDataInputStream) throws IOException {
+/*    */   public void readPacketData(DataInputStream paramDataInputStream) throws IOException {
 /* 25 */     this.a = paramDataInputStream.readInt();
 /* 26 */     this.b = paramDataInputStream.read();
 /* 27 */     this.c = paramDataInputStream.readInt();
@@ -31,7 +31,7 @@ import java.io.IOException;
 /* 29 */     this.e = paramDataInputStream.read();
 /*    */   }
 /*    */   
-/*    */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
+/*    */   public void writePacketData(DataOutputStream paramDataOutputStream) throws IOException {
 /* 33 */     paramDataOutputStream.writeInt(this.a);
 /* 34 */     paramDataOutputStream.write(this.b);
 /* 35 */     paramDataOutputStream.writeInt(this.c);
@@ -39,7 +39,7 @@ import java.io.IOException;
 /* 37 */     paramDataOutputStream.write(this.e);
 /*    */   }
 /*    */   
-/*    */   public void a(NetClientManager paramdy) {
+/*    */   public void processPacket(NetClientManager paramdy) {
 /* 41 */     paramdy.a(this);
 /*    */   }
 /*    */   

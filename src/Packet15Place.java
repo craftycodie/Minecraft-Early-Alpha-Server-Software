@@ -14,7 +14,7 @@ import java.io.IOException;
 /*    */   public Packet15Place() {}
 
 
-    /*    */   public void a(DataInputStream paramDataInputStream) throws IOException {
+    /*    */   public void readPacketData(DataInputStream paramDataInputStream) throws IOException {
 /* 25 */     this.a = paramDataInputStream.readShort();
 /* 26 */     this.b = paramDataInputStream.readInt();
 /* 27 */     this.c = paramDataInputStream.read();
@@ -22,7 +22,7 @@ import java.io.IOException;
 /* 29 */     this.e = paramDataInputStream.read();
 /*    */   }
 /*    */   
-/*    */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
+/*    */   public void writePacketData(DataOutputStream paramDataOutputStream) throws IOException {
 /* 33 */     paramDataOutputStream.writeShort(this.a);
 /* 34 */     paramDataOutputStream.writeInt(this.b);
 /* 35 */     paramDataOutputStream.write(this.c);
@@ -30,7 +30,7 @@ import java.io.IOException;
 /* 37 */     paramDataOutputStream.write(this.e);
 /*    */   }
 /*    */   
-/*    */   public void a(NetClientManager paramdy) {
+/*    */   public void processPacket(NetClientManager paramdy) {
 /* 41 */     paramdy.a(this);
 /*    */   }
 /*    */   

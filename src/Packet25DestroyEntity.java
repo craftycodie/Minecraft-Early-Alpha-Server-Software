@@ -3,26 +3,26 @@
 import java.io.IOException;
 
 /*    */
-/*    */ public class Packet29DestroyEntity
+/*    */ public class Packet25DestroyEntity
 /*    */   extends Packet
 /*    */ {
 /*    */   public int a;
 /*    */   
-/*    */   public Packet29DestroyEntity() {}
+/*    */   public Packet25DestroyEntity() {}
 /*    */   
-/*    */   public Packet29DestroyEntity(int paramInt) {
+/*    */   public Packet25DestroyEntity(int paramInt) {
 /* 12 */     this.a = paramInt;
 /*    */   }
 /*    */   
-/*    */   public void a(DataInputStream paramDataInputStream) throws IOException {
+/*    */   public void readPacketData(DataInputStream paramDataInputStream) throws IOException {
 /* 16 */     this.a = paramDataInputStream.readInt();
 /*    */   }
 /*    */   
-/*    */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
+/*    */   public void writePacketData(DataOutputStream paramDataOutputStream) throws IOException {
 /* 20 */     paramDataOutputStream.writeInt(this.a);
 /*    */   }
 /*    */   
-/*    */   public void a(NetClientManager paramdy) {
+/*    */   public void processPacket(NetClientManager paramdy) {
 /* 24 */     paramdy.a(this);
 /*    */   }
 /*    */   

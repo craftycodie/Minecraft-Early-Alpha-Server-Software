@@ -3,11 +3,11 @@
 import java.io.IOException;
 
 /*    */
-/*    */ public class Packet33RelEntityMoveLook
-/*    */   extends Packet30Entity
+/*    */ public class Packet23RelEntityMoveLook
+/*    */   extends Packet20Entity
 /*    */ {
 
-/*    */   public Packet33RelEntityMoveLook(int paramInt, byte paramByte1, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5) {
+/*    */   public Packet23RelEntityMoveLook(int paramInt, byte paramByte1, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5) {
 /* 12 */     super(paramInt);
 /* 13 */     this.xPosition = paramByte1;
 /* 14 */     this.yPosition = paramByte2;
@@ -16,8 +16,8 @@ import java.io.IOException;
 /* 17 */     this.pitch = paramByte5;
 /*    */   }
 /*    */   
-/*    */   public void a(DataInputStream paramDataInputStream) throws IOException {
-/* 22 */     super.a(paramDataInputStream);
+/*    */   public void readPacketData(DataInputStream paramDataInputStream) throws IOException {
+/* 22 */     super.readPacketData(paramDataInputStream);
 /* 23 */     this.xPosition = paramDataInputStream.readByte();
 /* 24 */     this.yPosition = paramDataInputStream.readByte();
 /* 25 */     this.zPosition = paramDataInputStream.readByte();
@@ -25,8 +25,8 @@ import java.io.IOException;
 /* 27 */     this.pitch = paramDataInputStream.readByte();
 /*    */   }
 /*    */   
-/*    */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
-/* 31 */     super.a(paramDataOutputStream);
+/*    */   public void writePacketData(DataOutputStream paramDataOutputStream) throws IOException {
+/* 31 */     super.writePacketData(paramDataOutputStream);
 /* 32 */     paramDataOutputStream.writeByte(this.xPosition);
 /* 33 */     paramDataOutputStream.writeByte(this.yPosition);
 /* 34 */     paramDataOutputStream.writeByte(this.zPosition);
