@@ -54,12 +54,13 @@ import java.util.logging.Level;
 /*  72 */     bi.start();
 /*     */     
 /*  74 */     ey.a();
-/*  75 */     a.info("Alpha 1.0.10 Server Remake");
+/*  75 */     a.info("Alpha 1.0.10 Server Remake by Codie");
+/*  75 */     a.info("PRE-RELEASE");
 /*  75 */     a.info("Starting minecraft server.");
 /*     */     
 /*  77 */     if (Runtime.getRuntime().maxMemory() / 1024L / 1024L < 512L) {
 /*  78 */       a.warning("**** NOT ENOUGH RAM!");
-/*  79 */       a.warning("To start the server with more ram, launch it mobSpawner \"java -Xmx1024M -Xms1024M -jar minecraft_server.jar\"");
+/*  79 */       a.warning("To start the server with more ram, launch it as \"java -Xmx1024M -Xms1024M -jar minecraft_server.jar\"");
 /*     */     } 
 /*     */     
 /*  82 */     a.info("Loading properties");
