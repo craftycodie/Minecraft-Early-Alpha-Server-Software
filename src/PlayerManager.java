@@ -67,6 +67,11 @@
 /*     */     
 /* 168 */     for (int k = i - 10; k <= i + 10; k++) {
 /* 169 */       for (int m = j - 10; m <= j + 10; m++) {
+                    try {
+                        Thread.sleep(10);
+                    } catch (Exception ex) {
+
+                    }
 /* 170 */         getPlayerInstance(k, m, true).addPlayer(paramdq);
 /*     */       }
 /*     */     } 
