@@ -3,11 +3,11 @@
 import java.io.IOException;
 
 
-/*    */ public class Packet21RelEntityMove
-/*    */   extends Packet20Entity
+/*    */ public class Packet101RelEntityMove
+/*    */   extends Packet103Entity
 /*    */ {
 /*    */
-/*    */   public Packet21RelEntityMove(int paramInt, byte paramByte1, byte paramByte2, byte paramByte3) {
+/*    */   public Packet101RelEntityMove(int paramInt, byte paramByte1, byte paramByte2, byte paramByte3) {
 /* 49 */     super(paramInt);
 /* 50 */     this.xPosition = paramByte1;
 /* 51 */     this.yPosition = paramByte2;

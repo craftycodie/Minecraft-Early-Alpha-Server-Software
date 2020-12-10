@@ -3,14 +3,14 @@
 import java.io.IOException;
 
 /*    */
-/*    */ public class Packet25DestroyEntity
+/*    */ public class Packet3DestroyEntity
 /*    */   extends Packet
 /*    */ {
 /*    */   public int a;
 /*    */   
-/*    */   public Packet25DestroyEntity() {}
+/*    */   public Packet3DestroyEntity() {}
 /*    */   
-/*    */   public Packet25DestroyEntity(int paramInt) {
+/*    */   public Packet3DestroyEntity(int paramInt) {
 /* 12 */     this.a = paramInt;
 /*    */   }
 /*    */   

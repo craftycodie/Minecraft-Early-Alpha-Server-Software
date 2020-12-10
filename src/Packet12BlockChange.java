@@ -3,18 +3,18 @@
 import java.io.IOException;
 
 /*    */
-/*    */ public class Packet53BlockChange extends Packet {
+/*    */ public class Packet12BlockChange extends Packet {
 /*    */   public int a;
 /*    */   public int b;
 /*    */   public int c;
 /*    */   public int d;
 /*    */   public int e;
 /*    */   
-/*    */   public Packet53BlockChange() {
+/*    */   public Packet12BlockChange() {
 /* 12 */     this.j = true;
 /*    */   }
 /*    */   
-/*    */   public Packet53BlockChange(int paramInt1, int paramInt2, int paramInt3, World paramdp) {
+/*    */   public Packet12BlockChange(int paramInt1, int paramInt2, int paramInt3, World paramdp) {
 /* 16 */     this.j = true;
 /* 17 */     this.a = paramInt1;
 /* 18 */     this.b = paramInt2;

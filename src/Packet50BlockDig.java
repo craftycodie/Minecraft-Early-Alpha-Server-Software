@@ -14,7 +14,7 @@ import java.io.IOException;
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */ public class Packet14BlockDig
+/*    */ public class Packet50BlockDig
 /*    */   extends Packet
 /*    */ {
 /*    */   public int a;
@@ -23,7 +23,7 @@ import java.io.IOException;
 /*    */   public int d;
 /*    */   public int e;
 
-    /*    */   public Packet14BlockDig() {}
+    /*    */   public Packet50BlockDig() {}
 
 /*    */   
 /*    */   public void readPacketData(DataInputStream paramDataInputStream) throws IOException {

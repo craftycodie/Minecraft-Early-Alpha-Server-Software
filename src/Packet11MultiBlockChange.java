@@ -4,7 +4,7 @@ import java.io.IOException;
 
 /*    */
 /*    */ 
-/*    */ public class Packet52MultiBlockChange
+/*    */ public class Packet11MultiBlockChange
 /*    */   extends Packet
 /*    */ {
 /*    */   public int a;
@@ -14,11 +14,11 @@ import java.io.IOException;
 /*    */   public byte[] e;
 /*    */   public int f;
 /*    */   
-/*    */   public Packet52MultiBlockChange() {
+/*    */   public Packet11MultiBlockChange() {
 /* 16 */     this.j = true;
 /*    */   }
 /*    */   
-/*    */   public Packet52MultiBlockChange(int paramInt1, int paramInt2, short[] paramArrayOfshort, int paramInt3, World paramdp) {
+/*    */   public Packet11MultiBlockChange(int paramInt1, int paramInt2, short[] paramArrayOfshort, int paramInt3, World paramdp) {
 /* 20 */     this.j = true;
 /* 21 */     this.a = paramInt1;
 /* 22 */     this.b = paramInt2;

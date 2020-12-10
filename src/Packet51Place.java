@@ -2,7 +2,7 @@
 /*    */ import java.io.DataOutputStream;
 import java.io.IOException;
 
-/*    */ public class Packet15Place
+/*    */ public class Packet51Place
 /*    */   extends Packet
 /*    */ {
 /*    */   public int a;
@@ -11,7 +11,7 @@ import java.io.IOException;
 /*    */   public int d;
 /*    */   public int e;
 /*    */
-/*    */   public Packet15Place() {}
+/*    */   public Packet51Place() {}
 
 
     /*    */   public void readPacketData(DataInputStream paramDataInputStream) throws IOException {

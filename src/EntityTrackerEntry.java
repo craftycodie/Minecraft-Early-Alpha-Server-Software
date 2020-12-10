@@ -77,7 +77,7 @@ import java.util.List;
 //                boolean bool2 = Math.abs(m - encodedRotationYaw) >= 8 || Math.abs(n - encodedRotationPitch) >= 8;
 ///*     */
 ///*  75 */       if (i1 < -128 || i1 >= 128 || i2 < -128 || i2 >= 128 || i3 < -128 || i3 >= 128) {
-/*  76 */         el = new Packet26EntityTeleport(this.trackedEntity.entityId, i, j, k, (byte)m, (byte)n);
+/*  76 */         el = new Packet104EntityTeleport(this.trackedEntity.entityId, i, j, k, (byte)m, (byte)n);
 ///*     */       }
 ///*  78 */       else if (bool1 && bool2) {
 ///*  79 */         el = new Packet23RelEntityMoveLook(this.trackedEntity.entityId, (byte)i1, (byte)i2, (byte)i3, (byte)m, (byte)n);
@@ -120,7 +120,7 @@ public void sendPacketToTrackedPlayers(Packet packet)
 /*     */
 public void sendDestroyEntityPacketToTrackedPlayers()
 {
-    sendPacketToTrackedPlayers(new Packet25DestroyEntity(trackedEntity.entityId));
+    sendPacketToTrackedPlayers(new Packet3DestroyEntity(trackedEntity.entityId));
 }
 /*     */
 /*     */
@@ -182,7 +182,7 @@ public void sendDestroyEntityPacketToTrackedPlayers()
         if(trackedPlayers.contains(entityplayermp))
         {
             trackedPlayers.remove(entityplayermp);
-            entityplayermp.playerNetServerHandler.sendPacket(new Packet25DestroyEntity(trackedEntity.entityId));
+            entityplayermp.playerNetServerHandler.sendPacket(new Packet3DestroyEntity(trackedEntity.entityId));
         }
     }
 /*     */
@@ -212,7 +212,7 @@ public void sendDestroyEntityPacketToTrackedPlayers()
 //            }
 //    if(trackedEntity instanceof EntityPlayer)
 //    {
-        return new Packet24NamedEntitySpawn((EntityPlayer)trackedEntity);
+        return new Packet2NamedEntitySpawn((EntityPlayer)trackedEntity);
 //    }
 //    return null;
 ///* 160 */     throw new IllegalArgumentException("Don't know how to add " + this.trackedEntity.getClass() + "!");

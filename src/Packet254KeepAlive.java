@@ -3,7 +3,7 @@
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */ public class Packet0KeepAlive
+/*    */ public class Packet254KeepAlive
 /*    */   extends Packet
 /*    */ {
 /*    */   public void processPacket(NetClientManager paramdy) {}

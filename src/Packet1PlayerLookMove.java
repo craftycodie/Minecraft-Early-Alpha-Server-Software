@@ -3,15 +3,29 @@
 import java.io.IOException;
 
 /*    */
-/*    */ public class Packet13PlayerLookMove
-/*    */   extends Packet10Flying
+/*    */ public class Packet1PlayerLookMove
+/*    */   extends Packet
 /*    */ {
-/*    */   public Packet13PlayerLookMove() {
+    /*     */   public double xPosition;
+    /*     */   public double yPosition;
+    /*     */   public double zPosition;
+    /*     */   public float yaw;
+    /*     */   public float pitch;
+    /*     */   public boolean onGround;
+    /*     */   public boolean moving;
+    /*     */   public boolean rotating;
+
+/*    */   public Packet1PlayerLookMove() {
 /*  8 */     this.rotating = true;
 /*  9 */     this.moving = true;
 /*    */   }
+
+    /*    */   public void processPacket(NetClientManager paramdy) {
+        /* 24 */     paramdy.a(this);
+        /*    */   }
+
 /*    */   
-/*    */   public Packet13PlayerLookMove(double paramDouble1, double paramDouble2, double paramDouble3, float paramFloat1, float paramFloat2, boolean onGround) {
+/*    */   public Packet1PlayerLookMove(double paramDouble1, double paramDouble2, double paramDouble3, float paramFloat1, float paramFloat2, boolean onGround) {
 /* 13 */
     this.xPosition = paramDouble1;
 /* 14 */     this.yPosition = paramDouble2;
@@ -29,8 +43,8 @@ import java.io.IOException;
 /* 27 */     this.zPosition = paramDataInputStream.readDouble();
 /* 29 */     this.yaw = paramDataInputStream.readFloat();
 /* 30 */     this.pitch = paramDataInputStream.readFloat();
-/* 31 */     super.readPacketData(paramDataInputStream);
-/*    */   }
+                this.onGround = paramDataInputStream.read() != 0;/*    */
+            }
 /*    */   
 /*    */   public void writePacketData(DataOutputStream paramDataOutputStream) throws IOException {
 /* 35 */     paramDataOutputStream.writeDouble(this.xPosition);
@@ -38,7 +52,7 @@ import java.io.IOException;
 /* 37 */     paramDataOutputStream.writeDouble(this.zPosition);
 /* 39 */     paramDataOutputStream.writeFloat(this.yaw);
 /* 40 */     paramDataOutputStream.writeFloat(this.pitch);
-/* 41 */     super.writePacketData(paramDataOutputStream);
+    paramDataOutputStream.write(this.onGround ? 1 : 0);
 /*    */   }
 /*    */   
 /*    */   public int getPacketSize() {

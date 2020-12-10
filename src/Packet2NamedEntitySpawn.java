@@ -8,14 +8,14 @@ import java.io.*;
 //            Packet, EntityPlayer, MathHelper, InventoryPlayer,
 //            ItemStack, NetHandler
 
-public class Packet24NamedEntitySpawn extends Packet
+public class Packet2NamedEntitySpawn extends Packet
 {
 
-    public Packet24NamedEntitySpawn()
+    public Packet2NamedEntitySpawn()
     {
     }
 
-    public Packet24NamedEntitySpawn(EntityPlayer entityplayer)
+    public Packet2NamedEntitySpawn(EntityPlayer entityplayer)
     {
         entityId = entityplayer.entityId;
         name = entityplayer.username;

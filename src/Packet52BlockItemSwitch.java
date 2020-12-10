@@ -3,14 +3,14 @@
 import java.io.IOException;
 
 /*    */
-/*    */ public class Packet16BlockItemSwitch
+/*    */ public class Packet52BlockItemSwitch
 /*    */   extends Packet {
 /*    */   public int a;
 /*    */   public int b;
 /*    */   
-/*    */   public Packet16BlockItemSwitch() {}
+/*    */   public Packet52BlockItemSwitch() {}
 /*    */   
-/*    */   public Packet16BlockItemSwitch(int paramInt1, int paramInt2) {
+/*    */   public Packet52BlockItemSwitch(int paramInt1, int paramInt2) {
 /* 12 */     this.a = paramInt1;
 /* 13 */     this.b = paramInt2;
 /*    */   }

@@ -4,7 +4,7 @@ import java.io.IOException;
 
 /*    */
 /*    */
-/*    */ public class Packet26EntityTeleport
+/*    */ public class Packet104EntityTeleport
         /*    */   extends Packet
         /*    */ {
     /*    */   public int entityId;
@@ -14,10 +14,10 @@ import java.io.IOException;
     /*    */   public byte yaw;
     /*    */   public byte pitch;
     /*    */
-    /*    */   public Packet26EntityTeleport() {}
+    /*    */   public Packet104EntityTeleport() {}
     /*    */
     /*    */
-    /*    */   public Packet26EntityTeleport(int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte paramByte1, byte paramByte2) {
+    /*    */   public Packet104EntityTeleport(int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte paramByte1, byte paramByte2) {
         /* 27 */     this.entityId = paramInt1;
         /* 28 */     this.xPosition = paramInt2;
         /* 29 */     this.yPosition = paramInt3;

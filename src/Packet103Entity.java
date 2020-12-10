@@ -2,7 +2,7 @@
 /*     */ import java.io.DataOutputStream;
 import java.io.IOException;
 
-/*     */ public class Packet20Entity
+/*     */ public class Packet103Entity
 /*     */   extends Packet
 /*     */ {
 /*     */   public int entityId;
@@ -12,9 +12,9 @@ import java.io.IOException;
 /*     */   public byte yaw;
 /*     */   public byte pitch;
 /*     */
-/*     */   public Packet20Entity() {}
+/*     */   public Packet103Entity() {}
 /*     */
-/*     */   public Packet20Entity(int paramInt) {
+/*     */   public Packet103Entity(int paramInt) {
 /* 111 */     this.entityId = paramInt;
 /*     */   }
 /*     */   

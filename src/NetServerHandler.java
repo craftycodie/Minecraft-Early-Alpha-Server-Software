@@ -36,7 +36,7 @@
 /*     */   public void a() {
 /*  36 */     this.netManager.a();
 /*  37 */     if (this.f++ % 20 == 0) {
-/*  38 */       this.netManager.a(new Packet0KeepAlive());
+/*  38 */       this.netManager.a(new Packet254KeepAlive());
 /*     */     }
 /*     */   }
 /*     */   
@@ -53,7 +53,7 @@
 /*     */     this.playerEntity = paramdq;
 /*  53 */     paramdq.playerNetServerHandler = this; }
 
-        public void a(Packet10Flying packet10flying) {
+        public void a(Packet1PlayerLookMove packet10flying) {
 //            if(!hasMoved)
 //            {
 //                double d = packet10flying.yPosition - lastPosY;
@@ -155,10 +155,10 @@
 /* 129 */     this.lastPosY = paramDouble2;
 /* 130 */     this.lastPosZ = paramDouble3;
 /* 131 */     this.playerEntity.setPositionAndRotation(paramDouble1, paramDouble2, paramDouble3, paramFloat1, paramFloat2);
-/* 132 */     this.playerEntity.playerNetServerHandler.sendPacket(new Packet10Flying(paramDouble1, paramDouble2, paramDouble3, paramFloat1, paramFloat2, false));
+/* 132 */     this.playerEntity.playerNetServerHandler.sendPacket(new Packet1PlayerLookMove(paramDouble1, paramDouble2, paramDouble3, paramFloat1, paramFloat2, false));
 /*     */   }
 /*     */   
-/*     */   public void a(Packet14BlockDig paramgp) {
+/*     */   public void a(Packet50BlockDig paramgp) {
 /* 136 */     boolean bool = false;
 /* 137 */     if (paramgp.e == 0) bool = true; 
 /* 138 */     if (paramgp.e == 1) bool = true;
@@ -198,12 +198,12 @@
 /* 171 */       if (d4 < 256.0D) {
                     //TODO: This is a kinda hacky fix for blocks not breaking properly. Could be improved.
                     this.mcServer.worldserver.setBlockWithNotify(i, j, k, 0);
-/* 172 */         this.playerEntity.playerNetServerHandler.sendPacket(new Packet53BlockChange(i, j, k, this.mcServer.worldserver));
+/* 172 */         this.playerEntity.playerNetServerHandler.sendPacket(new Packet12BlockChange(i, j, k, this.mcServer.worldserver));
 /*     */       }
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   public void a(Packet15Place parames) {
+/*     */   public void a(Packet51Place parames) {
 /* 178 */     int i = parames.b;
 /* 179 */     int j = parames.c;
 /* 180 */     int k = parames.d;
@@ -215,7 +215,7 @@
 /* 186 */       ItemStack gc = new ItemStack(parames.a);
 /* 187 */       this.playerEntity.itemInWorldManager.a(this.playerEntity, this.mcServer.worldserver, gc, i, j, k, m);
 /*     */     } 
-/* 189 */     this.playerEntity.playerNetServerHandler.sendPacket(new Packet53BlockChange(i, j, k, this.mcServer.worldserver));
+/* 189 */     this.playerEntity.playerNetServerHandler.sendPacket(new Packet12BlockChange(i, j, k, this.mcServer.worldserver));
 /*     */   }
 /*     */   
 /*     */   public void a(String paramString) {
@@ -233,14 +233,14 @@
 /* 204 */     this.netManager.a(paramha);
 /*     */   }
 /*     */   
-/*     */   public void a(Packet16BlockItemSwitch paramfi) {
+/*     */   public void a(Packet52BlockItemSwitch paramfi) {
 /* 208 */     int i = paramfi.b;
 /* 209 */     if (i == 0) {
 /* 210 */       this.playerEntity.inventory.a[this.playerEntity.inventory.d] = null;
 /*     */     } else {
 /* 212 */       this.playerEntity.inventory.a[this.playerEntity.inventory.d] = new ItemStack(i);
 /*     */     } 
-/* 214 */     this.mcServer.k.sendPacketToTrackedPlayers(this.playerEntity, new Packet16BlockItemSwitch(this.playerEntity.entityId, i));
+/* 214 */     this.mcServer.k.sendPacketToTrackedPlayers(this.playerEntity, new Packet52BlockItemSwitch(this.playerEntity.entityId, i));
 /*     */   }
 /*     */
 /*     */

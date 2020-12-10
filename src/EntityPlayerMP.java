@@ -72,7 +72,7 @@
 /*     */       
 /*  71 */       if (b != 0) {
 /*  72 */         this.loadedChunks.remove(ih);
-            /*  73 */         this.playerNetServerHandler.sendPacket(new Packet51MapChunk(ih.a * 16, 0, ih.b * 16, 16, 128, 16, this.mcServer.worldserver));
+            /*  73 */         this.playerNetServerHandler.sendPacket(new Packet10MapChunk(ih.a * 16, 0, ih.b * 16, 16, 128, 16, this.mcServer.worldserver));
 
 ///*  73 */         this.playerNetServerHandler.sendPacket(new Packet52MultiBlockChange(ih.a, ih.b, worldObj));
 /*     */       } 

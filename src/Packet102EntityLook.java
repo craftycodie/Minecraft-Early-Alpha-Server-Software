@@ -1,14 +1,14 @@
 /*    */ import java.io.DataInputStream;
 /*    */ import java.io.DataOutputStream;
 import java.io.IOException;
-/*    */ public class Packet22EntityLook
-/*    */   extends Packet20Entity
+/*    */ public class Packet102EntityLook
+/*    */   extends Packet103Entity
 /*    */ {
 ///*    */   public Packet32EntityLook() {
 /////* 76 */     this.encodedRotationYaw = true;
 ///*    */   }
 /*    */   
-/*    */   public Packet22EntityLook(int paramInt, byte paramByte1, byte paramByte2) {
+/*    */   public Packet102EntityLook(int paramInt, byte paramByte1, byte paramByte2) {
 /* 80 */     super(paramInt);
 /* 81 */     this.yaw = paramByte1;
 /* 82 */     this.pitch = paramByte2;

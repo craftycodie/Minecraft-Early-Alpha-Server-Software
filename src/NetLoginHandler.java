@@ -3,7 +3,7 @@ import java.net.Socket;
 import java.util.logging.Logger;
 
 /*     */ public class NetLoginHandler extends NetClientManager {
-/*     */   public void a(Packet1Login paramx) {
+/*     */   public void a(Packet0Login paramx) {
 /*   3 */     this.f = paramx.b;
 /*     */ 
 /*     */ 
@@ -64,7 +64,7 @@ import java.util.logging.Logger;
 /*     */ 
 /*     */ 
 /*     */       
-/*  63 */       hm.sendPacket(new Packet1Login("", "", 0));
+/*  63 */       hm.sendPacket(new Packet0Login("", "", 0));
 /*     */ 
 /*     */ 
 /*     */ 

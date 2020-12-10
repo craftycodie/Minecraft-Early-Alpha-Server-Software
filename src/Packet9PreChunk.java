@@ -3,15 +3,15 @@
 import java.io.IOException;
 
 /*    */
-/*    */ public class Packet50PreChunk
+/*    */ public class Packet9PreChunk
 /*    */   extends Packet {
 /*    */   public int a;
 /*    */   public int b;
 /*    */   public boolean c;
 /*    */   
-/*    */   public Packet50PreChunk() {}
+/*    */   public Packet9PreChunk() {}
 /*    */   
-/*    */   public Packet50PreChunk(int paramInt1, int paramInt2, boolean paramBoolean) {
+/*    */   public Packet9PreChunk(int paramInt1, int paramInt2, boolean paramBoolean) {
 /* 13 */     this.j = true;
 /* 14 */     this.a = paramInt1;
 /* 15 */     this.b = paramInt2;

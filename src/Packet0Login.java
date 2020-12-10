@@ -3,16 +3,16 @@
 import java.io.IOException;
 
 /*    */
-/*    */ public class Packet1Login
+/*    */ public class Packet0Login
 /*    */   extends Packet
 /*    */ {
 /*    */   public int a;
 /*    */   public String b;
 /*    */   public String c;
 /*    */   
-/*    */   public Packet1Login() {}
+/*    */   public Packet0Login() {}
 /*    */   
-/*    */   public Packet1Login(String paramString1, String paramString2, int paramInt) {
+/*    */   public Packet0Login(String paramString1, String paramString2, int paramInt) {
 /* 14 */     this.b = paramString1;
 /* 15 */     this.c = paramString2;
 /* 16 */     this.a = paramInt;

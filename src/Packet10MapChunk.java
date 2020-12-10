@@ -5,17 +5,17 @@
 /*    */ import java.util.zip.Deflater;
 /*    */ import java.util.zip.Inflater;
 /*    */ 
-/*    */ public class Packet51MapChunk extends Packet {
+/*    */ public class Packet10MapChunk extends Packet {
 /*    */   public int a;
 /*    */   public int b;
 /*    */   public int c;
 /*    */   public int d;
 /*    */   
-/*    */   public Packet51MapChunk() {
+/*    */   public Packet10MapChunk() {
 /* 15 */     this.j = true;
 /*    */   }
 /*    */   public int e; public int f; public byte[] g; private int h;
-/*    */   public Packet51MapChunk(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, World paramdp) {
+/*    */   public Packet10MapChunk(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, World paramdp) {
 /* 19 */     this.j = true;
 /* 20 */     this.a = paramInt1;
 /* 21 */     this.b = paramInt2;
