@@ -17,7 +17,7 @@ import java.io.IOException;
 /*    */   public Packet11MultiBlockChange() {
 /* 16 */     this.j = true;
 /*    */   }
-/*    */   
+/*    */
 /*    */   public Packet11MultiBlockChange(int paramInt1, int paramInt2, short[] paramArrayOfshort, int paramInt3, World paramdp) {
 /* 20 */     this.j = true;
 /* 21 */     this.a = paramInt1;

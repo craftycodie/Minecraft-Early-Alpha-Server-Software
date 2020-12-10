@@ -166,7 +166,7 @@
 /* 140 */     if (bool) {
 /* 141 */       double d = this.playerEntity.posY;
 /* 142 */       this.playerEntity.posY = this.playerEntity.ah;
-///* 143 */       fe fe = this.playerEntity.a(4.0D, 1.0F);
+///* 143 */       fe fe = this.playerEntity.handlePlace(4.0D, 1.0F);
 /* 144 */       this.playerEntity.posY = d;
 // TODO: Fix maybe.
 ///* 145 */       if (fe == null) {
@@ -203,7 +203,7 @@
 /*     */     }
 /*     */   }
 /*     */   
-/*     */   public void a(Packet51Place parames) {
+/*     */   public void handlePlace(Packet51Place parames) {
 /* 178 */     int i = parames.b;
 /* 179 */     int j = parames.c;
 /* 180 */     int k = parames.d;
@@ -214,7 +214,10 @@
 /* 185 */     if (i1 > 16) {
 /* 186 */       ItemStack gc = new ItemStack(parames.a);
 /* 187 */       this.playerEntity.itemInWorldManager.a(this.playerEntity, this.mcServer.worldserver, gc, i, j, k, m);
-/*     */     } 
+/*     */     }
+            //TODO: This is a kinda hacky fix for blocks not placing properly. Could be improved.
+
+                this.mcServer.worldserver.setBlockWithNotify(i, j, k, m);
 /* 189 */     this.playerEntity.playerNetServerHandler.sendPacket(new Packet12BlockChange(i, j, k, this.mcServer.worldserver));
 /*     */   }
 /*     */   

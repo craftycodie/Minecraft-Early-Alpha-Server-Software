@@ -42,7 +42,7 @@
 /*  36 */     paramdq.playerNetServerHandler.sendPacket(new Packet9PreChunk(this.currentChunk.a, this.currentChunk.b, true));
             paramdq.playerNetServerHandler.sendPacket(new Packet10MapChunk(this.currentChunk.a * 16, 0, this.currentChunk.b * 16, 16, 128, 16, PlayerManager.getMinecraftServer(playerManager).worldserver));
 
-///*  73 */     paramdq.playerNetServerHandler.sendPacket(new Packet52MultiBlockChange(this.currentChunk.a, this.currentChunk.b, PlayerManager.getMinecraftServer(playerManager).worldserver));
+///*  73 */     paramdq.playerNetServerHandler.sendPacket(new Packet52MultiBlockChange(this.currentChunk.handlePlace, this.currentChunk.b, PlayerManager.getMinecraftServer(playerManager).worldserver));
 
 /*  37 */     this.players.add(paramdq);
 /*  38 */     paramdq.loadedChunks.add(this.currentChunk);
@@ -134,8 +134,8 @@ public void markBlockNeedsUpdate(int i, int j, int k)
                 int i = this.chunkX * 16 + this.minX;
                 int l = this.minY;
                 int k1 = this.chunkZ * 16 + this.minZ;
-//                gs = new Packet53BlockChange(i, l, k1, (PlayerManager.getMinecraftServer(this.playerManager)).worldserver);
-/* 102 */       gs = new Packet12BlockChange(this.chunkX * 16 + this.minX, this.minY, this.chunkZ * 16 + this.minZ, (PlayerManager.getMinecraftServer(this.playerManager)).worldserver);
+                gs = new Packet12BlockChange(i, l, k1, (PlayerManager.getMinecraftServer(this.playerManager)).worldserver);
+///* 102 */       gs = new Packet12BlockChange(this.chunkX * 16 + this.minX, this.minY, this.chunkZ * 16 + this.minZ, (PlayerManager.getMinecraftServer(this.playerManager)).worldserver);
 /* 103 */     } else if (this.numBlocksToUpdate == 10) {
                 minY = (minY / 2) * 2;
                 maxY = (maxY / 2 + 1) * 2;

@@ -31,7 +31,7 @@ import java.io.IOException;
 /*    */   }
 /*    */   
 /*    */   public void processPacket(NetClientManager paramdy) {
-/* 41 */     paramdy.a(this);
+/* 41 */     paramdy.handlePlace(this);
 /*    */   }
 /*    */   
 /*    */   public int getPacketSize() {

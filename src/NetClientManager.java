@@ -50,8 +50,8 @@
 /* 50 */     a(paramby);
 /*    */   }
 /*    */   
-/*    */   public void a(Packet51Place parames) {
-/* 54 */     a(parames);
+/*    */   public void handlePlace(Packet51Place parames) {
+/* 54 */     handlePlace(parames);
 /*    */   }
 /*    */   
 /*    */   public void a(Packet52BlockItemSwitch paramfi) {
