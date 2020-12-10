@@ -15,7 +15,7 @@ import java.io.IOException;
 
 
     /*    */   public void readPacketData(DataInputStream paramDataInputStream) throws IOException {
-/* 25 */     this.a = paramDataInputStream.readShort();
+/* 25 */     this.a = paramDataInputStream.read();
 /* 26 */     this.b = paramDataInputStream.readInt();
 /* 27 */     this.c = paramDataInputStream.read();
 /* 28 */     this.d = paramDataInputStream.readInt();
@@ -23,7 +23,7 @@ import java.io.IOException;
 /*    */   }
 /*    */   
 /*    */   public void writePacketData(DataOutputStream paramDataOutputStream) throws IOException {
-/* 33 */     paramDataOutputStream.writeShort(this.a);
+/* 33 */     paramDataOutputStream.write(this.a);
 /* 34 */     paramDataOutputStream.writeInt(this.b);
 /* 35 */     paramDataOutputStream.write(this.c);
 /* 36 */     paramDataOutputStream.writeInt(this.d);
@@ -35,7 +35,7 @@ import java.io.IOException;
 /*    */   }
 /*    */   
 /*    */   public int getPacketSize() {
-/* 45 */     return 12;
+/* 45 */     return 11;
 /*    */   }
 /*    */ }
 

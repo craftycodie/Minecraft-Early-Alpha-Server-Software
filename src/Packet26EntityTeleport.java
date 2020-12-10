@@ -16,14 +16,6 @@ import java.io.IOException;
     /*    */
     /*    */   public Packet26EntityTeleport() {}
     /*    */
-    /*    */   public Packet26EntityTeleport(Entity paramdb) {
-        /* 18 */     this.entityId = paramdb.entityId;
-        /* 19 */     this.xPosition = MathHelper.floor_double(paramdb.posX * 32.0D);
-        /* 20 */     this.yPosition = MathHelper.floor_double(paramdb.posY * 32.0D);
-        /* 21 */     this.zPosition = MathHelper.floor_double(paramdb.posZ * 32.0D);
-        /* 22 */     this.yaw = (byte)(int)(paramdb.rotationYaw * 256.0F / 360.0F);
-        /* 23 */     this.pitch = (byte)(int)(paramdb.rotationPitch * 256.0F / 360.0F);
-        /*    */   }
     /*    */
     /*    */   public Packet26EntityTeleport(int paramInt1, int paramInt2, int paramInt3, int paramInt4, byte paramByte1, byte paramByte2) {
         /* 27 */     this.entityId = paramInt1;

@@ -66,7 +66,7 @@ import java.util.HashMap;
 /* 71 */     int i = paramDataInputStream.read();
 /* 72 */     if (i == -1) return null;
 /*    */
-
+//    System.out.println("Reading packet " + i);
 
     /* 74 */     Packet ha1 = a(i);
 /* 75 */     if (ha1 == null) throw new IOException("Bad packet id " + i);
@@ -76,6 +76,7 @@ import java.util.HashMap;
 /*    */   
 /*    */   public static void writePacket(Packet paramha, DataOutputStream paramDataOutputStream) throws IOException {
 //    if(paramha.b() < 53)
+//    System.out.println("Sending packet " + paramha.b());
     /* 81 */     paramDataOutputStream.write(paramha.b());
 /* 82 */     paramha.writePacketData(paramDataOutputStream);
 /*    */   }

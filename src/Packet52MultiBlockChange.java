@@ -37,35 +37,6 @@ import java.io.IOException;
 /* 35 */       this.e[b] = (byte)hv.getBlockMetadata(i, k, j);
 /*    */     } 
 /*    */   }
-
-    /*    */   public Packet52MultiBlockChange(int paramInt1, int paramInt2, World paramdp) {
-        /* 20 */     this.j = true;
-        /* 21 */     this.a = paramInt1;
-        /* 22 */     this.b = paramInt2;
-        /* 23 */     this.f = 16 * 128 * 16;
-        /* 24 */     this.c = new short[16 * 128 * 16];
-        /* 25 */     this.d = new byte[16 * 128 * 16];
-        /* 26 */     this.e = new byte[16 * 128 * 16];
-        /* 27 */     Chunk hv = paramdp.getChunkFromChunkCoords(paramInt1, paramInt2);
-                    for (int x = 0; x < 16; x ++) {
-                        for (int y = 0; y < 128; y++) {
-                            for (int z = 0; z < 16; z ++) {
-                                /* 33 */       this.c[b] = (short)(x << 12 | z << 8 | y);;
-                                /* 34 */       this.d[b] = (byte)hv.getBlockID(x, y, z);
-                                /* 35 */       this.e[b] = (byte)hv.getBlockMetadata(x, y, z);
-                            }
-                        }
-                    }
-//        /* 28 */     for (int b = 0; b < 16 * 128 * 16; b++) {
-//            /* 29 */       int i = paramArrayOfshort[b] >> 12 & 0xF;
-//            /* 30 */       int j = paramArrayOfshort[b] >> 8 & 0xF;
-//            /* 31 */       int k = paramArrayOfshort[b] & 0xFF;
-//            /*    */
-//            /* 33 */       this.c[b] = paramArrayOfshort[b];
-//            /* 34 */       this.d[b] = (byte)hv.getBlockID(i, k, j);
-//            /* 35 */       this.e[b] = (byte)hv.getBlockMetadata(i, k, j);
-//            /*    */     }
-        /*    */   }
 /*    */   
 /*    */   public void readPacketData(DataInputStream paramDataInputStream) throws IOException {
 /* 40 */     this.a = paramDataInputStream.readInt();

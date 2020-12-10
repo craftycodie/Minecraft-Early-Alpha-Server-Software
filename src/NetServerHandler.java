@@ -54,16 +54,16 @@
 /*  53 */     paramdq.playerNetServerHandler = this; }
 
         public void a(Packet10Flying packet10flying) {
-            if(!hasMoved)
-            {
-                double d = packet10flying.yPosition - lastPosY;
-                if(packet10flying.xPosition == lastPosX && d * d < 0.01D && packet10flying.zPosition == lastPosZ)
-                {
-                    hasMoved = true;
-                }
-            }
-            /*  59 */
-            if (this.hasMoved) {
+//            if(!hasMoved)
+//            {
+//                double d = packet10flying.yPosition - lastPosY;
+//                if(packet10flying.xPosition == lastPosX && d * d < 0.01D && packet10flying.zPosition == lastPosZ)
+//                {
+//                    hasMoved = true;
+//                }
+//            }
+//            /*  59 */
+//            if (this.hasMoved) {
                 double d1 = playerEntity.posY;
                 lastPosX = playerEntity.posX;
                 lastPosY = playerEntity.posY;
@@ -94,11 +94,11 @@
                 playerEntity.ySize = 0.0F;
                 playerEntity.setPositionAndRotation(lastPosX, lastPosY, lastPosZ, f2, f3);
 
-                // TODO: Validate, this is from b1.7.3
-                if(!hasMoved)
-                {
-                    return;
-                }
+//                // TODO: Validate, this is from b1.7.3
+//                if(!hasMoved)
+//                {
+//                    return;
+//                }
                 /*     */
                 double d11 = d3 - playerEntity.posX;
                 double d12 = d5 - playerEntity.posY;
@@ -145,7 +145,7 @@
                 /* 122 */
                 this.mcServer.configManager.b(this.playerEntity);
                 /*     */
-            }
+//            }
         }
 /*     */ 
 /*     */
@@ -166,7 +166,7 @@
 /* 140 */     if (bool) {
 /* 141 */       double d = this.playerEntity.posY;
 /* 142 */       this.playerEntity.posY = this.playerEntity.ah;
-/* 143 */       fe fe = this.playerEntity.a(4.0D, 1.0F);
+///* 143 */       fe fe = this.playerEntity.a(4.0D, 1.0F);
 /* 144 */       this.playerEntity.posY = d;
 // TODO: Fix maybe.
 ///* 145 */       if (fe == null) {
@@ -180,25 +180,25 @@
 /* 153 */     int i = paramgp.a;
 /* 154 */     int j = paramgp.b;
 /* 155 */     int k = paramgp.c;
-/* 156 */     int m = paramgp.d;
-/* 157 */     int n = (int) MathHelper.e((i - this.mcServer.worldserver.l));
-/* 158 */     int i1 = (int) MathHelper.e((k - this.mcServer.worldserver.n));
-/* 159 */     if (n > i1) i1 = n; 
-/* 160 */     if (paramgp.e == 0) {
-/* 161 */       if (i1 > 16) this.playerEntity.itemInWorldManager.a(i, j, k);
-/* 162 */     } else if (paramgp.e == 2) {
-/* 163 */       this.playerEntity.itemInWorldManager.a();
-/* 164 */     } else if (paramgp.e == 1) {
-/* 165 */       if (i1 > 16) this.playerEntity.itemInWorldManager.a(i, j, k, m);
-/* 166 */     } else if (paramgp.e == 3) {
-/* 167 */       double d1 = this.playerEntity.posX - i + 0.5D;
-/* 168 */       double d2 = this.playerEntity.posY - j + 0.5D;
-/* 169 */       double d3 = this.playerEntity.posZ - k + 0.5D;
-/* 170 */       double d4 = d1 * d1 + d2 * d2 + d3 * d3;
-/* 171 */       if (d4 < 256.0D) {
+///* 156 */     int m = paramgp.d;
+///* 157 */     int n = (int) MathHelper.e((i - this.mcServer.worldserver.l));
+///* 158 */     int i1 = (int) MathHelper.e((k - this.mcServer.worldserver.n));
+///* 159 */     if (n > i1) i1 = n;
+///* 160 */     if (paramgp.e == 0) {
+///* 161 */       if (i1 > 16) this.playerEntity.itemInWorldManager.a(i, j, k);
+///* 162 */     } else if (paramgp.e == 2) {
+///* 163 */       this.playerEntity.itemInWorldManager.a();
+///* 164 */     } else if (paramgp.e == 1) {
+///* 165 */       if (i1 > 16) this.playerEntity.itemInWorldManager.a(i, j, k, m);
+///* 166 */     } else if (paramgp.e == 3) {
+///* 167 */       double d1 = this.playerEntity.posX - i + 0.5D;
+///* 168 */       double d2 = this.playerEntity.posY - j + 0.5D;
+///* 169 */       double d3 = this.playerEntity.posZ - k + 0.5D;
+///* 170 */       double d4 = d1 * d1 + d2 * d2 + d3 * d3;
+///* 171 */       if (d4 < 256.0D) {
 /* 172 */         this.playerEntity.playerNetServerHandler.sendPacket(new Packet53BlockChange(i, j, k, this.mcServer.worldserver));
-/*     */       }
-/*     */     } 
+///*     */       }
+///*     */     }
 /*     */   }
 /*     */   
 /*     */   public void a(Packet15Place parames) {
@@ -223,7 +223,7 @@
 /*     */   }
 /*     */   
 /*     */   public void a(Packet paramha) {
-/* 199 */     logger.warning(getClass() + " wasn'singleplayerWorld prepared to deal with lookup " + paramha.getClass());
+/* 199 */     logger.warning(getClass() + " wasn't prepared to deal with lookup " + paramha.getClass());
 /* 200 */     b("Protocol error, unexpected packet");
 /*     */   }
 /*     */   

@@ -59,7 +59,7 @@ import java.util.List;
 /*     */     }
 /*     */
 /*  60 */     if (this.updateCounter++ % this.field_9234_e == 0) {
-/*  61 */       Packet el = null;
+/*  61 */       Packet el;
                 int i = MathHelper.floor_double(this.trackedEntity.posX * 32.0D);
 /*  62 */       int j = MathHelper.floor_double(this.trackedEntity.posY * 32.0D);
 /*  63 */       int k = MathHelper.floor_double(this.trackedEntity.posZ * 32.0D);
@@ -69,9 +69,9 @@ import java.util.List;
 /*  67 */       boolean bool1 = (i != this.encodedPosX || j != this.encodedPosY || k != this.encodedPosZ) ? true : false;
 /*  68 */       boolean bool2 = (m != this.encodedRotationYaw || n != this.encodedRotationPitch) ? true : false;
 /*     */
-/*  70 */       int i1 = i - this.encodedPosX;
-/*  71 */       int i2 = j - this.encodedPosY;
-/*  72 */       int i3 = k - this.encodedPosZ;
+///*  70 */       int i1 = i - this.encodedPosX;
+///*  71 */       int i2 = j - this.encodedPosY;
+///*  72 */       int i3 = k - this.encodedPosZ;
 
 //                boolean bool1 = Math.abs(i) >= 8 || Math.abs(difficultySetting) >= 8 || Math.abs(k) >= 8;
 //                boolean bool2 = Math.abs(m - encodedRotationYaw) >= 8 || Math.abs(n - encodedRotationPitch) >= 8;
@@ -90,9 +90,9 @@ import java.util.List;
 ///*     */       }
 /*     */
 /*     */
-/*  89 */       if (el != null) {
+///*  89 */       if (el != null) {
 /*  90 */         sendPacketToTrackedPlayers(el);
-/*     */       }
+///*     */       }
 /*     */
         if(bool1)
         {
