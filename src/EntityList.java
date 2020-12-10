@@ -36,7 +36,6 @@
 /*    */
 /* 38 */     a(EntityPig.class, "Pig");
 /* 39 */     a(EntitySheep.class, "Sheep");
-/* 40 */     a(EntityCow.class, "Cow");
 /*    */
 /* 43 */     a(EntityTNTPrimed.class, "PrimedTnt");
 /* 44 */     a(EntityFallingSand.class, "FallingSand");
