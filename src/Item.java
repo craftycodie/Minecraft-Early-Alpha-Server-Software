@@ -111,8 +111,7 @@
 /* 111 */   public static Item aA = (new ItemRedstone(75)).a(56);
 /* 112 */   public static Item aB = (new ItemSnowball(76)).a(14);
 /*     */   
-/* 114 */   public static Item aC = (new ItemBoat(77)).a(136);
-/*     */   
+/*     */
 /* 116 */   public static Item aD = (new Item(78)).a(103);
 /* 117 */   public static Item aE = (new Item(79)).a(77);
 /*     */

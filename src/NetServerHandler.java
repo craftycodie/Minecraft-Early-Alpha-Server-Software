@@ -36,7 +36,7 @@
 /*     */   public void a() {
 /*  36 */     this.netManager.a();
 /*  37 */     if (this.f++ % 20 == 0) {
-/*  38 */       this.netManager.a(new Packet254KeepAlive());
+///*  38 */       this.netManager.a(new Packet254KeepAlive());
 /*     */     }
 /*     */   }
 /*     */   
@@ -202,24 +202,7 @@
 /*     */       }
 /*     */     }
 /*     */   }
-/*     */   
-/*     */   public void handlePlace(Packet51Place parames) {
-/* 178 */     int i = parames.b;
-/* 179 */     int j = parames.c;
-/* 180 */     int k = parames.d;
-/* 181 */     int m = parames.e;
-/* 182 */     int n = (int) MathHelper.e((i - this.mcServer.worldserver.l));
-/* 183 */     int i1 = (int) MathHelper.e((k - this.mcServer.worldserver.n));
-/* 184 */     if (n > i1) i1 = n; 
-/* 185 */     if (i1 > 16) {
-/* 186 */       ItemStack gc = new ItemStack(parames.a);
-/* 187 */       this.playerEntity.itemInWorldManager.a(this.playerEntity, this.mcServer.worldserver, gc, i, j, k, m);
-/*     */     }
-            //TODO: This is a kinda hacky fix for blocks not placing properly. Could be improved.
-
-                this.mcServer.worldserver.setBlockWithNotify(i, j, k, m);
-/* 189 */     this.playerEntity.playerNetServerHandler.sendPacket(new Packet12BlockChange(i, j, k, this.mcServer.worldserver));
-/*     */   }
+/*     */
 /*     */   
 /*     */   public void a(String paramString) {
 /* 193 */     logger.info(this.playerEntity.username + " lost connection: " + paramString);
@@ -233,18 +216,11 @@
 /*     */   }
 /*     */   
 /*     */   public void sendPacket(Packet paramha) {
+                if(paramha == null)
+                    return;
 /* 204 */     this.netManager.a(paramha);
 /*     */   }
-/*     */   
-/*     */   public void a(Packet52BlockItemSwitch paramfi) {
-/* 208 */     int i = paramfi.b;
-/* 209 */     if (i == 0) {
-/* 210 */       this.playerEntity.inventory.a[this.playerEntity.inventory.d] = null;
-/*     */     } else {
-/* 212 */       this.playerEntity.inventory.a[this.playerEntity.inventory.d] = new ItemStack(i);
-/*     */     } 
-/* 214 */     this.mcServer.k.sendPacketToTrackedPlayers(this.playerEntity, new Packet52BlockItemSwitch(this.playerEntity.entityId, i));
-/*     */   }
+/*     */
 /*     */
 /*     */
 /*     */   private void c(String paramString) {

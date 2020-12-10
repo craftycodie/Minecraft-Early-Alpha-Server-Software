@@ -16,27 +16,24 @@ import java.util.HashMap;
 /*    */   }
 /*    */   
 /*    */   static {
-/* 18 */     addIdClassMapping(254, Packet254KeepAlive.class);
+///* 18 */     addIdClassMapping(254, Packet254KeepAlive.class);
 /* 19 */     addIdClassMapping(0, Packet0Login.class);
 /*    */
-///* 22 */     addIdClassMapping(1, Packet10Flying.class); //unsure.
-///* 23 */     addIdClassMapping(11, Packet11PlayerPosition.class);
-///* 24 */     addIdClassMapping(12, Packet12PlayerLook.class);
 /* 25 */     addIdClassMapping(1, Packet1PlayerLookMove.class);
 /* 26 */     addIdClassMapping(50, Packet50BlockDig.class); //unsure
-/* 27 */     addIdClassMapping(51, Packet51Place.class); //unsure
-/* 28 */     addIdClassMapping(52, Packet52BlockItemSwitch.class);
+///* 27 */     addIdClassMapping(51, Packet51Place.class); //unsure
+///* 28 */     addIdClassMapping(52, Packet52BlockItemSwitch.class);
 /*    */
 /*    */     
-/* 38 */     addIdClassMapping(103, Packet103Entity.class); //unsure
-/* 39 */     addIdClassMapping(101, Packet101RelEntityMove.class);
-/* 40 */     addIdClassMapping(102, Packet102EntityLook.class); //unsure
-/* 41 */     addIdClassMapping(100, Packet100RelEntityMoveLook.class); //unsure
-/* 42 */     addIdClassMapping(2, Packet2NamedEntitySpawn.class);
-/* 36 */     addIdClassMapping(3, Packet3DestroyEntity.class);
-/* 32 */     addIdClassMapping(104, Packet104EntityTeleport.class);
+///* 38 */     addIdClassMapping(103, Packet103Entity.class); //unsure
+///* 39 */     addIdClassMapping(101, Packet101RelEntityMove.class);
+///* 40 */     addIdClassMapping(102, Packet102EntityLook.class); //unsure
+///* 41 */     addIdClassMapping(100, Packet100RelEntityMoveLook.class); //unsure
+///* 42 */     addIdClassMapping(2, Packet2NamedEntitySpawn.class);
+///* 36 */     addIdClassMapping(3, Packet3DestroyEntity.class);
+///* 32 */     addIdClassMapping(104, Packet104EntityTeleport.class);
 /*    */     
-/* 44 */     addIdClassMapping(9, Packet9PreChunk.class);
+///* 44 */     addIdClassMapping(9, Packet9PreChunk.class);
 /* 45 */     addIdClassMapping(10, Packet10MapChunk.class);
 /* 46 */     addIdClassMapping(11, Packet11MultiBlockChange.class);
 /* 47 */     addIdClassMapping(12, Packet12BlockChange.class);
@@ -76,7 +73,10 @@ import java.util.HashMap;
 /*    */   
 /*    */   public static void writePacket(Packet paramha, DataOutputStream paramDataOutputStream) throws IOException {
 //    if(paramha.b() < 53)
-//    System.out.println("Sending packet " + paramha.b());
+    // TODO: Not sure why this is happening!
+    if(paramha == null)
+        return;
+    System.out.println("Sending packet " + paramha.b());
     /* 81 */     paramDataOutputStream.write(paramha.b());
 /* 82 */     paramha.writePacketData(paramDataOutputStream);
 /*    */   }

@@ -77,7 +77,7 @@ import java.util.List;
 //                boolean bool2 = Math.abs(m - encodedRotationYaw) >= 8 || Math.abs(n - encodedRotationPitch) >= 8;
 ///*     */
 ///*  75 */       if (i1 < -128 || i1 >= 128 || i2 < -128 || i2 >= 128 || i3 < -128 || i3 >= 128) {
-/*  76 */         el = new Packet104EntityTeleport(this.trackedEntity.entityId, i, j, k, (byte)m, (byte)n);
+///*  76 */         el = new Packet104EntityTeleport(this.trackedEntity.entityId, i, j, k, (byte)m, (byte)n);
 ///*     */       }
 ///*  78 */       else if (bool1 && bool2) {
 ///*  79 */         el = new Packet23RelEntityMoveLook(this.trackedEntity.entityId, (byte)i1, (byte)i2, (byte)i3, (byte)m, (byte)n);
@@ -91,7 +91,7 @@ import java.util.List;
 /*     */
 /*     */
 ///*  89 */       if (el != null) {
-/*  90 */         sendPacketToTrackedPlayers(el);
+///*  90 */         sendPacketToTrackedPlayers(el);
 ///*     */       }
 /*     */
         if(bool1)
@@ -120,7 +120,7 @@ public void sendPacketToTrackedPlayers(Packet packet)
 /*     */
 public void sendDestroyEntityPacketToTrackedPlayers()
 {
-    sendPacketToTrackedPlayers(new Packet3DestroyEntity(trackedEntity.entityId));
+//    sendPacketToTrackedPlayers(new Packet3DestroyEntity(trackedEntity.entityId));
 }
 /*     */
 /*     */
@@ -154,8 +154,8 @@ public void sendDestroyEntityPacketToTrackedPlayers()
             if(!trackedPlayers.contains(entityplayermp))
             {
                 trackedPlayers.add(entityplayermp);
-                Packet packet = getSpawnPacket();
-                entityplayermp.playerNetServerHandler.sendPacket(packet);
+//                Packet packet = getSpawnPacket();
+//                entityplayermp.playerNetServerHandler.sendPacket(packet);
 //                if(shouldSendMotionUpdates)
 //                {
 //                    entityplayermp.playerNetServerHandler.sendPacket(new Packet28EntityVelocity(trackedEntity.entityId, trackedEntity.motionX, trackedEntity.motionY, trackedEntity.motionZ));
@@ -182,7 +182,7 @@ public void sendDestroyEntityPacketToTrackedPlayers()
         if(trackedPlayers.contains(entityplayermp))
         {
             trackedPlayers.remove(entityplayermp);
-            entityplayermp.playerNetServerHandler.sendPacket(new Packet3DestroyEntity(trackedEntity.entityId));
+//            entityplayermp.playerNetServerHandler.sendPacket(new Packet3DestroyEntity(trackedEntity.entityId));
         }
     }
 /*     */
@@ -197,6 +197,7 @@ public void sendDestroyEntityPacketToTrackedPlayers()
             }
 /*     */
 /*     */   private Packet getSpawnPacket() {
+    return null;
 //            if(trackedEntity instanceof EntityItem)
 //            {
 //                EntityItem entityitem = (EntityItem)trackedEntity;
@@ -212,7 +213,7 @@ public void sendDestroyEntityPacketToTrackedPlayers()
 //            }
 //    if(trackedEntity instanceof EntityPlayer)
 //    {
-        return new Packet2NamedEntitySpawn((EntityPlayer)trackedEntity);
+//        return new Packet2NamedEntitySpawn((EntityPlayer)trackedEntity);
 //    }
 //    return null;
 ///* 160 */     throw new IllegalArgumentException("Don't know how to add " + this.trackedEntity.getClass() + "!");

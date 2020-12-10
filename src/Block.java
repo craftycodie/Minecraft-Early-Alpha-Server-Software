@@ -107,7 +107,6 @@
 /* 163 */   public static final Block aS = (new BlockSnow(78, 66)).c(0.1F).a(soundClothFootstep);
 /* 164 */   public static final Block aT = (new BlockIce(79, 67)).c(0.5F).c(3).a(soundGlassFootstep);
 /* 165 */   public static final Block aU = (new BlockSnowBlock(80, 66)).c(0.2F).a(soundClothFootstep);
-/* 166 */   public static final Block aV = (new BlockCactus(81, 70)).c(0.4F).a(soundClothFootstep);
 /*     */   public int aZ;
 /*     */   public final int blockId;
 /*     */   

@@ -39,7 +39,7 @@
 /*     */   public void addPlayer(EntityPlayerMP paramdq) {
 /*  34 */     if (this.players.contains(paramdq)) throw new IllegalStateException("Failed to add player. " + paramdq + " already is in chunk " + this.chunkX + ", " + this.chunkZ);
 /*  35 */     paramdq.field_420_ah.add(this.currentChunk);
-/*  36 */     paramdq.playerNetServerHandler.sendPacket(new Packet9PreChunk(this.currentChunk.a, this.currentChunk.b, true));
+/*  36 */     //paramdq.playerNetServerHandler.sendPacket(new Packet9PreChunk(this.currentChunk.a, this.currentChunk.b, true));
             paramdq.playerNetServerHandler.sendPacket(new Packet10MapChunk(this.currentChunk.a * 16, 0, this.currentChunk.b * 16, 16, 128, 16, PlayerManager.getMinecraftServer(playerManager).worldserver));
 
 ///*  73 */     paramdq.playerNetServerHandler.sendPacket(new Packet52MultiBlockChange(this.currentChunk.handlePlace, this.currentChunk.b, PlayerManager.getMinecraftServer(playerManager).worldserver));
@@ -65,8 +65,10 @@
 /*     */
 /*  56 */     paramdq.loadedChunks.remove(this.currentChunk);
 /*  57 */     if (paramdq.field_420_ah.contains(this.currentChunk)) {
-/*  58 */       paramdq.playerNetServerHandler.sendPacket(new Packet9PreChunk(this.chunkX, this.chunkZ, false));
-/*     */     }
+/*  58 */       //paramdq.playerNetServerHandler.sendPacket(new Packet9PreChunk(this.chunkX, this.chunkZ, false));
+        paramdq.playerNetServerHandler.sendPacket(new Packet10MapChunk(this.currentChunk.a * 16, 0, this.currentChunk.b * 16, 16, 128, 16, PlayerManager.getMinecraftServer(playerManager).worldserver));
+
+        /*     */     }
 /*     */   }
 /*     */
 

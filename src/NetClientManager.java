@@ -33,34 +33,7 @@
 /*    */   public void a(Packet12BlockChange parameh) {
 /* 34 */     a(parameh);
 /*    */   }
-/*    */   
-/*    */   public void a(Packet9PreChunk paramct) {
-/* 38 */     a(paramct);
-/*    */   }
-/*    */   
-/*    */   public void a(Packet2NamedEntitySpawn paramc) {
-/* 42 */     a(paramc);
-/*    */   }
-/*    */   
-/*    */   public void a(Packet103Entity paramel) {
-/* 46 */     a(paramel);
-/*    */   }
-/*    */   
-/*    */   public void a(Packet104EntityTeleport paramby) {
-/* 50 */     a(paramby);
-/*    */   }
-/*    */   
-/*    */   public void handlePlace(Packet51Place parames) {
-/* 54 */     handlePlace(parames);
-/*    */   }
-/*    */   
-/*    */   public void a(Packet52BlockItemSwitch paramfi) {
-/* 58 */     a(paramfi);
-/*    */   }
-/*    */   
-/*    */   public void a(Packet3DestroyEntity paramcm) {
-/* 62 */     a(paramcm);
-/*    */   }
+/*    */
 /*    */
 /*    */
 /*    */

@@ -357,17 +357,17 @@
 ///*     */     }
         /*     */
         /* 702 */
-        for (m = 0; m < 1; m++) {
-            /* 703 */
-            int n = i + this.j.nextInt(16) + 8;
-            /* 704 */
-            int i1 = this.j.nextInt(128);
-            /* 705 */
-            int i2 = j + this.j.nextInt(16) + 8;
-            /* 706 */
-            (new ee()).a(this.p, this.j, n, i1, i2);
-            /*     */
-        }
+//        for (m = 0; m < 1; m++) {
+//            /* 703 */
+//            int n = i + this.j.nextInt(16) + 8;
+//            /* 704 */
+//            int i1 = this.j.nextInt(128);
+//            /* 705 */
+//            int i2 = j + this.j.nextInt(16) + 8;
+//            /* 706 */
+//            (new ee()).a(this.p, this.j, n, i1, i2);
+//            /*     */
+//        }
         /*     */
         /* 709 */
         for (m = 0; m < 50; m++) {
