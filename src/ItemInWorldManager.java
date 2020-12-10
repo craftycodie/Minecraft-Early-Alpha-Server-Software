@@ -82,7 +82,7 @@
 /* 80 */     ItemStack gc = this.thisPlayer.A();
 /* 81 */     if (gc != null) {
 /* 82 */       gc.a(i, paramInt1, paramInt2, paramInt3);
-/* 83 */       if (gc.itemID == 0) {
+/* 83 */       if (gc.stackSize == 0) {
 /* 84 */         gc.a(this.thisPlayer);
 /* 85 */         this.thisPlayer.B();
 /*    */       } 

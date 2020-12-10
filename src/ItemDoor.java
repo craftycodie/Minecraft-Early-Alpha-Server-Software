@@ -61,7 +61,7 @@
 /* 61 */     paramdp.setBlockWithNotify(paramInt1, paramInt2 + 1, paramInt3, et.blockId);
 /* 62 */     paramdp.b(paramInt1, paramInt2 + 1, paramInt3, i + 8);
 /*    */     
-/* 64 */     paramgc.itemID--;
+/* 64 */     paramgc.stackSize--;
 /* 65 */     return true;
 /*    */   }
 /*    */ }

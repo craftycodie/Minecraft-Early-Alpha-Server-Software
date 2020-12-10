@@ -33,7 +33,7 @@
 /*    */   
 /*    */   public void a(int paramInt, ItemStack paramgc) {
 /* 35 */     this.e[paramInt] = paramgc;
-/* 36 */     if (paramgc != null && paramgc.itemID > c()) paramgc.itemID = c();
+/* 36 */     if (paramgc != null && paramgc.stackSize > c()) paramgc.stackSize = c();
 /*    */   
 /*    */   }
 /*    */ 

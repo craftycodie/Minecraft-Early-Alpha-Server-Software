@@ -29,7 +29,7 @@
 /* 29 */       if (paramInt4 == 5) paramInt1++;
 /*    */     
 /*    */     } 
-/* 32 */     if (paramgc.itemID == 0) return false;
+/* 32 */     if (paramgc.stackSize == 0) return false;
 /*    */ 
 /*    */     
 /* 35 */     if (paramdp.a(this.a, paramInt1, paramInt2, paramInt3, false)) {
@@ -37,7 +37,7 @@
 /* 37 */       if (paramdp.setBlockWithNotify(paramInt1, paramInt2, paramInt3, this.a)) {
 /* 38 */         et.blocksList[this.a].c(paramdp, paramInt1, paramInt2, paramInt3, paramInt4);
 /* 39 */         paramdp.a((paramInt1 + 0.5F), (paramInt2 + 0.5F), (paramInt3 + 0.5F), et.bj.c(), (et.bj.a() + 1.0F) / 2.0F, et.bj.b() * 0.8F);
-/* 40 */         paramgc.itemID--;
+/* 40 */         paramgc.stackSize--;
 /*    */       } 
 /*    */     } 
 /*    */ 

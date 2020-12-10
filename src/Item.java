@@ -115,6 +115,13 @@
 /*     */   
 /* 116 */   public static Item aD = (new Item(78)).a(103);
 /* 117 */   public static Item aE = (new Item(79)).a(77);
+/* 118 */   public static Item aF = (new Item(80)).a(22);
+/* 119 */   public static Item aG = (new Item(81)).a(57);
+/* 120 */   public static Item aH = (new ItemReed(82, Block.aX)).a(27);
+/* 121 */   public static Item aI = (new Item(83)).a(58);
+/* 122 */   public static Item aJ = (new Item(84)).a(59);
+/*     */
+/* 124 */   public static Item aK = (new Item(85)).a(30);
 /*     */
 /*     */   
 /*     */   public final int aQ;

@@ -21,7 +21,7 @@
 /*    */     
 /* 22 */     if (i == Block.aG.blockId) {
 /* 23 */       paramdp.a(new EntityMinecart(paramdp, (paramInt1 + 0.5F), (paramInt2 + 0.5F), (paramInt3 + 0.5F), this.a));
-/* 24 */       paramgc.itemID--;
+/* 24 */       paramgc.stackSize--;
 /* 25 */       return true;
 /*    */     } 
 /* 27 */     return false;

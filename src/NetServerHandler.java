@@ -318,12 +318,7 @@
 /* 291 */       sendPacket(new Packet3Chat("§9Unknown command"));
 /*     */     } 
 /*     */   }
-/*     */   
-/*     */   public void a(Packet18Animation paramn) {
-/* 296 */     if (paramn.b == 1) {
-/* 297 */       this.playerEntity.y();
-/*     */     }
-/*     */   }
+/*     */
 /*     */
 /*     */   public void a(Packet255KickDisconnect paramhx) {
 /* 302 */     this.netManager.a("Quitting");

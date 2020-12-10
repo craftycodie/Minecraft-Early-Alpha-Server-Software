@@ -8,7 +8,7 @@
 /*     */ 
 /*     */ public final class ItemStack
 /*     */ {
-/*  11 */   public int itemID = 0;
+/*  11 */   public int stackSize = 0;
 /*     */   public int b;
 /*     */   public int c;
 /*     */   public int d;
@@ -35,12 +35,12 @@
 /*     */   
 /*     */   public ItemStack(int paramInt1, int paramInt2) {
 /*  37 */     this.c = paramInt1;
-/*  38 */     this.itemID = paramInt2;
+/*  38 */     this.stackSize = paramInt2;
 /*     */   }
 /*     */   
 /*     */   public ItemStack(int paramInt1, int paramInt2, int paramInt3) {
 /*  42 */     this.c = paramInt1;
-/*  43 */     this.itemID = paramInt2;
+/*  43 */     this.stackSize = paramInt2;
 /*  44 */     this.d = paramInt3;
 /*     */   }
 /*     */ 
@@ -81,14 +81,14 @@
 /*     */   
 /*     */   public NBTTagCompound a(NBTTagCompound paramr) {
 /*  83 */     paramr.setShort("id", (short)this.c);
-/*  84 */     paramr.a("Count", (byte)this.itemID);
+/*  84 */     paramr.a("Count", (byte)this.stackSize);
 /*  85 */     paramr.setShort("Damage", (short)this.d);
 /*  86 */     return paramr;
 /*     */   }
 /*     */   
 /*     */   public void b(NBTTagCompound paramr) {
 /*  90 */     this.c = paramr.getShort("id");
-/*  91 */     this.itemID = paramr.b("Count");
+/*  91 */     this.stackSize = paramr.b("Count");
 /*  92 */     this.d = paramr.getShort("Damage");
 /*     */   }
 /*     */   
@@ -103,8 +103,8 @@
 /*     */   public void a(int paramInt) {
 /* 104 */     this.d += paramInt;
 /* 105 */     if (this.d > c()) {
-/* 106 */       this.itemID--;
-/* 107 */       if (this.itemID < 0) this.itemID = 0;
+/* 106 */       this.stackSize--;
+/* 107 */       if (this.stackSize < 0) this.stackSize = 0;
 /* 108 */       this.d = 0;
 /*     */     } 
 /*     */   }

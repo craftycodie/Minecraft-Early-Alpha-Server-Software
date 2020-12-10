@@ -77,10 +77,7 @@
 /*    */   public void a(Packet17UnknownItemStack parameb) {
 /* 78 */     a(parameb);
 /*    */   }
-/*    */   
-/*    */   public void a(Packet18Animation paramn) {
-/* 86 */     a(paramn);
-/*    */   }
+/*    */
 /*    */ }
 
 

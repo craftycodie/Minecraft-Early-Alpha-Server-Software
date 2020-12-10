@@ -37,7 +37,7 @@
 /*     */   
 /*     */   private int c(int paramInt) {
 /*  39 */     for (int b = 0; b < this.a.length; b++) {
-/*  40 */       if (this.a[b] != null && (this.a[b]).c == paramInt && (this.a[b]).itemID < this.a[b].b() && (this.a[b]).itemID < d()) return b;
+/*  40 */       if (this.a[b] != null && (this.a[b]).c == paramInt && (this.a[b]).stackSize < this.a[b].b() && (this.a[b]).stackSize < d()) return b;
 /*     */     } 
 /*  42 */     return -1;
 /*     */   }
@@ -100,17 +100,17 @@
 /*     */     }
 /*     */     
 /* 102 */     int j = paramInt2;
-/* 103 */     if (j > this.a[i].b() - (this.a[i]).itemID) {
-/* 104 */       j = this.a[i].b() - (this.a[i]).itemID;
+/* 103 */     if (j > this.a[i].b() - (this.a[i]).stackSize) {
+/* 104 */       j = this.a[i].b() - (this.a[i]).stackSize;
 /*     */     }
-/* 106 */     if (j > d() - (this.a[i]).itemID) {
-/* 107 */       j = d() - (this.a[i]).itemID;
+/* 106 */     if (j > d() - (this.a[i]).stackSize) {
+/* 107 */       j = d() - (this.a[i]).stackSize;
 /*     */     }
 /*     */     
 /* 110 */     if (j == 0) return paramInt2;
 /*     */     
 /* 112 */     paramInt2 -= j;
-/* 113 */     (this.a[i]).itemID += j;
+/* 113 */     (this.a[i]).stackSize += j;
 /* 114 */     (this.a[i]).b = 5;
 /*     */     
 /* 116 */     return paramInt2;
@@ -137,8 +137,8 @@
 /*     */   
 /*     */   public boolean addItemStackToInventory(ItemStack paramgc) {
 /* 139 */     if (paramgc.d == 0) {
-/* 140 */       paramgc.itemID = a(paramgc.c, paramgc.itemID);
-/* 141 */       if (paramgc.itemID == 0) return true;
+/* 140 */       paramgc.stackSize = a(paramgc.c, paramgc.stackSize);
+/* 141 */       if (paramgc.stackSize == 0) return true;
 /*     */     
 /*     */     } 
 /* 144 */     int i = g();
@@ -302,7 +302,7 @@
 /* 302 */     for (int b = 0; b < this.b.length; b++) {
 /* 303 */       if (this.b[b] != null && this.b[b].a() instanceof ItemArmour) {
 /* 304 */         this.b[b].a(paramInt);
-/* 305 */         if ((this.b[b]).itemID == 0) {
+/* 305 */         if ((this.b[b]).stackSize == 0) {
 /* 306 */           this.b[b].a(this.e);
 /* 307 */           this.b[b] = null;
 /*     */         } 

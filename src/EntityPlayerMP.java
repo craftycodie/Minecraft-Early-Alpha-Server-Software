@@ -98,7 +98,7 @@
 /*  95 */     if (!this.an) {
 /*  96 */       this.ao = -1;
 /*  97 */       this.an = true;
-/*  98 */       this.mcServer.k.sendPacketToTrackedPlayers(this, new Packet18Animation(this, 1));
+///*  98 */       this.mcServer.k.sendPacketToTrackedPlayers(this, new Packet18Animation(this, 1));
 /*     */     } 
 /*     */   }
 /*     */   

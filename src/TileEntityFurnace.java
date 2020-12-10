@@ -110,8 +110,8 @@
 /* 110 */       if (this.f > 0) {
 /* 111 */         bool2 = true;
 /* 112 */         if (this.e[1] != null) {
-/* 113 */           (this.e[1]).itemID--;
-/* 114 */           if ((this.e[1]).itemID == 0) this.e[1] = null;
+/* 113 */           (this.e[1]).stackSize--;
+/* 114 */           if ((this.e[1]).stackSize == 0) this.e[1] = null;
 /*     */         
 /*     */         } 
 /*     */       } 
@@ -141,8 +141,8 @@
 /* 141 */     if (i < 0) return false; 
 /* 142 */     if (this.e[2] == null) return true; 
 /* 143 */     if ((this.e[2]).c != i) return false; 
-/* 144 */     if ((this.e[2]).itemID < c() && (this.e[2]).itemID < this.e[2].b()) return true;
-/* 145 */     if ((this.e[2]).itemID < Item.c[i].a()) return true;
+/* 144 */     if ((this.e[2]).stackSize < c() && (this.e[2]).stackSize < this.e[2].b()) return true;
+/* 145 */     if ((this.e[2]).stackSize < Item.c[i].a()) return true;
 /* 146 */     return false;
 /*     */   }
 /*     */   
@@ -151,10 +151,10 @@
 /*     */       return; 
 /* 152 */     int i = b((this.e[0].a()).aQ);
 /* 153 */     if (this.e[2] == null) { this.e[2] = new ItemStack(i, 1); }
-/* 154 */     else if ((this.e[2]).c == i) { (this.e[2]).itemID++; }
+/* 154 */     else if ((this.e[2]).c == i) { (this.e[2]).stackSize++; }
 /*     */     
-/* 156 */     (this.e[0]).itemID--;
-/* 157 */     if ((this.e[0]).itemID <= 0) this.e[0] = null;
+/* 156 */     (this.e[0]).stackSize--;
+/* 157 */     if ((this.e[0]).stackSize <= 0) this.e[0] = null;
 /*     */   }
 /*     */   
 /*     */   private int b(int paramInt) {

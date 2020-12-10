@@ -22,7 +22,7 @@ import java.io.IOException;
 /*    */   public Packet21PickupSpawn(EntityItem entityitem) {
 /* 21 */     this.entityId = entityitem.entityId;
 /* 22 */     this.itemID = entityitem.item.c;
-/* 23 */     this.count = entityitem.item.itemID;
+/* 23 */     this.count = entityitem.item.stackSize;
 /* 24 */     this.xPosition = MathHelper.floor_double(entityitem.posX * 32.0D);
 /* 25 */     this.yPosition = MathHelper.floor_double(entityitem.posY * 32.0D);
 /* 26 */     this.zPosition = MathHelper.floor_double(entityitem.posZ * 32.0D);

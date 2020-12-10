@@ -194,7 +194,7 @@
 /*     */   public void onCollideWithPlayer(EntityPlayer parameq) {
 /* 195 */     if (this.worldObj.singleplayerWorld)
 /*     */       return;
-/* 197 */     int i = this.item.itemID;
+/* 197 */     int i = this.item.stackSize;
 /* 198 */     if (this.delayBeforeCanPickup == 0 && parameq.inventory.addItemStackToInventory(this.item)) {
 /* 199 */       this.worldObj.playSoundAtEntity(this, "random.pop", 0.2F, ((this.Q.nextFloat() - this.Q.nextFloat()) * 0.7F + 1.0F) * 2.0F);
 /* 200 */       parameq.onItemPickup(this, i);

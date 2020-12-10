@@ -112,10 +112,10 @@
 /* 112 */         float f2 = this.a.nextFloat() * 0.8F + 0.1F;
 /* 113 */         float f3 = this.a.nextFloat() * 0.8F + 0.1F;
 /*     */         
-/* 115 */         while (gc.itemID > 0) {
+/* 115 */         while (gc.stackSize > 0) {
 /* 116 */           int i = this.a.nextInt(21) + 10;
-/* 117 */           if (i > gc.itemID) i = gc.itemID;
-/* 118 */           gc.itemID -= i;
+/* 117 */           if (i > gc.stackSize) i = gc.stackSize;
+/* 118 */           gc.stackSize -= i;
 /*     */           
 /* 120 */           EntityItem fa = new EntityItem(paramdp, (paramInt1 + f1), (paramInt2 + f2), (paramInt3 + f3), new ItemStack(gc.c, i, gc.d));
 /* 121 */           float f = 0.05F;

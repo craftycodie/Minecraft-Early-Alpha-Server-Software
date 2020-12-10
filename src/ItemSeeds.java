@@ -19,7 +19,7 @@
 /*    */     
 /* 20 */     if (i == Block.aA.blockId) {
 /* 21 */       paramdp.setBlockWithNotify(paramInt1, paramInt2 + 1, paramInt3, this.a);
-/* 22 */       paramgc.itemID--;
+/* 22 */       paramgc.stackSize--;
 /* 23 */       return true;
 /*    */     } 
 /* 25 */     return false;

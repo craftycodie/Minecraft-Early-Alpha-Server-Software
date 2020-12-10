@@ -33,6 +33,7 @@
 /* 33 */     a(EntitySpider.class, "Spider");
 /* 34 */     a(EntityGiantZombie.class, "Giant");
 /* 35 */     a(EntityZombie.class, "Zombie");
+/* 36 */     a(EntitySlime.class, "Slime");
 /*    */
 /* 38 */     a(EntityPig.class, "Pig");
 /* 39 */     a(EntitySheep.class, "Sheep");

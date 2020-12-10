@@ -96,10 +96,10 @@
 /*  96 */         float f2 = this.Q.nextFloat() * 0.8F + 0.1F;
 /*  97 */         float f3 = this.Q.nextFloat() * 0.8F + 0.1F;
 /*     */         
-/*  99 */         while (gc1.itemID > 0) {
+/*  99 */         while (gc1.stackSize > 0) {
 /* 100 */           int i = this.Q.nextInt(21) + 10;
-/* 101 */           if (i > gc1.itemID) i = gc1.itemID;
-/* 102 */           gc1.itemID -= i;
+/* 101 */           if (i > gc1.stackSize) i = gc1.stackSize;
+/* 102 */           gc1.stackSize -= i;
 /*     */           
 /* 104 */           EntityItem fa = new EntityItem(this.worldObj, this.posX + f1, this.posY + f2, this.posZ + f3, new ItemStack(gc1.c, i, gc1.d));
 /* 105 */           float f = 0.05F;

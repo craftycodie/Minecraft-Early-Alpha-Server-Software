@@ -22,7 +22,7 @@
 /* 22 */     EntityPainting bp = new EntityPainting(paramdp, paramInt1, paramInt2, paramInt3, b);
 /* 23 */     if (bp.b()) {
 /* 24 */       paramdp.a(bp);
-/* 25 */       paramgc.itemID--;
+/* 25 */       paramgc.stackSize--;
 /*    */     } 
 /* 27 */     return true;
 /*    */   }

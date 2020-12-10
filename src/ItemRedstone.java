@@ -18,7 +18,7 @@
 /* 18 */     if (paramInt4 == 5) paramInt1++; 
 /* 19 */     if (paramdp.getBlockId(paramInt1, paramInt2, paramInt3) != 0) return false;
 /* 20 */     if (Block.av.a(paramdp, paramInt1, paramInt2, paramInt3)) {
-/* 21 */       paramgc.itemID--;
+/* 21 */       paramgc.stackSize--;
 /* 22 */       paramdp.setBlockWithNotify(paramInt1, paramInt2, paramInt3, Block.av.blockId);
 /*    */     } 
 /*    */     

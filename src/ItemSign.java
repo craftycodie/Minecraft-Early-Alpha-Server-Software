@@ -34,7 +34,7 @@
 /* 34 */       paramdp.b(paramInt1, paramInt2, paramInt3, Block.aI.blockId, paramInt4);
 /*    */     } 
 /*    */     
-/* 37 */     paramgc.itemID--;
+/* 37 */     paramgc.stackSize--;
 /* 38 */     parameq.a((TileEntitySign)paramdp.k(paramInt1, paramInt2, paramInt3));
 /* 39 */     return true;
 /*    */   }
