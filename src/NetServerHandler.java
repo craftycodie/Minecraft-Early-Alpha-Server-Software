@@ -180,25 +180,27 @@
 /* 153 */     int i = paramgp.a;
 /* 154 */     int j = paramgp.b;
 /* 155 */     int k = paramgp.c;
-///* 156 */     int m = paramgp.d;
-///* 157 */     int n = (int) MathHelper.e((i - this.mcServer.worldserver.l));
-///* 158 */     int i1 = (int) MathHelper.e((k - this.mcServer.worldserver.n));
-///* 159 */     if (n > i1) i1 = n;
-///* 160 */     if (paramgp.e == 0) {
-///* 161 */       if (i1 > 16) this.playerEntity.itemInWorldManager.a(i, j, k);
-///* 162 */     } else if (paramgp.e == 2) {
-///* 163 */       this.playerEntity.itemInWorldManager.a();
-///* 164 */     } else if (paramgp.e == 1) {
-///* 165 */       if (i1 > 16) this.playerEntity.itemInWorldManager.a(i, j, k, m);
-///* 166 */     } else if (paramgp.e == 3) {
-///* 167 */       double d1 = this.playerEntity.posX - i + 0.5D;
-///* 168 */       double d2 = this.playerEntity.posY - j + 0.5D;
-///* 169 */       double d3 = this.playerEntity.posZ - k + 0.5D;
-///* 170 */       double d4 = d1 * d1 + d2 * d2 + d3 * d3;
-///* 171 */       if (d4 < 256.0D) {
+/* 156 */     int m = paramgp.d;
+/* 157 */     int n = (int) MathHelper.e((i - this.mcServer.worldserver.l));
+/* 158 */     int i1 = (int) MathHelper.e((k - this.mcServer.worldserver.n));
+/* 159 */     if (n > i1) i1 = n;
+/* 160 */     if (paramgp.e == 0) {
+/* 161 */       if (i1 > 16) this.playerEntity.itemInWorldManager.a(i, j, k);
+/* 162 */     } else if (paramgp.e == 2) {
+/* 163 */       this.playerEntity.itemInWorldManager.a();
+/* 164 */     } else if (paramgp.e == 1) {
+/* 165 */       if (i1 > 16) this.playerEntity.itemInWorldManager.a(i, j, k, m);
+/* 166 */     } else if (paramgp.e == 3) {
+/* 167 */       double d1 = this.playerEntity.posX - i + 0.5D;
+/* 168 */       double d2 = this.playerEntity.posY - j + 0.5D;
+/* 169 */       double d3 = this.playerEntity.posZ - k + 0.5D;
+/* 170 */       double d4 = d1 * d1 + d2 * d2 + d3 * d3;
+/* 171 */       if (d4 < 256.0D) {
+                    //TODO: This is a kinda hacky fix for blocks not breaking properly. Could be improved.
+                    this.mcServer.worldserver.setBlockWithNotify(i, j, k, 0);
 /* 172 */         this.playerEntity.playerNetServerHandler.sendPacket(new Packet53BlockChange(i, j, k, this.mcServer.worldserver));
-///*     */       }
-///*     */     }
+/*     */       }
+/*     */     }
 /*     */   }
 /*     */   
 /*     */   public void a(Packet15Place parames) {

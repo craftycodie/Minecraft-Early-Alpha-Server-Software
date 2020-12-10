@@ -41,7 +41,8 @@
 /* 39 */     if (paramInt1 == this.g && paramInt2 == this.h && paramInt3 == this.i) {
 /* 40 */       int i = this.thisWorld.getBlockId(paramInt1, paramInt2, paramInt3);
 /* 41 */       if (i == 0)
-/* 42 */         return;  Block et = Block.blocksList[i];
+/* 42 */         return;
+                Block et = Block.blocksList[i];
 /*    */       
 /* 44 */       this.d += et.a(this.thisPlayer);
 /*    */       
