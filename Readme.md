@@ -2,7 +2,8 @@
 ## Servers
 
 *Development begins*
-
+- Alpha 1.0.5
+  - This client has barely any netcode and crashes almost instantly.
 - Alpha 1.0.6
 - Alpha 1.0.7
 - Alpha 1.0.8
