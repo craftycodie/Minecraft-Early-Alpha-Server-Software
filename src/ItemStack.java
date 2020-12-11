@@ -68,7 +68,13 @@
 /*     */ 
 /*     */   
 /*     */   public boolean a(EntityPlayer parameq, World paramdp, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {
-/*  71 */     return a().a(this, parameq, paramdp, paramInt1, paramInt2, paramInt3, paramInt4);
+                try {
+                    /*  71 */
+                    return a().a(this, parameq, paramdp, paramInt1, paramInt2, paramInt3, paramInt4);
+                } catch (NullPointerException npe) {
+                    // ignore.
+                    return false;
+                }
 /*     */   }
 /*     */   
 /*     */   public float a(Block paramet) {
