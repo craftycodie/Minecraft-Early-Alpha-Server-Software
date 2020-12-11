@@ -214,6 +214,58 @@
                 if (parames.a == 68) //door
                     parames.a = 64;
 
+                if (this.playerEntity.inventory.getCurrentItem().itemID > 255) {
+                    int blockId;
+                    switch(this.playerEntity.inventory.getCurrentItem().itemID) {
+                        case 324: // door
+                            parames.a = 64;
+                            break;
+                        case 330: // iron door
+                            parames.a = 71;
+                            break;
+                        case 323: // sign
+                            parames.a = 63;
+                            break;
+                        case 325:  // empty bucket
+                            j -= 1;
+                            blockId = this.playerEntity.worldObj.getBlockId(i, j, k);
+                            if (blockId == 9 || blockId == 11) {
+                                parames.a = 0;
+                                break;
+                            }
+                            return;
+                        case 326: // water bucket
+                            parames.a = 9;
+                            break;
+                        case 327: // lava bucket
+                            parames.a = 11;
+                            break;
+                            // TODO: Fix hoes.
+                        case 290: // hoes
+                        case 291:
+                        case 292:
+                        case 293:
+                        case 294:
+                            j -= 1;
+                            blockId = this.playerEntity.worldObj.getBlockId(i, j, k);
+                            if (blockId == 2 || blockId == 3) {
+                                parames.a = 60;
+                                break;
+                            }
+                        case 295: // seeds
+                            if (this.playerEntity.worldObj.getBlockId(i, j-1, k) == 60) {
+                                parames.a = 59;
+                                break;
+                            } else
+                                return;
+                        case 331: // redstone
+                            parames.a = 55;
+                            break;
+                        default:
+                            return;
+                    }
+                }
+
 /* 185 */     if (i1 > 16 && parames.a != 36) {
 /* 186 */       ItemStack gc = new ItemStack(parames.a);
 /* 187 */       this.playerEntity.itemInWorldManager.a(this.playerEntity, this.mcServer.worldserver, gc, i, j, k, m);
