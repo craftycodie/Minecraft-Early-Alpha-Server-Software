@@ -77,7 +77,7 @@ import java.util.logging.Level;
 /*  93 */     } catch (IOException iOException) {
 /*  94 */       a.warning("**** FAILED TO BIND TO PORT!");
 /*  95 */       a.log(Level.WARNING, "The exception was: " + iOException.toString());
-/*  96 */       a.warning("Perhaps chunkExists server is already running on that port?");
+/*  96 */       a.warning("Perhaps a server is already running on that port?");
 /*  97 */       return false;
 /*     */     } 
 /*  99 */     this.configManager = new fg(this);
@@ -231,7 +231,7 @@ import java.util.logging.Level;
 /* 248 */     while (this.n.size() > 0) {
 /* 249 */       String str = (String)this.n.remove(0);
 /* 250 */       if (str.toLowerCase().startsWith("help") || str.toLowerCase().startsWith("?")) {
-/* 251 */         a.info("To run the server without chunkExists gui, start it like this:");
+/* 251 */         a.info("To run the server without a gui, start it like this:");
 /* 252 */         a.info("   java -Xmx1024M -Xms1024M -jar minecraft_server.jar nogui");
 /* 253 */         a.info("Console commands:");
 /* 254 */         a.info("   help  or  ?          shows this message");
