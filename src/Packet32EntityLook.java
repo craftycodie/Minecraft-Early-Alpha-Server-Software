@@ -19,7 +19,7 @@ public void a(DataInputStream dataInputStream) throws IOException {
     super.a(dataInputStream);
     this.xPosition = dataInputStream.readByte();
     this.yPosition = dataInputStream.readByte();
-    this.zPosition = dataInputStream.readByte();
+//    this.zPosition = dataInputStream.readByte();
 }
 /*    */
 @Override
@@ -27,7 +27,7 @@ public void a(DataOutputStream dataOutputStream) throws IOException {
     super.a(dataOutputStream);
     dataOutputStream.writeByte(this.xPosition);
     dataOutputStream.writeByte(this.yPosition);
-    dataOutputStream.writeByte(this.zPosition);
+//    dataOutputStream.writeByte(this.zPosition);
 }
 /*    */   
 /*    */   public int getPacketSize() {
