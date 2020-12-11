@@ -171,7 +171,7 @@
         /* 595 */       int n = i + this.j.nextInt(16);
         /* 596 */       int i1 = this.j.nextInt(128);
         /* 597 */       int i2 = j + this.j.nextInt(16);
-        /* 598 */       (new WorldGenCactus(32)).a(this.p, this.j, n, i1, i2);
+        /* 598 */       (new WorldGenClay(32)).a(this.p, this.j, n, i1, i2);
         /*     */     }
         /*     */
         /* 601 */
