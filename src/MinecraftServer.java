@@ -236,10 +236,8 @@ import java.util.logging.Level;
 /* 253 */         a.info("Console commands:");
 /* 254 */         a.info("   help  or  ?          shows this message");
 /* 255 */         a.info("   kick <player>        removes item player from the server");
-/* 256 */         a.info("   give <player> <id>   gives item player item resource");
 /* 257 */         a.info("   stop                 gracefully stops the server");
 /* 258 */         a.info("   list                 lists all currently connected players");
-/* 259 */         a.info("   say <message>        broadcasts item message to all players"); continue;
 /* 260 */       }  if (str.toLowerCase().startsWith("list")) {
 /* 261 */         a.info("Connected players: " + this.configManager.c()); continue;
 /* 262 */       }  if (str.toLowerCase().startsWith("stop")) {
@@ -259,37 +257,7 @@ import java.util.logging.Level;
 /* 276 */           a.log(Level.INFO, "Kicking " + dq.username); continue;
 /*     */         } 
 /* 278 */         a.log(Level.INFO, "Can't find user " + str1 + ". No kick."); continue;
-/*     */       } 
-/* 280 */       if (str.toLowerCase().startsWith("give ")) {
-/* 281 */         String[] arrayOfString = str.split(" ");
-/* 282 */         if (arrayOfString.length != 3) {
-/*     */           return;
-/*     */         }
-/*     */         
-/* 286 */         String str1 = arrayOfString[1];
-/* 287 */         EntityPlayerMP dq = null; int i;
-/* 288 */         for (i = 0; i < this.configManager.b.size(); i++) {
-/* 289 */           EntityPlayerMP dq1 = (EntityPlayerMP)this.configManager.b.get(i);
-/* 290 */           if (dq1.username.equalsIgnoreCase(str1)) {
-/* 291 */             dq = dq1;
-/*     */           }
-/*     */         } 
-/*     */         
-/* 295 */         if (dq != null) {
-/*     */           try {
-/* 297 */             i = Integer.parseInt(arrayOfString[2]);
-/* 298 */             if (Item.c[i] != null) {
-/* 299 */               a.log(Level.INFO, "Giving " + dq.username + " some " + i);
-/* 300 */               dq.a(new ItemStack(i, 1)); continue;
-/*     */             } 
-/* 302 */             a.log(Level.INFO, "There's no item with id " + i);
-/*     */           }
-/* 304 */           catch (NumberFormatException numberFormatException) {
-/* 305 */             a.log(Level.INFO, "There's no item with id " + arrayOfString[2]);
-/*     */           }  continue;
-/*     */         } 
-/* 308 */         a.log(Level.INFO, "Can't find user " + str1); continue;
-/*     */       } 
+/*     */       }
 /* 310 */       if (str.toLowerCase().startsWith("say ")) {
 /* 311 */         str = str.substring(str.indexOf(" ")).trim();
 /* 312 */         a.info("[Server] " + str);
