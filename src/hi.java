@@ -276,9 +276,9 @@
         /* 654 */
         fv = new WorldGenTrees();
         /* 655 */
-        if (this.j.nextInt(10) == 0)
-            /* 656 */ fv = new WorldGenBigTree();
-        /*     */
+//        if (this.j.nextInt(10) == 0)
+//            /* 656 */ fv = new WorldGenBigTree();
+//        /*     */
         int m;
         /* 658 */
         for (m = 0; m < k; m++) {
