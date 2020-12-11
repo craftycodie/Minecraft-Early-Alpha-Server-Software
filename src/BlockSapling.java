@@ -24,7 +24,7 @@
 /*    */       } else {
 /* 25 */         WorldGenerator fv;
                 paramdp.setBlock(paramInt1, paramInt2, paramInt3, 0);
-/* 26 */         fv = new WorldGenTree();
+/* 26 */         fv = new WorldGenTrees();
 /* 27 */         if (paramRandom.nextInt(10) == 0) {
 /* 28 */           fv = new WorldGenBigTree();
 /*    */         }
