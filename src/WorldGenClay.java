@@ -6,13 +6,13 @@
 /*    */ 
 /*    */ 
 /*    */ 
-/*    */ public class WorldGenCactus
+/*    */ public class WorldGenClay
 /*    */   extends WorldGenerator
 /*    */ {
 /*    */   private int a;
 /*    */   private int b;
 /*    */   
-/*    */   public WorldGenCactus(int paramInt) {
+/*    */   public WorldGenClay(int paramInt) {
 /* 16 */     this.a = Block.aW.blockId;
 /* 17 */     this.b = paramInt;
 /*    */   }
