@@ -215,9 +215,6 @@
 /* 186 */       ItemStack gc = new ItemStack(parames.a);
 /* 187 */       this.playerEntity.itemInWorldManager.a(this.playerEntity, this.mcServer.worldserver, gc, i, j, k, m);
 /*     */     }
-            //TODO: This is a kinda hacky fix for blocks not placing properly. Could be improved.
-
-                this.mcServer.worldserver.setBlockWithNotify(i, j, k, m);
 /* 189 */     this.playerEntity.playerNetServerHandler.sendPacket(new Packet12BlockChange(i, j, k, this.mcServer.worldserver));
 /*     */   }
 /*     */   
