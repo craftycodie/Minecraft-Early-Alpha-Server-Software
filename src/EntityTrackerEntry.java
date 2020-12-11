@@ -84,7 +84,8 @@ import java.util.List;
 /*  80 */       } else if (bool1) {
 /*  81 */         el = new Packet31RelEntityMove(this.trackedEntity.entityId, (byte)i1, (byte)i2, (byte)i3);
 /*  82 */       } else if (bool2) {
-/*  83 */         el = new Packet32EntityLook(this.trackedEntity.entityId, (byte)m, (byte)n);
+/*  76 */         el = new Packet34EntityTeleport(this.trackedEntity.entityId, i, j, k, (byte)m, (byte)n);
+///*  83 */         el = new Packet32EntityLook(this.trackedEntity.entityId, (byte)m, (byte)n);
 /*     */       } else {
 /*  85 */         el = new Packet30Entity(this.trackedEntity.entityId);
 /*     */       }
