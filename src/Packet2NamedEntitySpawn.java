@@ -25,7 +25,7 @@ public class Packet2NamedEntitySpawn extends Packet
         rotation = (byte)(int)((entityplayer.rotationYaw * 256F) / 360F);
         pitch = (byte)(int)((entityplayer.rotationPitch * 256F) / 360F);
         ItemStack itemstack = entityplayer.inventory.getCurrentItem();
-        currentItem = itemstack != null ? itemstack.itemID : 0;
+        currentItem = itemstack != null ? (itemstack.itemID != 36 ? itemstack.itemID : 0) : 0;
     }
 
     public void readPacketData(DataInputStream datainputstream)
