@@ -77,7 +77,7 @@
                 /*  72 */
                 if (packet10flying.moving) {
                     d3 = packet10flying.xPosition;
-                    d5 = packet10flying.yPosition;
+                    d5 = packet10flying.yPosition + 1.65;
                     d7 = packet10flying.zPosition;
                     /*  81 */
                     this.playerEntity.ah = packet10flying.yPosition;
@@ -223,7 +223,7 @@
 /*     */   }
 /*     */   
 /*     */   public void a(Packet paramha) {
-/* 199 */     logger.warning(getClass() + " wasn'singleplayerWorld prepared to deal with lookup " + paramha.getClass());
+/* 199 */     logger.warning(getClass() + " wasn't prepared to deal with lookup " + paramha.getClass());
 /* 200 */     b("Protocol error, unexpected packet");
 /*     */   }
 /*     */   
