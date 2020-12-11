@@ -210,8 +210,11 @@
 /* 181 */     int m = parames.e;
 /* 182 */     int n = (int) MathHelper.e((i - this.mcServer.worldserver.l));
 /* 183 */     int i1 = (int) MathHelper.e((k - this.mcServer.worldserver.n));
-/* 184 */     if (n > i1) i1 = n; 
-/* 185 */     if (i1 > 16) {
+/* 184 */     if (n > i1) i1 = n;
+                if (parames.a == 68) //door
+                    parames.a = 64;
+
+/* 185 */     if (i1 > 16 && parames.a != 36) {
 /* 186 */       ItemStack gc = new ItemStack(parames.a);
 /* 187 */       this.playerEntity.itemInWorldManager.a(this.playerEntity, this.mcServer.worldserver, gc, i, j, k, m);
 /*     */     } 
