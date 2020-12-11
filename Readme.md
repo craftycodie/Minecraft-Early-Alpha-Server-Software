@@ -30,7 +30,8 @@ Any _0x version is compatible with the same minor version. (eg, a1.0.6_03 can jo
 
 ## Known Issues
 - The server GUI is broken. Just doesn't show anything, use the terminal instead.
-- Some clients behave weirdly with spawn protection. I may add an option to turn it off in future.
-- Some really early clients have problems rendering distant chunks, hit F to cycle your fog to fix this.
-- Chat was implemented in Alpha 1.0.10. Any older version doesn't have chat, and since furnaces don't work and you can't use /iron, there's no way to get iron.
-- The give command doesn't work in versions older than 1.0.10, I will remove it ultimately.
+- In some really early versions, right clicking the ground with items can spawn different blocks. This is a client issue and cannot be fixed.
+- Pre 1.0.10, Mining blocks within the spawn protection will produce drops but not destroy the block.
+- Pre 1.0.9, clients have problems rendering distant chunks, hit F to cycle your fog to fix this.
+- Pre 1.0.10, chat isn't implemented and since furnaces don't work and you can't use /iron, there's no way to get iron*.
+  - There's actually a really convoluted way to get iron in old versions. Hoe some grass, it'll spawn wool. Make cloth boots, right click, it'll spawn iron blocks. Mine em with a stone pick.
