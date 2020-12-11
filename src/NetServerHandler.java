@@ -211,36 +211,39 @@
 /* 182 */     int n = (int) MathHelper.e((i - this.mcServer.worldserver.l));
 /* 183 */     int i1 = (int) MathHelper.e((k - this.mcServer.worldserver.n));
 /* 184 */     if (n > i1) i1 = n;
-                if (parames.a == 68) //door
-                    parames.a = 64;
-
-                if (this.playerEntity.inventory.getCurrentItem().itemID > 255) {
                     int blockId;
-                    switch(this.playerEntity.inventory.getCurrentItem().itemID) {
+                    switch(this.playerEntity.inventory.getCurrentItem().c) {
                         case 324: // door
-                            parames.a = 64;
-                            break;
+                            if (this.playerEntity.worldObj.getBlockId(i, j + 1, k) == 0) {
+                                this.playerEntity.worldObj.a(i, j + 1, k, Block.aE.blockId, 1);
+                                parames.a = Block.aE.blockId;
+                                break;
+                            }
+                            return;
                         case 330: // iron door
-                            parames.a = 71;
-                            break;
+                            if (this.playerEntity.worldObj.getBlockId(i, j + 1, k) == 0) {
+                                this.playerEntity.worldObj.a(i, j + 1, k, Block.aL.blockId, 1);
+                                parames.a = Block.aL.blockId;
+                                break;
+                            }
+                            return;
                         case 323: // sign
-                            parames.a = 63;
+                            parames.a = Block.aD.blockId;
                             break;
                         case 325:  // empty bucket
                             j -= 1;
                             blockId = this.playerEntity.worldObj.getBlockId(i, j, k);
-                            if (blockId == 9 || blockId == 11) {
+                            if (blockId == Block.B.blockId || blockId == Block.D.blockId) {
                                 parames.a = 0;
                                 break;
                             }
                             return;
                         case 326: // water bucket
-                            parames.a = 9;
+                            parames.a = Block.B.blockId;
                             break;
                         case 327: // lava bucket
-                            parames.a = 11;
+                            parames.a = Block.D.blockId;
                             break;
-                            // TODO: Fix hoes.
                         case 290: // hoes
                         case 291:
                         case 292:
@@ -248,22 +251,23 @@
                         case 294:
                             j -= 1;
                             blockId = this.playerEntity.worldObj.getBlockId(i, j, k);
-                            if (blockId == 2 || blockId == 3) {
-                                parames.a = 60;
+                            if (blockId == Block.u.blockId || blockId == Block.v.blockId) {
+                                parames.a = Block.aA.blockId;
                                 break;
                             }
+                            return;
                         case 295: // seeds
-                            if (this.playerEntity.worldObj.getBlockId(i, j-1, k) == 60) {
-                                parames.a = 59;
+                            if (this.playerEntity.worldObj.getBlockId(i, j-1, k) == Block.aA.blockId) {
+                                parames.a = Block.az.blockId;
                                 break;
-                            } else
-                                return;
+                            }
+                            return;
                         case 331: // redstone
-                            parames.a = 55;
+                            parames.a = Block.av.blockId;
                             break;
                         default:
-                            return;
-                    }
+                            if (this.playerEntity.inventory.getCurrentItem().c >= 256 || parames.a == 36)
+                                return;
                 }
 
 /* 185 */     if (i1 > 16 && parames.a != 36) {
