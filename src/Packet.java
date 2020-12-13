@@ -63,21 +63,14 @@ import java.util.HashMap;
 /* 71 */     int i = paramDataInputStream.read();
 /* 72 */     if (i == -1) return null;
 /*    */
-//    System.out.println("Reading packet " + i);
-
-    /* 74 */     Packet ha1 = a(i);
+/* 74 */     Packet ha1 = a(i);
 /* 75 */     if (ha1 == null) throw new IOException("Bad packet id " + i);
 /* 76 */     ha1.readPacketData(paramDataInputStream);
 /* 77 */     return ha1;
 /*    */   }
 /*    */   
 /*    */   public static void writePacket(Packet paramha, DataOutputStream paramDataOutputStream) throws IOException {
-//    if(paramha.b() < 53)
-    // TODO: Not sure why this is happening!
-    if(paramha == null)
-        return;
-    System.out.println("Sending packet " + paramha.b());
-    /* 81 */     paramDataOutputStream.write(paramha.b());
+/* 81 */     paramDataOutputStream.write(paramha.b());
 /* 82 */     paramha.writePacketData(paramDataOutputStream);
 /*    */   }
 /*    */   
