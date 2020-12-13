@@ -2,8 +2,7 @@
 ## Servers
 
 *Development begins*
-- Alpha 1.0.5
-  - This client has barely any netcode and crashes almost instantly.
+- Alpha 1.0.5*
 - Alpha 1.0.6
 - Alpha 1.0.7
 - Alpha 1.0.8
@@ -18,6 +17,8 @@
 - Alpha 1.0.14
 
 *Server software is release publicly.*
+
+\* In Alpha 1.0.5, there's barely any netcode. Nothing I can do about that with the server. You can't see other players or what they do, only the world. Could be useful for parkour maps.
 
 ## Playing
 Since these versions don't have a direct connect screen, you'll need to use a custom launcher to join servers.
