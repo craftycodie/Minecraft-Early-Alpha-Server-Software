@@ -18,10 +18,10 @@
 /* 18 */     setMinimumSize(new Dimension(256, 196));
 /* 19 */     setMaximumSize(new Dimension(256, 196));
 /* 20 */     (new Timer(500, new GuiStatsListener(this))).start();
-/*    */ 
-/*    */ 
-/*    */ 
-/*    */     
+/*    */
+/*    */
+/*    */
+/*    */
 /* 25 */     setBackground(Color.BLACK);
 /*    */   }
 /*    */   
@@ -42,17 +42,16 @@
 /*    */   public void paint(Graphics paramGraphics) {
 /* 38 */     paramGraphics.setColor(new Color(16777215));
 /* 39 */     paramGraphics.fillRect(0, 0, 256, 192);
-/*    */     byte b;
-/* 41 */     for (b = 0; b < 256; b++) {
+/* 41 */     for (int b = 0; b < 256; b++) {
 /* 42 */       int i = this.a[b + this.b & 0xFF];
 /* 43 */       paramGraphics.setColor(new Color(i + 28 << 16));
 /* 44 */       paramGraphics.fillRect(b, 100 - i, 1, i);
-/*    */     } 
+/*    */     }
 /* 46 */     paramGraphics.setColor(Color.BLACK);
-/* 47 */     for (b = 0; b < this.c.length; b++) {
+/* 47 */     for (int b = 0; b < this.c.length; b++) {
 /* 48 */       String str = this.c[b];
-/* 49 */       if (str != null) paramGraphics.drawString(str, 32, 116 + b * 16); 
-/*    */     } 
+/* 49 */       if (str != null) paramGraphics.drawString(str, 32, 116 + b * 16);
+/*    */     }
 /*    */   }
 /*    */ }
 
