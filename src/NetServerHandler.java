@@ -237,34 +237,35 @@
                         break;
                 }
 
-                if((int)this.playerEntity.posX == blockX && (int) this.playerEntity.posZ - 1 == blockZ && blockY == (int)this.playerEntity.posY - 1)
+    if((int)this.playerEntity.posX == blockX && (int) this.playerEntity.posZ - 1 == blockZ && (blockY == (int)this.playerEntity.posY - 1  || blockY == (int)this.playerEntity.posY))
                     return;
 
 /* 184 */     if (n > i1) i1 = n;
                     int blockId;
                     switch(this.playerEntity.inventory.getCurrentItem().c) {
                         case 324: // door
-                            if (this.playerEntity.worldObj.getBlockId(i, j + 1, k) == 0) {
-                                this.playerEntity.worldObj.a(i, j + 1, k, Block.aE.blockId, 1);
-                                parames.a = Block.aE.blockId;
-                                break;
+                            if (this.playerEntity.worldObj.getBlockId(blockX, blockY + 1, blockZ) == 0) {
+                                this.playerEntity.worldObj.a(blockX, blockY, blockZ, Block.aE.blockId, 1);
+                                this.playerEntity.worldObj.a(blockX, blockY + 1, blockZ, Block.aE.blockId, 0);
                             }
                             return;
                         case 330: // iron door
-                            if (this.playerEntity.worldObj.getBlockId(i, j + 1, k) == 0) {
-                                this.playerEntity.worldObj.a(i, j + 1, k, Block.aL.blockId, 1);
-                                parames.a = Block.aL.blockId;
-                                break;
+                            if (this.playerEntity.worldObj.getBlockId(blockX, blockY + 1, blockZ) == 0) {
+                                this.playerEntity.worldObj.a(blockX, blockY, blockZ, Block.aL.blockId, 1);
+                                this.playerEntity.worldObj.a(blockX, blockY + 1, blockZ, Block.aL.blockId, 0);
                             }
                             return;
                         case 323: // sign
-                            parames.a = Block.aD.blockId;
+                            if (m == 1)
+                                parames.a = Block.aD.blockId;
+                            else
+                                parames.a = Block.aI.blockId;
                             break;
                         case 325:  // empty bucket
-                            j -= 1;
-                            blockId = this.playerEntity.worldObj.getBlockId(i, j, k);
+                            blockId = this.playerEntity.worldObj.getBlockId(i, j + 1, k);
                             if (blockId == Block.B.blockId || blockId == Block.D.blockId) {
-                                parames.a = 0;
+                                this.playerEntity.worldObj.a(i, j + 1, k, 0, 0);
+                                this.playerEntity.playerNetServerHandler.sendPacket(new Packet12BlockChange(i, j + 1, k, this.mcServer.worldserver));
                                 break;
                             }
                             return;
@@ -279,17 +280,18 @@
                         case 292:
                         case 293:
                         case 294:
-                            j -= 1;
-                            blockId = this.playerEntity.worldObj.getBlockId(i, j, k);
+                            blockId = this.playerEntity.worldObj.getBlockId(blockX, blockY - 1, blockZ);
                             if (blockId == Block.u.blockId || blockId == Block.v.blockId) {
-                                parames.a = Block.aA.blockId;
-                                break;
+                                this.playerEntity.worldObj.a(blockX, blockY - 1, blockZ, Block.aA.blockId, 0);
+                                this.playerEntity.playerNetServerHandler.sendPacket(new Packet12BlockChange(blockX, blockY - 1, blockZ, this.mcServer.worldserver));
+                                return;
                             }
                             return;
                         case 295: // seeds
-                            if (this.playerEntity.worldObj.getBlockId(i, j-1, k) == Block.aA.blockId) {
-                                parames.a = Block.az.blockId;
-                                break;
+                            if (this.playerEntity.worldObj.getBlockId(blockX, blockY - 1, blockZ) == Block.aA.blockId) {
+                                this.playerEntity.worldObj.a(blockX, blockY, blockZ, Block.az.blockId, 0);
+                                this.playerEntity.playerNetServerHandler.sendPacket(new Packet12BlockChange(blockX, blockY, blockZ, this.mcServer.worldserver));
+                                return;
                             }
                             return;
                         case 331: // redstone
