@@ -244,10 +244,6 @@
 /* 184 */     if (n > i1) i1 = n;
                     int blockId;
                     switch(this.playerEntity.inventory.getCurrentItem().c) {
-                        // Debug stick.
-                        case 280:
-                            parames.a = 42;
-                            break;
                         case 324: // door
                             if (this.playerEntity.worldObj.getBlockId(blockX, blockY + 1, blockZ) == 0) {
                                 this.playerEntity.worldObj.a(blockX, blockY, blockZ, Block.aE.blockId, 1);
