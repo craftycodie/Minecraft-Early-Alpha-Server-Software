@@ -238,7 +238,8 @@
                         break;
                 }
 
-    if((int)this.playerEntity.posX == blockX && (int) this.playerEntity.posZ == blockZ && (blockY == (int)this.playerEntity.posY - 1  || blockY == (int)this.playerEntity.posY))
+
+    if((int)this.playerEntity.posX - 1 == blockX && (int) this.playerEntity.posZ == blockZ && (blockY == (int)this.playerEntity.posY - 1  || blockY == (int)this.playerEntity.posY))
                     return;
 
 /* 184 */     if (n > i1) i1 = n;
