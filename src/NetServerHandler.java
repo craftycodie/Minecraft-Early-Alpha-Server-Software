@@ -208,7 +208,37 @@
 /* 181 */     int m = parames.e;
 /* 182 */     int n = (int) MathHelper.e((i - this.mcServer.worldserver.l));
 /* 183 */     int i1 = (int) MathHelper.e((k - this.mcServer.worldserver.n));
-/* 184 */     if (n > i1) i1 = n; 
+/* 184 */     if (n > i1) i1 = n;
+
+
+                int blockX = i;
+                int blockY = j;
+                int blockZ = k;
+
+                switch(m) {
+                    case 1: // down
+                        blockY++;
+                        break;
+                    case 2: // north
+            //                        blockY++;
+                        blockZ--;
+                        break;
+                    case 3: // south
+                        blockZ++;
+                        break;
+                    case 4: // east
+                        blockX--;
+                        break;
+                    case 5: // west
+                        blockX++;
+                    case 6: // up
+                    default:
+                        break;
+                }
+
+    if((int)this.playerEntity.posX == blockX && (int) this.playerEntity.posZ - 1 == blockZ && blockY == (int)this.playerEntity.posY - 1)
+                    return;
+
 /* 185 */     if (i1 > 16) {
 /* 186 */       ItemStack gc = new ItemStack(parames.a);
 /* 187 */       this.playerEntity.itemInWorldManager.a(this.playerEntity, this.mcServer.worldserver, gc, i, j, k, m);
@@ -223,7 +253,7 @@
 /*     */   }
 /*     */   
 /*     */   public void a(Packet paramha) {
-/* 199 */     logger.warning(getClass() + " wasn'singleplayerWorld prepared to deal with lookup " + paramha.getClass());
+/* 199 */     logger.warning(getClass() + " wasn't prepared to deal with lookup " + paramha.getClass());
 /* 200 */     b("Protocol error, unexpected packet");
 /*     */   }
 /*     */   
