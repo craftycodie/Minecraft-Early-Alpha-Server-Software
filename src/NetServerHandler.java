@@ -195,6 +195,7 @@
 /* 168 */       double d2 = this.playerEntity.posY - j + 0.5D;
 /* 169 */       double d3 = this.playerEntity.posZ - k + 0.5D;
 /* 170 */       double d4 = d1 * d1 + d2 * d2 + d3 * d3;
+
 /* 171 */       if (d4 < 256.0D) {
                     //TODO: This is a kinda hacky fix for blocks not breaking properly. Could be improved.
                     this.mcServer.worldserver.setBlockWithNotify(i, j, k, 0);
@@ -210,6 +211,35 @@
 /* 181 */     int m = parames.e;
 /* 182 */     int n = (int) MathHelper.e((i - this.mcServer.worldserver.l));
 /* 183 */     int i1 = (int) MathHelper.e((k - this.mcServer.worldserver.n));
+
+                int blockX = i;
+                int blockY = j;
+                int blockZ = k;
+
+                switch(m) {
+                    case 1: // down
+                        blockY++;
+                        break;
+                    case 2: // north
+//                        blockY++;
+                        blockZ--;
+                        break;
+                    case 3: // south
+                        blockZ++;
+                        break;
+                    case 4: // east
+                        blockX--;
+                        break;
+                    case 5: // west
+                        blockX++;
+                    case 6: // up
+                    default:
+                        break;
+                }
+
+                if((int)this.playerEntity.posX == blockX && (int) this.playerEntity.posZ - 1 == blockZ && blockY == (int)this.playerEntity.posY - 1)
+                    return;
+
 /* 184 */     if (n > i1) i1 = n;
                     int blockId;
                     switch(this.playerEntity.inventory.getCurrentItem().c) {
