@@ -124,7 +124,8 @@
                 /* 108 */
                 if(d14 > 0.0625D)
                 {
-                    flag1 = true;
+                    //There's some weird desyncing in this version, commenting this allows things to catch up.
+//                    flag1 = true;
                     logger.warning((new StringBuilder()).append(playerEntity.username).append(" moved wrongly!").toString());
                     System.out.println((new StringBuilder()).append("Got position ").append(d3).append(", ").append(d5).append(", ").append(d7).toString());
                     System.out.println((new StringBuilder()).append("Expected ").append(playerEntity.posX).append(", ").append(playerEntity.posY).append(", ").append(playerEntity.posZ).toString());
