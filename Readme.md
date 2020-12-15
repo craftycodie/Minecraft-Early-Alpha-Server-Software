@@ -30,9 +30,6 @@ Alpha 1.0.15 is when server jars were release by Mojang, Alpha 1.0.5 doesn't hav
 Any _0x version is compatible with the same minor version. (eg, a1.0.6_03 can join an a1.0.6 server).
 
 ## Known Issues
-- The server GUI is broken. Just doesn't show anything, use the terminal instead.
-- In some really early versions, right clicking the ground with items can spawn different blocks. This is a client issue and cannot be fixed.
 - Pre 1.0.10, Mining blocks within the spawn protection will produce drops but not destroy the block.
 - Pre 1.0.9, clients have problems rendering distant chunks, hit F to cycle your fog to fix this.
-- Pre 1.0.10, chat isn't implemented and since furnaces don't work and you can't use /iron, there's no way to get iron*.
-  - There's actually a really convoluted way to get iron in old versions. Hoe some grass, it'll spawn wool. Make cloth boots, right click, it'll spawn iron blocks. Mine em with a stone pick.
+- Pre 1.0.10, chat isn't implemented and since furnaces don't work and you can't use /iron, there's no way to get iron.
