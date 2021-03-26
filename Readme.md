@@ -23,7 +23,7 @@ Any version from Alpha 1.0.5 to Alpha 1.0.14 is supported.
 Alpha 1.0.15 is when server jars were release by Mojang.
 Any _0x version is compatible with the same patch version. (eg, a1.0.6_03 can join an a1.0.6 server).
 
-## Known Issues"
+## Known Issues
 - Alpha 1.0.5 is basically useless, it loads the world but nothing else. You can't see other players, or what they do. You could use it to host a parkour map I guess.
 - Some clients behave weirdly with spawn protection.
 - Some really early clients have problems rendering distant chunks, hit F to cycle your fog to fix this.
