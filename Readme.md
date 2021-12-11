@@ -1,4 +1,5 @@
 # Minecraft Early Alpha Server Recreations
+[Download](https://github.com/craftycodie/Minecraft-Early-Alpha-Server-Software/releases/download/v1/Early.Alpha.Servers.V1.zip)
 ## Servers
 
 *Development begins*
