@@ -1,6 +1,4 @@
-/*     */ import java.io.DataInputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
+/*     */ import java.io.*;
 import java.util.LinkedList;
 import java.util.Random;
 /*     */ import java.util.logging.Logger;
@@ -278,6 +276,16 @@ import java.util.Random;
                             // a1.0.14
                             sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100730_1.bin");
                             sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100730_2.bin");
+                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100730_3a.bin");
+                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100730_3b.bin");
+//                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100730_4.bin");
+                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100730_5a.bin");
+                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100730_5b.bin");
+                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100730_6a.bin");
+                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100730_6b.bin");
+                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100730_7.bin");
+
+
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -290,11 +298,76 @@ import java.util.Random;
 
     private LinkedList<Integer> knownEntities = new LinkedList<Integer>();
 
+    private LinkedList<Integer> waits = new LinkedList<Integer>();
+
+    private void loadTimestamps(String packetFile) {
+        LinkedList<Double> timestamps = new LinkedList<>();
+        waits = new LinkedList<Integer>();
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(packetFile.replace(".bin", "_timestamps.txt")));
+            String text = null;
+
+            while ((text = reader.readLine()) != null) {
+                timestamps.add(Double.parseDouble(text) * 100);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+            }
+        }
+
+        waits.add(0);
+//        int sum = 0;
+        for (int i = 1; i < timestamps.size(); i++) {
+            waits.add((int)(timestamps.get(i) - timestamps.get(i - 1)));
+//            sum += (int)(timestamps.get(i) - timestamps.get(i - 1));
+//            System.out.println((int)(timestamps.get(i) - timestamps.get(i - 1)));
+        }
+        waits.add(0);
+        waits.add(0);
+
+
+//        System.out.println(sum);
+
+    }
+
+    private String getEntityName(int entityId) {
+        switch (entityId) {
+//            case 138:
+//                return "Fisheatsbear";
+//            case 3524:
+//                return "RaptorBlackz";
+//            case 6130:
+//                return "SamB";
+//            case 3830:
+//                return "GAFBlizzard";
+//            case 15128:
+//                return "Vahokif";
+//            case 21:
+//                return "Ohelig";
+//            case 34:
+//                return "Ohelig";
+            default:
+                return entityId + "";
+        }
+    }
+
     private void sendPackets(String packetFile) throws IOException {
         DataInputStream dis = new DataInputStream(new FileInputStream(packetFile));
         int counter = 0;
+
+        loadTimestamps(packetFile);
+
         while (dis.available() > 0) {
-            counter += 1;
+//            counter += 1;
             Packet packet = Packet.readPacket(dis);
 
 
@@ -303,27 +376,27 @@ import java.util.Random;
 //            if (packet.b() == 30) continue;
             // If a player spawn was missed spawn a dummy entity.
             // We need to manually map these IDs to usernames and start positions.
-            if (packet.b() == 30 || packet.b() == 33 || packet.b() == 32 || packet.b() == 31) {
+            if (packet.b() == 33 || packet.b() == 32) {
                 if (!knownEntities.contains(((Packet30Entity)packet).entityId)) {
 //                    System.out.println("No entity found for " + ((Packet30Entity)packet).entityId + ", spawning.");
-//                    Packet spawnPacket = new Packet20NamedEntitySpawn(
-//                            ((Packet30Entity)packet).entityId,
-//                            ((Packet30Entity)packet).entityId + "",
-//                            0,
-//                            64,
-//                            0,
-//                            ((Packet30Entity)packet).yaw,
-//                            ((Packet30Entity)packet).pitch,
-//                            0
-//                    );
-//                    this.netManager.g.write(spawnPacket.b());
-//                    spawnPacket.a(this.netManager.g);
-//                    spawnPacket = new Packet30Entity(
-//                            ((Packet30Entity)packet).entityId
-//                    );
-//                    this.netManager.g.write(spawnPacket.b());
-//                    spawnPacket.a(this.netManager.g);
-//                    knownEntities.add(((Packet30Entity)packet).entityId);
+                    Packet spawnPacket = new Packet20NamedEntitySpawn(
+                            ((Packet30Entity)packet).entityId,
+                            getEntityName(((Packet30Entity)packet).entityId),
+                            0,
+                            64,
+                            0,
+                            ((Packet30Entity)packet).yaw,
+                            ((Packet30Entity)packet).pitch,
+                            0
+                    );
+                    this.netManager.g.write(spawnPacket.b());
+                    spawnPacket.a(this.netManager.g);
+                    spawnPacket = new Packet30Entity(
+                            ((Packet30Entity)packet).entityId
+                    );
+                    this.netManager.g.write(spawnPacket.b());
+                    spawnPacket.a(this.netManager.g);
+                    knownEntities.add(((Packet30Entity)packet).entityId);
                 }
 
             }
@@ -353,6 +426,9 @@ import java.util.Random;
             if (packet.b() == 21) {
                 knownEntities.add(((Packet21PickupSpawn)packet).entityId);
             }
+            if (packet.b() == 29) {
+                System.out.println("Destroying Entity " + ((Packet29DestroyEntity)packet).a);
+            }
 //            if (packet.b() == 53) continue;
             //if (packet.b() == 13) continue; // Unlock the camera.
 
@@ -366,15 +442,14 @@ import java.util.Random;
 //                    Thread.sleep(500);
 //                    counter = 0;
 //                } else
-                    Thread.sleep(25);
-//
-                if (packet.b() == 51) {
-//                    System.out.println("Sent Chunk");
-                    Thread.sleep(100);
-                }
+                Thread.sleep(waits.get(counter));//
+//                if (packet.b() == 51) {
+////                    System.out.println("Sent Chunk");
+//                    Thread.sleep(100);
+//                }
 
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+//                e.printStackTrace();
             }
 //            System.out.println("loaded " + packet.b() + " avail " + dis.available());
 //            sendPacket(packet);
@@ -386,6 +461,7 @@ import java.util.Random;
 //            } catch (InterruptedException e) {
 //                e.printStackTrace();
 //            }
+            counter += 1;
         }
     }
 /*     */   
