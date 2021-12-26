@@ -54,7 +54,7 @@ import java.util.logging.Logger;
 /*     */ 
 /*     */       
 /*  52 */       NetServerHandler hm = new NetServerHandler(this.d, this.b, dq);
-/*     */ 
+/*     */
 /*     */ 
 /*     */ 
 /*     */ 
@@ -64,7 +64,7 @@ import java.util.logging.Logger;
 /*     */ 
 /*     */ 
 /*     */       
-/*  63 */       hm.sendPacket(new Packet1Login("", "", 0));
+///*  63 */       hm.sendPacket(new Packet1Login("", "", 0));
 hm.sendAShitloadOfFuck();
 /*     */ 
 /*     */ 

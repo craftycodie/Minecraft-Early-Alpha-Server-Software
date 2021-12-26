@@ -295,27 +295,27 @@ import java.util.Random;
             counter += 1;
             Packet packet = Packet.readPacket(dis);
 //            if (packet.b() > 34 ) continue;
-            if (packet.b() == 1) continue;
+//            if (packet.b() == 1) continue;
 //            if (packet.b() == 30) continue;
 //            if (packet.b() == 32) continue;
 //            if (packet.b() == 53) continue;
 //            if (packet.b() == 13) continue;
 
-            if (packet.b() == 50) continue;
-            if (packet.b() == 51) continue;
+//            if (packet.b() == 50) continue;
+//            if (packet.b() == 51) continue;
 
 //            if (packet.b() == 1) continue;
 
             try {
-                if (counter > 99) {
-                    Thread.sleep(500);
-                    counter = 0;
-                } else
+//                if (counter > 99) {
+//                    Thread.sleep(500);
+//                    counter = 0;
+//                } else
                     Thread.sleep(25);
-
+//
                 if (packet.b() == 51) {
                     System.out.println("SENT CHUNK");
-//                    Thread.sleep(500);
+                    Thread.sleep(100);
                 }
 
             } catch (InterruptedException e) {
@@ -323,9 +323,9 @@ import java.util.Random;
             }
 //            System.out.println("loaded " + packet.b() + " avail " + dis.available());
 //            sendPacket(packet);
-            Packet.writePacket(packet, Packet.LASTOUTSTREAM);
-//            Packet.LASTOUTSTREAM.write(packet.b());
-//            packet.a(Packet.LASTOUTSTREAM);
+//            Packet.writePacket(packet, Packet.LASTOUTSTREAM);
+            this.netManager.g.write(packet.b());
+            packet.a(this.netManager.g);
 //            try {
 //                Thread.sleep(100);
 //            } catch (InterruptedException e) {
@@ -415,18 +415,7 @@ import java.util.Random;
 /* 276 */           this.playerEntity.a(new ItemStack(Item.m, 1));
 /*     */         }
 /*     */       } 
-/* 279 */     } else if (paramString.toLowerCase().equalsIgnoreCase("/piss")) {
-        /* 269 */       if (MinecraftServer.b.containsKey(this.playerEntity.username)) {
-            /* 270 */         logger.info(this.playerEntity.username + " failed to piss!!");
-            /* 271 */         sendPacket(new Packet3Chat("§cYou can't /piss again so soon!"));
-            /*     */       } else {
-            /* 273 */         sendAShitloadOfFuck();
-            /* 274 */         logger.info(this.playerEntity.username + " pissed!");
-//            /* 275 */         for (int b = 0; b < 4; b++) {
-//                /* 276 */           this.playerEntity.a(new ItemStack(Item.m, 1));
-//                /*     */         }
-            /*     */       }
-        /* 279 */     } else if (paramString.toLowerCase().equalsIgnoreCase("/wood")) {
+/* 279 */     } else if (paramString.toLowerCase().equalsIgnoreCase("/wood")) {
         /* 280 */       if (MinecraftServer.b.containsKey(this.playerEntity.username)) {
             /* 281 */         logger.info(this.playerEntity.username + " failed to wood!");
             /* 282 */         sendPacket(new Packet3Chat("§cYou can't /wood again so soon!"));

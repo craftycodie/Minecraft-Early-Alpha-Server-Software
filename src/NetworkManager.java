@@ -14,7 +14,7 @@ import java.net.Socket;
 /*  13 */   private Object d = new Object();
 /*     */   private Socket e;
 /*     */   private DataInputStream f;
-/*     */   private DataOutputStream g;
+/*     */   public DataOutputStream g;
 /*     */   private boolean isRunning = true;
 /*  27 */   private List i = Collections.synchronizedList(new LinkedList());
 /*  28 */   private List j = Collections.synchronizedList(new LinkedList());

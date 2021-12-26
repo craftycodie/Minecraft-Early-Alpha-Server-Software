@@ -81,7 +81,6 @@ import java.util.HashMap;
 /*    */   }
 /*    */   
 /*    */   public static synchronized void writePacket(Packet paramha, DataOutputStream paramDataOutputStream) throws IOException {
-    LASTOUTSTREAM = paramDataOutputStream;
 
 //    System.out.println("sending " + paramha.b());
 
@@ -104,8 +103,8 @@ import java.util.HashMap;
 //
 //
 //    } else {
-        /* 81 */     paramDataOutputStream.write(paramha.b());
-        /* 82 */     paramha.a(paramDataOutputStream);
+//        /* 81 */     paramDataOutputStream.write(paramha.b());
+//        /* 82 */     paramha.a(paramDataOutputStream);
 //    }
 
 

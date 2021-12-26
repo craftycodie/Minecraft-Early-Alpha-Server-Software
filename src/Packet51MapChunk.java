@@ -10,11 +10,12 @@
 /*    */   public int y;
 /*    */   public int z;
 /*    */   public int sizeX;
+            private byte[] compressed;
 /*    */   
 /*    */   public Packet51MapChunk() {
 /* 15 */     this.j = true;
 /*    */   }
-/*    */   public int sizeY; public int sizeZ; public byte[] data; private int h;
+/*    */   public int sizeY; public int sizeZ; public byte[] data; private int length;
 /*    */   public Packet51MapChunk(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, World paramdp) {
 /* 19 */     this.j = true;
 /* 20 */     this.x = paramInt1;
@@ -30,7 +31,7 @@
 /* 30 */       deflater.setInput(arrayOfByte);
 /* 31 */       deflater.finish();
 /* 32 */       this.data = new byte[paramInt4 * paramInt5 * paramInt6 * 5 / 2];
-/* 33 */       this.h = deflater.deflate(this.data);
+/* 33 */       this.length = deflater.deflate(this.data);
 /*    */     } finally {
 /* 35 */       deflater.end();
 /*    */     } 
@@ -47,6 +48,7 @@
 /* 47 */     int compressedSize = paramDataInputStream.readInt();
 /* 48 */     byte[] compressedData = new byte[compressedSize];
 /* 49 */     paramDataInputStream.readFully(compressedData);
+                this.compressed = compressedData;
 /*    */     
 /* 51 */     this.data = new byte[this.sizeX * this.sizeY * this.sizeZ * 5 / 2];
 /*    */     
@@ -69,8 +71,15 @@
 /* 69 */     paramDataOutputStream.write(this.sizeY - 1);
 /* 70 */     paramDataOutputStream.write(this.sizeZ - 1);
 /*    */     
-/* 72 */     paramDataOutputStream.writeInt(this.h);
-/* 73 */     paramDataOutputStream.write(this.data, 0, this.h);
+             if(this.compressed != null) {
+                 /* 72 */     paramDataOutputStream.writeInt(this.compressed.length);
+
+                 /* 73 */     paramDataOutputStream.write(this.compressed, 0, this.compressed.length);
+             } else {
+                 /* 72 */     paramDataOutputStream.writeInt(this.length);
+
+/* 73 */     paramDataOutputStream.write(this.data, 0, this.length);
+             }
 /*    */   }
 /*    */   
 /*    */   public void a(NetClientManager paramdy) {
@@ -78,7 +87,7 @@
 /*    */   }
 /*    */   
 /*    */   public int getPacketSize() {
-/* 81 */     return 17 + this.h;
+/* 81 */     return 17 + this.length;
 /*    */   }
 /*    */ }
 
