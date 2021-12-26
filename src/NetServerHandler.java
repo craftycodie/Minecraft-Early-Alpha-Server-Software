@@ -1,7 +1,5 @@
-/*     */ import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
+/*     */ import java.io.*;
+import java.util.LinkedList;
 import java.util.Random;
 /*     */ import java.util.logging.Logger;
 /*     */
@@ -287,12 +285,53 @@ import java.util.Random;
         thread.start();
     }
 
+    private LinkedList<Integer> waits = new LinkedList<Integer>();
+
+    private void loadTimestamps(String packetFile) {
+        LinkedList<Double> timestamps = new LinkedList<>();
+        waits = new LinkedList<Integer>();
+        BufferedReader reader = null;
+        try {
+            reader = new BufferedReader(new FileReader(packetFile.replace(".bin", "_timestamps.txt")));
+            String text = null;
+
+            while ((text = reader.readLine()) != null) {
+                timestamps.add(Double.parseDouble(text) * 1000);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+            }
+        }
+
+        waits.add(0);
+//        int sum = 0;
+        for (int i = 1; i < timestamps.size(); i++) {
+            waits.add((int)(timestamps.get(i) - timestamps.get(i - 1)));
+//            sum += (int)(timestamps.get(i) - timestamps.get(i - 1));
+//            System.out.println((int)(timestamps.get(i) - timestamps.get(i - 1)));
+        }
+        waits.add(0);
+
+//        System.out.println(sum);
+
+    }
+
 
     private void sendPackets(String packetFile) throws IOException {
         DataInputStream dis = new DataInputStream(new FileInputStream(packetFile));
+
+        loadTimestamps(packetFile);
+
         int counter = 0;
         while (dis.available() > 0) {
-            counter += 1;
             Packet packet = Packet.readPacket(dis);
 //            if (packet.b() > 34 ) continue;
 //            if (packet.b() == 1) continue;
@@ -311,12 +350,13 @@ import java.util.Random;
 //                    Thread.sleep(500);
 //                    counter = 0;
 //                } else
-                    Thread.sleep(25);
+//                System.out.println("Waiting " + waits.get(counter));
+                    Thread.sleep(waits.get(counter));
 //
-                if (packet.b() == 51) {
-                    System.out.println("SENT CHUNK");
-                    Thread.sleep(100);
-                }
+//                if (packet.b() == 51) {
+//                    System.out.println("SENT CHUNK");
+//                    Thread.sleep(100);
+//                }
 
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -326,6 +366,8 @@ import java.util.Random;
 //            Packet.writePacket(packet, Packet.LASTOUTSTREAM);
             this.netManager.g.write(packet.b());
             packet.a(this.netManager.g);
+            counter += 1;
+
 //            try {
 //                Thread.sleep(100);
 //            } catch (InterruptedException e) {
