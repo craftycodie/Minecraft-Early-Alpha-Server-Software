@@ -17,21 +17,19 @@ import java.io.IOException;
 /*    */
 public void a(DataInputStream dataInputStream) throws IOException {
     super.a(dataInputStream);
-    this.xPosition = dataInputStream.readByte();
-    this.yPosition = dataInputStream.readByte();
-    this.zPosition = dataInputStream.readByte();
+    this.pitch = dataInputStream.readByte();
+    this.yaw = dataInputStream.readByte();
 }
 /*    */
 @Override
 public void a(DataOutputStream dataOutputStream) throws IOException {
     super.a(dataOutputStream);
-    dataOutputStream.writeByte(this.xPosition);
-    dataOutputStream.writeByte(this.yPosition);
-    dataOutputStream.writeByte(this.zPosition);
+    dataOutputStream.writeByte(this.pitch);
+    dataOutputStream.writeByte(this.yaw);
 }
 /*    */   
 /*    */   public int getPacketSize() {
-/* 99 */     return 7;
+/* 99 */     return 6;
 /*    */   }
 /*    */ }
 
