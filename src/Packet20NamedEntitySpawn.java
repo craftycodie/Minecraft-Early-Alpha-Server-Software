@@ -31,6 +31,18 @@ import java.io.IOException;
 /* 29 */     ItemStack gc = parameq.inventory.b();
 /* 30 */     this.h = (gc == null) ? 0 : gc.c;
 /*    */   }
+
+/*    */   public Packet20NamedEntitySpawn(int id, String name, int x, int y, int z, byte yaw, byte pitch, int helditem) {
+/* 21 */     this.a = id;
+/* 22 */     this.b = name;
+/* 23 */     this.c = x;
+/* 24 */     this.d = y;
+/* 25 */     this.e = z;
+/* 26 */     this.f = yaw;
+/* 27 */     this.g = pitch;
+/*    */
+/* 30 */     this.h = 0;
+/*    */   }
 /*    */   
 /*    */   public void a(DataInputStream paramDataInputStream) throws IOException {
 /* 34 */     this.a = paramDataInputStream.readInt();

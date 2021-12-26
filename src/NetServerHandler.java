@@ -1,7 +1,7 @@
 /*     */ import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.LinkedList;
 import java.util.Random;
 /*     */ import java.util.logging.Logger;
 /*     */
@@ -81,7 +81,7 @@ import java.util.Random;
                 /*  72 */
                 if (packet10flying.moving) {
                     d3 = packet10flying.xPosition;
-                    d5 = packet10flying.yPosition;
+                    d5 = packet10flying.yPosition + 1.65;
                     d7 = packet10flying.zPosition;
                     /*  81 */
                     this.playerEntity.ah = packet10flying.yPosition;
@@ -269,15 +269,15 @@ import java.util.Random;
                     () -> {
                         try {
                             // a1.0.12
-                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100727_1.bin");
-                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100727_2.bin");
-                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100727_3.bin");
+//                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100727_1.bin");
+//                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100727_2.bin");
+//                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100727_3.bin");
 
 
 
                             // a1.0.14
-//                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100730_1.bin");
-//                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100730_2.bin");
+                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100730_1.bin");
+                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100730_2.bin");
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -288,18 +288,73 @@ import java.util.Random;
     }
 
 
+    private LinkedList<Integer> knownEntities = new LinkedList<Integer>();
+
     private void sendPackets(String packetFile) throws IOException {
         DataInputStream dis = new DataInputStream(new FileInputStream(packetFile));
         int counter = 0;
         while (dis.available() > 0) {
             counter += 1;
             Packet packet = Packet.readPacket(dis);
+
+
 //            if (packet.b() > 34 ) continue;
 //            if (packet.b() == 1) continue;
 //            if (packet.b() == 30) continue;
-//            if (packet.b() == 32) continue;
+            // If a player spawn was missed spawn a dummy entity.
+            // We need to manually map these IDs to usernames and start positions.
+            if (packet.b() == 30 || packet.b() == 33 || packet.b() == 32 || packet.b() == 31) {
+                if (!knownEntities.contains(((Packet30Entity)packet).entityId)) {
+//                    System.out.println("No entity found for " + ((Packet30Entity)packet).entityId + ", spawning.");
+//                    Packet spawnPacket = new Packet20NamedEntitySpawn(
+//                            ((Packet30Entity)packet).entityId,
+//                            ((Packet30Entity)packet).entityId + "",
+//                            0,
+//                            64,
+//                            0,
+//                            ((Packet30Entity)packet).yaw,
+//                            ((Packet30Entity)packet).pitch,
+//                            0
+//                    );
+//                    this.netManager.g.write(spawnPacket.b());
+//                    spawnPacket.a(this.netManager.g);
+//                    spawnPacket = new Packet30Entity(
+//                            ((Packet30Entity)packet).entityId
+//                    );
+//                    this.netManager.g.write(spawnPacket.b());
+//                    spawnPacket.a(this.netManager.g);
+//                    knownEntities.add(((Packet30Entity)packet).entityId);
+                }
+
+            }
+
+            if (packet.b() == 34) {
+                if (!knownEntities.contains(((Packet34EntityTeleport)packet).entityId)) {
+//                    System.out.println("No entity found for " + ((Packet34EntityTeleport)packet).entityId + ", spawning.");
+//                    Packet spawnPacket = new Packet20NamedEntitySpawn(
+//                            ((Packet30Entity)packet).entityId,
+//                            ((Packet30Entity)packet).entityId + "",
+//                            ((Packet30Entity)packet).xPosition,
+//                            ((Packet30Entity)packet).yPosition,
+//                            ((Packet30Entity)packet).zPosition,
+//                            ((Packet30Entity)packet).yaw,
+//                            ((Packet30Entity)packet).pitch,
+//                            0
+//                    );
+//                    this.netManager.g.write(spawnPacket.b());
+//                    spawnPacket.a(this.netManager.g);
+//                    knownEntities.add(((Packet34EntityTeleport)packet).entityId);
+                }
+
+            }
+            if (packet.b() == 20) {
+                knownEntities.add(((Packet20NamedEntitySpawn)packet).a);
+            }
+            if (packet.b() == 21) {
+                knownEntities.add(((Packet21PickupSpawn)packet).entityId);
+            }
 //            if (packet.b() == 53) continue;
-//            if (packet.b() == 13) continue;
+            //if (packet.b() == 13) continue; // Unlock the camera.
 
 //            if (packet.b() == 50) continue;
 //            if (packet.b() == 51) continue;
@@ -314,7 +369,7 @@ import java.util.Random;
                     Thread.sleep(25);
 //
                 if (packet.b() == 51) {
-                    System.out.println("SENT CHUNK");
+//                    System.out.println("Sent Chunk");
                     Thread.sleep(100);
                 }
 

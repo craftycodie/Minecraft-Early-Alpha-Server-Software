@@ -17,17 +17,17 @@ import java.io.IOException;
 /*    */
 public void a(DataInputStream dataInputStream) throws IOException {
     super.a(dataInputStream);
-    this.yaw = dataInputStream.readByte();
-    this.pitch = dataInputStream.readByte();
-//    System.out.println("ENTITY LOOK " + entityId+ " " + yaw + " " + pitch);
-
+    this.xPosition = dataInputStream.readByte();
+    this.yPosition = dataInputStream.readByte();
+//    this.zPosition = dataInputStream.readByte();
 }
 /*    */
 @Override
 public void a(DataOutputStream dataOutputStream) throws IOException {
     super.a(dataOutputStream);
-    dataOutputStream.writeByte(this.yaw);
-    dataOutputStream.writeByte(this.pitch);
+    dataOutputStream.writeByte(this.xPosition);
+    dataOutputStream.writeByte(this.yPosition);
+//    dataOutputStream.writeByte(this.zPosition);
 }
 /*    */   
 /*    */   public int getPacketSize() {

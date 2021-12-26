@@ -122,6 +122,15 @@
 /* 122 */   public static Item aJ = (new Item(84)).a(59);
 /*     */
 /* 124 */   public static Item aK = (new Item(85)).a(30);
+
+/* 126 */   public static Item aL = (new ItemMinecart(86, 1)).a(151);
+/* 127 */   public static Item aM = (new ItemMinecart(87, 2)).a(167);
+/*     */
+/* 129 */   public static Item aN = (new Item(88)).a(12);
+/*     */
+/*     */
+/* 132 */   public static Item aO = (new ItemRecord(2000, "13")).a(240);
+/* 133 */   public static Item aP = (new ItemRecord(2001, "cat")).a(241);
 /*     */
 /*     */   
 /*     */   public final int aQ;

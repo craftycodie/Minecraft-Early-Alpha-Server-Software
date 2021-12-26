@@ -54,7 +54,7 @@ import java.util.logging.Level;
 /*  72 */     bi.start();
 /*     */     
 /*  74 */     ey.a();
-/*  75 */     a.info("Alpha 1.0.12 Server Remake V1 by Codie");
+/*  75 */     a.info("Alpha 1.0.14 Server Remake V1 by Codie");
 /*  75 */     a.info("DEV BUILD");
 /*  75 */     a.info("Starting minecraft server.");
 /*     */     

@@ -110,6 +110,7 @@
 /* 166 */   public static final Block aV = (new BlockCactus(81, 70)).c(0.4F).a(soundClothFootstep);
 /* 167 */   public static final Block aW = (new BlockClay(82, 72)).c(0.6F).a(soundGravelFootstep);
 /* 168 */   public static final Block aX = (new BlockReed(83, 73)).c(0.0F).a(soundGrassFootstep);
+            public static final Block aY = (new BlockJukeBox(84, 74).c(2.0f).a(soundStoneFootstep));
 /*     */   public int aZ;
 /*     */   public final int blockId;
 /*     */   
