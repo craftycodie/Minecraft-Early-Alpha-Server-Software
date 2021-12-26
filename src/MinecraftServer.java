@@ -54,8 +54,8 @@ import java.util.logging.Level;
 /*  72 */     bi.start();
 /*     */     
 /*  74 */     ey.a();
-/*  75 */     a.info("Alpha 1.0.12 Server Remake V1 by Codie");
-/*  75 */     a.info("DEV BUILD");
+/*  75 */     a.info("Alpha 1.0.12 Server Remake V1 by craftycodie");
+/*  75 */     a.info("Replaying Packets from Notch's Test Server");
 /*  75 */     a.info("Starting minecraft server.");
 /*     */     
 /*  77 */     if (Runtime.getRuntime().maxMemory() / 1024L / 1024L < 512L) {

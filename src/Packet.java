@@ -79,7 +79,8 @@ import java.util.HashMap;
 /* 76 */     ha1.a(paramDataInputStream);
 /* 77 */     return ha1;
 /*    */   }
-/*    */   
+/*    */
+    public static boolean lock = false;
 /*    */   public static synchronized void writePacket(Packet paramha, DataOutputStream paramDataOutputStream) throws IOException {
 
 //    System.out.println("sending " + paramha.b());
@@ -103,8 +104,12 @@ import java.util.HashMap;
 //
 //
 //    } else {
-//        /* 81 */     paramDataOutputStream.write(paramha.b());
-//        /* 82 */     paramha.a(paramDataOutputStream);
+    if (!lock) {
+        /* 81 */
+        paramDataOutputStream.write(paramha.b());
+        /* 82 */
+        paramha.a(paramDataOutputStream);
+    }
 //    }
 
 

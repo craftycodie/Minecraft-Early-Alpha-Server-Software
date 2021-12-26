@@ -266,12 +266,33 @@ import java.util.Random;
             Runnable runnable =
                     () -> {
                         try {
+                            Packet.lock = true;
+
+                            Packet3Chat packet = null;
                             // a1.0.12
-                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100727_1.bin");
-                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100727_2.bin");
-                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100727_3.bin");
+                            packet = new Packet3Chat("§a-- Beginning smptest_20100727_1 playback. --");
+                            this.netManager.g.write(packet.b());
+                            packet.a(this.netManager.g);
 
+                            sendPackets("/smptest_20100727_1.bin");
 
+                            packet = new Packet3Chat("§a-- Beginning smptest_20100727_2 playback. --");
+                            this.netManager.g.write(packet.b());
+                            packet.a(this.netManager.g);
+
+                            sendPackets("/smptest_20100727_2.bin");
+
+                            packet = new Packet3Chat("§a-- Beginning smptest_20100727_3 playback. --");
+                            this.netManager.g.write(packet.b());
+                            packet.a(this.netManager.g);
+
+                            sendPackets("/smptest_20100727_3.bin");
+
+                            packet = new Packet3Chat("§a-- Finished smptest_20100727 playback. --");
+                            this.netManager.g.write(packet.b());
+                            packet.a(this.netManager.g);
+
+                            packet.lock = false;
 
                             // a1.0.14
 //                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100730_1.bin");
@@ -292,7 +313,7 @@ import java.util.Random;
         waits = new LinkedList<Integer>();
         BufferedReader reader = null;
         try {
-            reader = new BufferedReader(new FileReader(packetFile.replace(".bin", "_timestamps.txt")));
+            reader = new BufferedReader(new InputStreamReader(NetServerHandler.class.getResourceAsStream(packetFile.replace(".bin", "_timestamps.txt"))));
             String text = null;
 
             while ((text = reader.readLine()) != null) {
@@ -326,7 +347,7 @@ import java.util.Random;
 
 
     private void sendPackets(String packetFile) throws IOException {
-        DataInputStream dis = new DataInputStream(new FileInputStream(packetFile));
+        DataInputStream dis = new DataInputStream(NetServerHandler.class.getResourceAsStream(packetFile));
 
         loadTimestamps(packetFile);
 
@@ -358,8 +379,8 @@ import java.util.Random;
 //                    Thread.sleep(100);
 //                }
 
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+//                e.printStackTrace();
             }
 //            System.out.println("loaded " + packet.b() + " avail " + dis.available());
 //            sendPacket(packet);

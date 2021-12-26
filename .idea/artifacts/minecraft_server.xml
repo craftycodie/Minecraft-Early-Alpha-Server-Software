@@ -2,7 +2,7 @@
   <artifact type="jar" name="minecraft_server">
     <output-path>$PROJECT_DIR$/out/artifacts/minecraft_server</output-path>
     <root id="archive" name="minecraft_server.jar">
-      <element id="module-output" name="Minecraft_Alpha_1.0.10_Server" />
+      <element id="module-output" name="Minecraft-Early-Alpha-Server-Software" />
     </root>
   </artifact>
 </component>
