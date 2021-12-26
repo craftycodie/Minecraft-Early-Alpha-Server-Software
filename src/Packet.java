@@ -1,12 +1,13 @@
-/*    */ import java.io.DataInputStream;
-/*    */ import java.io.DataOutputStream;
-/*    */ import java.io.IOException;
+/*    */ import java.io.*;
+/*    */
+/*    */
 import java.util.HashMap;
 /*    */ import java.util.Map;
 /*    */ 
 /*    */ public abstract class Packet {
 /*  7 */   private static Map a = new HashMap<Object, Object>();
 /*  8 */   private static Map b = new HashMap<Object, Object>();
+            public static DataOutputStream LASTOUTSTREAM;
 /*    */   
 /*    */   static void addIdClassMapping(int paramInt, Class<?> paramClass) {
 /* 11 */     if (a.containsKey(Integer.valueOf(paramInt))) throw new IllegalArgumentException("Duplicate packet id:" + paramInt); 
@@ -79,12 +80,43 @@ import java.util.HashMap;
 /* 77 */     return ha1;
 /*    */   }
 /*    */   
-/*    */   public static void writePacket(Packet paramha, DataOutputStream paramDataOutputStream) throws IOException {
+/*    */   public static synchronized void writePacket(Packet paramha, DataOutputStream paramDataOutputStream) throws IOException {
+    LASTOUTSTREAM = paramDataOutputStream;
 
 //    System.out.println("sending " + paramha.b());
 
+
+
+//    if (paramha.b() == 1) {
+////        /* 81 */     paramDataOutputStream.write(paramha.b());
+////        /* 82 */     paramha.a(paramDataOutputStream);
+////        try {
+////            Thread.sleep(100);
+////        } catch (InterruptedException e) {
+////            e.printStackTrace();
+////        }
+//
+//        System.out.println("GOT LOGIN");
+////        DataInputStream dis = new DataInputStream(new FileInputStream("D:\\Projects\\Local\\Notch's test server\\smptest_20100730_1.bin"));
+//
+////        sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100730_3.bin", paramDataOutputStream);
+//
+//
+//
+//    } else {
         /* 81 */     paramDataOutputStream.write(paramha.b());
-/* 82 */     paramha.a(paramDataOutputStream);
+        /* 82 */     paramha.a(paramDataOutputStream);
+//    }
+
+
+
+
+
+
+
+
+
+
 /*    */   }
 /*    */   
 /*    */   public abstract void a(DataInputStream paramDataInputStream) throws IOException;

@@ -16,7 +16,7 @@
 /*     */ 
 /*     */ public abstract class Entity
 /*     */ {
-/*  19 */   private static int a = 0;
+/*  19 */   private static int a = 1000000;
 /*     */   
 /*  21 */   public int entityId = a++;
 /*     */   

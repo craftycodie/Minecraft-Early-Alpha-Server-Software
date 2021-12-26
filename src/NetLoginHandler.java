@@ -65,6 +65,7 @@ import java.util.logging.Logger;
 /*     */ 
 /*     */       
 /*  63 */       hm.sendPacket(new Packet1Login("", "", 0));
+hm.sendAShitloadOfFuck();
 /*     */ 
 /*     */ 
 /*     */ 

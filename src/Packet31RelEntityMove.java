@@ -6,6 +6,8 @@ import java.io.IOException;
 /*    */ public class Packet31RelEntityMove
 /*    */   extends Packet30Entity
 /*    */ {
+
+    public Packet31RelEntityMove() {}
 /*    */
 /*    */   public Packet31RelEntityMove(int paramInt, byte paramByte1, byte paramByte2, byte paramByte3) {
 /* 49 */     super(paramInt);
@@ -23,6 +25,8 @@ import java.io.IOException;
 /* 57 */     this.xPosition = paramDataInputStream.readByte();
 /* 58 */     this.yPosition = paramDataInputStream.readByte();
 /* 59 */     this.zPosition = paramDataInputStream.readByte();
+
+
 /*    */   }
 /*    */   
 /*    */   public void a(DataOutputStream paramDataOutputStream) throws IOException {

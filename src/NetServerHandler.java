@@ -1,4 +1,8 @@
-/*     */ import java.util.Random;
+/*     */ import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Random;
 /*     */ import java.util.logging.Logger;
 /*     */
 
@@ -122,13 +126,13 @@
                 double d14 = d11 * d11 + d12 * d12 + d13 * d13;
                 boolean flag1 = false;
                 /* 108 */
-                if(d14 > 0.0625D)
-                {
-                    flag1 = true;
-                    logger.warning((new StringBuilder()).append(playerEntity.username).append(" moved wrongly!").toString());
-                    System.out.println((new StringBuilder()).append("Got position ").append(d3).append(", ").append(d5).append(", ").append(d7).toString());
-                    System.out.println((new StringBuilder()).append("Expected ").append(playerEntity.posX).append(", ").append(playerEntity.posY).append(", ").append(playerEntity.posZ).toString());
-                }
+//                if(d14 > 0.0625D)
+//                {
+//                    flag1 = true;
+//                    logger.warning((new StringBuilder()).append(playerEntity.username).append(" moved wrongly!").toString());
+//                    System.out.println((new StringBuilder()).append("Got position ").append(d3).append(", ").append(d5).append(", ").append(d7).toString());
+//                    System.out.println((new StringBuilder()).append("Expected ").append(playerEntity.posX).append(", ").append(playerEntity.posY).append(", ").append(playerEntity.posZ).toString());
+//                }
                 /* 112 */
                 playerEntity.setPositionAndRotation(d3, d5, d7, f2, f3);
                 /*     */
@@ -260,6 +264,75 @@
 /*     */   public void sendPacket(Packet paramha) {
 /* 204 */     this.netManager.a(paramha);
 /*     */   }
+    public void sendAShitloadOfFuck() {
+            Runnable runnable =
+                    () -> {
+                        try {
+                            // a1.0.12
+                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100727_1.bin");
+                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100727_2.bin");
+                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100727_3.bin");
+
+
+
+                            // a1.0.14
+//                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100730_1.bin");
+//                            sendPackets("D:\\Projects\\Local\\Notch's test server\\smptest_20100730_2.bin");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    };
+
+        Thread thread = new Thread(runnable);
+        thread.start();
+    }
+
+
+    private void sendPackets(String packetFile) throws IOException {
+        DataInputStream dis = new DataInputStream(new FileInputStream(packetFile));
+        int counter = 0;
+        while (dis.available() > 0) {
+            counter += 1;
+            Packet packet = Packet.readPacket(dis);
+//            if (packet.b() > 34 ) continue;
+            if (packet.b() == 1) continue;
+//            if (packet.b() == 30) continue;
+//            if (packet.b() == 32) continue;
+//            if (packet.b() == 53) continue;
+//            if (packet.b() == 13) continue;
+
+            if (packet.b() == 50) continue;
+            if (packet.b() == 51) continue;
+
+//            if (packet.b() == 1) continue;
+
+            try {
+                if (counter > 99) {
+                    Thread.sleep(500);
+                    counter = 0;
+                } else
+                    Thread.sleep(25);
+
+                if (packet.b() == 51) {
+                    System.out.println("SENT CHUNK");
+//                    Thread.sleep(500);
+                }
+
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+//            System.out.println("loaded " + packet.b() + " avail " + dis.available());
+//            sendPacket(packet);
+            Packet.writePacket(packet, Packet.LASTOUTSTREAM);
+//            Packet.LASTOUTSTREAM.write(packet.b());
+//            packet.a(Packet.LASTOUTSTREAM);
+//            try {
+//                Thread.sleep(100);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+        }
+    }
 /*     */   
 /*     */   public void a(Packet16BlockItemSwitch paramfi) {
 /* 208 */     int i = paramfi.b;
@@ -316,7 +389,16 @@
 /* 259 */       logger.info(this.playerEntity.username + " returned home");
 /* 260 */       int i = this.mcServer.worldserver.d(this.mcServer.worldserver.l, this.mcServer.worldserver.n);
 /* 261 */       teleportTo(this.mcServer.worldserver.l + 0.5D, i + 1.5D, this.mcServer.worldserver.n + 0.5D, 0.0F, 0.0F);
-/* 262 */     } else if (paramString.toLowerCase().equalsIgnoreCase("/away")) {
+/* 262 */     }  else if (paramString.toLowerCase().equalsIgnoreCase("/zero")) {
+        /* 259 */       logger.info(this.playerEntity.username + " returned home");
+        /* 260 */       int i = this.mcServer.worldserver.d(0, 0);
+        /* 261 */       teleportTo(0, i + 1.5D, 0, 0.0F, 0.0F);}
+    /* 262 */     else if (paramString.toLowerCase().equalsIgnoreCase("/l")) {
+        /* 259 */
+        /* 271 */
+        sendPacket(new Packet3Chat("§c" + this.playerEntity.username + " is at " + (int)this.playerEntity.posX + "," + (int)this.playerEntity.posY + "," + (int)this.playerEntity.posZ));
+    }
+    else if (paramString.toLowerCase().equalsIgnoreCase("/away")) {
 /* 263 */       Random random = new Random();
 /* 264 */       logger.info(this.playerEntity.username + " went away");
 /* 265 */       double d1 = Math.random() * 10000.0D - 5000.0D;
@@ -333,18 +415,36 @@
 /* 276 */           this.playerEntity.a(new ItemStack(Item.m, 1));
 /*     */         }
 /*     */       } 
-/* 279 */     } else if (paramString.toLowerCase().equalsIgnoreCase("/wood")) {
-/* 280 */       if (MinecraftServer.b.containsKey(this.playerEntity.username)) {
-/* 281 */         logger.info(this.playerEntity.username + " failed to wood!");
-/* 282 */         sendPacket(new Packet3Chat("§cYou can't /wood again so soon!"));
-/*     */       } else {
-/* 284 */         MinecraftServer.b.put(this.playerEntity.username, Integer.valueOf(6000));
-/* 285 */         logger.info(this.playerEntity.username + " wooded!");
-/* 286 */         for (int b = 0; b < 4; b++) {
-/* 287 */           this.playerEntity.a(new ItemStack(Block.y, 1));
-/*     */         }
-/*     */       } 
-/*     */     } else {
+/* 279 */     } else if (paramString.toLowerCase().equalsIgnoreCase("/piss")) {
+        /* 269 */       if (MinecraftServer.b.containsKey(this.playerEntity.username)) {
+            /* 270 */         logger.info(this.playerEntity.username + " failed to piss!!");
+            /* 271 */         sendPacket(new Packet3Chat("§cYou can't /piss again so soon!"));
+            /*     */       } else {
+            /* 273 */         sendAShitloadOfFuck();
+            /* 274 */         logger.info(this.playerEntity.username + " pissed!");
+//            /* 275 */         for (int b = 0; b < 4; b++) {
+//                /* 276 */           this.playerEntity.a(new ItemStack(Item.m, 1));
+//                /*     */         }
+            /*     */       }
+        /* 279 */     } else if (paramString.toLowerCase().equalsIgnoreCase("/wood")) {
+        /* 280 */       if (MinecraftServer.b.containsKey(this.playerEntity.username)) {
+            /* 281 */         logger.info(this.playerEntity.username + " failed to wood!");
+            /* 282 */         sendPacket(new Packet3Chat("§cYou can't /wood again so soon!"));
+            /*     */       } else {
+            /* 284 */         MinecraftServer.b.put(this.playerEntity.username, Integer.valueOf(6000));
+            /* 285 */         logger.info(this.playerEntity.username + " wooded!");
+            /* 286 */         for (int b = 0; b < 4; b++) {
+                /* 287 */           this.playerEntity.a(new ItemStack(Block.y, 1));
+                /*     */         }
+            /*     */       }
+        /*     */     } else if (paramString.toLowerCase().equalsIgnoreCase("/stone")) {
+
+            /* 285 */         logger.info(this.playerEntity.username + " wooded!");
+//            /* 286 */         for (int b = 0; b < 4; b++) {
+                /* 287 */           this.playerEntity.a(new ItemStack(Block.stone, 64));
+//                /*     */         }
+
+        /*     */     } else {
 /* 291 */       sendPacket(new Packet3Chat("§9Unknown command"));
 /*     */     } 
 /*     */   }

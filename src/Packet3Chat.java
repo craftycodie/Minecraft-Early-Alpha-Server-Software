@@ -16,6 +16,7 @@ import java.io.IOException;
 /*    */   
 /*    */   public void a(DataInputStream paramDataInputStream) throws IOException {
 /* 16 */     this.a = paramDataInputStream.readUTF();
+System.out.println(a);
 /*    */   }
 /*    */   
 /*    */   public void a(DataOutputStream paramDataOutputStream) throws IOException {

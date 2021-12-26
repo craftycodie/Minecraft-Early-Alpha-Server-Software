@@ -25,18 +25,18 @@ import java.io.IOException;
 /*    */   
 /*    */   public void a(DataInputStream paramDataInputStream) throws IOException {
 /* 25 */     this.a = paramDataInputStream.readInt();
-/* 26 */     this.b = paramDataInputStream.read();
+/* 26 */     this.b = paramDataInputStream.readByte();
 /* 27 */     this.c = paramDataInputStream.readInt();
-/* 28 */     this.d = paramDataInputStream.read();
-/* 29 */     this.e = paramDataInputStream.read();
+/* 28 */     this.d = paramDataInputStream.readByte();
+/* 29 */     this.e = paramDataInputStream.readByte();
 /*    */   }
 /*    */   
 /*    */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
 /* 33 */     paramDataOutputStream.writeInt(this.a);
-/* 34 */     paramDataOutputStream.write(this.b);
+/* 34 */     paramDataOutputStream.writeByte(this.b);
 /* 35 */     paramDataOutputStream.writeInt(this.c);
-/* 36 */     paramDataOutputStream.write(this.d);
-/* 37 */     paramDataOutputStream.write(this.e);
+/* 36 */     paramDataOutputStream.writeByte(this.d);
+/* 37 */     paramDataOutputStream.writeByte(this.e);
 /*    */   }
 /*    */   
 /*    */   public void a(NetClientManager paramdy) {

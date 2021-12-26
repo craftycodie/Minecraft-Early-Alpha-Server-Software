@@ -8,6 +8,9 @@ import java.io.IOException;
 /*    */   public int a;
 /*    */   public int b;
 /*    */
+/*    */   public Packet22Collect() {
+
+    /*    */   }
 /*    */
 /*    */   public Packet22Collect(int paramInt1, int paramInt2) {
 /* 12 */     this.a = paramInt1;

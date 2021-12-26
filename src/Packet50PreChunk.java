@@ -5,29 +5,29 @@ import java.io.IOException;
 /*    */
 /*    */ public class Packet50PreChunk
 /*    */   extends Packet {
-/*    */   public int a;
-/*    */   public int b;
-/*    */   public boolean c;
+/*    */   public int x;
+/*    */   public int y;
+/*    */   public boolean mode;
 /*    */   
 /*    */   public Packet50PreChunk() {}
 /*    */   
 /*    */   public Packet50PreChunk(int paramInt1, int paramInt2, boolean paramBoolean) {
 /* 13 */     this.j = true;
-/* 14 */     this.a = paramInt1;
-/* 15 */     this.b = paramInt2;
-/* 16 */     this.c = paramBoolean;
+/* 14 */     this.x = paramInt1;
+/* 15 */     this.y = paramInt2;
+/* 16 */     this.mode = paramBoolean;
 /*    */   }
 /*    */   
 /*    */   public void a(DataInputStream paramDataInputStream) throws IOException {
-/* 20 */     this.a = paramDataInputStream.readInt();
-/* 21 */     this.b = paramDataInputStream.readInt();
-/* 22 */     this.c = (paramDataInputStream.read() != 0);
+/* 20 */     this.x = paramDataInputStream.readInt();
+/* 21 */     this.y = paramDataInputStream.readInt();
+/* 22 */     this.mode = (paramDataInputStream.read() != 0);
 /*    */   }
 /*    */   
 /*    */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
-/* 26 */     paramDataOutputStream.writeInt(this.a);
-/* 27 */     paramDataOutputStream.writeInt(this.b);
-/* 28 */     paramDataOutputStream.write(this.c ? 1 : 0);
+/* 26 */     paramDataOutputStream.writeInt(this.x);
+/* 27 */     paramDataOutputStream.writeInt(this.y);
+/* 28 */     paramDataOutputStream.write(this.mode ? 1 : 0);
 /*    */   }
 /*    */   
 /*    */   public void a(NetClientManager paramdy) {

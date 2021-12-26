@@ -140,7 +140,7 @@
 /*      */ 
 /*      */   
 /*      */   public World(File paramFile, String paramString) {
-/*  143 */     this(paramFile, paramString, (new Random()).nextLong());
+/*  143 */     this(paramFile, paramString, 1167205730544005053L);
 /*      */   }
 /*      */ 
 /*      */ 

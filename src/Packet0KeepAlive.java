@@ -6,7 +6,9 @@
 /*    */ public class Packet0KeepAlive
 /*    */   extends Packet
 /*    */ {
-/*    */   public void a(NetClientManager paramdy) {}
+    /*    */   public Packet0KeepAlive() {}
+
+    /*    */   public void a(NetClientManager paramdy) {}
 /*    */   
 /*    */   public void a(DataInputStream paramDataInputStream) {}
 /*    */   

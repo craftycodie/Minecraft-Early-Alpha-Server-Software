@@ -14,8 +14,11 @@ import java.io.IOException;
 /*     */   public boolean onGround;
 /*     */   public boolean moving;
 /*     */   public boolean rotating;
-/*     */   
-/*     */   public void a(NetClientManager paramdy) {
+/*     */
+
+    /*    */   public Packet10Flying() {}
+
+    /*     */   public void a(NetClientManager paramdy) {
 /* 126 */     paramdy.a(this);
 /*     */   }
 /*     */   

@@ -7,6 +7,8 @@ import java.io.IOException;
 /*    */   extends Packet30Entity
 /*    */ {
 
+    public Packet33RelEntityMoveLook() {}
+
 /*    */   public Packet33RelEntityMoveLook(int paramInt, byte paramByte1, byte paramByte2, byte paramByte3, byte paramByte4, byte paramByte5) {
 /* 12 */     super(paramInt);
 /* 13 */     this.xPosition = paramByte1;
@@ -32,6 +34,7 @@ import java.io.IOException;
 /* 34 */     paramDataOutputStream.writeByte(this.zPosition);
 /* 35 */     paramDataOutputStream.writeByte(this.yaw);
 /* 36 */     paramDataOutputStream.writeByte(this.pitch);
+//System.out.println("ENTITY MOVE " + entityId + " " + xPosition + " " + yPosition + " " + zPosition);
 /*    */   }
 /*    */   
 /*    */   public int getPacketSize() {

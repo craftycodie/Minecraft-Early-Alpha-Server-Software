@@ -4,9 +4,9 @@ import java.io.IOException;
 /*    */ public class Packet32EntityLook
 /*    */   extends Packet30Entity
 /*    */ {
-///*    */   public Packet32EntityLook() {
-/////* 76 */     this.encodedRotationYaw = true;
-///*    */   }
+/*    */   public Packet32EntityLook() {
+///* 76 */     this.encodedRotationYaw = true;
+/*    */   }
 /*    */   
 /*    */   public Packet32EntityLook(int paramInt, byte paramByte1, byte paramByte2) {
 /* 80 */     super(paramInt);
@@ -17,21 +17,21 @@ import java.io.IOException;
 /*    */
 public void a(DataInputStream dataInputStream) throws IOException {
     super.a(dataInputStream);
-    this.xPosition = dataInputStream.readByte();
-    this.yPosition = dataInputStream.readByte();
-    this.zPosition = dataInputStream.readByte();
+    this.yaw = dataInputStream.readByte();
+    this.pitch = dataInputStream.readByte();
+//    System.out.println("ENTITY LOOK " + entityId+ " " + yaw + " " + pitch);
+
 }
 /*    */
 @Override
 public void a(DataOutputStream dataOutputStream) throws IOException {
     super.a(dataOutputStream);
-    dataOutputStream.writeByte(this.xPosition);
-    dataOutputStream.writeByte(this.yPosition);
-    dataOutputStream.writeByte(this.zPosition);
+    dataOutputStream.writeByte(this.yaw);
+    dataOutputStream.writeByte(this.pitch);
 }
 /*    */   
 /*    */   public int getPacketSize() {
-/* 99 */     return 7;
+/* 99 */     return 6;
 /*    */   }
 /*    */ }
 

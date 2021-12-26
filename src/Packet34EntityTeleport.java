@@ -42,8 +42,8 @@ import java.io.IOException;
 /* 37 */     this.xPosition = paramDataInputStream.readInt();
 /* 38 */     this.yPosition = paramDataInputStream.readInt();
 /* 39 */     this.zPosition = paramDataInputStream.readInt();
-/* 40 */     this.yaw = (byte)paramDataInputStream.read();
-/* 41 */     this.pitch = (byte)paramDataInputStream.read();
+/* 40 */     this.yaw = paramDataInputStream.readByte();
+/* 41 */     this.pitch = paramDataInputStream.readByte();
 /*    */   }
 /*    */   
 /*    */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
@@ -53,6 +53,8 @@ import java.io.IOException;
 /* 48 */     paramDataOutputStream.writeInt(this.zPosition);
 /* 49 */     paramDataOutputStream.write(this.yaw);
 /* 50 */     paramDataOutputStream.write(this.pitch);
+//    System.out.println("ENTITY TELEPORT " + entityId + " " + xPosition + " " + yPosition + " " + zPosition);
+
 /*    */   }
 /*    */   
 /*    */   public void a(NetClientManager paramdy) {

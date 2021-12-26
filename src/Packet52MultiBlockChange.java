@@ -7,12 +7,12 @@ import java.io.IOException;
 /*    */ public class Packet52MultiBlockChange
 /*    */   extends Packet
 /*    */ {
-/*    */   public int a;
-/*    */   public int b;
-/*    */   public short[] c;
-/*    */   public byte[] d;
-/*    */   public byte[] e;
-/*    */   public int f;
+/*    */   public int x;
+/*    */   public int y;
+/*    */   public short[] coordArray;
+/*    */   public byte[] typeArray;
+/*    */   public byte[] metaArray;
+/*    */   public int arraySize;
 /*    */   
 /*    */   public Packet52MultiBlockChange() {
 /* 16 */     this.j = true;
@@ -20,48 +20,48 @@ import java.io.IOException;
 /*    */   
 /*    */   public Packet52MultiBlockChange(int paramInt1, int paramInt2, short[] paramArrayOfshort, int paramInt3, World paramdp) {
 /* 20 */     this.j = true;
-/* 21 */     this.a = paramInt1;
-/* 22 */     this.b = paramInt2;
-/* 23 */     this.f = paramInt3;
-/* 24 */     this.c = new short[paramInt3];
-/* 25 */     this.d = new byte[paramInt3];
-/* 26 */     this.e = new byte[paramInt3];
+/* 21 */     this.x = paramInt1;
+/* 22 */     this.y = paramInt2;
+/* 23 */     this.arraySize = paramInt3;
+/* 24 */     this.coordArray = new short[paramInt3];
+/* 25 */     this.typeArray = new byte[paramInt3];
+/* 26 */     this.metaArray = new byte[paramInt3];
 /* 27 */     Chunk hv = paramdp.getChunkFromChunkCoords(paramInt1, paramInt2);
 /* 28 */     for (int b = 0; b < paramInt3; b++) {
 /* 29 */       int i = paramArrayOfshort[b] >> 12 & 0xF;
 /* 30 */       int j = paramArrayOfshort[b] >> 8 & 0xF;
 /* 31 */       int k = paramArrayOfshort[b] & 0xFF;
 /*    */       
-/* 33 */       this.c[b] = paramArrayOfshort[b];
-/* 34 */       this.d[b] = (byte)hv.getBlockID(i, k, j);
-/* 35 */       this.e[b] = (byte)hv.getBlockMetadata(i, k, j);
+/* 33 */       this.coordArray[b] = paramArrayOfshort[b];
+/* 34 */       this.typeArray[b] = (byte)hv.getBlockID(i, k, j);
+/* 35 */       this.metaArray[b] = (byte)hv.getBlockMetadata(i, k, j);
 /*    */     } 
 /*    */   }
 /*    */   
 /*    */   public void a(DataInputStream paramDataInputStream) throws IOException {
-/* 40 */     this.a = paramDataInputStream.readInt();
-/* 41 */     this.b = paramDataInputStream.readInt();
+/* 40 */     this.x = paramDataInputStream.readInt();
+/* 41 */     this.y = paramDataInputStream.readInt();
 /*    */
-/* 43 */     this.f = paramDataInputStream.readShort() & 0xFFFF;
-/* 44 */     this.c = new short[this.f];
-/* 45 */     this.d = new byte[this.f];
-/* 46 */     this.e = new byte[this.f];
-/* 47 */     for (int b = 0; b < this.f; b++) {
-/* 48 */       this.c[b] = paramDataInputStream.readShort();
+/* 43 */     this.arraySize = paramDataInputStream.readShort() & 0xFFFF;
+/* 44 */     this.coordArray = new short[this.arraySize];
+/* 45 */     this.typeArray = new byte[this.arraySize];
+/* 46 */     this.metaArray = new byte[this.arraySize];
+/* 47 */     for (int b = 0; b < this.arraySize; b++) {
+/* 48 */       this.coordArray[b] = paramDataInputStream.readShort();
 /*    */     }
-/* 50 */     paramDataInputStream.readFully(this.d);
-/* 51 */     paramDataInputStream.readFully(this.e);
+/* 50 */     paramDataInputStream.readFully(this.typeArray);
+/* 51 */     paramDataInputStream.readFully(this.metaArray);
 /*    */   }
 /*    */   
 /*    */   public void a(DataOutputStream paramDataOutputStream) throws IOException {
-/* 55 */     paramDataOutputStream.writeInt(this.a);
-/* 56 */     paramDataOutputStream.writeInt(this.b);
-/* 57 */     paramDataOutputStream.writeShort((short)this.f);
-/* 58 */     for (int b = 0; b < this.f; b++) {
-/* 59 */       paramDataOutputStream.writeShort(this.c[b]);
+/* 55 */     paramDataOutputStream.writeInt(this.x);
+/* 56 */     paramDataOutputStream.writeInt(this.y);
+/* 57 */     paramDataOutputStream.writeShort((short)this.arraySize);
+/* 58 */     for (int b = 0; b < this.arraySize; b++) {
+/* 59 */       paramDataOutputStream.writeShort(this.coordArray[b]);
 /*    */     }
-/* 61 */     paramDataOutputStream.write(this.d);
-/* 62 */     paramDataOutputStream.write(this.e);
+/* 61 */     paramDataOutputStream.write(this.typeArray);
+/* 62 */     paramDataOutputStream.write(this.metaArray);
 /*    */   }
 /*    */   
 /*    */   public void a(NetClientManager paramdy) {
@@ -69,7 +69,7 @@ import java.io.IOException;
 /*    */   }
 /*    */   
 /*    */   public int getPacketSize() {
-/* 70 */     return 10 + this.f * 4;
+/* 70 */     return 10 + this.arraySize * 4;
 /*    */   }
 /*    */ }
 
